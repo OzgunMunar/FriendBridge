@@ -1,2 +1,3 @@
-npm i axios bcryptjs jsonwebtoken nodemailer r
-eact-hot-toast mongoose
+npm i 
+axios bcryptjs jsonwebtoken nodemailer 
+react-hot-toast mongoose
