@@ -1,3 +1,9 @@
 npm i 
 axios bcryptjs jsonwebtoken nodemailer 
 react-hot-toast mongoose
+
+
+middleware allows you to run code before a request is completed.
+then based on the incoming request, you can modify the response 
+by rewriting, redirecting, modifying the request or response header
+or responding directly
