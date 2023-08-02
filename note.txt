@@ -1,0 +1,2 @@
+npm i axios bcryptjs jsonwebtoken nodemailer r
+eact-hot-toast mongoose
