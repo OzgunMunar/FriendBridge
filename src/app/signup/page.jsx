@@ -4,21 +4,29 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function SignupPage() {
     const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",
         password: "",
+        passwordRepeat: "",
         username: "",
     })
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-
+    
     const onSignup = async () => {
         try {
             setLoading(true);
+
+            if(user.password !== user.passwordRepeat)
+            {
+                toast.error("Passwords doesn't match")
+                return
+            }
+            
             const response = await axios.post("/api/users/signup", user);
             console.log("Signup success", response.data);
             router.push("/login");
@@ -72,10 +80,21 @@ export default function SignupPage() {
             onChange={(e) => setUser({...user, password: e.target.value})}
             placeholder="password"
             />
+        <label htmlFor="passwordRepeat">Repeat password</label>
+        <input 
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            id="password"
+            type="password"
+            value={user.passwordRepeat}
+            onChange={(e) => setUser({...user, passwordRepeat: e.target.value})}
+            placeholder="password repeat"
+            />
             <button
             onClick={onSignup}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisabled ? "No signup" : "Signup"}</button>
             <Link href="/login">Visit login page</Link>
+
+            <Toaster position="top-right" reverseOrder={false}/>
         </div>
     )
 

@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
@@ -17,20 +18,27 @@ export default function LoginPage() {
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
 
-
     const onLogin = async () => {
+
         try {
+
             setLoading(true);
             const response = await axios.post("/api/users/login", user);
             console.log("Login success", response.data);
             toast.success("Login success");
             router.push("/profile");
+
         } catch (error) {
+
             console.log("Login failed", error.message);
             toast.error(error.message);
+
         } finally{
-        setLoading(false);
+
+            setLoading(false);
+
         }
+
     }
 
     useEffect(() => {
@@ -68,6 +76,9 @@ export default function LoginPage() {
             onClick={onLogin}
             className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
             <Link href="/signup">Visit Signup page</Link>
+
+            <Toaster position="top-right" reverseOrder={false}/>
+
         </div>
     )
 
