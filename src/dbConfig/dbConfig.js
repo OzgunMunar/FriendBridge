@@ -1,8 +1,14 @@
 import mongoose from 'mongoose';
 
 export async function ConnectToDB() {
-    try {
-        mongoose.connect(process.env.MONGO_URI);
+    try{
+
+        mongoose.connect(process.env.MONGO_URI, {
+            dbName: "MySocialMediaApp",
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+
         const connection = mongoose.connection;
 
         connection.on('connected', () => {

@@ -1,4 +1,5 @@
 'use client'
+
 import axios from "axios"
 import Link from "next/link"
 import toast from "react-hot-toast"
@@ -14,7 +15,7 @@ const ProfilePage = () => {
 
         try {
             
-            const logout = await axios.get('/api/users/logout')
+            await axios.get('/api/users/logout')
             toast.success('Logout successful')
             router.push('/login')
 
@@ -28,33 +29,44 @@ const ProfilePage = () => {
     const getUserDetails = async () => {
     
         const response = await axios.get('/api/users/me')
-        console.log(response.data)
+
+        const currentUser = {
+            username: response.data.data.username,
+            email: response.data.data.email,
+            isAdmin: response.data.data.isAdmin,
+
+        }
+
         setData(response.data.data._id)
+        // setData(currentUser)
 
     }
 
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>Profile</h1>
-        <hr />
-        <p>Profile Page</p>
-        <h2>{data === 'nothing' ? "Nothing" : 
-        <Link href={`/profile/${data}`}>
-                Go To Profile
-        </Link>
-        }</h2>
-        <button
-        onClick={logout}
-        className="bg-blue-500 hover:bg-blue-700 text-white
-        font-bold py-2 px-4 rounded mt-4">LogOut</button>
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <h5>Profile</h5>
+            <hr />
+            <p>Profile Page</p>
+            <h2>
+            {
+                data === 'nothing' ? "Nothing" : 
+                <Link href={`/profile/${data}`}>
+                    Go To Profile
+                </Link>
+            }
+            </h2>
+            <button
+            onClick={logout}
+            className="bg-blue-500 hover:bg-blue-700 text-white
+            font-bold py-2 px-4 rounded mt-4">LogOut</button>
 
-        <button
-        onClick={getUserDetails}
-        className="bg-blue-500 hover:bg-blue-700 text-white
-        font-bold py-2 px-4 rounded mt-4">get user details</button>
+            <button
+            onClick={getUserDetails}
+            className="bg-blue-500 hover:bg-blue-700 text-white
+            font-bold py-2 px-4 rounded mt-4">get user details</button>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default ProfilePage
