@@ -9,13 +9,13 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: [true, "Please provide a email"],
-        unique: true,
+        unique: true
     },
     password: {
         type: String,
         required: [true, "Please provide a password"],
     },
-    isVerfied: {
+    isVerified: {
         type: Boolean,
         default: false,
     },
@@ -23,8 +23,8 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    forgotPasswordToken: String,
-    forgotPasswordTokenExpiry: Date,
+    passwordToken: String,
+    passwordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
 })

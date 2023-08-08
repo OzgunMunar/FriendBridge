@@ -2,7 +2,7 @@
 
 import axios from "axios"
 import Link from "next/link"
-import toast from "react-hot-toast"
+import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -10,6 +10,7 @@ const ProfilePage = () => {
 
     const router = useRouter()
     const [data, setData] = useState('nothing')
+    const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
 
     const logout = async () => {
 
@@ -38,7 +39,21 @@ const ProfilePage = () => {
         }
 
         setData(response.data.data._id)
-        // setData(currentUser)
+
+    }
+
+    const changePassword = async () => {
+
+        try {
+            
+            await axios.post('/api/users/sendmailofchangepassword')
+            
+            setIsPasswordMailSent(true)
+
+        } catch (error) {
+            toast.error(error.response.data.message)
+            setIsPasswordMailSent(false)
+        }
 
     }
 
@@ -55,6 +70,7 @@ const ProfilePage = () => {
                 </Link>
             }
             </h2>
+
             <button
             onClick={logout}
             className="bg-blue-500 hover:bg-blue-700 text-white
@@ -63,7 +79,14 @@ const ProfilePage = () => {
             <button
             onClick={getUserDetails}
             className="bg-blue-500 hover:bg-blue-700 text-white
-            font-bold py-2 px-4 rounded mt-4">get user details</button>
+            font-bold py-2 px-4 rounded mt-4">Get user details</button>
+
+            <button
+            onClick={changePassword}
+            className="bg-blue-500 hover:bg-blue-700 text-white
+            font-bold py-2 px-4 rounded mt-4"
+            disabled={isPasswordMailSent}
+            >Change Password</button>
             
             <Toaster position="top-right" reverseOrder={false}/>
         

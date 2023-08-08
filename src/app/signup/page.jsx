@@ -14,6 +14,7 @@ export default function SignupPage() {
         passwordRepeat: "",
         username: "",
     })
+    
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     
@@ -32,9 +33,7 @@ export default function SignupPage() {
             router.push("/login");
             
         } catch (error) {
-            console.log("Signup failed", error.message);
-            
-            toast.error(error.message);
+            toast.error(error.response.data.message)
         }finally {
             setLoading(false);
         }
