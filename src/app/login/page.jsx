@@ -6,7 +6,6 @@ import {useRouter} from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-
 export default function LoginPage() {
     
     const router = useRouter();
@@ -44,36 +43,49 @@ export default function LoginPage() {
     }, [user]);
 
     return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <h1>{loading ? "Processing" : "Login"}</h1>
-        <hr />
+    <div className="login_container">
+        <section className='login_text'>
+
+            <p className="login_header_app_name">Social App</p>
+            <p className="login_header_app_explanation">A chance to meet anyone across the world, share what you think and get to know people who are sharing same interests with you!</p>
+
+        </section>
+
+        <section className="login_form">
         
-        <label htmlFor="email">email</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="email"
-            type="text"
-            value={user.email}
-            onChange={(e) => setUser({...user, email: e.target.value})}
-            placeholder="email"
+            <input 
+                className="login_form_input"
+                id="email"
+                type="text"
+                value={user.email}
+                onChange={(e) => setUser({...user, email: e.target.value})}
+                placeholder="Email Address"
             />
-        <label htmlFor="password">password</label>
-        <input 
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
-            id="password"
-            type="password"
-            value={user.password}
-            onChange={(e) => setUser({...user, password: e.target.value})}
-            placeholder="password"
+
+            <input 
+                className="login_form_input"
+                id="password"
+                type="password"
+                value={user.password}
+                onChange={(e) => setUser({...user, password: e.target.value})}
+                placeholder="Password"
             />
+
             <button
-            onClick={onLogin}
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">Login here</button>
-            <Link href="/signup">Visit Signup page</Link>
+                onClick={onLogin}
+                className="login_submit_button">
+                    {loading ? "Processing" : "Log In"}
+            </button>
 
-            <Toaster position="top-right" reverseOrder={false}/>
+            <div className="login_form_horizontal_line"></div>
 
-        </div>
+                <Link href="/signup" className="login_form_create_account_button">Create an account</Link>
+
+                <Toaster position="top-right" reverseOrder={false}/>
+
+        </section>
+
+    </div>
     )
 
 }
