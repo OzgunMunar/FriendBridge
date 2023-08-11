@@ -1,0 +1,161 @@
+
+#logo{
+    
+    font-family: Poppins, sans-serif;
+    letter-spacing: 5px;
+    @apply
+
+    absolute
+    text-xl
+    ml-[25px]
+    mt-0
+    bg-gradient-to-r from-orange-700 to-orange-500 
+    bg-clip-text 
+    text-transparent 
+
+}
+
+.navbar{
+
+    font-family: Tahoma, Verdana, sans-serif;
+    @apply
+
+    overflow-hidden
+    bg-[#403F4C]
+    text-base
+    text-[#c4c4c454]
+
+}
+
+.navbar a {
+
+    @apply
+
+    float-left
+    text-center
+    p-4
+    no-underline
+    text-white
+
+}
+
+.tabs .headerTab:hover, .navbar .dropbtn {
+    transition: color 1s ease;
+}
+
+.tabs .headerTab:hover, .navbar .dropbtn:hover{
+    color: #56A3A6;
+}
+
+.tabs{
+    @apply
+    float-right
+}
+
+.headerNavbar{
+    @apply 
+    pl-2
+}
+
+.dropdown-content {
+    
+    min-width: 20em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    @apply
+
+    absolute
+    bg-[#f9f9f9]
+    z-10
+    right-4
+    rounded-lg
+    
+}
+
+.dropdown {
+    @apply
+
+    overflow-hidden
+}
+
+.dropdown .dropbtn {
+
+    @apply
+
+    cursor-pointer
+    text-white
+    px-3.5
+    py-4
+    bg-inherit
+    mt-0
+    border-none
+
+}
+
+
+.dropdown-content a {
+
+    @apply
+
+    float-none
+    text-black
+    no-underline
+    block
+    text-left  
+}
+
+.dropdown-content>a {
+    
+    @apply
+    rounded-md
+    m-2
+}
+  
+.dropdown-content a:hover {
+    
+    @apply
+    bg-[#ddd]
+}
+
+
+.grid-container-dropdown {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+}
+
+.firstLineText{
+    @apply
+    text-2xl
+    
+}
+
+.secondLineText {
+    @apply
+    text-gray-500
+    text-base
+}
+
+.grid-item-dropdown-normal{
+
+    color: rgb(0, 0, 0);
+    @apply
+
+    absolute
+    left-14
+    mt-0.5
+    font-medium
+    
+}
+
+.grid-item-dropdown-normal-first{
+    font-size: 1.3em;
+    color: rgb(0, 0, 0);
+}
+
+.grid-item-dropdown-2 {
+    @apply
+
+    absolute
+    left-20
+
+}

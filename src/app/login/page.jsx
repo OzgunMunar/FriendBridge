@@ -5,6 +5,7 @@ import React, {useEffect} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import '@/app/_styles/login.css'
 
 export default function LoginPage() {
     
@@ -24,7 +25,7 @@ export default function LoginPage() {
             setLoading(true);
             const response = await axios.post("/api/users/login", user)
             toast.success("Login success")
-            router.push("/profile")
+            router.push("/")
 
         } catch (error) {
             toast.error(error.response.data.message)
