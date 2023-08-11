@@ -75,7 +75,7 @@ export default function LoginPage() {
             <button
                 onClick={onLogin}
                 className="login_submit_button">
-                    {loading ? "Processing" : "Log In"}
+                    {loading ? "Processing..." : "Log In"}
             </button>
 
             <div className="login_form_horizontal_line"></div>

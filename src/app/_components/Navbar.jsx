@@ -16,60 +16,83 @@ import {
     faUsersCog,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { Toaster, toast } from "react-hot-toast";
+import axios from "axios"
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 const Navbar = () => {
 
+    const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
     const dropdownRef = useRef(null)
 
-  function headerMainDropdown() {
-    setIsDropdown(status=> !status)
-  }
+    function headerMainDropdown() {
+      setIsDropdown(status=> !status)
+    }
 
-  useEffect(() => {
+    useEffect(() => {
 
-    const handleOutsideClick = (event) => {
-        
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdown(false);
-      }
-    };
+      const handleOutsideClick = (event) => {
 
-    document.addEventListener('mousedown', handleOutsideClick);
+        if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+          setIsDropdown(false);
+        }
+      };
 
-    return () => {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    };
-  }, []);
+      document.addEventListener('click', handleOutsideClick);
+
+      return () => {
+        document.removeEventListener('click', handleOutsideClick);
+      };
+    }, []);
+
+    const LogOut = async() => {
+
+        console.log("asd")
+
+        try {
+            
+            await axios.get('/api/users/logout')
+            toast.success('Logout successful')
+            router.push('/login')
+
+        } catch (error) {
+            console.log(error.message)
+            toast.error(error.message)
+        }
+
+    }
 
 
-  return (
-    
-    <div className="navbar" id="headerNavbar">
+    return (
 
-            <a href="#">
+      <div className="navbar" id="headerNavbar">
+
+            <Link href="/">
                 <span id="logo">
                     Social App
                 </span> 
-            </a>
+            </Link>
 
             <div className="tabs">
-                <a href="#" className="headerTab">
+                <Link href="/" className="headerTab">
                     <FontAwesomeIcon
                         icon={faRss}
                     />
-                </a>
+                </Link>
 
-                <a href="#" className="headerTab">
+                <Link href="/notifications" className="headerTab">
                     <FontAwesomeIcon
                         icon={faFlag}
                     />
-                </a>
+                </Link>
 
-                <a href="#" className="headerTab">
+                <Link href="/messages" className="headerTab">
                     <FontAwesomeIcon
                         icon={faEnvelope}
                     />
-                </a>
+                </Link>
 
                 <div ref={dropdownRef} className="dropdown">
 
@@ -85,8 +108,8 @@ const Navbar = () => {
 
                 <div className="dropdown-content" id="mainDropdown">
                     
-                    <a href="#">
-
+                    <Link href="/profile">
+                        
                         <div className="grid-container-dropdown">
 
                             <div className="grid-item-dropdown-1">
@@ -104,11 +127,11 @@ const Navbar = () => {
 
                         </div>
 
-                    </a>
+                    </Link>
                     
                     <hr />
                     
-                    <a href="#">
+                    <Link href="/givefeedback">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <FontAwesomeIcon
@@ -121,11 +144,11 @@ const Navbar = () => {
                                 <span>Give Feedback</span>
                             </div>
                         </div>
-                    </a>
+                    </Link>
                     
                     <hr />
                     
-                    <a href="#">
+                    <Link href="/settings">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <FontAwesomeIcon
@@ -137,9 +160,9 @@ const Navbar = () => {
                                 <span>Settings</span>
                             </div>
                         </div>
-                    </a>
+                    </Link>
 
-                    <a href="#">
+                    <Link href="/helpandsupport">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <FontAwesomeIcon
@@ -151,9 +174,9 @@ const Navbar = () => {
                                 <span>Help & Support</span>
                             </div>
                         </div>
-                    </a>
+                    </Link>
 
-                    <a href="#">
+                    <Link href="/display">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <FontAwesomeIcon
@@ -165,9 +188,9 @@ const Navbar = () => {
                                 <span>Display</span>
                             </div>
                         </div>
-                    </a>
+                    </Link>
 
-                    <a href="#">
+                    <Link href="#" onClick={() => LogOut()}>
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <FontAwesomeIcon
@@ -179,7 +202,7 @@ const Navbar = () => {
                                 <span>Log Out</span>
                             </div>
                         </div>
-                    </a>
+                    </Link>
 
                 </div>
 
@@ -188,9 +211,11 @@ const Navbar = () => {
 
             </div>
 
-    </div>
-    
-  )
+            <Toaster position="top-right" reverseOrder={false}/>
+        
+      </div>
+
+    )
 }
 
 export default Navbar

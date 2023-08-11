@@ -1,7 +1,11 @@
+'use client'
+
 import './globals.css'
 import { Inter } from 'next/font/google'
 import "@fortawesome/fontawesome-svg-core/styles.css"; 
 import { config } from "@fortawesome/fontawesome-svg-core";
+import Navbar from './_components/Navbar';
+import { usePathname } from 'next/navigation';
 
 config.autoAddCss = false; 
 
@@ -14,9 +18,16 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+
+  const path = usePathname()
+  const isPublicPath = path === '/login' || path === '/signup' || path === '/verifyemail'
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        {!isPublicPath && <Navbar />}
+        {children}
+        </body>
     </html>
   )
 }
