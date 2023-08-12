@@ -7,6 +7,7 @@ import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function SignupPage() {
+    
     const router = useRouter();
     const [user, setUser] = React.useState({
         email: "",

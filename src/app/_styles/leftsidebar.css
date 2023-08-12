@@ -1,0 +1,54 @@
+.left_side_bar {
+    @apply
+    w-3/12
+    mt-[6px]
+    ml-[4px]
+}
+
+.left_side_bar_items {
+    border-right: 1px solid black;
+
+    @apply
+    flex
+    flex-col
+}
+
+.left_side_bar_items li {
+    @apply
+
+    relative
+    h-12
+    w-[99%]
+    pt-1
+    rounded-md
+    flex
+    items-center
+    gap-4
+    hover:bg-white
+}
+
+.left_side_bar_items li span {
+    @apply
+    absolute
+    left-14
+}
+
+.left_side_bar_items li:hover {
+    @apply
+    cursor-pointer
+}
+
+.left_side_bar_icon {
+    font-size: 25px;
+    @apply
+    absolute
+}
+
+.iconContainer {
+    @apply
+    flex
+    items-center
+    justify-center
+    w-12
+    h-12
+}

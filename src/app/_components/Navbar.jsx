@@ -88,7 +88,7 @@ const Navbar = () => {
                     />
                 </Link>
 
-                <Link href="/messages" className="headerTab">
+                <Link href="/" className="headerTab">
                     <FontAwesomeIcon
                         icon={faEnvelope}
                     />
