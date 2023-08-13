@@ -6,8 +6,6 @@
 }
 
 .left_side_bar_items {
-    border-right: 1px solid black;
-
     @apply
     flex
     flex-col

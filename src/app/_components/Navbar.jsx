@@ -21,7 +21,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-const Navbar = () => {
+const Navbar = ({username}) => {
 
     const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
@@ -120,7 +120,7 @@ const Navbar = () => {
                             </div>
 
                             <div className="grid-item-dropdown-2">
-                                <span className="firstLineText">Ozgun Munar</span>
+                                <span className="firstLineText">{username}</span>
                                 <br />
                                 <span className="secondLineText">See your profile</span>
                             </div>

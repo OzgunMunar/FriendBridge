@@ -11,7 +11,8 @@ import {
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-const LeftSideBar = () => {
+const LeftSideBar = ({ username }) => {
+
   return (
     <div className='left_side_bar'>
 
@@ -21,7 +22,7 @@ const LeftSideBar = () => {
               <div className='iconContainer'>
                 <FontAwesomeIcon className="left_side_bar_icon" icon={faUser} />
               </div>
-              <span>Ozg Mu</span>
+              <span>{username}</span>
             </li>
 
             <li>
