@@ -2,7 +2,7 @@
 
 import Form from "./Form"
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
@@ -10,6 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 const CreatePost = () => {
 
   const router = useRouter()
+  const textAreaRef = useRef()
 
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
@@ -20,16 +21,17 @@ const CreatePost = () => {
 
   const createPost = async() => {
   
-    setSubmitting(true)
-    
     try {
 
-      const response = await axios.post("/api/post/new", post)
+      setSubmitting(true)
+
+      await axios.post("/api/post/new", post)
       toast.success("Post created.")
-      router.push('/')
+
+      textAreaRef.current.value = ""
 
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.message)
     } finally {
       setSubmitting(false)
     }
@@ -47,6 +49,7 @@ const CreatePost = () => {
             setPost={setPost}
             submitting={submitting}
             handleSubmit={createPost}
+            textAreaRef={textAreaRef}
 
           />
 
