@@ -1,0 +1,85 @@
+.post_form_container {
+    @apply
+    mt-1.5
+    w-full
+}
+
+.form_horizontal_line {
+    background: radial-gradient(circle, hsla(0, 0%, 0%, 1) 21%, hsla(0, 0%, 50%, 1) 100%);
+
+    @apply
+    bg-black
+    w-full
+    h-0.5
+} 
+
+.post_form {
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    @apply
+    border-solid
+    border-white
+    bg-white
+    rounded-md
+    p-5
+}
+  
+.post_form label {
+    @apply
+    font-bold
+}
+
+.post_form textarea{
+    @apply
+    w-full
+    p-2.5
+    mt-1.5
+    mb-1.5
+    rounded
+    text-base
+    bg-cover
+    outline-none
+
+}
+
+.post_submit_button {
+    @apply
+    bg-blue-800
+    text-[#fff]
+    border-none
+    rounded-md
+    py-2.5
+    px-5
+    cursor-pointer
+    text-base
+    mt-3
+}
+
+.form_button_container {
+    @apply
+    w-full
+    flex
+    justify-end
+}
+
+.form_submit_button_text {
+    @apply
+    ml-1.5
+}
+
+.form_header {
+    @apply
+    flex
+    items-center
+    gap-2
+}
+
+.form_header_icon_container{ 
+    @apply
+    flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 
+}
+
+.form_header_icon {
+    @apply
+    h-6 w-6 text-sky-600
+}

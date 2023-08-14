@@ -1,6 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 @import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Sacramento&display=swap');
 .login_container {
     @apply 
@@ -57,10 +54,10 @@
   .login_header_app_explanation {
   
     font-family: 'Sacramento', cursive;
+    font-size: 35px;
     @apply 
     
     font-normal 
-    text-2xl 
     text-gray-600
     mb-5
     py-2

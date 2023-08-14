@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import LeftSideBar from "./_components/LeftSideBar";
 import Navbar from "./_components/Navbar";
 import axios from "axios";
+import CreatePost from "./_components/CreatePost";
+import '@/app/_styles/mainpage.css'
 
 export default function Home() {
 
@@ -11,7 +13,7 @@ export default function Home() {
 
   useEffect(() => {
 
-    const fetchData = async() => {
+    const fetchUserData = async() => {
 
       try {
       
@@ -26,14 +28,19 @@ export default function Home() {
 
     }
 
-    fetchData();
+    fetchUserData();
 
   },[])
 
   return (
     <main>
       <Navbar username={userName}/>
-      <LeftSideBar username={userName}/>
+      <div className='body_sections'>
+
+        <LeftSideBar username={userName}/>
+        <CreatePost />
+
+      </div>
     </main>
   )
 }

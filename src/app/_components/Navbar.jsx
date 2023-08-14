@@ -137,7 +137,6 @@ const Navbar = ({username}) => {
                                 <FontAwesomeIcon
                                     icon={faCommentMedical}
                                 />
-                                <i className="fas fa-comment-medical"></i>
                             </div>
 
                             <div className="grid-item-dropdown-normal">
