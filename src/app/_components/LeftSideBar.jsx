@@ -10,6 +10,7 @@ import {
     faRectangleAd,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
+import HorizontalLine from "./HorizontalLine";
 
 const LeftSideBar = ({ username }) => {
 
@@ -24,7 +25,7 @@ const LeftSideBar = ({ username }) => {
               </div>
               <span>{username}</span>
             </li>
-
+            <HorizontalLine />
             <li>
               <div className='iconContainer'>
                 <FontAwesomeIcon className="left_side_bar_icon" icon={faPeopleGroup} />

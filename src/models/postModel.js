@@ -4,7 +4,7 @@ const PostSchema = new Schema({
 
     creator: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Users'
     },
     post: {
         type: String,

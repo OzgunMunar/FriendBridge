@@ -1,14 +1,22 @@
 .left_side_bar {
+    
+    height: calc(100vh - 62px);
     @apply
-    w-3/12
+    w-2/12
     mt-[6px]
-    ml-[4px]
+    mr-[50px]
+    /* bg-white */
+    bg-neutral-100
+    drop-shadow-xl
+    rounded-md
+    fixed left-0
 }
 
 .left_side_bar_items {
     @apply
     flex
     flex-col
+    py-1
 }
 
 .left_side_bar_items li {
@@ -22,7 +30,7 @@
     flex
     items-center
     gap-4
-    hover:bg-white
+    hover:bg-blue-100
 }
 
 .left_side_bar_items li span {

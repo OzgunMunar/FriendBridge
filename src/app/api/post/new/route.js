@@ -12,7 +12,6 @@ export const POST = async(req) => {
         
         ConnectToDB()
         const userId = await getDataFromToken(req)
-        console.log(userId)
         const newPost = new Posts({creator: userId, post: postText, isActive: true})
 
         await newPost.save()

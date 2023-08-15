@@ -11,6 +11,7 @@ import Feed from "./_components/Feed";
 export default function Home() {
 
   const [userName, setUserName] = useState('');
+  const [newRecordSwitch, setNewRecordSwitch] = useState(false)
 
   useEffect(() => {
 
@@ -40,9 +41,9 @@ export default function Home() {
 
         <LeftSideBar username={userName}/>
         <div className='posts_section'>
-          <CreatePost />
+          <CreatePost isRecordCreated={setNewRecordSwitch}/>
           <div className="horizontal_line"></div>
-          <Feed />
+          <Feed isRecordCreated={newRecordSwitch}/>
         </div>
         
       </div>

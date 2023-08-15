@@ -16,6 +16,8 @@ export async function POST(request){
         //check if user already exists
         const user = await User.findOne({email})
 
+        console.log("sign up route side")
+        
         if(user){
             return NextResponse.json({message: "User already exists"}, {status: 400})
         }

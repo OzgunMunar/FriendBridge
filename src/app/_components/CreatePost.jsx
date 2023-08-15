@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-const CreatePost = () => {
+const CreatePost = ({isRecordCreated}) => {
 
   const router = useRouter()
   const textAreaRef = useRef()
@@ -29,6 +29,8 @@ const CreatePost = () => {
       toast.success("Post created.")
 
       textAreaRef.current.value = ""
+      router.push('/')
+      isRecordCreated(val => !val)
 
     } catch (error) {
       toast.error(error.message)
