@@ -22,7 +22,8 @@
     py-10
     max-[1000px]:w-5/6
     w-1/4
-    drop-shadow-2xl
+    /* drop-shadow-2xl */
+    shadow-xl
     rounded-2xl
     h-96
   }
@@ -42,7 +43,7 @@
   
     font-extrabold 
     max-[1000px]:text-8xl 
-    drop-shadow-xl 
+    drop-shadow-xl
     text-8xl 
     text-transparent 
     bg-clip-text 

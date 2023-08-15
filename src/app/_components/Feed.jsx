@@ -12,8 +12,6 @@ const Feed = ({isRecordCreated}) => {
             const result = await axios.get('/api/post')
             const data = result.data.posts
             
-            // console.log(data)
-            
             setPosts(data)
             
         } catch (error) {
@@ -34,7 +32,7 @@ const Feed = ({isRecordCreated}) => {
 
             return (
                 <div key={post._id}>
-                <p>{post.post}</p>
+                    <p>{post.post}</p>
                 </div>
             )
 

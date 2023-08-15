@@ -1,15 +1,37 @@
 .left_side_bar {
-    
     height: calc(100vh - 62px);
     @apply
     w-2/12
     mt-[6px]
     mr-[50px]
-    /* bg-white */
     bg-neutral-100
-    drop-shadow-xl
+    shadow-xl
     rounded-md
     fixed left-0
+}
+
+.feedLi::before {
+    content: ""; 
+
+    @apply
+    bg-blue-900
+    absolute
+    top-0
+    left-0
+    h-full
+    w-[5px]
+}
+
+.left_side_bar_items > li:nth-child(2) > * {
+    @apply
+    text-blue-900
+    font-bold
+}
+
+.left_side_bar_items > li:nth-child(2) {
+    @apply
+    bg-blue-100
+    shadow-md
 }
 
 .left_side_bar_items {
