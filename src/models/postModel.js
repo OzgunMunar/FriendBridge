@@ -14,6 +14,15 @@ const PostSchema = new Schema({
         type: Boolean,
         required: true,
         default: true
+    },
+    comments: [{body: String, date: Date, likeNumber: Number}],
+    postedDate: {
+        type: Date,
+        default: Date.now
+    },
+    likeNumber: {
+        type: Number,
+        default: 0
     }
 
 })

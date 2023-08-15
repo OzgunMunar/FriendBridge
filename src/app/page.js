@@ -6,6 +6,7 @@ import Navbar from "./_components/Navbar";
 import axios from "axios";
 import CreatePost from "./_components/CreatePost";
 import '@/app/_styles/mainpage.css'
+import Feed from "./_components/Feed";
 
 export default function Home() {
 
@@ -38,9 +39,14 @@ export default function Home() {
       <div className='body_sections'>
 
         <LeftSideBar username={userName}/>
-        <CreatePost />
-
+        <div className='posts_section'>
+          <CreatePost />
+          <div className="horizontal_line"></div>
+          <Feed />
+        </div>
+        
       </div>
+      
     </main>
   )
 }

@@ -40,11 +40,11 @@ const CreatePost = () => {
   
   return (
 
-      <div className="w-1/2">
+      <div className="w-full">
 
           <Form
             
-            type='Create'
+            type='Creat'
             post={post}
             setPost={setPost}
             submitting={submitting}

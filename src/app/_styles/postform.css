@@ -43,7 +43,7 @@
     px-5
     cursor-pointer
     text-base
-    mt-3
+    
 }
 
 .form_button_container {
@@ -73,11 +73,4 @@
 .form_header_icon {
     @apply
     h-6 w-6 text-sky-600
-}
-
-
-.form_horizontal_line {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to left, transparent, black, transparent); /* Gradient for fading effect */
 }
