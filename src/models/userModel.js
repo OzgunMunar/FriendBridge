@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    userImageLink: {
+        type: String,
+        default: ''
+    },
     passwordToken: String,
     passwordTokenExpiry: Date,
     verifyToken: String,

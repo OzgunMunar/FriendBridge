@@ -17,6 +17,7 @@ const CreatePost = ({isRecordCreated}) => {
     
     postText: "",
     userId: ""
+    
   })
 
   const createPost = async() => {
@@ -42,7 +43,7 @@ const CreatePost = ({isRecordCreated}) => {
   
   return (
 
-      <div className="w-full">
+      <div className="w-2/3">
 
           <Form
             

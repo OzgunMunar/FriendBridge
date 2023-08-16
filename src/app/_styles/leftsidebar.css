@@ -2,7 +2,7 @@
     height: calc(100vh - 62px);
     @apply
     w-2/12
-    mt-[6px]
+    mt-[62px]
     mr-[50px]
     bg-neutral-100
     shadow-xl
@@ -32,6 +32,7 @@
     @apply
     bg-blue-100
     shadow-md
+    w-[105%]
 }
 
 .left_side_bar_items {
@@ -52,7 +53,9 @@
     flex
     items-center
     gap-4
-    hover:bg-blue-100
+    hover:bg-orange-100
+    hover:w-[105%]
+    hover:shadow-md
 }
 
 .left_side_bar_items li span {
@@ -79,4 +82,19 @@
     justify-center
     w-12
     h-12
+}
+
+.left_side_bar_horizontal_line {
+    height: 2px;
+    margin-top: 1rem;
+    @apply 
+    w-full
+    bg-slate-300
+}
+
+.left_side_bar_post_photo {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%;
+    object-fit: cover;   
 }

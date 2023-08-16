@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import '@/app/_styles/navbar.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -20,12 +20,14 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { UserContext } from "./Contexts";
 
-const Navbar = ({username}) => {
+const Navbar = () => {
 
     const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
     const dropdownRef = useRef(null)
+    const { user } = useContext(UserContext)
 
     function headerMainDropdown() {
       setIsDropdown(status=> !status)
@@ -49,8 +51,6 @@ const Navbar = ({username}) => {
 
     const LogOut = async() => {
 
-        console.log("asd")
-
         try {
             
             await axios.get('/api/users/logout')
@@ -63,7 +63,6 @@ const Navbar = ({username}) => {
         }
 
     }
-
 
     return (
 
@@ -88,7 +87,7 @@ const Navbar = ({username}) => {
                     />
                 </Link>
 
-                <Link href="/" className="headerTab">
+                <Link href="/messages" className="headerTab">
                     <FontAwesomeIcon
                         icon={faEnvelope}
                     />
@@ -113,14 +112,11 @@ const Navbar = ({username}) => {
                         <div className="grid-container-dropdown">
 
                             <div className="grid-item-dropdown-1">
-                                <FontAwesomeIcon
-                                    icon={faUserAstronaut}
-                                    style={{fontSize: '3em', marginRight: '0.5em'}}
-                                />
+                                <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="nav_bar_photo" />
                             </div>
 
                             <div className="grid-item-dropdown-2">
-                                <span className="firstLineText">{username}</span>
+                                <span className="firstLineText">{user.username}</span>
                                 <br />
                                 <span className="secondLineText">See your profile</span>
                             </div>

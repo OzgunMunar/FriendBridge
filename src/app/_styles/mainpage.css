@@ -2,16 +2,21 @@
     display: flex;
 }
 
-.horizontal_line {
-    width: 100%;
+.post_elements > .horizontal_line {
+    
     height: 2px;
     background: linear-gradient(to left, transparent, black, transparent); 
     margin: 1rem 0;
+    @apply w-2/3
 }
 
 .posts_section {
 
-    width: 50%;
+    width: 100%;
     margin-left: 25%;
 
+}
+
+.post_elements {
+    margin-top: 62px;
 }

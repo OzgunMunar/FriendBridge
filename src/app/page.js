@@ -1,16 +1,17 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
 import LeftSideBar from "./_components/LeftSideBar";
 import Navbar from "./_components/Navbar";
 import axios from "axios";
 import CreatePost from "./_components/CreatePost";
 import '@/app/_styles/mainpage.css'
 import Feed from "./_components/Feed";
+import { UserContext } from "./_components/Contexts";
 
 export default function Home() {
 
-  const [userName, setUserName] = useState('');
+  const [user, setUser] = useState('');
   const [newRecordSwitch, setNewRecordSwitch] = useState(false)
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Home() {
         const loggedUser = await axios.get('api/users/me')
         const user = loggedUser.data.data
 
-        setUserName(user.username)
+        setUser(user)
   
       } catch (error) {
         console.log(error)
@@ -36,18 +37,21 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar username={userName}/>
-      <div className='body_sections'>
+      <UserContext.Provider value={{ user }}>
+        <Navbar/>
+        <div className='body_sections'>
 
-        <LeftSideBar username={userName}/>
-        <div className='posts_section'>
-          <CreatePost isRecordCreated={setNewRecordSwitch}/>
-          <div className="horizontal_line"></div>
-          <Feed isRecordCreated={newRecordSwitch}/>
+          <LeftSideBar/>
+          <div className='posts_section'>
+            <div className='post_elements'>
+              <CreatePost isRecordCreated={setNewRecordSwitch}/>
+              <div className="horizontal_line"></div>
+              <Feed isRecordCreated={newRecordSwitch}/>
+            </div>
+          </div>
+
         </div>
-        
-      </div>
-      
+      </UserContext.Provider>
     </main>
   )
 }

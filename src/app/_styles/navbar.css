@@ -18,12 +18,18 @@
 
     font-family: Tahoma, Verdana, sans-serif;
     box-shadow: 0 4px 6px 0 rgba(0,0,0,0.5);
+    
     @apply
 
     overflow-hidden
     bg-[#403F4C]
     text-base
     text-[#c4c4c454]
+    fixed
+    top-0
+    left-0
+    /* h-14 */
+    w-full
 
 }
 
@@ -57,24 +63,22 @@
     pl-2
 }
 
+
 .dropdown-content {
-    
     min-width: 20em;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+    /* display: block; */
     @apply
 
-    absolute
+    fixed
     bg-[#f9f9f9]
     z-10
     right-4
     rounded-lg
-    
 }
 
 .dropdown {
     @apply
-
     overflow-hidden
 }
 
@@ -105,14 +109,12 @@
 }
 
 .dropdown-content>a {
-    
     @apply
     rounded-md
     m-2
 }
   
 .dropdown-content a:hover {
-    
     @apply
     bg-[#ddd]
 }
@@ -126,7 +128,6 @@
 .firstLineText{
     @apply
     text-2xl
-    
 }
 
 .secondLineText {
@@ -136,15 +137,13 @@
 }
 
 .grid-item-dropdown-normal{
-
-    color: rgb(0, 0, 0);
     @apply
 
     absolute
     left-14
     mt-0.5
     font-medium
-    
+    text-black
 }
 
 .grid-item-dropdown-normal-first{
@@ -157,5 +156,11 @@
 
     absolute
     left-20
+}
 
+.nav_bar_photo {
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    object-fit: cover;
 }

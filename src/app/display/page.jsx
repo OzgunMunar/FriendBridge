@@ -4,7 +4,7 @@ import Navbar from '../_components/Navbar'
 const displayPage = () => {
   return (
     <div>
-    <Navbar />
+    {/* <Navbar /> */}
     <div>displayPage</div>
     </div>
   )

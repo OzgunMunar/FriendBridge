@@ -11,9 +11,13 @@ import {
     faUser,
     faRss
 } from "@fortawesome/free-solid-svg-icons";
-import HorizontalLine from "./HorizontalLine";
+import { UserContext } from "./Contexts";
 
-const LeftSideBar = ({ username }) => {
+import React from 'react'
+
+const LeftSideBar = () => {
+
+  let { user } = React.useContext(UserContext)
 
   return (
     <div className='left_side_bar'>
@@ -22,9 +26,9 @@ const LeftSideBar = ({ username }) => {
 
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faUser} />
+                <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
               </div>
-              <span>{username}</span>
+              <span>{user.username}</span>
             </li>
 
             <li className="feedLi">
@@ -34,7 +38,7 @@ const LeftSideBar = ({ username }) => {
               <span>Feed</span>
             </li>
 
-            <HorizontalLine />
+            <div className="left_side_bar_horizontal_line"></div>
             <li>
               <div className='iconContainer'>
                 <FontAwesomeIcon className="left_side_bar_icon" icon={faPeopleGroup} />
