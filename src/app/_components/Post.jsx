@@ -1,12 +1,15 @@
 import "@/app/_styles/post.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComments, faShare } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "./Contexts";
-import React from 'react'
+import {useContext, useRef, useState, useEffect} from 'react'
 
 const Post = ({ post }) => {
 
-    const { user } = React.useContext(UserContext)
+    const { user } = useContext(UserContext)
+    const EditOrDeleteRef = useRef(null)
+    const [isDropdown, setIsDropdown] = useState(false);
+
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -22,6 +25,28 @@ const Post = ({ post }) => {
 
     const fullDateText = `${dayMonthYear[2]} ${returnMonthName(dayMonthYear[1])} ${dayMonthYear[0]} at ${time[0]}:${time[1]}`
 
+    function EditOrDeleteOpener() {
+        setIsDropdown(status => !status)
+    }
+
+    useEffect(() => {
+
+        const handleOutsideClick = (event) => {
+  
+          if (EditOrDeleteRef.current && !EditOrDeleteRef.current.contains(event.target)) {
+            setIsDropdown(false);
+          }
+  
+        };
+  
+        document.addEventListener('click', handleOutsideClick);
+  
+        return () => {
+          document.removeEventListener('click', handleOutsideClick);
+        };
+        
+      }, []);
+
   return (
     <div className="post_container">
 
@@ -30,9 +55,7 @@ const Post = ({ post }) => {
             <div className="post_header_left_section">
 
                 <div className="post_user_image">
-
                     <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
-
                 </div>
 
                 <div className="post_info">
@@ -41,11 +64,38 @@ const Post = ({ post }) => {
                 </div>
 
             </div>
+            
+            <div className="right_section_container">
+            
+                <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
 
-            <div className="post_header_right_actions_section">
-                <button type="button" className="right_actions_button">...</button>
+                    <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
+                        ...
+                    </button>
+
+                </div>
+
+                {isDropdown && (
+
+                    
+                    <div className="post_dropdown_content">
+
+                        <p className="post_dropdown_content_action">
+                            <FontAwesomeIcon icon={faPenToSquare} /> 
+                            <span>Edit</span>
+                        </p>
+                        <div>|</div>
+                        <p className="post_dropdown_content_action">
+                            <FontAwesomeIcon icon={faTrash} /> 
+                            <span>Delete</span>
+                        </p>
+
+                    </div>
+                    
+
+                )}
+
             </div>
-
         </div>
 
         <div className="post_body">

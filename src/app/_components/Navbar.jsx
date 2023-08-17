@@ -12,7 +12,6 @@ import {
     faMoon,
     faRss,
     faSignOutAlt,
-    faUserAstronaut,
     faUsersCog,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -30,7 +29,7 @@ const Navbar = () => {
     const { user } = useContext(UserContext)
 
     function headerMainDropdown() {
-      setIsDropdown(status=> !status)
+        setIsDropdown(status=> !status)
     }
 
     useEffect(() => {
@@ -40,6 +39,7 @@ const Navbar = () => {
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
           setIsDropdown(false);
         }
+
       };
 
       document.addEventListener('click', handleOutsideClick);
@@ -47,6 +47,7 @@ const Navbar = () => {
       return () => {
         document.removeEventListener('click', handleOutsideClick);
       };
+
     }, []);
 
     const LogOut = async() => {
