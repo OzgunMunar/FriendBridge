@@ -85,16 +85,17 @@
 }
 
 .left_side_bar_horizontal_line {
-    height: 2px;
-    margin-top: 1rem;
     @apply 
     w-full
     bg-slate-300
+    h-[2px]
+    mt-4
 }
 
 .left_side_bar_post_photo {
-    width: 30px; 
-    height: 30px; 
     border-radius: 50%;
-    object-fit: cover;   
+    @apply
+    w-[30px]
+    h-[30px]
+    object-cover
 }

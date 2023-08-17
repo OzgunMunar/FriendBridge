@@ -1,22 +1,22 @@
 .body_sections {
-    display: flex;
+    @apply
+    flex
 }
 
 .post_elements > .horizontal_line {
-    
-    height: 2px;
     background: linear-gradient(to left, transparent, black, transparent); 
-    margin: 1rem 0;
-    @apply w-2/3
+    @apply 
+    w-2/3
+    h-[2px]
+    my-4
 }
 
 .posts_section {
-
-    width: 100%;
-    margin-left: 25%;
-
+    @apply
+    w-full
+    ml-[25%]
 }
 
 .post_elements {
-    margin-top: 62px;
+    @apply mt-[62px]
 }

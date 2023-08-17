@@ -1,7 +1,6 @@
 .post_container {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     @apply
-
     bg-neutral-100
     p-6
     w-full
@@ -10,40 +9,41 @@
 }
 
 .post_photo {
-    width: 50px; 
-    height: 50px; 
     border-radius: 50%;
-    object-fit: cover;
+    @apply
+    object-cover
+    w-[50px]
+    h-[50px]
 }
 
 .post_owners_name {
-    font-weight: 700;
+    @apply font-bold
 }
 
 .post_header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
+    @apply flex justify-between items-center
 }
 
 .post_header_left_section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+    @apply
+    flex
+    justify-center
+    items-center
+    gap-4
 }
 
 .post_header_right_actions_section {
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 50%;
-    width: 3rem;
-    height: 3rem;
-    padding-bottom: 20px;
-    color: black;
     transition: all 500ms ease;
+    @apply
+    flex
+    items-center
+    justify-center
+    w-12
+    h-12
+    text-[2rem]
+    pb-[20px]
+    text-black
 }
 
 .post_header_right_actions_section:hover {
@@ -52,15 +52,16 @@
 }
 
 .post_action_button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 1rem;
-    width: 100%;
-    height: 3rem;
     transition: all 500ms ease;
-    cursor: pointer;
+    @apply
+    flex
+    items-center
+    justify-center
+    cursor-pointer
+    w-full
+    h-12
+    text-base
+    gap-4
 }
 
 .post_action_button:hover {
@@ -69,11 +70,11 @@
 }
 
 .post_like_comment_share {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    @apply
+    flex
+    items-center
+    justify-evenly
+    my-2
 }
 
 .post_horizontal_line {
@@ -90,30 +91,31 @@
 }
 
 .post_body {
-    background-color: white;
-    margin: 1rem 0;
-    padding: 1rem;
+    @apply
+    bg-white
+    my-4
+    p-4
 }
 
 .right_section_container {
-    position: relative;
+    @apply relative
 }
 
 .post_dropdown_content{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @apply
     absolute
     bg-[#f9f9f9]
     right-4
     rounded-2xl
+    flex
+    items-center
+    justify-center
 }
 
 .post_dropdown_content > *:not(div) {
-    padding:1rem 3rem;
+    @apply py-4 px-12
 }
 
 .post_dropdown_content > p:first-child:hover {
@@ -129,8 +131,9 @@
 }
 
 .post_dropdown_content_action {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    @apply
+    flex
+    items-center
+    justify-center
+    gap-4
 }
