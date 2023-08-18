@@ -22,6 +22,8 @@ export default function SignupPage({changePage}) {
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
     const usernameRef = useRef()
+
+    const [some, setSome] = React.useState()
     
     const onSignup = async () => {
 
