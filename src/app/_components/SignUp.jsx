@@ -18,8 +18,6 @@ export default function SignupPage({changePage}) {
         passwordRepeat: "",
         username: "",
     })
-    
-    const [som, setSom] = React.useState(false)
 
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
