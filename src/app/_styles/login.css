@@ -25,6 +25,7 @@
     shadow-xl
     rounded-2xl
     h-96
+    relative
   }
   
   .login_container .login_text {
@@ -120,3 +121,18 @@
     duration-500
   }
   
+  .sign_up_tologinpage {
+
+    @apply
+
+    absolute
+    bottom-5
+    left-10
+    flex
+    justify-center
+    items-center
+    gap-1
+    transition ease-in-out
+    hover:-translate-x-1 duration-300
+
+  }

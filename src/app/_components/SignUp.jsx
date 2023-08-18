@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faArrowLeft
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function SignupPage({changePage}) {
     
@@ -17,6 +21,7 @@ export default function SignupPage({changePage}) {
     
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
+    const usernameRef = useRef()
     
     const onSignup = async () => {
 
@@ -30,8 +35,7 @@ export default function SignupPage({changePage}) {
                 return
             }
             
-            const response = await axios.post("/api/users/signup", user);
-            console.log("Signup success", response.data);
+            await axios.post("/api/users/signup", user);
             router.push("/login");
             
         } catch (error) {
@@ -39,6 +43,7 @@ export default function SignupPage({changePage}) {
         }finally {
             setLoading(false);
         }
+
     }
 
     useEffect(() => {
@@ -49,55 +54,65 @@ export default function SignupPage({changePage}) {
         }
     }, [user]);
 
+    useEffect(() => {
+
+        usernameRef.current.focus()
+
+    }, [])
 
     return (
 
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <div className="login_form">
 
-            <h1>{loading ? "Processing..." : "Signup"}</h1>
-            <hr />
-            <label htmlFor="username">username</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="login_form_input"
                 id="username"
                 type="text"
+                ref={usernameRef}
                 value={user.username}
                 onChange={(e) => setUser({...user, username: e.target.value})}
                 placeholder="username"
                 />
-            <label htmlFor="email">email</label>
+
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="login_form_input"
                 id="email"
                 type="text"
                 value={user.email}
                 onChange={(e) => setUser({...user, email: e.target.value})}
                 placeholder="email"
                 />
-            <label htmlFor="password">password</label>
+
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="login_form_input"
                 id="password"
                 type="password"
                 value={user.password}
                 onChange={(e) => setUser({...user, password: e.target.value})}
                 placeholder="password"
                 />
-            <label htmlFor="passwordRepeat">Repeat password</label>
+
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="login_form_input"
                 id="password"
                 type="password"
                 value={user.passwordRepeat}
                 onChange={(e) => setUser({...user, passwordRepeat: e.target.value})}
                 placeholder="password repeat"
                 />
-                <button
-                onClick={onSignup}
-                className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600">{buttonDisabled ? "No signup" : "Signup"}</button>
-                <button type="button" onClick={()=> changePage(val => !val)}>Visit login page</button>
 
-                <Toaster position="top-right" reverseOrder={false}/>
+            <button
+                onClick={onSignup}
+                className="login_form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}</button>
+
+            <button type="button" className="sign_up_tologinpage" onClick={()=> changePage(val => !val)}>
+                <FontAwesomeIcon
+                        icon={faArrowLeft}
+                    />
+                <span>To Login page</span>
+            </button>
+
+            <Toaster position="top-right" reverseOrder={false}/>
 
         </div>
 
