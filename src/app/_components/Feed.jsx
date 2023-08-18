@@ -1,12 +1,15 @@
 import axios from 'axios'
-import React from 'react'
+import {useState, useEffect, useContext} from 'react'
 import Post from './Post'
 
 import "@/app/_styles/feedcontainer.css"
+import { FeedChangeContext } from './Contexts'
 
-const Feed = ({shouldFeedChange}) => {
+const Feed = () => {
 
-    const [posts, setPosts] = React.useState()
+    const [posts, setPosts] = useState()
+
+    const {shouldFeedChange} = useContext(FeedChangeContext)
 
     const fetchData = async() => {
 
@@ -23,7 +26,7 @@ const Feed = ({shouldFeedChange}) => {
 
     }
 
-    React.useEffect(() => {
+    useEffect(() => {
         
         fetchData()
         
@@ -35,7 +38,7 @@ const Feed = ({shouldFeedChange}) => {
               
                 return (
                     <div key={post._id}>
-                        <Post shouldFeedChange={shouldFeedChange} post={post}/>
+                        <Post post={post}/>
                     </div>
                 )
                   

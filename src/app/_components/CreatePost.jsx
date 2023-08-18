@@ -1,15 +1,18 @@
 'use client'
 
 import Form from "./Form"
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+import { FeedChangeContext } from "./Contexts";
 
-const CreatePost = ({shouldFeedChange}) => {
+const CreatePost = () => {
 
   const router = useRouter()
   const textAreaRef = useRef()
+
+  const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
 
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
@@ -30,7 +33,7 @@ const CreatePost = ({shouldFeedChange}) => {
 
       textAreaRef.current.value = ""
       router.push('/')
-      shouldFeedChange(val => !val)
+      setShouldFeedChangeSwitch(val => !val)
 
     } catch (error) {
       toast.error(error.message)

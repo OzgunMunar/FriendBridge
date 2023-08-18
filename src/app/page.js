@@ -7,13 +7,13 @@ import axios from "axios";
 import CreatePost from "./_components/CreatePost";
 import '@/app/_styles/mainpage.css'
 import Feed from "./_components/Feed";
-import { UserContext } from "./_components/Contexts";
+import { UserContext, FeedChangeContext } from "./_components/Contexts";
 
 export default function Home() {
 
   const [user, setUser] = useState('');
-  const [newFeedSwitch, setNewFeedSwitch] = useState(false)
-  const [isVerified, setIsVerified] = useState(false)
+  const [isVerified, setIsVerified] = useState(true)
+  const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
 
   const logout = async () => {
 
@@ -39,8 +39,7 @@ export default function Home() {
         const loggedUser = await axios.get('api/users/me')
         const user = loggedUser.data.data
 
-        if(user.isVerified === false)
-          setIsVerified(true)
+        user.isVerified === false && setIsVerified(false)
 
         setUser(user)
   
@@ -63,9 +62,11 @@ export default function Home() {
           <LeftSideBar/>
           <div className='posts_section'>
             <div className='post_elements'>
-              <CreatePost shouldFeedChange={setNewFeedSwitch}/>
-              <div className="horizontal_line"></div>
-              <Feed shouldFeedChange={setNewFeedSwitch}/>
+              <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                <CreatePost />
+                <div className="horizontal_line"></div>
+                <Feed />
+              </FeedChangeContext.Provider>
             </div>
           </div>
 

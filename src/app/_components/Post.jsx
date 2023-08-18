@@ -7,10 +7,12 @@ import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
 import Modal from "./Modal"
 import Form from "./Form"
+import { FeedChangeContext } from "./Contexts"
 
-const Post = ({ post, shouldFeedChange }) => {
+const Post = ({ post }) => {
 
     const { user } = useContext(UserContext)
+    const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
     
     const EditOrDeleteRef = useRef(null)
     const textAreaRef = useRef()
@@ -26,7 +28,7 @@ const Post = ({ post, shouldFeedChange }) => {
     const openModal = () => {
         setIsEditModalOpen(true);
     };
-  
+    
     const closeModal = () => {
         setIsEditModalOpen(false);
     };
@@ -78,8 +80,8 @@ const Post = ({ post, shouldFeedChange }) => {
                                         .then(() => toast.success("Post edited"))
                                         .catch((error) => toast.error("An error occured during editing post."))
             
-            shouldFeedChange(val => !val)
-            
+            setShouldFeedChangeSwitch(val => !val)
+
         } catch (error) {
             console.log(error.data)
             toast.error(error.data)
@@ -97,7 +99,7 @@ const Post = ({ post, shouldFeedChange }) => {
             .then(() => toast.success("Post deleted"))
             .catch((error) => toast.error("An error occured during deleting post."))
 
-            shouldFeedChange(val => !val)
+            setShouldFeedChangeSwitch(val => !val)
 
         } catch (error) {
 
