@@ -12,7 +12,7 @@ import { UserContext } from "./_components/Contexts";
 export default function Home() {
 
   const [user, setUser] = useState('');
-  const [newRecordSwitch, setNewRecordSwitch] = useState(false)
+  const [newFeedSwitch, setNewFeedSwitch] = useState(false)
   const [isVerified, setIsVerified] = useState(false)
 
   const logout = async () => {
@@ -39,7 +39,7 @@ export default function Home() {
         const loggedUser = await axios.get('api/users/me')
         const user = loggedUser.data.data
 
-        if(user.isVerified)
+        if(user.isVerified === false)
           setIsVerified(true)
 
         setUser(user)
@@ -54,7 +54,7 @@ export default function Home() {
 
   },[])
 
-  return isVerified ? (
+  return (isVerified === true) ? (
     <main>
       <UserContext.Provider value={{ user }}>
         <Navbar/>
@@ -63,9 +63,9 @@ export default function Home() {
           <LeftSideBar/>
           <div className='posts_section'>
             <div className='post_elements'>
-              <CreatePost isRecordCreated={setNewRecordSwitch}/>
+              <CreatePost shouldFeedChange={setNewFeedSwitch}/>
               <div className="horizontal_line"></div>
-              <Feed isRecordCreated={newRecordSwitch}/>
+              <Feed shouldFeedChange={setNewFeedSwitch}/>
             </div>
           </div>
 

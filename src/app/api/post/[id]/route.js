@@ -20,3 +20,31 @@ export const DELETE = async(req, {params}) => {
     }
 
 }
+
+export const PATCH = async(req, { params }) => {
+
+    try {
+        
+        ConnectToDB()
+
+        const { postId, postText } = await req.json()
+
+        console.log("post:" + postText)
+        console.log("id:" + postId)
+
+        const seekingPost = await Posts.findById(postId)
+
+        if(seekingPost === null)
+            return NextResponse.json({error: "Post that you are looking for couldn't found."}, {status: 400})
+
+        seekingPost.post = postText
+
+        await seekingPost.save()
+
+        return NextResponse.json({success: "Success when editing!"}, {status: 200})
+        
+    } catch (error) {
+        return NextResponse.json({error: "An error occured when editing!"}, {status: 500})
+    }
+
+}

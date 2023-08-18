@@ -4,7 +4,7 @@ import Post from './Post'
 
 import "@/app/_styles/feedcontainer.css"
 
-const Feed = ({isRecordCreated}) => {
+const Feed = ({shouldFeedChange}) => {
 
     const [posts, setPosts] = React.useState()
 
@@ -27,7 +27,7 @@ const Feed = ({isRecordCreated}) => {
         
         fetchData()
         
-    },[isRecordCreated])
+    },[shouldFeedChange])
 
     return (
         <div className="feed_container">
@@ -35,7 +35,7 @@ const Feed = ({isRecordCreated}) => {
               
                 return (
                     <div key={post._id}>
-                        <Post post={post}/>
+                        <Post shouldFeedChange={shouldFeedChange} post={post}/>
                     </div>
                 )
                   

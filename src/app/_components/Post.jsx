@@ -6,14 +6,22 @@ import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
 import Modal from "./Modal"
+import Form from "./Form"
 
-const Post = ({ post }) => {
+const Post = ({ post, shouldFeedChange }) => {
 
     const { user } = useContext(UserContext)
+    
     const EditOrDeleteRef = useRef(null)
-    const [isDropdown, setIsDropdown] = useState(false)
+    const textAreaRef = useRef()
 
+    const [isDropdown, setIsDropdown] = useState(false)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [postToEdit, setPostToEdit] = useState({
+        postText: "",
+        postId: post._id
+    })
+    const [submitting, setSubmitting] = useState(false)
 
     const openModal = () => {
         setIsEditModalOpen(true);
@@ -60,9 +68,24 @@ const Post = ({ post }) => {
         
       }, []);
 
-    const EditPost = async(postId) => {
+    const EditPost = async() => {
 
-        alert("edit post" + postId)
+        try {
+
+            setSubmitting(true)
+
+            const result = await axios.patch(`/api/post/${post._id}`, postToEdit)
+                                        .then(() => toast.success("Post edited"))
+                                        .catch((error) => toast.error("An error occured during editing post."))
+            
+            shouldFeedChange(val => !val)
+            
+        } catch (error) {
+            console.log(error.data)
+            toast.error(error.data)
+        } finally {
+            setSubmitting(false)
+        }
 
     }
 
@@ -73,6 +96,8 @@ const Post = ({ post }) => {
             await axios.delete(`/api/post/${postId}`)
             .then(() => toast.success("Post deleted"))
             .catch((error) => toast.error("An error occured during deleting post."))
+
+            shouldFeedChange(val => !val)
 
         } catch (error) {
 
@@ -86,16 +111,6 @@ const Post = ({ post }) => {
     return (
 
         <div className="post_container">
-
-            <div>
-
-                <button onClick={openModal}>Open Modal</button>
-                <Modal isOpen={isEditModalOpen} onClose={closeModal}>
-                    <h2>This is a Modal</h2>
-                    <p>{isEditModalOpen}</p>
-                </Modal>
-                
-            </div>
 
             <div className="post_header">
 
@@ -127,7 +142,7 @@ const Post = ({ post }) => {
 
                             <div className="post_dropdown_content">
 
-                                <p className="post_dropdown_content_action" onClick={() => EditPost(post._id)}>
+                                <p className="post_dropdown_content_action" onClick={openModal}>
                                     <FontAwesomeIcon icon={faPenToSquare} /> 
                                     <span>Edit</span>
                                 </p>
@@ -138,7 +153,6 @@ const Post = ({ post }) => {
                                 </p>
 
                             </div>
-
 
                         )}
 
@@ -178,6 +192,26 @@ const Post = ({ post }) => {
             </div>
 
             <Toaster position="top-right" reverseOrder={false}/>
+
+            <div>
+                
+                <div className={isEditModalOpen ? "modal-container active":"modal-container"}>
+
+                    <Modal isOpen={ isEditModalOpen } onClose={closeModal}>
+                    <Form
+            
+                        type='Edit'
+                        post={postToEdit}
+                        setPost={setPostToEdit}
+                        submitting={submitting}
+                        handleSubmit={EditPost}
+                        textAreaRef={textAreaRef}
+                    />
+                    </Modal>
+                    
+                </div>
+
+            </div>
 
         </div>
         

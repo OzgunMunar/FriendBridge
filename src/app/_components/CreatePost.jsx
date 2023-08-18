@@ -1,13 +1,12 @@
 'use client'
 
 import Form from "./Form"
-
 import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-const CreatePost = ({isRecordCreated}) => {
+const CreatePost = ({shouldFeedChange}) => {
 
   const router = useRouter()
   const textAreaRef = useRef()
@@ -31,7 +30,7 @@ const CreatePost = ({isRecordCreated}) => {
 
       textAreaRef.current.value = ""
       router.push('/')
-      isRecordCreated(val => !val)
+      shouldFeedChange(val => !val)
 
     } catch (error) {
       toast.error(error.message)
