@@ -13,12 +13,12 @@ const Post = ({ post }) => {
 
     const { user } = useContext(UserContext)
     const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
+    const textAreaRef = useRef()
     
     const EditOrDeleteRef = useRef(null)
-    const textAreaRef = useRef()
 
     const [isDropdown, setIsDropdown] = useState(false)
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [postToEdit, setPostToEdit] = useState({
         postText: "",
         postId: post._id
@@ -26,12 +26,12 @@ const Post = ({ post }) => {
     const [submitting, setSubmitting] = useState(false)
 
     const openModal = () => {
-        setIsEditModalOpen(true);
-    };
+        setIsEditModalOpen(true)
+    }
     
     const closeModal = () => {
-        setIsEditModalOpen(false);
-    };
+        setIsEditModalOpen(false)
+    }
 
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
@@ -61,15 +61,20 @@ const Post = ({ post }) => {
           }
   
         };
-  
+        
+        setPostToEdit({
+            ...postToEdit,
+            postText: post.post
+        })
+        // textAreaRef.current.focus()
         document.addEventListener('click', handleOutsideClick);
-  
+
         return () => {
           document.removeEventListener('click', handleOutsideClick);
         };
         
-      }, []);
-
+    }, []);
+    
     const EditPost = async() => {
 
         try {
@@ -81,6 +86,7 @@ const Post = ({ post }) => {
                                         .catch((error) => toast.error("An error occured during editing post."))
             
             setShouldFeedChangeSwitch(val => !val)
+            closeModal()
 
         } catch (error) {
             console.log(error.data)
@@ -200,15 +206,17 @@ const Post = ({ post }) => {
                 <div className={isEditModalOpen ? "modal-container active":"modal-container"}>
 
                     <Modal isOpen={ isEditModalOpen } onClose={closeModal}>
-                    <Form
-            
-                        type='Edit'
-                        post={postToEdit}
-                        setPost={setPostToEdit}
-                        submitting={submitting}
-                        handleSubmit={EditPost}
-                        textAreaRef={textAreaRef}
-                    />
+
+                        <Form
+                            type='Edit'
+                            post={postToEdit}
+                            setPost={setPostToEdit}
+                            submitting={submitting}
+                            handleSubmit={EditPost}
+                            textAreaRef={textAreaRef}
+                            rows={8}
+                        />
+
                     </Modal>
                     
                 </div>

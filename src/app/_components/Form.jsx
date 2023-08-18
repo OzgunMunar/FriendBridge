@@ -2,8 +2,16 @@ import "@/app/_styles/postform.css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFeatherPointed, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useRef, useEffect } from 'react'
 
-const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef }) => {
+const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
+
+  useEffect(() => {
+
+    textAreaRef.current.value = post.postText
+    textAreaRef.current.focus()
+
+  } ,[])
 
   return (
 
@@ -20,9 +28,9 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef }) =>
         </div>
         <div className="fading-line"></div>
         <div className="form">
-          <textarea id="post_text" rows="4" placeholder="What's on your mind?"
-          value={post.post}
-          ref={textAreaRef}
+          <textarea id="post_text" rows={rows} placeholder="What's on your mind?"
+          ref={textAreaRef} 
+          style={{ type:'Edit' ? 'resize-none':'' }}
           onChange = {(e) => setPost({...post, postText: e.target.value})}></textarea>
 
           <div className="form_button_container">

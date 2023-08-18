@@ -55,6 +55,7 @@ const CreatePost = () => {
             submitting={submitting}
             handleSubmit={createPost}
             textAreaRef={textAreaRef}
+            rows={4}
 
           />
 
