@@ -18,5 +18,24 @@
 }
 
 .post_elements {
-    @apply mt-[62px]
+    @apply 
+    mt-[62px]
+}
+
+.verification_warning_text {
+    @apply 
+    flex 
+    justify-center 
+    items-center
+    flex-col
+    w-[100vw]
+    h-[100vh]
+}
+
+.verification_warning_text > p {
+    @apply
+    bg-orange-500
+    p-5
+    text-white
+    rounded-lg
 }

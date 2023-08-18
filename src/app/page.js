@@ -13,6 +13,22 @@ export default function Home() {
 
   const [user, setUser] = useState('');
   const [newRecordSwitch, setNewRecordSwitch] = useState(false)
+  const [isVerified, setIsVerified] = useState(false)
+
+  const logout = async () => {
+
+    try {
+        
+        await axios.get('/api/users/logout')
+        toast.success('Logout successful')
+        router.push('/login')
+
+    } catch (error) {
+        console.log(error.message)
+        toast.error(error.message)
+    }
+
+  }
 
   useEffect(() => {
 
@@ -22,6 +38,9 @@ export default function Home() {
       
         const loggedUser = await axios.get('api/users/me')
         const user = loggedUser.data.data
+
+        if(user.isVerified)
+          setIsVerified(true)
 
         setUser(user)
   
@@ -35,7 +54,7 @@ export default function Home() {
 
   },[])
 
-  return (
+  return isVerified ? (
     <main>
       <UserContext.Provider value={{ user }}>
         <Navbar/>
@@ -53,5 +72,15 @@ export default function Home() {
         </div>
       </UserContext.Provider>
     </main>
-  )
+  ): (
+    <main className="verification_warning_text">
+      <p>Please verify your account by using verification mail you got. Thank you.</p>
+      <button
+            onClick={logout}
+            className="bg-blue-500 hover:bg-blue-700 text-white
+            font-bold py-2 px-4 rounded mt-4">
+              LogOut
+      </button>
+    </main>
+    )
 }

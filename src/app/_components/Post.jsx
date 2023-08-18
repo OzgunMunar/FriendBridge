@@ -1,21 +1,32 @@
 import "@/app/_styles/post.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { UserContext } from "./Contexts";
-import {useContext, useRef, useState, useEffect} from 'react'
-import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { UserContext } from "./Contexts"
+import { useContext, useRef, useState, useEffect } from 'react'
+import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
+import Modal from "./Modal"
 
 const Post = ({ post }) => {
 
     const { user } = useContext(UserContext)
     const EditOrDeleteRef = useRef(null)
-    const [isDropdown, setIsDropdown] = useState(false);
+    const [isDropdown, setIsDropdown] = useState(false)
+
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsEditModalOpen(true);
+    };
+  
+    const closeModal = () => {
+        setIsEditModalOpen(false);
+    };
 
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
-    ];
+    ]
 
     const dateAndTime = post.postedDate.split('T')
     const dayMonthYear = dateAndTime[0].split('-')
@@ -49,13 +60,13 @@ const Post = ({ post }) => {
         
       }, []);
 
-      const EditPost = async(postId) => {
+    const EditPost = async(postId) => {
 
         alert("edit post" + postId)
 
-      }
+    }
 
-      const DeletePost = async(postId) => {
+    const DeletePost = async(postId) => {
 
         try {
 
@@ -70,11 +81,21 @@ const Post = ({ post }) => {
 
         }
 
-      }
+    }
 
     return (
 
         <div className="post_container">
+
+            <div>
+
+                <button onClick={openModal}>Open Modal</button>
+                <Modal isOpen={isEditModalOpen} onClose={closeModal}>
+                    <h2>This is a Modal</h2>
+                    <p>{isEditModalOpen}</p>
+                </Modal>
+                
+            </div>
 
             <div className="post_header">
 
@@ -90,38 +111,39 @@ const Post = ({ post }) => {
                     </div>
 
                 </div>
+                {(post.creator._id === user._id) &&
+                    <div className="right_section_container">
 
-                <div className="right_section_container">
+                        <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
 
-                    <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
-
-                        <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
-                            ...
-                        </button>
-
-                    </div>
-
-                    {isDropdown && (
-
-
-                        <div className="post_dropdown_content">
-
-                            <p className="post_dropdown_content_action" onClick={() => EditPost(post._id)}>
-                                <FontAwesomeIcon icon={faPenToSquare} /> 
-                                <span>Edit</span>
-                            </p>
-                            <div>|</div>
-                            <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
-                                <FontAwesomeIcon icon={faTrash} /> 
-                                <span>Delete</span>
-                            </p>
+                            <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
+                                ...
+                            </button>
 
                         </div>
 
+                        {isDropdown && (
 
-                    )}
 
-                </div>
+                            <div className="post_dropdown_content">
+
+                                <p className="post_dropdown_content_action" onClick={() => EditPost(post._id)}>
+                                    <FontAwesomeIcon icon={faPenToSquare} /> 
+                                    <span>Edit</span>
+                                </p>
+                                <div>|</div>
+                                <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
+                                    <FontAwesomeIcon icon={faTrash} /> 
+                                    <span>Delete</span>
+                                </p>
+
+                            </div>
+
+
+                        )}
+
+                    </div>
+                }
             </div>
 
             <div className="post_body">
@@ -160,6 +182,7 @@ const Post = ({ post }) => {
         </div>
         
     )
+    
 }
 
 export default Post

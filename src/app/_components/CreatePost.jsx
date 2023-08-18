@@ -47,7 +47,7 @@ const CreatePost = ({isRecordCreated}) => {
 
           <Form
             
-            type='Creat'
+            type='Create'
             post={post}
             setPost={setPost}
             submitting={submitting}

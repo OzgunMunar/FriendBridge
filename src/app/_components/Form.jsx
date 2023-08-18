@@ -16,16 +16,15 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef }) =>
             <FontAwesomeIcon icon={faPlus} className="form_header_icon"/>
           </div>
           
-          <h2 className="post_header">{type}e Post</h2>
+          <h2 className="post_header">{(type === 'Create' ? 'Create':'Edit')} Post</h2>
         </div>
         <div className="fading-line"></div>
         <div className="form">
           <textarea id="post_text" rows="4" placeholder="What's on your mind?"
-          // value={post}
+          value={post.post}
           ref={textAreaRef}
           onChange = {(e) => setPost({...post, postText: e.target.value})}></textarea>
 
-          {/* <div className="form_horizontal_line"></div> */}
           <div className="form_button_container">
             <button type="submit" className="post_submit_button" disabled={submitting}  onClick={handleSubmit}>
                 <FontAwesomeIcon icon={faFeatherPointed} />
