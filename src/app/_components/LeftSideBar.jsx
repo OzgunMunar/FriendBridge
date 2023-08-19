@@ -13,6 +13,7 @@ import {
 import { UserContext } from "./Contexts";
 
 import React from 'react'
+import Link from "next/link";
 
 const LeftSideBar = () => {
 
@@ -24,10 +25,12 @@ const LeftSideBar = () => {
         <ul className='left_side_bar_items'>
 
             <li>
-              <div className='iconContainer'>
-                <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
-              </div>
-              <span>{user.username}</span>
+              <Link href="/profile" className="left_side_bar_link_items">
+                <div className='iconContainer'>
+                  <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
+                </div>
+                <span>{user.username}</span>
+              </Link>
             </li>
 
             <li className="feedLi">

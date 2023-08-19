@@ -61,7 +61,7 @@
     hover:shadow-md
 }
 
-.left_side_bar_items li span {
+.left_side_bar_items li span{
     @apply
     absolute
     left-14
@@ -101,4 +101,12 @@
     w-[30px]
     h-[30px]
     object-cover
+}
+
+.left_side_bar_link_items {
+    @apply
+    flex
+    items-center
+    justify-center
+    flex-col
 }
