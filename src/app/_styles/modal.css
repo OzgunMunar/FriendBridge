@@ -29,6 +29,8 @@
   rounded-lg
   relative
   w-6/12
+  max-[1000px]:w-full
+  max-[1000px]:mx-[5%]
 }
 
 .close-button {

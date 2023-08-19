@@ -9,12 +9,14 @@
     w-2/3
     h-[2px]
     my-4
+    max-[1000px]:w-full
 }
 
 .posts_section {
     @apply
     w-full
     ml-[25%]
+    max-[1000px]:mx-[5%]
 }
 
 .post_elements {

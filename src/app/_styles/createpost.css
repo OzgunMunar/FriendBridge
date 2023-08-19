@@ -1,4 +1,4 @@
-.feed_container {
+.create_post_container {
     @apply
     w-2/3
     max-[1000px]:w-full

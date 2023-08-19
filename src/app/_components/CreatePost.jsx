@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 import { FeedChangeContext } from "./Contexts";
+import "@/app/_styles/createpost.css"
 
 const CreatePost = () => {
 
@@ -45,7 +46,7 @@ const CreatePost = () => {
   
   return (
 
-      <div className="w-2/3">
+      <div className="create_post_container">
 
           <Form
             

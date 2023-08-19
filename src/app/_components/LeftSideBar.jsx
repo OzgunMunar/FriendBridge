@@ -8,7 +8,6 @@ import {
     faNewspaper,
     faPeopleGroup,
     faRectangleAd,
-    faUser,
     faRss
 } from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "./Contexts";

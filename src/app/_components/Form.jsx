@@ -1,10 +1,12 @@
 import "@/app/_styles/postform.css"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFeatherPointed, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faFeatherPointed, faPlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useEffect } from 'react'
 
 const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
+
+  let buttonTextOnSubmitting = (type === 'Create' ? "Creating..." : "Editing...")
 
   useEffect(() => {
 
@@ -21,7 +23,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
 
         <div className="form_header">
           <div className="form_header_icon_container">
-            <FontAwesomeIcon icon={faPlus} className="form_header_icon"/>
+            <FontAwesomeIcon icon={(type === 'Create') ? faPlus : faPenToSquare } className="form_header_icon"/>
           </div>
           
           <h2 className="post_header">{(type === 'Create' ? 'Create':'Edit')} Post</h2>
@@ -30,14 +32,14 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
         <div className="form">
           <textarea id="post_text" rows={rows} placeholder="What's on your mind?"
           ref={textAreaRef} 
-          style={{ type:'Edit' ? 'resize-none':'' }}
+          style={{ resize: (type==='Edit') ? 'none':'vertical' }}
           onChange = {(e) => setPost({...post, postText: e.target.value})}></textarea>
 
           <div className="form_button_container">
             <button type="submit" className="post_submit_button" disabled={submitting}  onClick={handleSubmit}>
                 <FontAwesomeIcon icon={faFeatherPointed} />
                 <span className='form_submit_button_text'>
-                    {submitting ? `${type}ing...` : "Post"}
+                    {submitting ? `${buttonTextOnSubmitting}` : "Post"}
                 </span>
             </button>
           </div>

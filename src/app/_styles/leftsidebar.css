@@ -1,13 +1,16 @@
 .left_side_bar {
     height: calc(100vh - 62px);
     @apply
-    w-2/12
+    /* w-2/12 */
+    w-[230px]
     mt-[62px]
     mr-[50px]
     bg-neutral-100
     shadow-xl
     rounded-md
-    fixed left-0
+    fixed 
+    left-0
+    max-[1000px]:hidden
 }
 
 .feedLi::before {
