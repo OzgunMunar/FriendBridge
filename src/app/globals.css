@@ -29,3 +29,20 @@ body::-webkit-scrollbar-thumb{
   background: black;
 }
 
+.icons_by_who {
+
+  @apply
+  
+  absolute
+  z-[999]
+  right-2.5
+  bottom-2.5
+  text-pink-900
+
+}
+
+.icons_by_who a {
+  @apply
+  text-blue-900
+  text-2xl
+}

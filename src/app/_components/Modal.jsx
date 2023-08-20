@@ -1,17 +1,12 @@
 import React from 'react';
 import "@/app/_styles/modal.css"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faXmark
-} from "@fortawesome/free-solid-svg-icons";
-
 const Modal = ({ isOpen, onClose, children }) => {
     return isOpen ? (
       <div className="modal-overlay">
         <div className="modal">
           <button className="close-button" onClick={onClose}>
-            <FontAwesomeIcon icon={faXmark} />
+            <img width="30" height="30" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/>
           </button>
           {children}
         </div>

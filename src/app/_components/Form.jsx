@@ -1,8 +1,5 @@
 import "@/app/_styles/postform.css"
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFeatherPointed, faPlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useEffect } from 'react'
+import { useEffect } from 'react'
 
 const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
 
@@ -15,6 +12,8 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
 
   } ,[])
 
+  let headerImgSource = (type === 'Create') ? "https://img.icons8.com/color/48/filled-plus-2-math.png" : "https://img.icons8.com/color/48/pen.png"
+  
   return (
 
     <div className="post_form_container">
@@ -23,7 +22,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
 
         <div className="form_header">
           <div className="form_header_icon_container">
-            <FontAwesomeIcon icon={(type === 'Create') ? faPlus : faPenToSquare } className="form_header_icon"/>
+            <img width="48" height="48" src={headerImgSource} alt="header icon"/>
           </div>
           
           <h2 className="post_header">{(type === 'Create' ? 'Create':'Edit')} Post</h2>
@@ -37,7 +36,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
 
           <div className="form_button_container">
             <button type="submit" className="post_submit_button" disabled={submitting}  onClick={handleSubmit}>
-                <FontAwesomeIcon icon={faFeatherPointed} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/haiku.png" alt="haiku"/>
                 <span className='form_submit_button_text'>
                     {submitting ? `${buttonTextOnSubmitting}` : "Post"}
                 </span>

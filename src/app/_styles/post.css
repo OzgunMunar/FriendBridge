@@ -121,13 +121,13 @@
 .post_dropdown_content > p:first-child:hover {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
-    @apply bg-green-300 text-white cursor-pointer
+    @apply bg-green-200 text-black cursor-pointer
 }
 
 .post_dropdown_content > p:last-child:hover {
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    @apply bg-red-300 text-white cursor-pointer
+    @apply bg-red-200 text-black cursor-pointer
 }
 
 .post_dropdown_content_action {

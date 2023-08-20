@@ -151,12 +151,12 @@ const Post = ({ post }) => {
                             <div className="post_dropdown_content">
 
                                 <p className="post_dropdown_content_action" onClick={openModal}>
-                                    <FontAwesomeIcon icon={faPenToSquare} /> 
+                                    <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
                                     <span>Edit</span>
                                 </p>
                                 <div>|</div>
                                 <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
-                                    <FontAwesomeIcon icon={faTrash} /> 
+                                    <img width="30" height="30" src="https://img.icons8.com/color/48/delete-forever.png" alt="delete-forever"/>
                                     <span>Delete</span>
                                 </p>
 

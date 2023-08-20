@@ -18,6 +18,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {children}
+
+        <div className="icons_by_who">
+          All the icons by <a href="https://icons8.com">Icons8</a>
+        </div>
+
       </body>
     </html>
   )

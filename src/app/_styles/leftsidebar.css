@@ -56,7 +56,7 @@
     flex
     items-center
     gap-4
-    hover:bg-orange-100
+    hover:bg-gray-200
     hover:w-[105%]
     hover:shadow-md
 }

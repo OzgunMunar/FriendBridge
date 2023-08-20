@@ -2,18 +2,6 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import '@/app/_styles/navbar.css'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faChevronDown,
-    faCommentMedical,
-    faEnvelope,
-    faFlag,
-    faHandsHelping,
-    faMoon,
-    faRss,
-    faSignOutAlt,
-    faUsersCog,
-} from "@fortawesome/free-solid-svg-icons";
 
 import { Toaster, toast } from "react-hot-toast";
 import axios from "axios"
@@ -77,29 +65,21 @@ const Navbar = () => {
 
             <div className="tabs">
                 <Link href="/" className="headerTab">
-                    <FontAwesomeIcon
-                        icon={faRss}
-                    />
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
                 </Link>
 
                 <Link href="/notifications" className="headerTab">
-                    <FontAwesomeIcon
-                        icon={faFlag}
-                    />
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
                 </Link>
 
                 <Link href="/messages" className="headerTab">
-                    <FontAwesomeIcon
-                        icon={faEnvelope}
-                    />
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/paper-plane.png" alt="paper-plane"/>
                 </Link>
 
                 <div ref={dropdownRef} className="dropdown">
 
                     <button className="dropbtn" onClick={() => headerMainDropdown()}>
-                        <FontAwesomeIcon
-                          icon={faChevronDown}
-                        />
+                        <img width="23" height="23" src="https://img.icons8.com/color/48/expand-arrow--v1.png" alt="expand-arrow--v1"/>
                     </button>
 
                 </div>
@@ -131,9 +111,7 @@ const Navbar = () => {
                     <Link href="/givefeedback">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
-                                <FontAwesomeIcon
-                                    icon={faCommentMedical}
-                                />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/popular-topic.png" alt="popular-topic"/>
                             </div>
 
                             <div className="grid-item-dropdown-normal">
@@ -147,9 +125,7 @@ const Navbar = () => {
                     <Link href="/settings">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
-                                <FontAwesomeIcon
-                                    icon={faUsersCog}
-                                />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/gear.png" alt="gear"/>
                             </div>
 
                             <div className="grid-item-dropdown-normal">
@@ -161,9 +137,7 @@ const Navbar = () => {
                     <Link href="/helpandsupport">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
-                                <FontAwesomeIcon
-                                    icon={faHandsHelping}
-                                />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/help--v1.png" alt="help--v1"/>
                             </div>
 
                             <div className="grid-item-dropdown-normal">
@@ -175,9 +149,7 @@ const Navbar = () => {
                     <Link href="/display">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
-                                <FontAwesomeIcon
-                                    icon={faMoon}
-                                />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/roller-brush--v1.png" alt="roller-brush--v1"/>
                             </div>
 
                             <div className="grid-item-dropdown-normal">
@@ -189,9 +161,7 @@ const Navbar = () => {
                     <Link href="#" onClick={() => LogOut()}>
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
-                                <FontAwesomeIcon
-                                    icon={faSignOutAlt}
-                                />
+                                <img width="30" height="30" src="https://img.icons8.com/color/48/logout-rounded--v1.png" alt="logout-rounded--v1"/>
                             </div>
 
                             <div className="grid-item-dropdown-normal">

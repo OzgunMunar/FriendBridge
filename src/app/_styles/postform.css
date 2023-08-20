@@ -33,16 +33,25 @@
 }
 
 .post_submit_button {
+    transition: all 500ms ease;
     @apply
-    bg-blue-800
+    bg-blue-500
+    hover:bg-blue-600
     text-[#fff]
     border-none
     rounded-md
     py-2.5
-    px-5
+    px-10
     cursor-pointer
     text-base
-    
+    flex
+    items-center
+    justify-center
+    gap-2
+}
+
+.post_submit_button img {
+    margin-left: -25px;
 }
 
 .form_button_container {

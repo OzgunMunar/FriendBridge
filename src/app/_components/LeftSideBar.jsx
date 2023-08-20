@@ -1,15 +1,4 @@
 import "@/app/_styles/leftsidebar.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCalendarDays,
-    faEarthAmericas,
-    faFloppyDisk,
-    faGamepad,
-    faNewspaper,
-    faPeopleGroup,
-    faRectangleAd,
-    faRss
-} from "@fortawesome/free-solid-svg-icons";
 import { UserContext } from "./Contexts";
 
 import React from 'react'
@@ -35,7 +24,7 @@ const LeftSideBar = () => {
 
             <li className="feedLi">
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faRss} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
               </div>
               <span>Feed</span>
             </li>
@@ -43,49 +32,49 @@ const LeftSideBar = () => {
             <div className="left_side_bar_horizontal_line"></div>
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faPeopleGroup} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
               </div>
               <span>Find Groups</span>
             </li>
             
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faEarthAmericas} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>
               </div>
               <span>Global Posts</span>
             </li>
 
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faFloppyDisk} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/save-all.png" alt="save-all"/>
               </div>
               <span>Saved Posts</span>
             </li>
 
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faCalendarDays} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
               </div>
               <span>Events</span>
             </li>
             
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faRectangleAd} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
               </div>
               <span>Ad Manager</span>
             </li>
                      
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faGamepad} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
               </div>
               <span>Play Games</span>
             </li>
 
             <li>
               <div className='iconContainer'>
-                <FontAwesomeIcon className="left_side_bar_icon" icon={faNewspaper} />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
               </div>
               <span>Read News</span>
             </li>

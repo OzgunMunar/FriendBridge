@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faArrowLeft
@@ -106,9 +107,7 @@ export default function SignupPage({changePage}) {
                 className="login_form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}</button>
 
             <button type="button" className="sign_up_tologinpage" onClick={()=> changePage(val => !val)}>
-                <FontAwesomeIcon
-                        icon={faArrowLeft}
-                    />
+                <img width="30" height="30" src="https://img.icons8.com/color/48/sort-left.png" alt="sort-left"/>
                 <span>To Login page</span>
             </button>
 
