@@ -33,12 +33,12 @@ body::-webkit-scrollbar-thumb{
 
   @apply
   
-  absolute
+  fixed
   z-[999]
   right-2.5
   bottom-2.5
   text-pink-900
-
+  max-[1000px]:hidden
 }
 
 .icons_by_who a {
