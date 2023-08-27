@@ -9,6 +9,7 @@ import '@/app/_styles/login.css'
 export default function LoginPage({changePage}) {
     
     const router = useRouter();
+    
     const [user, setUser] = React.useState({
         email: "",
         password: "",

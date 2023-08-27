@@ -83,15 +83,15 @@
   }
   
   .login_form_input {
+
     @apply 
   
     p-2 
-    border 
+    border-b-2
     border-gray-300 
-    rounded-lg 
     mb-4 
     focus:outline-none 
-    focus:border-gray-600 
+    focus:border-blue-600 
     text-black 
     w-5/6 
   }

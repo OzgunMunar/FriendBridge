@@ -72,7 +72,7 @@ export default function SignupPage({changePage}) {
                 ref={usernameRef}
                 value={user.username}
                 onChange={(e) => setUser({...user, username: e.target.value})}
-                placeholder="username"
+                placeholder="User Name"
                 />
 
             <input 
@@ -81,7 +81,7 @@ export default function SignupPage({changePage}) {
                 type="text"
                 value={user.email}
                 onChange={(e) => setUser({...user, email: e.target.value})}
-                placeholder="email"
+                placeholder="E-mail"
                 />
 
             <input 
@@ -90,7 +90,7 @@ export default function SignupPage({changePage}) {
                 type="password"
                 value={user.password}
                 onChange={(e) => setUser({...user, password: e.target.value})}
-                placeholder="password"
+                placeholder="Password"
                 />
 
             <input 
@@ -99,7 +99,7 @@ export default function SignupPage({changePage}) {
                 type="password"
                 value={user.passwordRepeat}
                 onChange={(e) => setUser({...user, passwordRepeat: e.target.value})}
-                placeholder="password repeat"
+                placeholder="Password Repeat"
                 />
 
             <button
