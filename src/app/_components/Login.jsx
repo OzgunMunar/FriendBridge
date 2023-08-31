@@ -15,7 +15,7 @@ export default function LoginPage({changePage}) {
         password: "",
     })
 
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = React.useState(true);
     const [loading, setLoading] = React.useState(false);
     const emailRef = useRef()
 
@@ -23,8 +23,8 @@ export default function LoginPage({changePage}) {
 
         try {
 
-            setLoading(true);
-            const response = await axios.post("/api/users/login", user)
+            setLoading(true)
+            await axios.post("/api/users/login", user)
             toast.success("Login success")
             router.push("/")
 
@@ -37,17 +37,17 @@ export default function LoginPage({changePage}) {
     }
 
     useEffect(() => {
+        
         if(user.email.length > 0 && user.password.length > 0) {
             setButtonDisabled(false);
         } else{
             setButtonDisabled(true);
         }
+
     }, [user]);
 
     useEffect(() => {
-
         emailRef.current.focus()
-
     }, [])
 
     return (

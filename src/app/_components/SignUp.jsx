@@ -5,11 +5,6 @@ import {useRouter} from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faArrowLeft
-} from "@fortawesome/free-solid-svg-icons";
-
 export default function SignupPage({changePage}) {
     
     const router = useRouter();
@@ -17,7 +12,7 @@ export default function SignupPage({changePage}) {
         email: "",
         password: "",
         passwordRepeat: "",
-        username: "",
+        username: ""
     })
 
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -37,7 +32,7 @@ export default function SignupPage({changePage}) {
             }
             
             await axios.post("/api/users/signup", user);
-            router.push("/login");
+            window.location.reload();
             
         } catch (error) {
             toast.error(error.response.data.message)
@@ -48,7 +43,7 @@ export default function SignupPage({changePage}) {
     }
 
     useEffect(() => {
-        if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
+        if(user.email.length > 0 && user.password.length > 0 && user.passwordRepeat.length > 0 && user.username.length > 0) {
             setButtonDisabled(false);
         } else {
             setButtonDisabled(true);

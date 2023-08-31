@@ -120,6 +120,13 @@
     text-lg
     duration-500
   }
+
+  button:disabled,
+  button:disabled:hover {
+    @apply
+    bg-zinc-400
+    cursor-not-allowed
+  }
   
   .sign_up_tologinpage {
 

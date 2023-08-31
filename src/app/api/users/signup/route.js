@@ -1,6 +1,6 @@
 import {ConnectToDB} from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
 
@@ -12,14 +12,19 @@ export async function POST(request){
         
         const reqBody = await request.json()
         const {username, email, password} = reqBody
+        
+        // "Password is invalid: Minimum eight characters, at least one letter and one number!"
+        const passwordPatternRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
 
         //check if user already exists
         const user = await User.findOne({email})
 
-        console.log("sign up route side")
-        
         if(user){
             return NextResponse.json({message: "User already exists"}, {status: 400})
+        }
+        
+        if(!passwordPatternRegex.test(password)) {
+            return NextResponse.json({message: "Password is invalid: Minimum eight characters, at least one letter and one number!"}, {status: 400})
         }
 
         //hash password
