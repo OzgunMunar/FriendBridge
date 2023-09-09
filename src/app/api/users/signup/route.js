@@ -11,7 +11,7 @@ export async function POST(request){
     try {
         
         const reqBody = await request.json()
-        const {username, email, password} = reqBody
+        const {username, email, password, userImageLink} = reqBody
         
         // "Password is invalid: Minimum eight characters, at least one letter and one number!"
         const passwordPatternRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
@@ -34,7 +34,8 @@ export async function POST(request){
         const newUser = new User({
             username,
             email,
-            password: hashedPassword
+            password: hashedPassword,
+            userImageLink
         })
 
         const savedUser = await newUser.save()

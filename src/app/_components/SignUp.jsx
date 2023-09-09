@@ -12,7 +12,8 @@ export default function SignupPage({changePage}) {
         email: "",
         password: "",
         passwordRepeat: "",
-        username: ""
+        username: "",
+        userImageLink: ""
     })
 
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -43,7 +44,7 @@ export default function SignupPage({changePage}) {
     }
 
     useEffect(() => {
-        if(user.email.length > 0 && user.password.length > 0 && user.passwordRepeat.length > 0 && user.username.length > 0) {
+        if(user.email.length > 0 && user.password.length > 0 && user.passwordRepeat.length > 0 && user.username.length > 0 && user.userImageLink.length > 0) {
             setButtonDisabled(false);
         } else {
             setButtonDisabled(true);
@@ -95,6 +96,15 @@ export default function SignupPage({changePage}) {
                 value={user.passwordRepeat}
                 onChange={(e) => setUser({...user, passwordRepeat: e.target.value})}
                 placeholder="Password Repeat"
+                />
+
+            <input 
+            className="login_form_input"
+                id="imagelink"
+                type="text"
+                value={user.userImageLink}
+                onChange={(e) => setUser({...user, userImageLink: e.target.value})}
+                placeholder="Enter User Image Link"
                 />
 
             <button
