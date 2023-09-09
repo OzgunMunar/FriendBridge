@@ -12,6 +12,7 @@
   }
   
   .login_container .login_form {
+    transition: visibility 500ms ease;
     @apply
   
     flex
@@ -24,7 +25,7 @@
     w-1/4
     shadow-xl
     rounded-2xl
-    h-96
+    h-auto
     relative
   }
   
