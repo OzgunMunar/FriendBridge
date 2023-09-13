@@ -8,6 +8,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserContext } from "./Contexts";
+import Tooltip from "./Tooltip";
 
 const Navbar = () => {
 
@@ -64,17 +65,24 @@ const Navbar = () => {
             </Link>
 
             <div className="tabs">
-                <Link href="/" className="headerTab">
-                    <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
-                </Link>
+                
+                <Tooltip text='Feed'>
+                    <Link href="/" className="headerTab">
+                        <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
+                    </Link>
+                </Tooltip>
 
-                <Link href="/notifications" className="headerTab">
-                    <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
-                </Link>
+                <Tooltip text='Notifications'>
+                    <Link href="/notifications" className="headerTab">
+                        <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
+                    </Link>
+                </Tooltip>
 
-                <Link href="/messages" className="headerTab">
-                    <img width="23" height="23" src="https://img.icons8.com/color/48/paper-plane.png" alt="paper-plane"/>
-                </Link>
+                <Tooltip text='Messages'>
+                    <Link href="/messages" className="headerTab">
+                        <img width="23" height="23" src="https://img.icons8.com/color/48/paper-plane.png" alt="paper-plane"/>
+                    </Link>
+                </Tooltip>
 
                 <div ref={dropdownRef} className="dropdown">
 

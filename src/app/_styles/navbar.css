@@ -57,6 +57,9 @@
 .tabs{
     @apply
     float-right
+    flex
+    justify-center
+    items-center
 }
 
 .headerNavbar{
@@ -74,6 +77,7 @@
     bg-[#f9f9f9]
     right-4
     rounded-lg
+    mt-[33rem]
 }
 
 .dropdown {
