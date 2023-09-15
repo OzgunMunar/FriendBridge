@@ -18,10 +18,11 @@ const LeftSideBar = () => {
                 <div className='iconContainer'>
                   <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
                 </div>
+
                 <span>{user.username}</span>
               </Link>
             </li>
-
+            
             <li className="feedLi">
               <div className='iconContainer'>
                 <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
