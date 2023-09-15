@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { UserContext } from './Contexts'
+import { UserContext } from '../Contexts/Contexts'
 import axios from 'axios'
-import Navbar from './Navbar'
-import LeftSideBar from './LeftSideBar'
+import Navbar from '../Navbar/Navbar'
+import LeftSideBar from '../LeftSideBar/LeftSideBar'
 import '@/app/_styles/mainpage.css'
 
 const LoggedInLayout = ( {children} ) => {

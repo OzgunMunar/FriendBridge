@@ -1,5 +1,5 @@
 import "@/app/_styles/leftsidebar.css"
-import { UserContext } from "./Contexts";
+import { UserContext } from "../Contexts/Contexts";
 
 import React from 'react'
 import Link from "next/link";

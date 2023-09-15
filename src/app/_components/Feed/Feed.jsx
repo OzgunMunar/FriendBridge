@@ -1,9 +1,9 @@
 import axios from 'axios'
 import {useState, useEffect, useContext} from 'react'
-import Post from './Post'
+import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"
-import { FeedChangeContext } from './Contexts'
+import { FeedChangeContext } from '../Contexts/Contexts'
 
 const Feed = () => {
 

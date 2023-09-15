@@ -5,7 +5,7 @@ import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
-import { FeedChangeContext } from "./Contexts";
+import { FeedChangeContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
 
 const CreatePost = () => {

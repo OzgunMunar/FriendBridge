@@ -1,13 +1,13 @@
 import "@/app/_styles/post.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { UserContext } from "./Contexts"
+import { UserContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
-import Modal from "./Modal"
+import Modal from "../EditDeleteModal/Modal"
 import Form from "./Form"
-import { FeedChangeContext } from "./Contexts"
+import { FeedChangeContext } from "../Contexts/Contexts"
 
 const Post = ({ post }) => {
 

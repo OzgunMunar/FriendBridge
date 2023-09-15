@@ -7,7 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserContext } from "./Contexts";
+import { UserContext } from "../Contexts/Contexts";
 import Tooltip from "./Tooltip";
 
 const Navbar = () => {

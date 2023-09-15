@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react'
-import CreatePost from './CreatePost';
+import CreatePost from '../Post/CreatePost';
 import '@/app/_styles/mainpage.css'
-import Feed from './Feed';
+import Feed from '../Feed/Feed';
 import axios from 'axios';
-import { UserContext, FeedChangeContext } from "./Contexts";
+import { UserContext, FeedChangeContext } from "../Contexts/Contexts";
 
 const Main = () => {
 

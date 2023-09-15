@@ -1,7 +1,7 @@
 "use client";
 
-import SignupPage from "@/app/_components/SignUp";
-import LoginPage from "../_components/Login";
+import SignupPage from "@/app/_components/Authentication/SignUp";
+import LoginPage from "../_components/Authentication/Login";
 import React from 'react'
 
 export default function Login() {
