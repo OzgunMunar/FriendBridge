@@ -39,7 +39,6 @@
     max-[1000px]:w-5/6
     w-1/4
     shadow-xl
-    rounded-2xl
     h-auto
     relative
   }
@@ -87,7 +86,6 @@
     p-2 
     border 
     border-gray-300 
-    rounded-lg 
     mb-4 
     focus:outline-none 
     focus:border-gray-600
@@ -128,7 +126,6 @@
     text-center
     text-white
     border
-    rounded-lg
     bg-lime-700
     hover:bg-lime-800
     p-2

@@ -26,7 +26,6 @@
   @apply
   bg-neutral-100
   p-[20px]
-  rounded-lg
   relative
   w-6/12
   max-[1000px]:w-full
@@ -36,7 +35,6 @@
 .close-button {
   @apply
   bg-red-100
-  rounded-full
   flex
   justify-center
   items-center

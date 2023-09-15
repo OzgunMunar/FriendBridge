@@ -75,17 +75,17 @@ const ProfilePage = () => {
             <button
             onClick={logout}
             className="bg-blue-500 hover:bg-blue-700 text-white
-            font-bold py-2 px-4 rounded mt-4">LogOut</button>
+            font-bold py-2 px-4  mt-4">LogOut</button>
 
             <button
             onClick={getUserDetails}
             className="bg-blue-500 hover:bg-blue-700 text-white
-            font-bold py-2 px-4 rounded mt-4">Get user details</button>
+            font-bold py-2 px-4  mt-4">Get user details</button>
 
             <button
             onClick={changePassword}
             className="bg-blue-500 hover:bg-blue-700 text-white
-            font-bold py-2 px-4 rounded mt-4"
+            font-bold py-2 px-4  mt-4"
             disabled={isPasswordMailSent}
             >Change Password(Send Change Password Mail)</button>
             

@@ -119,7 +119,7 @@ const Post = ({ post }) => {
     return (
 
         <div className="post_container">
-
+            
             <div className="post_header">
 
                 <div className="post_header_left_section">

@@ -7,7 +7,6 @@
     mr-[50px]
     bg-neutral-100
     shadow-xl
-    rounded-md
     fixed 
     left-0
     max-[1000px]:hidden
@@ -52,7 +51,6 @@
     h-12
     w-[99%]
     pt-1
-    rounded-md
     flex
     items-center
     gap-4

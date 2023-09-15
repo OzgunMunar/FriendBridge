@@ -168,6 +168,7 @@ const Navbar = () => {
 
                     <Link href="#" onClick={() => LogOut()}>
                         <div className="grid-container-dropdown">
+
                             <div className="grid-item-dropdown-normal-first">
                                 <img width="30" height="30" src="https://img.icons8.com/color/48/logout-rounded--v1.png" alt="logout-rounded--v1"/>
                             </div>
@@ -175,6 +176,7 @@ const Navbar = () => {
                             <div className="grid-item-dropdown-normal">
                                 <span>Log Out</span>
                             </div>
+                            
                         </div>
                     </Link>
 

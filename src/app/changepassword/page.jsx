@@ -84,7 +84,7 @@ const ChangePassword = () => {
 
             <label htmlFor="username">Username</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-30 mb-4 focus:outline-none focus:border-gray-600 text-black"
                 id="username"
                 type="text"
                 value={user.username}
@@ -94,7 +94,7 @@ const ChangePassword = () => {
 
             <label htmlFor="email">Email</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black"
                 id="email"
                 type="text"
                 value={user.email}
@@ -104,7 +104,7 @@ const ChangePassword = () => {
 
             <label htmlFor="oldpassword">Current password</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black"
                 id="oldpassword"
                 type="password"
                 value={user.oldpassword}
@@ -114,7 +114,7 @@ const ChangePassword = () => {
 
             <label htmlFor="newpassword">New password</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black"
                 id="newpassword"
                 type="password"
                 value={user.newpassword}
@@ -125,7 +125,7 @@ const ChangePassword = () => {
 
             <label htmlFor="repeatnewpassword">Repeat new password</label>
             <input 
-            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+            className="p-2 border border-gray-300 mb-4 focus:outline-none focus:border-gray-600 text-black"
                 id="repeatnewpassword"
                 type="password"
                 value={user.repeatnewpassword}
@@ -136,7 +136,7 @@ const ChangePassword = () => {
 
             <button
                 onClick={onPasswordChange}
-                className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+                className="p-2 border border-gray-300 mb-4 focus:outline-none focus:border-gray-600"
                 disabled={buttonDisabled}>
                     {buttonDisabled ? "Provide Values" : "Change Password"}</button>
             <Link href="/">Cancel to Home Page</Link>
