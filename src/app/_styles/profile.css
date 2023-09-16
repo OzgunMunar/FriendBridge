@@ -2,21 +2,85 @@
     @apply
     ml-[17.5vw]
     mt-[7.5vh]
+    p-4
     w-[80vw]
-    bg-green-100
+    bg-white
+    flex
+    items-center
 }
 
 .profile_picture_container {
     @apply
-    
     w-[300px]
     h-[300px]
 }
 
 .profile_picture {
     @apply
-    
     w-full
     h-full
     object-cover
 }
+
+.profile_personal_info {
+    @apply
+    ml-20
+    h-[300px]
+    w-full
+    flex
+    flex-col
+    justify-around
+}
+
+.profile_personal_info1_layer1 {
+    @apply
+    flex
+    items-end
+    justify-start
+    gap-4
+    font-bold
+    mb-1
+}
+
+.profile_username {
+    @apply
+    text-4xl
+}
+
+.profile_city_container {
+    @apply
+    flex
+    justify-center
+    items-center
+    mb-0.5
+}
+
+.profile_city {
+    @apply
+    text-slate-400
+}
+
+.profile_personal_info1_layer2 {
+    @apply
+    flex
+    flex-col
+}
+  
+.row {
+    @apply
+    flex
+    items-center
+    mb-[10px]
+}
+
+.profile_personal_info_title {
+    @apply
+
+    min-w-[200px]
+    font-bold
+}
+
+.profile_personal_info_value {
+    flex: 1;
+}
+  
