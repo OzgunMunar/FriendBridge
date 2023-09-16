@@ -1,3 +1,7 @@
+.blue-text {
+    @apply text-sky-600
+}
+
 .profile_container {
     @apply
     ml-[17.5vw]
@@ -78,9 +82,37 @@
 
     min-w-[200px]
     font-bold
+    flex
+    items-center
+    justify-start
+    gap-1
+}
+
+.profile_personal_info_title img {
+    @apply mb-0.5
 }
 
 .profile_personal_info_value {
     flex: 1;
 }
-  
+
+.profile_feed_title_container {
+    @apply
+    ml-[17.5vw]
+    mt-2
+    bg-fuchsia-300
+    w-[80vw]
+    h-[50px]
+    flex
+    items-center
+    justify-center
+}
+
+.profile_feed_title {
+    @apply
+    text-white
+}
+
+.profile_feed_container {
+    @apply ml-[17.5vw] mt-2 flex items-center justify-center
+}

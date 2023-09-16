@@ -31,13 +31,13 @@ const LoggedInLayout = ( {children} ) => {
     },[])
 
     return (
-        <Fragment>
-            <UserContext.Provider value = {{ user }}>
-                <Navbar/>
-                <LeftSideBar/>
-                {children}
-            </UserContext.Provider>
-        </Fragment>
+      <Fragment>
+        <UserContext.Provider value = {{ user }}>
+          <Navbar/>
+          <LeftSideBar/>
+          {children}
+        </UserContext.Provider>
+      </Fragment>
     )
 }
 
