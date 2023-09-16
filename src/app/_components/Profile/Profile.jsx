@@ -16,6 +16,8 @@ const Profile = () => {
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
 
+    // add modal to change user infos as well as change password
+
     const { user } = useContext(UserContext)
 
     const changePassword = async () => {
@@ -102,7 +104,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 <span>Personal Web Site: </span>
                             </div>
-                            <div className='profile_personal_info_value blue-text'>
+                            <div className='profile_personal_info_value blue-text website-text'>
                                 <a href={`${user.personalwebsite}`} target='_blank'>
                                     {user.personalwebsite}
                                 </a>
@@ -129,11 +131,15 @@ const Profile = () => {
 
                 </div>
 
-                <button type='button' className='profile_edit_button'>
+                <div className='profile_edit_button_container'>
+
                     <Tooltip text='Edit'>
-                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                        <button type='button' className='profile_edit_button'>
+                            <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                        </button>
                     </Tooltip>
-                </button>
+
+                </div>
 
             </div>
 

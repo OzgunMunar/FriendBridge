@@ -7,6 +7,11 @@
     w-full
 }
 
+.website-text {
+    @apply
+    break-all
+}
+
 .profile_container {
     @apply
     flex
@@ -162,11 +167,11 @@
     w-full
     z-[-5]
     border-2
-    border-solid
+    border-dashed
     border-slate-400
 }
 
-.profile_edit_button {
+.profile_edit_button_container {
     @apply
     absolute
     top-4
@@ -183,8 +188,16 @@
     hover:bg-slate-500
 }
 
-.profile_edit_button .tooltip {
+.profile_edit_button {
+    @apply
+    w-12
+    h-12
+    flex items-center justify-center
+}
+
+.profile_edit_button_container .tooltip {
     @apply
     absolute
-    top-5
+    top-2.5
+    right-5
 }
