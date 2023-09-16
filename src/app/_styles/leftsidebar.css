@@ -1,7 +1,9 @@
 .left_side_bar {
     height: calc(100vh - 62px);
+    transition: width 1s ease;
     @apply
-    w-[250px]
+    /* w-[250px] */
+    w-[50px]
     mt-[62px]
     mr-[50px]
     bg-white
@@ -10,6 +12,20 @@
     left-0
     top-0
     max-[1000px]:hidden
+}
+
+.left_side_bar:hover {
+    @apply w-[250px]
+}
+
+.left_side_bar span {
+    white-space: nowrap;
+    transition: 500ms ease;
+    @apply opacity-0
+}
+
+.left_side_bar:hover span {
+    @apply opacity-100
 }
 
 .feedLi::before {
