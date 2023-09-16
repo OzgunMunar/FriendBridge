@@ -44,8 +44,8 @@
     w-12
     h-12
     text-[2rem]
-    pb-[20px]
     text-black
+    bg-slate-300
 }
 
 .post_header_right_actions_section:hover {
@@ -88,7 +88,16 @@
 
 .right_actions_button {
     @apply
+    h-12
+    w-12
     text-black
+    rounded-full
+}
+
+.right_actions_button span {
+    @apply
+    relative
+    bottom-2
 }
 
 .post_body {
@@ -99,7 +108,7 @@
 }
 
 .right_section_container {
-    @apply relative
+    @apply relative 
 }
 
 .post_dropdown_content{

@@ -140,7 +140,7 @@ const Post = ({ post }) => {
                         <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
 
                             <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
-                                ...
+                                <span>...</span>
                             </button>
 
                         </div>
