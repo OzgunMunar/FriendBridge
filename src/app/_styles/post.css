@@ -45,12 +45,10 @@
     h-12
     text-[2rem]
     text-black
-    bg-slate-300
-}
-
-.post_header_right_actions_section:hover {
-    background-color: gray;
-    color:white
+    bg-sky-100
+    hover:bg-sky-300
+    hover:text-white
+    focus:bg-sky-300
 }
 
 .post_action_button {
