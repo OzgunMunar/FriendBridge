@@ -5,7 +5,6 @@
 .profile_container > .post_container {
     @apply
     w-full
-    
 }
 
 .profile_container {
@@ -14,11 +13,13 @@
     items-center
     justify-center
     flex-col
+    
     max-[1000px]:mx-4
 }
 
 .profile_first_section_container {
     @apply
+    relative
     mt-[75px]
     p-4
     w-[80vw]
@@ -66,14 +67,19 @@
 .profile_personal_info1_layer1 {
     @apply
     flex
-    items-end
-    justify-start
+    items-center
+    justify-items-start
     gap-4
     font-bold
     mb-1
 
-    max-[750px]:my-5 flex items-center justify-center
-    max-[600px]:relative top-4
+    max-[750px]:my-5 
+    max-[750px]:flex 
+    max-[750px]:items-center 
+    max-[750px]:justify-center
+
+    max-[600px]:relative 
+    max-[600px]:top-4
 }
 
 .profile_username {
@@ -86,7 +92,6 @@
     flex
     justify-center
     items-center
-    mb-0.5
 
     max-[750px]:flex mt-2.5
 }
@@ -132,7 +137,6 @@
 .profile_feed_title_container {
     @apply
     mt-2
-    bg-fuchsia-300
     w-[80vw]
     h-[50px]
     flex
@@ -143,9 +147,44 @@
 
 .profile_feed_title {
     @apply
-    text-white
+    text-slate-400
+    text-2xl
+    whitespace-nowrap
+    mx-8
 }
 
 .profile_feed_container {
     @apply mt-2 flex items-center justify-center 
+}
+
+.divider {
+    @apply
+    w-full
+    z-[-5]
+    border-2
+    border-solid
+    border-slate-400
+}
+
+.profile_edit_button {
+    @apply
+    absolute
+    top-4
+    right-4
+    rounded-full
+    bg-slate-300
+    w-12
+    h-12
+    flex
+    items-center
+    justify-center
+    transition
+    duration-1000
+    hover:bg-slate-500
+}
+
+.profile_edit_button .tooltip {
+    @apply
+    absolute
+    top-5
 }

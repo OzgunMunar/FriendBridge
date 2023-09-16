@@ -7,19 +7,19 @@
 .tooltip {
     transform: translateX(-50%);
     transition: opacity 1s;
-    box-shadow: 5px 10px 10px rgb(0, 0, 0, 0.1);
 
     @apply
     invisible
     w-auto
     py-0.5
     px-4
-    bg-white
-    text-black
+    bg-yellow-500
+    text-white
     text-center
     top-[40px]
     fixed
     opacity-0
+    tracking-wider
 }
 
 .tooltip-container:hover .tooltip {

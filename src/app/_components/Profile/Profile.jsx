@@ -3,9 +3,10 @@ import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { UserContext, FeedChangeContext } from '../Contexts/Contexts';
+import { UserContext, FeedChangeContext } from '../Contexts/Contexts'
 import '@/app/_styles/profile.css'
-import Feed from '../Feed/Feed';
+import Feed from '../Feed/Feed'
+import Tooltip from '../Navbar/Tooltip';
 
 const Profile = () => {
 
@@ -13,6 +14,7 @@ const Profile = () => {
     const [data, setData] = useState('nothing')
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
+    const [isModalShow, setModalShow] = useState(false)
 
     const { user } = useContext(UserContext)
 
@@ -46,7 +48,6 @@ const Profile = () => {
                     <div className='profile_personal_info1_layer1'>
 
                         <span className='profile_username'>{user.username}</span>
-
                         <div className='profile_city_container'>
                             <img width="16" height="16" src="https://img.icons8.com/office/16/marker.png" alt="marker"/>
                             <span className='profile_city'>{user.city}</span>
@@ -128,10 +129,18 @@ const Profile = () => {
 
                 </div>
 
+                <button type='button' className='profile_edit_button'>
+                    <Tooltip text='Edit'>
+                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                    </Tooltip>
+                </button>
+
             </div>
 
             <div className='profile_feed_title_container'>
-                <p className='profile_feed_title'>Personal Posts</p>
+                <span className='divider'></span>
+                <p className='profile_feed_title'>Post History</p>
+                <span className='divider'></span>
             </div>
 
             <div className='profile_feed_container'>
