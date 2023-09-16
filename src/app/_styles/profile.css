@@ -201,3 +201,35 @@
     top-2.5
     right-5
 }
+
+.profile_change_password_container {
+    @apply
+    flex
+    items-center
+    justify-center
+    absolute
+    bottom-4
+    right-4
+    rounded-lg
+    bg-sky-500
+    w-12
+    h-12
+    transition
+    duration-1000
+    hover:bg-sky-300
+    hover:shadow-lg
+}
+
+.profile_change_password_button {
+    @apply
+    mt-2
+    text-[#333]
+}
+
+.profile_change_password_container .tooltip {
+    @apply
+    absolute
+    w-[200px]
+    top-2
+    left-[-115px]
+}

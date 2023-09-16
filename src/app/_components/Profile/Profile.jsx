@@ -12,7 +12,6 @@ const Profile = () => {
 
     const router = useRouter()
     const [data, setData] = useState('nothing')
-    const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
 
@@ -26,7 +25,7 @@ const Profile = () => {
             
             await axios.post('/api/users/sendmailofchangepassword')
             
-            setIsPasswordMailSent(true)
+            toast.success("Email sent to change password.")
 
         } catch (error) {
             toast.error(error.response.data.message)
@@ -136,6 +135,16 @@ const Profile = () => {
                     <Tooltip text='Edit'>
                         <button type='button' className='profile_edit_button'>
                             <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                        </button>
+                    </Tooltip>
+
+                </div>
+
+                <div className='profile_change_password_container'>
+
+                    <Tooltip text='Change Password'>
+                        <button type='button' className='profile_change_password_button' onClick={changePassword}>
+                            <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/send-mass-email.png" alt="send-mass-email"/>
                         </button>
                     </Tooltip>
 

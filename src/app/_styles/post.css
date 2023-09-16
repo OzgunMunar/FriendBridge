@@ -45,8 +45,7 @@
     h-12
     text-[2rem]
     text-black
-    bg-sky-100
-    hover:bg-sky-300
+    hover:bg-sky-100
     hover:text-white
     focus:bg-sky-300
 }
