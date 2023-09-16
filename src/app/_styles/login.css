@@ -14,7 +14,7 @@
     @apply 
   
     flex
-    max-[1000px]:flex-col 
+    [1000px]:flex-col 
     flex-row 
     items-center 
     justify-center 
@@ -36,7 +36,7 @@
     justify-center
     bg-white
     py-16
-    max-[1000px]:w-5/6
+    [1000px]:w-5/6
     w-1/4
     shadow-xl
     h-auto

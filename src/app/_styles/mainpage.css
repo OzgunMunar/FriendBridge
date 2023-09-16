@@ -1,9 +1,4 @@
-.body_sections {
-    @apply
-    flex
-}
-
-.post_elements > .horizontal_line {
+.posts_section > .horizontal_line {
     background: linear-gradient(to left, transparent, black, transparent); 
     @apply 
     w-2/3
@@ -13,15 +8,13 @@
 }
 
 .posts_section {
-    @apply
-    w-full
-    ml-[25%]
-    max-[1000px]:mx-[5%]
-}
-
-.post_elements {
     @apply 
-    mt-[62px]
+    mt-[75px]
+    flex
+    items-center
+    justify-center
+    flex-col
+    max-[1000px]:mx-4
 }
 
 .verification_warning_text {

@@ -2,15 +2,40 @@
     @apply text-sky-600
 }
 
+.profile_container > .post_container {
+    @apply
+    w-full
+    
+}
+
 .profile_container {
     @apply
-    ml-[17.5vw]
-    mt-[7.5vh]
+    flex
+    items-center
+    justify-center
+    flex-col
+    max-[1000px]:mx-4
+}
+
+.profile_first_section_container {
+    @apply
+    mt-[75px]
     p-4
     w-[80vw]
+    h-auto
     bg-white
     flex
     items-center
+
+    max-[1000px]:mx-4
+    max-[1000px]:w-full
+    
+    max-[850px]:p-6
+    max-[850px]:h-auto
+
+    max-[750px]:flex-col
+
+    max-[600px]:pb-10
 }
 
 .profile_picture_container {
@@ -34,6 +59,8 @@
     flex
     flex-col
     justify-around
+
+    max-[750px]:ml-0
 }
 
 .profile_personal_info1_layer1 {
@@ -44,6 +71,9 @@
     gap-4
     font-bold
     mb-1
+
+    max-[750px]:my-5 flex items-center justify-center
+    max-[600px]:relative top-4
 }
 
 .profile_username {
@@ -57,6 +87,8 @@
     justify-center
     items-center
     mb-0.5
+
+    max-[750px]:flex mt-2.5
 }
 
 .profile_city {
@@ -68,6 +100,7 @@
     @apply
     flex
     flex-col
+    /* max-[750px]:my-10 */
 }
   
 .row {
@@ -98,7 +131,6 @@
 
 .profile_feed_title_container {
     @apply
-    ml-[17.5vw]
     mt-2
     bg-fuchsia-300
     w-[80vw]
@@ -106,6 +138,7 @@
     flex
     items-center
     justify-center
+    max-[1000px]:w-full 
 }
 
 .profile_feed_title {
@@ -114,5 +147,5 @@
 }
 
 .profile_feed_container {
-    @apply ml-[17.5vw] mt-2 flex items-center justify-center
+    @apply mt-2 flex items-center justify-center 
 }

@@ -16,8 +16,6 @@ const Profile = () => {
 
     const { user } = useContext(UserContext)
 
-    console.log(user)
-
     const changePassword = async () => {
 
         try {
@@ -35,9 +33,9 @@ const Profile = () => {
 
     return (
 
-        <Fragment>
+        <div className='profile_container'>
 
-            <div className='profile_container'>
+            <div className='profile_first_section_container'>
 
                 <div className='profile_picture_container'>
                     <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="profile_picture" />
@@ -104,7 +102,7 @@ const Profile = () => {
                                 <span>Personal Web Site: </span>
                             </div>
                             <div className='profile_personal_info_value blue-text'>
-                                <a href={`${user.personalwebsite}`}>
+                                <a href={`${user.personalwebsite}`} target='_blank'>
                                     {user.personalwebsite}
                                 </a>
                             </div>
@@ -146,7 +144,7 @@ const Profile = () => {
 
             <Toaster position="top-right" reverseOrder={false}/>
 
-        </Fragment>
+        </div>
 
     )
 

@@ -1,19 +1,21 @@
 .post_container {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     @apply
-    /* bg-neutral-100 */
     bg-white
-    p-6
     w-full
-    mb-6
+    h-full
+    p-6
+    mb-2.5
+    break-normal
+    hyphens-auto
 }
 
 .post_photo {
-    border-radius: 50%;
     @apply
     object-cover
     w-[50px]
     h-[50px]
+    rounded-full
 }
 
 .post_owners_name {
@@ -79,7 +81,6 @@
 
 .post_horizontal_line {
     @apply
-    
     w-full
     border
     border-gray-300
@@ -103,7 +104,6 @@
 
 .post_dropdown_content{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
     @apply
     absolute
     bg-[#f9f9f9]

@@ -40,13 +40,13 @@ const Main = () => {
           <div className='body_sections'>
 
             <div className='posts_section'>
-              <div className='post_elements'>
-                <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
-                  <CreatePost />
-                  <div className="horizontal_line"></div>
-                  <Feed />
-                </FeedChangeContext.Provider>
-              </div>
+              
+              <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                <CreatePost />
+                <div className="horizontal_line"></div>
+                <Feed />
+              </FeedChangeContext.Provider>
+              
             </div>
 
           </div>
