@@ -1,0 +1,22 @@
+.profile_container {
+    @apply
+    ml-[17.5vw]
+    mt-[7.5vh]
+    w-[80vw]
+    bg-green-100
+}
+
+.profile_picture_container {
+    @apply
+    
+    w-[300px]
+    h-[300px]
+}
+
+.profile_picture {
+    @apply
+    
+    w-full
+    h-full
+    object-cover
+}

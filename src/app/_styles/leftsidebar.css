@@ -1,13 +1,14 @@
 .left_side_bar {
     height: calc(100vh - 62px);
     @apply
-    w-[230px]
+    w-[250px]
     mt-[62px]
     mr-[50px]
     bg-white
     shadow-xl
     fixed 
     left-0
+    top-0
     max-[1000px]:hidden
 }
 

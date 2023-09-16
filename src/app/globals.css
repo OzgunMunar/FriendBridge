@@ -14,7 +14,7 @@
 
 body {
   /* background-image: var(--body-background); */
-  background-color: var(--body-background)
+  background-color: var(--body-background);
 }
 
 body::-webkit-scrollbar{
