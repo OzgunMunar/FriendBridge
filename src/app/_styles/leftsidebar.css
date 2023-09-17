@@ -2,7 +2,6 @@
     height: calc(100vh - 62px);
     transition: width 1s ease;
     @apply
-    /* w-[250px] */
     w-[50px]
     mt-[62px]
     mr-[50px]
@@ -29,7 +28,21 @@
     @apply opacity-100
 }
 
-.feedLi::before {
+.activeli > * {
+    @apply
+    text-blue-900
+    font-bold
+}
+
+.activeli {
+    @apply
+    
+    bg-blue-100
+    shadow-md
+    w-[105%]
+}
+
+.activeli::before {
     content: ""; 
 
     @apply
@@ -39,19 +52,6 @@
     left-0
     h-full
     w-[5px]
-}
-
-.left_side_bar_items > li:nth-child(2) > * {
-    @apply
-    text-blue-900
-    font-bold
-}
-
-.left_side_bar_items > li:nth-child(2) {
-    @apply
-    bg-blue-100
-    shadow-md
-    w-[105%]
 }
 
 .left_side_bar_items {
@@ -66,7 +66,7 @@
 
     relative
     h-12
-    w-[99%]
+    /* w-[99%] */
     pt-1
     flex
     items-center
@@ -116,12 +116,4 @@
     w-[30px]
     h-[30px]
     object-cover
-}
-
-.left_side_bar_link_items {
-    @apply
-    flex
-    items-center
-    justify-center
-    flex-col
 }

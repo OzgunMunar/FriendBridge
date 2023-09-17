@@ -1,9 +1,9 @@
-import React, { Fragment, useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import { UserContext, FeedChangeContext } from '../Contexts/Contexts'
+import { UserContext, FeedChangeContext, PageContext } from '../Contexts/Contexts'
 import '@/app/_styles/profile.css'
 import Feed from '../Feed/Feed'
 import Tooltip from '../Navbar/Tooltip';
@@ -18,6 +18,11 @@ const Profile = () => {
     // add modal to change user infos as well as change password
 
     const { user } = useContext(UserContext)
+    const { setPage } = useContext(PageContext)
+
+    useEffect(() => {
+        setPage('Profile')
+    }, [])
 
     const changePassword = async () => {
 

@@ -1,34 +1,39 @@
 import "@/app/_styles/leftsidebar.css"
 import { UserContext } from "../Contexts/Contexts";
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from "next/link";
 
-const LeftSideBar = () => {
+const LeftSideBar = ({ page }) => {
 
-  let { user } = React.useContext(UserContext)
+  let { user } = useContext(UserContext)
+
+  console.log(page)
 
   return (
     <div className='left_side_bar'>
 
         <ul className='left_side_bar_items'>
 
-            <li>
-              <Link href="/profile" className="left_side_bar_link_items">
+            <Link href="/profile">
+              <li className={`${page === 'Profile' ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
                 </div>
 
                 <span>{user.username}</span>
-              </Link>
-            </li>
+              </li>
+            </Link>
             
-            <li className="feedLi">
-              <div className='iconContainer'>
-                <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
-              </div>
-              <span>Feed</span>
-            </li>
+            <Link href="/">
+              <li className={`${page === 'Feed' ? "activeli":""}`}>
+                <div className='iconContainer'>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
+                </div>
+
+                <span>Feed</span>
+              </li>
+            </Link>
 
             <div className="left_side_bar_horizontal_line"></div>
             <li>

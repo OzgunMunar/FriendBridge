@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { UserContext } from '../Contexts/Contexts'
+import { UserContext, PageContext } from '../Contexts/Contexts'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import LeftSideBar from '../LeftSideBar/LeftSideBar'
@@ -8,6 +8,7 @@ import '@/app/_styles/mainpage.css'
 const LoggedInLayout = ( {children} ) => {
 
     const [user, setUser] = useState('')
+    const [page, setPage] = useState('Feed')
     
     useEffect(() => {
 
@@ -26,7 +27,7 @@ const LoggedInLayout = ( {children} ) => {
 
       }
 
-      fetchUserData();
+      fetchUserData()
 
     },[])
 
@@ -34,8 +35,10 @@ const LoggedInLayout = ( {children} ) => {
       <Fragment>
         <UserContext.Provider value = {{ user }}>
           <Navbar/>
-          <LeftSideBar/>
-          {children}
+          <PageContext.Provider value = {{ setPage }}>
+            <LeftSideBar page={page}/>
+            {children}
+          </PageContext.Provider>
         </UserContext.Provider>
       </Fragment>
     )
