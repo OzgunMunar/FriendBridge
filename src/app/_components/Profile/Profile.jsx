@@ -15,7 +15,7 @@ const Profile = () => {
     const { setPage } = useContext(PageContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
-    const [isModalShow, setModalShow] = useState(false)
+    const [isModalShow, setModalShow] = useState(true)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
 
     const [userInfoToEdit, setUserInfoToEdit] = useState({
@@ -84,11 +84,8 @@ const Profile = () => {
         try {
 
             const result = await axios.post("/api/users/updateuserinfo", userInfoToEdit)
-            toast.success(result.message)
-
-            // const result = await axios.patch(`/api/post/${post._id}`, postToEdit)
-            // .then(() => toast.success("Post edited"))
-            // .catch((error) => toast.error("An error occured during editing post."))
+            toast.success(result.data.message)
+            setModalShow(false)
             
         } catch (error) {
             toast.error(error.response.data.message)
@@ -322,11 +319,9 @@ const Profile = () => {
                             </div>
 
                             <div className='modalprofile_footer_container'>
-                                <button onClick={closeModalToEdit}>Close</button>
-
-                                <br />
+                                <button className='modalprofile_close_button' onClick={closeModalToEdit}>Close</button>
                                 
-                                <button type='button' onClick={handleSubmit}>Submit</button>
+                                <button className='modalprofile_submit_button' type='button' onClick={handleSubmit}>Submit</button>
                             </div>
 
                         </div>

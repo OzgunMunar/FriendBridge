@@ -286,3 +286,38 @@
 
     focus:outline-none
 }
+
+.modalprofile_footer_container {
+    @apply
+    flex
+    items-center
+    justify-evenly
+    gap-16
+    pt-5
+}
+
+.modalprofile_close_button {
+    @apply
+    bg-gray-700
+    px-10
+    py-2
+    text-white
+    transition
+    duration-300
+    ease-in
+    hover:bg-gray-500
+    hover:shadow-lg
+}
+
+.modalprofile_submit_button {
+    @apply
+    bg-sky-700
+    px-10
+    py-2
+    text-white
+    transition
+    duration-300
+    ease-in
+    hover:bg-sky-500
+    hover:shadow-lg
+}

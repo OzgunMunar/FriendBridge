@@ -41,8 +41,7 @@ const userSchema = new mongoose.Schema({
     },
     phonenumber: {
         type: String,
-        default: 'unshared',
-        // validate: /^\(\+1\) \d{3} \d{3} \d{2}-\d{2}$/
+        default: 'unshared'
     },
     address: {
         type: String,
@@ -51,12 +50,10 @@ const userSchema = new mongoose.Schema({
     birthday: {
         type: String,
         default: new Date('1900-01-01'),
-        // validate: /^(January|February|March|April|May|June|July|August|September|October|November|December)-\d{2}, \d{4}$/
     },
     gender: {
         type: String,
         default: 'unshared',
-        // validate: /(Male|Female)/
     },
     passwordToken: String,
     passwordTokenExpiry: Date,
