@@ -3,40 +3,35 @@ import { NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/helper";
 import Users from "@/models/userModel";
 
-ConnectToDB()
-
 export async function POST(req) {
+
+    const reqBody = await req.json()
+    const {username, userImageLink, address, city, personalwebsite, phonenumber, profession, birthday, gender} = reqBody
 
     try {
 
-        const reqBody = await req.json()
-        const { username, userImageLink, address, city, personalwebsite, phonenumber, profession, birthday, gender} = reqBody
-
+        ConnectToDB()
         const userid = await getDataFromToken(req)
-        const user = await Users.findById({ userid })
+        const user = await Users.findById(userid)
 
-        console.table(user)
+        console.log(userid)
+        console.log(city)
+        console.log(user)
+        
+        user.city = city
+        user.phonenumber = phonenumber
+        // user.phonenumber = '+1 416 877 78-05'
 
-        // user.username = username
-        // user.userImageLink = userImageLink
-        // user.address = address
-        // user.city = city
-        // user.personalwebsite = personalwebsite
-        // user.phonenumber = phonenumber
-        // user.profession = profession
-        // user.birthday = birthday
-        // user.gender = gender
+        await user.save()
+        // console.log(user)
 
-        // await user.save()
-
-        const result = NextResponse.json({
+        return NextResponse.json({
             message: 'User updated',
             success: true
         })
 
-        return result
-
     } catch (error) {
+        console.log(error)
         return NextResponse.json({error: error.message}, {status: 500})
     }
 

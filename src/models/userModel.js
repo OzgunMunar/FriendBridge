@@ -25,38 +25,38 @@ const userSchema = new mongoose.Schema({
     },
     userImageLink: {
         type: String,
-        default: 'unspecified'
+        default: ''
     },
     city: {
         type: String,
-        default: 'unspecified'
+        default: 'unshared'
     },
     profession: {
         type: String,
-        default: 'unspecified'
+        default: 'unshared'
     },
     personalwebsite: {
         type: String,
-        default: 'unspecified'
+        default: 'unshared'
     },
     phonenumber: {
         type: String,
-        default: 'unspecified',
-        match: /^\(\+1\) \d{3} \d{2}-\d{2}$/
+        default: 'unshared',
+        // validate: /^\(\+1\) \d{3} \d{3} \d{2}-\d{2}$/
     },
     address: {
         type: String,
-        default: 'unspecified'
+        default: 'unshared'
     },
     birthday: {
         type: String,
         default: new Date('1900-01-01'),
-        match: /^(January|February|March|April|May|June|July|August|September|October|November|December)-\d{2}, \d{4}$/
+        // validate: /^(January|February|March|April|May|June|July|August|September|October|November|December)-\d{2}, \d{4}$/
     },
     gender: {
         type: String,
-        default: 'unspecified',
-        match: /^(male|female)$/i
+        default: 'unshared',
+        // validate: /(Male|Female)/
     },
     passwordToken: String,
     passwordTokenExpiry: Date,

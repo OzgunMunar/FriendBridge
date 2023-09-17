@@ -7,7 +7,7 @@ import { UserContext, FeedChangeContext } from "../Contexts/Contexts";
 
 const Main = () => {
 
-    const { user } = useContext(UserContext)
+    const user = useContext(UserContext)
     const [isVerified, setIsVerified] = useState(true)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
 

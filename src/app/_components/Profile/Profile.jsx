@@ -85,6 +85,10 @@ const Profile = () => {
 
             const result = await axios.post("/api/users/updateuserinfo", userInfoToEdit)
             toast.success(result.message)
+
+            // const result = await axios.patch(`/api/post/${post._id}`, postToEdit)
+            // .then(() => toast.success("Post edited"))
+            // .catch((error) => toast.error("An error occured during editing post."))
             
         } catch (error) {
             toast.error(error.response.data.message)
