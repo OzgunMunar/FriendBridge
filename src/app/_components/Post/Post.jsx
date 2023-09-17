@@ -1,20 +1,18 @@
 import "@/app/_styles/post.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { UserContext } from "../Contexts/Contexts"
+import { UserContext, FeedChangeContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
-import Modal from "../EditDeleteModal/Modal"
-import Form from "./Form"
-import { FeedChangeContext } from "../Contexts/Contexts"
+import EditDeleteModal from "../Modals/EditDeleteModal"
+import PostForm from "./PostForm"
 
 const Post = ({ post }) => {
 
-    const { user } = useContext(UserContext)
+    const user = useContext(UserContext)
     const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
     const textAreaRef = useRef()
-    
     const EditOrDeleteRef = useRef(null)
 
     const [isDropdown, setIsDropdown] = useState(false)
@@ -205,9 +203,9 @@ const Post = ({ post }) => {
                 
                 <div className={isEditModalOpen ? "modal-container active":"modal-container"}>
 
-                    <Modal isOpen={ isEditModalOpen } onClose={closeModal}>
+                    <EditDeleteModal isOpen={ isEditModalOpen } onClose={closeModal}>
 
-                        <Form
+                        <PostForm
                             type='Edit'
                             post={postToEdit}
                             setPost={setPostToEdit}
@@ -217,7 +215,7 @@ const Post = ({ post }) => {
                             rows={8}
                         />
 
-                    </Modal>
+                    </EditDeleteModal>
                     
                 </div>
 

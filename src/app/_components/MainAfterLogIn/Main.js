@@ -35,7 +35,7 @@ const Main = () => {
   return (
 
     <Fragment>
-        {(isVerified === true) ? 
+      {(isVerified === true) ? 
         (
           <div className='body_sections'>
 
@@ -60,7 +60,7 @@ const Main = () => {
             LogOut
             </button>
           </main>
-        )}
+      )}
         
     </Fragment>
   )

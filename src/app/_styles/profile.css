@@ -220,6 +220,20 @@
     hover:shadow-lg
 }
 
+.profile_change_password_container.disabled-button {
+    @apply
+    flex
+    items-center
+    justify-center
+    absolute
+    bottom-4
+    right-4
+    rounded-lg
+    bg-slate-500
+    w-12
+    h-12
+}
+
 .profile_change_password_button {
     @apply
     mt-2
@@ -232,4 +246,43 @@
     w-[200px]
     top-2
     left-[-115px]
+}
+
+.modalprofile_container {
+    @apply
+    flex
+    flex-col
+    divide-y-2
+    divide-gray-400
+}
+
+.modalprofile_header {
+    @apply
+    text-3xl
+    text-center
+    mb-4
+}
+
+.modal_info_row {
+    @apply
+    flex
+    items-center
+    m-3
+}
+  
+.modal_info_row label {
+    flex: 1;
+    margin-right: 10px;
+}
+  
+.modal_info_input {
+    flex: 2;
+    @apply
+    px-3
+    py-0.5
+
+    border-b-2
+    border-gray-600
+
+    focus:outline-none
 }

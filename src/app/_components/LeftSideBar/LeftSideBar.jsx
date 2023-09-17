@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const LeftSideBar = ({ page }) => {
 
-  let { user } = useContext(UserContext)
+  let user  = useContext(UserContext)
 
   return (
     <div className='left_side_bar'>

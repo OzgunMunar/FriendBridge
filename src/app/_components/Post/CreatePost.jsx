@@ -1,6 +1,6 @@
 'use client'
 
-import Form from "./Form"
+import Form from "./PostForm"
 import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";

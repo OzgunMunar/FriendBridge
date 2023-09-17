@@ -18,7 +18,7 @@ const LoggedInLayout = ( {children} ) => {
         
           const loggedUser = await axios.get('api/users/me')
           const user = loggedUser.data.data
-
+          
           setUser(user)
         
         } catch (error) {
@@ -33,7 +33,7 @@ const LoggedInLayout = ( {children} ) => {
 
     return (
       <Fragment>
-        <UserContext.Provider value = {{ user }}>
+        <UserContext.Provider value = {user}>
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
             <LeftSideBar page={page}/>

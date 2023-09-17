@@ -1,7 +1,7 @@
 import "@/app/_styles/postform.css"
 import { useEffect } from 'react'
 
-const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
+const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
 
   let buttonTextOnSubmitting = (type === 'Create' ? "Creating..." : "Editing...")
 
@@ -51,4 +51,4 @@ const Form = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows
 
 }
 
-export default Form
+export default PostForm

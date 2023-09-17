@@ -1,7 +1,7 @@
 import React from 'react';
 import "@/app/_styles/modal.css"
 
-const Modal = ({ isOpen, onClose, children }) => {
+const EditDeleteModal = ({ isOpen, onClose, children }) => {
     return isOpen ? (
       <div className="modal-overlay">
         <div className="modal">
@@ -14,4 +14,4 @@ const Modal = ({ isOpen, onClose, children }) => {
       ) : null;
 };
 
-export default Modal;
+export default EditDeleteModal;
