@@ -8,8 +8,6 @@ const LeftSideBar = ({ page }) => {
 
   let { user } = useContext(UserContext)
 
-  console.log(page)
-
   return (
     <div className='left_side_bar'>
 

@@ -8,7 +8,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserContext } from "../Contexts/Contexts";
-import Tooltip from "./Tooltip";
+import Tooltip from "../Tooltip/Tooltip";
 
 const Navbar = () => {
 

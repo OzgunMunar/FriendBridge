@@ -15,7 +15,7 @@
 }
 
 .left_side_bar:hover {
-    @apply w-[250px]
+    @apply w-[200px]
 }
 
 .left_side_bar span {
@@ -107,7 +107,6 @@
     w-full
     bg-slate-300
     h-[2px]
-    mt-4
 }
 
 .left_side_bar_post_photo {

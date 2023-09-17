@@ -29,9 +29,6 @@ export const PATCH = async(req, { params }) => {
 
         const { postId, postText } = await req.json()
 
-        console.log("post:" + postText)
-        console.log("id:" + postId)
-
         const seekingPost = await Posts.findById(postId)
 
         if(seekingPost === null)

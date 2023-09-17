@@ -6,7 +6,7 @@
 
 .tooltip {
     transform: translateX(-50%);
-    transition: opacity 1s;
+    transition: opacity 750ms;
 
     @apply
     invisible

@@ -1,17 +1,14 @@
 import React, { useContext, useEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast";
-import { useRouter } from "next/navigation"
 import { useState } from "react"
 import { UserContext, FeedChangeContext, PageContext } from '../Contexts/Contexts'
 import '@/app/_styles/profile.css'
 import Feed from '../Feed/Feed'
-import Tooltip from '../Navbar/Tooltip';
+import Tooltip from '../Tooltip/Tooltip';
 
 const Profile = () => {
 
-    const router = useRouter()
-    const [data, setData] = useState('nothing')
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
 
@@ -34,7 +31,7 @@ const Profile = () => {
 
         } catch (error) {
             toast.error(error.response.data.message)
-            setIsPasswordMailSent(false)
+            // setIsPasswordMailSent(false)
         }
 
     }
@@ -138,7 +135,7 @@ const Profile = () => {
                 <div className='profile_edit_button_container'>
 
                     <Tooltip text='Edit'>
-                        <button type='button' className='profile_edit_button'>
+                        <button type='button' className='profile_edit_button' onClick={() => setModalShow(val => !val)}>
                             <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
                         </button>
                     </Tooltip>
