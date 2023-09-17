@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast"
@@ -11,14 +9,19 @@ import '@/app/_styles/profile.css'
 
 const Profile = () => {
 
-    const user = useContext(UserContext)
+    const {user, setUserInfoRefreshSwitch} = useContext(UserContext)
     const { setPage } = useContext(PageContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
-    const [isModalShow, setModalShow] = useState(true)
+
+    // const [shouldUserInfoChange, setShouldUserInfoChange] = useState(false)
+
+    const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
 
-    const [userInfoToEdit, setUserInfoToEdit] = useState({
+    const usernameRef = useRef(null)
+
+    const [userInfo, setuserInfo] = useState({
 
         username: '',
         userImageLink: '',
@@ -40,7 +43,7 @@ const Profile = () => {
 
     useEffect(() => {
 
-        setUserInfoToEdit({
+        setuserInfo({
 
             username: user?.username || '',
             userImageLink: user?.userImageLink || '',
@@ -56,12 +59,20 @@ const Profile = () => {
 
     },[user])
 
+    useEffect(() => {
+
+        (isModalShow === true) ?? usernameRef.current.focus()
+
+    }, [isModalShow])
+
     const openModalToEdit = () => {
         setModalShow(true)
+        setUserInfoRefreshSwitch(val => !val)
     }
 
     const closeModalToEdit = () => {
         setModalShow(false)
+        setUserInfoRefreshSwitch(val => !val)
     }
 
     const changePassword = async () => {
@@ -83,9 +94,11 @@ const Profile = () => {
 
         try {
 
-            const result = await axios.post("/api/users/updateuserinfo", userInfoToEdit)
+            const result = await axios.post("/api/users/updateuserinfo", userInfo)
             toast.success(result.data.message)
+
             setModalShow(false)
+            setUserInfoRefreshSwitch(val => !val)
             
         } catch (error) {
             toast.error(error.response.data.message)
@@ -107,10 +120,10 @@ const Profile = () => {
 
                     <div className='profile_personal_info1_layer1'>
 
-                        <span className='profile_username'>{user.username}</span>
+                        <span className='profile_username'>{userInfo.username}</span>
                         <div className='profile_city_container'>
                             <img width="16" height="16" src="https://img.icons8.com/office/16/marker.png" alt="marker"/>
-                            <span className='profile_city'>{user.city}</span>
+                            <span className='profile_city'>{userInfo.city}</span>
                         </div>
 
                     </div>
@@ -122,7 +135,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
                                 <span>Profession: </span>
                             </div>
-                            <div className='profile_personal_info_value'>{user.profession}</div>
+                            <div className='profile_personal_info_value'>{userInfo.profession}</div>
                         </div>
 
                         <div className='row'>
@@ -131,8 +144,8 @@ const Profile = () => {
                                 <span>Phone Number:</span> 
                             </div>
                             <div className='profile_personal_info_value blue-text'>
-                                <a href={`tel:${user.phonenumber}`}>
-                                    {user.phonenumber}
+                                <a href={`tel:${userInfo.phonenumber}`}>
+                                    {userInfo.phonenumber}
                                 </a>
                             </div>
                         </div>
@@ -142,7 +155,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
                                 <span>Address: </span>
                             </div>
-                            <div className='profile_personal_info_value'>{user.address}</div>
+                            <div className='profile_personal_info_value'>{userInfo.address}</div>
                         </div>
 
                         <div className='row'>
@@ -163,8 +176,8 @@ const Profile = () => {
                                 <span>Personal Web Site: </span>
                             </div>
                             <div className='profile_personal_info_value blue-text website-text'>
-                                <a href={`${user.personalwebsite}`} target='_blank'>
-                                    {user.personalwebsite}
+                                <a href={`${userInfo.personalwebsite}`} target='_blank'>
+                                    {userInfo.personalwebsite}
                                 </a>
                             </div>
                         </div>
@@ -174,7 +187,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 <span>Birthday: </span>
                             </div>
-                            <div className='profile_personal_info_value'>{user.birthday}</div>
+                            <div className='profile_personal_info_value'>{userInfo.birthday}</div>
                         </div>
 
                         <div className='row'>
@@ -182,7 +195,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
                                 <span>Gender: </span>
                             </div>
-                            <div className='profile_personal_info_value'>{user.gender}</div>
+                            <div className='profile_personal_info_value'>{userInfo.gender}</div>
                         </div>
 
                     </div>
@@ -246,74 +259,77 @@ const Profile = () => {
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='username'>Full Name:</label>
-                                    <input type='text' id='username' 
+                                    <input type='text' id='username' ref={usernameRef}
                                            className='modal_info_input'
-                                           defaultValue={userInfoToEdit.username}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, username: e.target.value})}/>
+                                           value={userInfo.username}
+                                           onChange={(e) => setuserInfo({...userInfo, username: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='userImageLink'>User Image Link:</label>
                                     <input type='text' id='userImageLink'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.userImageLink}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, userImageLink: e.target.value})}/>
+                                           value={userInfo.userImageLink}
+                                           onChange={(e) => setuserInfo({...userInfo, userImageLink: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='city'>City:</label>
                                     <input type='text' id='city'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.city}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, city: e.target.value})}/>
+                                           value={userInfo.city}
+                                           onChange={(e) => setuserInfo({...userInfo, city: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='profession'>Profession:</label>
                                     <input type='text' id='profession'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.profession}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, profession: e.target.value})}/>
+                                           value={userInfo.profession}
+                                           onChange={(e) => setuserInfo({...userInfo, profession: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='phonenumber'>Phone Number:</label>
                                     <input type='text' id='phonenumber'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.phonenumber}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, phonenumber: e.target.value})}/>
+                                           value={userInfo.phonenumber}
+                                           onChange={(e) => setuserInfo({...userInfo, phonenumber: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='address'>Address:</label>
                                     <input type='text' id='address' 
                                            className='modal_info_input'
-                                           value={userInfoToEdit.address}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, address: e.target.value})}/>
+                                           value={userInfo.address}
+                                           onChange={(e) => setuserInfo({...userInfo, address: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='personalwebsite'>Personal WebSite:</label>
                                     <input type='text' id='personalwebsite'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.personalwebsite}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, personalwebsite: e.target.value})}/>
+                                           value={userInfo.personalwebsite}
+                                           onChange={(e) => setuserInfo({...userInfo, personalwebsite: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='birthday'>Birthday:</label>
                                     <input type='text' id='birthday'
                                            className='modal_info_input'
-                                           value={userInfoToEdit.birthday}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, birthday: e.target.value})}/>
+                                           value={userInfo.birthday}
+                                           onChange={(e) => setuserInfo({...userInfo, birthday: e.target.value})}/>
                                 </div>
 
                                 <div className='modal_info_row'>
                                     <label htmlFor='gender'>Gender:</label>
-                                    <input type='text' id='gender'
-                                           className='modal_info_input'
-                                           value={userInfoToEdit.gender}
-                                           onChange={(e) => setUserInfoToEdit({...userInfoToEdit, gender: e.target.value})}/>
+                                    <select className='modal_info_select_input' 
+                                            id='gender'
+                                            onChange = {(e) => setuserInfo({...userInfo, gender: e.target.value})}
+                                            value = {userInfo.gender}>
+                                        <option value='Male'>Male</option>
+                                        <option value='Female'>Female</option>
+                                    </select>
                                 </div>
 
                             </div>

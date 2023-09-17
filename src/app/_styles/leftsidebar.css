@@ -61,19 +61,39 @@
     py-1
 }
 
-.left_side_bar_items li {
+.left_side_bar_items a {
+    @apply mb-1 
+}
+
+.left_side_bar_items a li {
     @apply
 
     relative
     h-12
-    /* w-[99%] */
     pt-1
     flex
     items-center
     gap-4
+
+    transition 
+    ease-in 
+    duration-150
+
     hover:bg-gray-200
     hover:w-[105%]
     hover:shadow-md
+}
+
+.left_side_bar_items a:hover li::before {
+    content: ""; 
+
+    @apply
+    bg-gray-500
+    absolute
+    top-0
+    left-0
+    h-full
+    w-[5px]
 }
 
 .left_side_bar_items li span{

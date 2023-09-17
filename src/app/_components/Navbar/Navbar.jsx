@@ -15,7 +15,7 @@ const Navbar = () => {
     const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
     const dropdownRef = useRef(null)
-    const user = useContext(UserContext)
+    const {user} = useContext(UserContext)
 
     function headerMainDropdown() {
         setIsDropdown(status=> !status)

@@ -1,13 +1,13 @@
 import React, { Fragment, useContext, useEffect, useState } from 'react'
 import CreatePost from '../Post/CreatePost';
-import '@/app/_styles/mainpage.css'
 import Feed from '../Feed/Feed';
 import axios from 'axios';
 import { UserContext, FeedChangeContext } from "../Contexts/Contexts";
+import '@/app/_styles/mainpage.css'
 
 const Main = () => {
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [isVerified, setIsVerified] = useState(true)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
 
@@ -32,38 +32,36 @@ const Main = () => {
 
     }, [user])
 
-  return (
+    return (    
+      <Fragment>
+        {(isVerified === true) ? 
+          (
+            <div className='body_sections'>   
+              <div className='posts_section'>
 
-    <Fragment>
-      {(isVerified === true) ? 
-        (
-          <div className='body_sections'>
+                <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                  <CreatePost />
+                  <div className="horizontal_line"></div>
+                  <Feed />
+                </FeedChangeContext.Provider>
 
-            <div className='posts_section'>
-              
-              <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
-                <CreatePost />
-                <div className="horizontal_line"></div>
-                <Feed />
-              </FeedChangeContext.Provider>
-              
+              </div>    
             </div>
+          )
+          :(
+            <main className="verification_warning_text">
+              <p>Please verify your account by using verification mail you got. Thank you.</p>
+              <button
+                onClick={logout}
+                className="bg-blue-500 hover:bg-blue-700 text-white
+                            font-bold py-2 px-4  mt-4">
+              LogOut
+              </button>
+            </main>
+        )}
 
-          </div>
-        ):(
-          <main className="verification_warning_text">
-            <p>Please verify your account by using verification mail you got. Thank you.</p>
-            <button
-              onClick={logout}
-              className="bg-blue-500 hover:bg-blue-700 text-white
-                          font-bold py-2 px-4  mt-4">
-            LogOut
-            </button>
-          </main>
-      )}
-        
-    </Fragment>
-  )
+      </Fragment>
+    )
 }
 
 export default Main

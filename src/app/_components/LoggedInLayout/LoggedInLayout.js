@@ -9,6 +9,7 @@ const LoggedInLayout = ( {children} ) => {
 
     const [user, setUser] = useState('')
     const [page, setPage] = useState('Feed')
+    const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     
     useEffect(() => {
 
@@ -29,11 +30,11 @@ const LoggedInLayout = ( {children} ) => {
 
       fetchUserData()
 
-    },[])
+    },[userInfoRefreshSwitch])
 
     return (
       <Fragment>
-        <UserContext.Provider value = {user}>
+        <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
             <LeftSideBar page={page}/>

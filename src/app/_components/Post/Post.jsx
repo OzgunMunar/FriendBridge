@@ -10,7 +10,7 @@ import PostForm from "./PostForm"
 
 const Post = ({ post }) => {
 
-    const user = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
