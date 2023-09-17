@@ -13,9 +13,6 @@ const Profile = () => {
     const { setPage } = useContext(PageContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
-
-    // const [shouldUserInfoChange, setShouldUserInfoChange] = useState(false)
-
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
 
