@@ -197,7 +197,7 @@ const Post = ({ post }) => {
 
             </div>
 
-            <Toaster position="top-right" reverseOrder={false}/>
+            <Toaster position="top-center" reverseOrder={false}/>
 
             <div>
                 

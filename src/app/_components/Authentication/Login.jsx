@@ -83,7 +83,7 @@ export default function LoginPage({changePage}) {
             <div className="login_form_horizontal_line"></div>
 
             <button type="button" className="login_form_create_account_button" onClick={() => changePage(val => !val)}>Create an account</button>
-            <Toaster position="top-right" reverseOrder={false}/>
+            <Toaster position="top-center" reverseOrder={false}/>
 
         </section>
 

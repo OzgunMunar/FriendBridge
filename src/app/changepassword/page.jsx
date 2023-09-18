@@ -141,7 +141,7 @@ const ChangePassword = () => {
                     {buttonDisabled ? "Provide Values" : "Change Password"}</button>
             <Link href="/">Cancel to Home Page</Link>
 
-            <Toaster position="top-right" reverseOrder={false}/>
+            <Toaster position="top-center" reverseOrder={false}/>
 
         </div>
         

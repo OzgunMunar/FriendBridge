@@ -116,7 +116,7 @@ export default function SignupPage({changePage}) {
                 <span>To Login page</span>
             </button>
 
-            <Toaster position="top-right" reverseOrder={false}/>
+            <Toaster position="top-center" reverseOrder={false}/>
 
         </div>
 
