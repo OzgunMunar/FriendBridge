@@ -58,7 +58,8 @@ const Profile = () => {
 
     useEffect(() => {
 
-        (isModalShow === true) ?? usernameRef.current.focus()
+        if (isModalShow === true) 
+            usernameRef.current.focus()
 
     }, [isModalShow])
 
