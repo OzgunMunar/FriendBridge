@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useLayoutEffect } from 'react'
 import { UserContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
@@ -33,6 +33,12 @@ const LoggedInLayout = ( {children} ) => {
       fetchUserData()
 
     }, [userInfoRefreshSwitch])
+
+    useLayoutEffect(() => {
+
+      setLoader(true)
+
+    }, [])
 
     useEffect(() => {
 

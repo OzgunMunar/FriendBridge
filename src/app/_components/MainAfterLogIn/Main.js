@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useEffect, useState, useLayoutEffect } from 'react'
 import CreatePost from '../Post/CreatePost';
 import Feed from '../Feed/Feed';
 import axios from 'axios';
@@ -31,9 +31,14 @@ const Main = () => {
     useEffect(() => {
 
       user.isVerified === false && setIsVerified(false)
-      setLoader(false)
 
     }, [user])
+
+    useEffect(() => {
+
+      setLoader(false)
+
+    }, [])
 
     return (    
       <Fragment>

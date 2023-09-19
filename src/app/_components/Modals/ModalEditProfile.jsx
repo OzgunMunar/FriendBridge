@@ -1,7 +1,7 @@
 import React from 'react'
 import '@/app/_styles/modal.css'
 
-const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, closeModalToEdit }) => {
+const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, closeModalToEdit, handleSubmit }) => {
 
   return isOpen ? (
     <div className="modal-overlay">
