@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useLayoutEffect } from 'react'
 import { UserContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
@@ -34,10 +34,11 @@ const LoggedInLayout = ( {children} ) => {
 
     }, [userInfoRefreshSwitch])
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
       setLoader(false)
-
+      console.log('loggedinlayout ' + loader)
+      
     },[])
 
     return loader ? 
@@ -45,7 +46,7 @@ const LoggedInLayout = ( {children} ) => {
         <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
-            <LeftSideBar page={page}/>
+            <LeftSideBar page = { page }/>
             <PageLoader />
           </PageContext.Provider>
         </UserContext.Provider>
@@ -57,7 +58,9 @@ const LoggedInLayout = ( {children} ) => {
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
             <LeftSideBar page={page}/>
-            { children }
+            <PageLoaderContext.Provider value = {{ setLoader }}>
+              { children }
+            </PageLoaderContext.Provider>
           </PageContext.Provider>
         </UserContext.Provider>
       </Fragment>

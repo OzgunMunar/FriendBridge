@@ -1,13 +1,14 @@
-import React, { Fragment, useContext, useEffect, useState } from 'react'
+import React, { Fragment, useContext, useLayoutEffect, useState } from 'react'
 import CreatePost from '../Post/CreatePost';
 import Feed from '../Feed/Feed';
 import axios from 'axios';
-import { UserContext, FeedChangeContext } from "../Contexts/Contexts";
+import { UserContext, FeedChangeContext, PageLoaderContext } from "../Contexts/Contexts";
 import '@/app/_styles/mainpage.css'
 
 const Main = () => {
 
     const { user } = useContext(UserContext)
+    const { setLoader } = useContext(PageLoaderContext)
 
     const [isVerified, setIsVerified] = useState(true)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
@@ -27,9 +28,12 @@ const Main = () => {
 
     }
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
       user.isVerified === false && setIsVerified(false)
+      setLoader(false)
+
+      console.log('Main rendered false')
 
     }, [user])
 

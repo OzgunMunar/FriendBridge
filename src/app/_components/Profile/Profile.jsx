@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef } from 'react'
+import React, { useState, useContext, useEffect, useRef, useLayoutEffect } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast"
 import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
@@ -11,7 +11,7 @@ const Profile = () => {
 
     const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setPage } = useContext(PageContext)
-    // const { setLoader } = useContext(PageLoaderContext)
+    const { setLoader } = useContext(PageLoaderContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
@@ -33,9 +33,12 @@ const Profile = () => {
 
     })
 
-    useEffect(() => {
+    useLayoutEffect(() => {
 
         setPage('Profile')
+        setLoader(false)
+
+        console.log("profile rendered false")
 
     }, [])
 
