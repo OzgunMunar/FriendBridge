@@ -2,13 +2,13 @@
     
     font-family: Poppins, sans-serif;
     letter-spacing: 5px;
+    background-image: linear-gradient(to bottom right, red, yellow);
     @apply
 
     absolute
     text-xl
     ml-[25px]
     mt-0
-    bg-gradient-to-r from-orange-700 to-orange-500 
     bg-clip-text 
     text-transparent 
 
