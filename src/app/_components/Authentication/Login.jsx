@@ -25,7 +25,6 @@ export default function LoginPage({changePage}) {
 
             setLoading(true)
             await axios.post("/api/users/login", user)
-            toast.success("Login success")
             router.push("/")
 
         } catch (error) {

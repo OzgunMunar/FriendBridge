@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react'
 import axios from "axios"
 import { Toaster, toast } from "react-hot-toast"
-import { UserContext, FeedChangeContext, PageContext } from '../Contexts/Contexts'
+import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import Tooltip from '../Tooltip/Tooltip'
 import ModalEditProfile from '../Modals/ModalEditProfile'
@@ -11,6 +11,7 @@ const Profile = () => {
 
     const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setPage } = useContext(PageContext)
+    // const { setLoader } = useContext(PageLoaderContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)

@@ -8,6 +8,7 @@ import '@/app/_styles/mainpage.css'
 const Main = () => {
 
     const { user } = useContext(UserContext)
+
     const [isVerified, setIsVerified] = useState(true)
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
 

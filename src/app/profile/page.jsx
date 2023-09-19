@@ -8,9 +8,7 @@ const ProfilePage = () => {
     return (
 
         <LoggedInLayout>
-
             <Profile />
-            
         </LoggedInLayout>
         
     )
