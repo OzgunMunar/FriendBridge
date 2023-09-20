@@ -241,7 +241,7 @@ const Profile = () => {
 
             </div>
 
-            <Toaster position="top-center" reverseOrder={false}/>
+            <Toaster position="top-center" reverseOrder={false} />
 
             <div className='modal-code'>
 
