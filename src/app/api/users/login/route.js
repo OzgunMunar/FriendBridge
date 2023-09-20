@@ -11,7 +11,7 @@ export async function POST(request){
     try {
 
         const reqBody = await request.json()
-        const {email, password} = reqBody;
+        const { email, password } = reqBody;
 
         //check if user exists
         const user = await User.findOne({email})

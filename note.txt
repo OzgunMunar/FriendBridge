@@ -1,8 +1,6 @@
 npm i 
 axios bcryptjs jsonwebtoken nodemailer 
 react-hot-toast mongoose
-react-select
-@headlessui/react@latest
 
 
 middleware allows you to run code before a request is completed.

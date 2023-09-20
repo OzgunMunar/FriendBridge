@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {children}
 
-        <div className="icons_by_who">
+        {/* <div className="icons_by_who">
           All the icons by <a href="https://icons8.com">Icons8</a>
-        </div>
+        </div> */}
 
       </body>
     </html>
