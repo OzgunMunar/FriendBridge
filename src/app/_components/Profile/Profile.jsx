@@ -247,7 +247,9 @@ const Profile = () => {
 
                 <div className={`${isModalShow === true ? "modal-container active":"modal-container"}`}>
 
-                    <ModalEditProfile usernameRef={usernameRef} userInfo={userInfo} isOpen={isModalShow} onClose={closeModalToEdit} handleSubmit={handleSubmit} />
+                    <ModalEditProfile usernameRef={usernameRef} userInfo={userInfo} 
+                                      isOpen={isModalShow} onClose={closeModalToEdit} 
+                                      handleSubmit={handleSubmit} setuserInfo={setuserInfo} />
 
                 </div>
 

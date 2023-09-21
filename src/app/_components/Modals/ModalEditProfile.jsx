@@ -1,7 +1,7 @@
 import React from 'react'
 import '@/app/_styles/modal.css'
 
-const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, closeModalToEdit, handleSubmit }) => {
+const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit, setuserInfo }) => {
 
   return isOpen ? (
     <div className="modal-overlay">
@@ -95,7 +95,7 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, closeModalTo
           </div>
 
           <div className='modalprofile_footer_container'>
-            <button className='modalprofile_close_button' onClick={closeModalToEdit}>Close</button>
+            <button className='modalprofile_close_button' onClick={onClose}>Close</button>
             
             <button className='modalprofile_submit_button' type='button' onClick={handleSubmit}>Submit</button>
           </div>
