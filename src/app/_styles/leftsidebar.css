@@ -14,7 +14,7 @@
     max-[1000px]:hidden
 }
 
-.left_side_bar:hover {
+.leftSideBarOpen {
     @apply w-[200px]
 }
 
@@ -24,7 +24,7 @@
     @apply opacity-0
 }
 
-.left_side_bar:hover span {
+.leftSideBarOpen span {
     @apply opacity-100
 }
 
@@ -59,6 +59,45 @@
     flex
     flex-col
     py-1
+}
+
+.openerButton {
+    @apply
+    flex
+    items-center
+    justify-center
+    text-2xl
+    bg-red-200
+    h-6
+    w-6
+    absolute
+    pb-0.5
+    right-[-12px]
+
+    transition
+    ease-in
+    duration-300
+
+    hover:bg-red-300
+}
+
+.openerButton_container {
+    @apply
+
+    relative
+    h-6
+    mb-1
+    flex
+    items-center
+    gap-4
+}
+
+.openerButton_container span {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    @apply
+    text-xl
+    bg-clip-text 
+    text-transparent
 }
 
 .left_side_bar_items a {

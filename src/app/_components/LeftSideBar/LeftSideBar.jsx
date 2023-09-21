@@ -1,17 +1,24 @@
 import "@/app/_styles/leftsidebar.css"
 import { UserContext } from "../Contexts/Contexts";
-
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Link from "next/link";
 
 const LeftSideBar = ({ page }) => {
 
-  let {user}  = useContext(UserContext)
+  let { user }  = useContext(UserContext)
+  let [ leftSideBarOpener, setLeftSideBarOpener ] = useState(false)
 
   return (
-    <div className='left_side_bar'>
+    <div className={`left_side_bar ${leftSideBarOpener ? 'leftSideBarOpen':''}`}>
 
         <ul className='left_side_bar_items'>
+
+            <li className="openerButton_container">
+                <span>{leftSideBarOpener && "Social App"}</span>
+                <button className="openerButton" onClick={() => setLeftSideBarOpener(val => !val)}>
+                  {leftSideBarOpener ? '<' : '>'}
+                </button>
+            </li>
 
             <Link href="/profile">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
