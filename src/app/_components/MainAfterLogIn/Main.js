@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState, useLayoutEffect } from 'react'
+import React, { Fragment, useContext, useEffect, useState } from 'react'
 import CreatePost from '../Post/CreatePost';
 import Feed from '../Feed/Feed';
 import axios from 'axios';
