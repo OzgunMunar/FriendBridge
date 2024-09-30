@@ -15,7 +15,7 @@ const LeftSideBar = ({ page }) => {
 
             <li className="openerButton_container">
                 <span>{leftSideBarOpener && "Social App"}</span>
-                <button className="openerButton" onClick={() => setLeftSideBarOpener(val => !val)}>
+                <button className="openerButton" onMouseOver={() => setLeftSideBarOpener(val => !val)}>
                   {leftSideBarOpener ? '<' : '>'}
                 </button>
             </li>
