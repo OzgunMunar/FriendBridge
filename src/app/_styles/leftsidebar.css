@@ -1,7 +1,9 @@
 .left_side_bar {
     height: calc(100vh - 62px);
     transition: width 1s ease;
+
     @apply
+
     w-[50px]
     mt-[62px]
     mr-[50px]
@@ -15,7 +17,9 @@
 }
 
 .leftSideBarOpen {
-    @apply w-[200px]
+    @apply 
+    
+    w-[200px]
 }
 
 .left_side_bar span {
@@ -61,43 +65,17 @@
     py-1
 }
 
-.openerButton {
-    @apply
-    flex
-    items-center
-    justify-center
-    text-2xl
-    bg-red-200
-    h-6
-    w-6
-    absolute
-    pb-0.5
-    right-[-12px]
 
-    transition
-    ease-in
-    duration-300
-
-    hover:bg-red-300
-}
-
-.openerButton_container {
+.left_side_bar_title {
     @apply
 
     relative
     h-6
-    mb-1
-    flex
-    items-center
-    gap-4
-}
-
-.openerButton_container span {
-    background-image: linear-gradient(to bottom right, red, yellow);
-    @apply
-    text-xl
-    bg-clip-text 
-    text-transparent
+    text-sm
+    font-bold
+    text-red-900
+    text-left
+    text-center
 }
 
 .left_side_bar_items a {

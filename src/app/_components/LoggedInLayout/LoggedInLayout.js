@@ -12,7 +12,7 @@ const LoggedInLayout = ( {children} ) => {
     const [page, setPage] = useState('Feed')
     const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
-     
+
     useEffect(() => {
 
       const fetchUserData = async() => {

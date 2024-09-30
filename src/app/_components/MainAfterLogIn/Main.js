@@ -44,7 +44,8 @@ const Main = () => {
       <Fragment>
         {(isVerified === true) ? 
           (
-            <div className='body_sections'>   
+            <div className='body_sections'>
+              <div className='left_sidebar_emptiness'></div>
               <div className='posts_section'>
 
                 <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
@@ -52,7 +53,8 @@ const Main = () => {
                   <Feed />
                 </FeedChangeContext.Provider>
 
-              </div>    
+              </div>
+              <div className='right_sidebar_emptiness'></div>    
             </div>
           )
           :(

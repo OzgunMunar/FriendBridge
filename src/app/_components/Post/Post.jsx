@@ -175,25 +175,19 @@ const Post = ({ post }) => {
             <div className="post_like_comment_share">
 
                 <div className="post_action_button">
-                    <FontAwesomeIcon icon={faThumbsUp} />
-                    <p>({post.likeNumber}) Like</p>
+                    <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
+                    <p>{post.likeNumber} Likes</p>
                 </div>
 
                 <div className="post_action_button">
-                    <FontAwesomeIcon icon={faComments} />
-                    <p>({post.comments.length}) Comments</p>
+                    <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
+                    <p>{post.comments.length} Comments</p>
                 </div>
 
                 <div className="post_action_button">
-                    <FontAwesomeIcon icon={faShare} />
+                    <img width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
                     <p>Share</p>
                 </div>
-
-            </div>
-
-            <div className="post_horizontal_line"></div>
-
-            <div className="post_comment_section">
 
             </div>
 

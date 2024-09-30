@@ -6,19 +6,22 @@ import Link from "next/link";
 const LeftSideBar = ({ page }) => {
 
   let { user }  = useContext(UserContext)
-  let [ leftSideBarOpener, setLeftSideBarOpener ] = useState(false)
+  const [isMouseOver, setIsMouseOver] = useState(false)
+
+  function handleMouseEnter()
+  {
+    setIsMouseOver(true)
+  }
+
+  function handleMouseLeave()
+  {
+    setIsMouseOver(false)
+  }
 
   return (
-    <div className={`left_side_bar ${leftSideBarOpener ? 'leftSideBarOpen':''}`}>
+    <div className={`left_side_bar ${isMouseOver ? 'leftSideBarOpen':''}`}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 
         <ul className='left_side_bar_items'>
-
-            <li className="openerButton_container">
-                <span>{leftSideBarOpener && "Social App"}</span>
-                <button className="openerButton" onMouseOver={() => setLeftSideBarOpener(val => !val)}>
-                  {leftSideBarOpener ? '<' : '>'}
-                </button>
-            </li>
 
             <Link href="/profile">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
@@ -41,6 +44,9 @@ const LeftSideBar = ({ page }) => {
             </Link>
 
             <div className="left_side_bar_horizontal_line"></div>
+            <li className="left_side_bar_title">
+                <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap`}>Discover More</p>
+            </li>
 
             <Link href="/">
               <li>
@@ -77,6 +83,11 @@ const LeftSideBar = ({ page }) => {
                 <span>Events</span>
               </li>
             </Link>
+
+            <div className="left_side_bar_horizontal_line"></div>
+              <li className="left_side_bar_title">
+              <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap`}>App Related</p>
+            </li>
             
             <Link href="/">
               <li>

@@ -6,8 +6,6 @@
 }
 
 .post_form {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-
     @apply
 
     rounded-lg
@@ -15,8 +13,8 @@
     border-white
     bg-neutral-100
     p-3
-    shadow-lg
-    mb-5
+    shadow-xl
+    mb-10
 }
   
 .post_form label {

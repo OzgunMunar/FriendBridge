@@ -1,13 +1,16 @@
 .post_container {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     @apply
-    bg-white
+
+    bg-neutral-50
     w-full
     h-full
-    p-6
-    mb-2.5
+    pt-6 pl-6 pr-6
+    mb-5
     break-normal
     hyphens-auto
+    shadow-lg
+    rounded-lg
+    
 }
 
 .post_photo {
@@ -34,6 +37,12 @@
     gap-4
 }
 
+.post_posted_date {
+    @apply
+
+    text-xs
+}
+
 .post_header_right_actions_section {
     border-radius: 50%;
     transition: all 500ms ease;
@@ -57,23 +66,21 @@
     items-center
     justify-center
     cursor-pointer
-    w-full
+    px-4
     h-12
-    text-base
-    gap-4
+    text-xs
+    gap-2
 }
 
 .post_action_button:hover {
-    background-color: gray;
-    color: white;
+    color: grey;
 }
 
 .post_like_comment_share {
     @apply
     flex
     items-center
-    justify-evenly
-    my-2
+    
 }
 
 .post_horizontal_line {
@@ -98,10 +105,31 @@
 }
 
 .post_body {
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+    
     @apply
     bg-white
-    my-4
-    p-4
+    my-5
+    text-sm
+    relative
+    p-3
+    border
+    rounded-xl
+}
+
+.post_body::before {
+    content: '';
+    border: .75rem solid transparent;
+	border-top: none;
+	border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+
+    @apply
+    absolute
+    w-0
+    h-0
+    bottom-full
+    left-3
 }
 
 .right_section_container {
