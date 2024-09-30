@@ -49,7 +49,6 @@ const Main = () => {
 
                 <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
                   <CreatePost />
-                  <div className="horizontal_line"></div>
                   <Feed />
                 </FeedChangeContext.Provider>
 
