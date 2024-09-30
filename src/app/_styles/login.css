@@ -137,6 +137,7 @@
   button:disabled,
   button:disabled:hover {
     @apply
+    
     bg-zinc-400
     cursor-not-allowed
   }
@@ -145,14 +146,16 @@
 
     @apply
 
-    absolute
-    bottom-5
-    left-10
-    flex
-    justify-center
-    items-center
-    gap-1
-    transition ease-in-out
-    hover:-translate-x-1 duration-300
+    w-1/2
+    text-center
+    text-white
+    border
+    bg-blue-700
+    hover:bg-blue-800
+    p-2
+    font-medium
+    text-lg
+    duration-500
+    mt-3
 
   }

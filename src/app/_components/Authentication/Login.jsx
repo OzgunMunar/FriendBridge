@@ -75,14 +75,14 @@ export default function LoginPage({changePage}) {
 
             <button
                 onClick={onLogin}
-                className="login_submit_button mt-3"
+                className="login_submit_button"
                 disabled={buttonDisabled}>
                     {loading ? "Processing..." : "Log In"}
             </button>
 
-            <div className="login_form_horizontal_line mt-3"></div>
+            <div className="login_form_horizontal_line"></div>
 
-            <button type="button" className="login_form_create_account_button mt-6" onClick={() => changePage(val => !val)}>Create an account</button>
+            <button type="button" className="login_form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
             <Toaster position="top-center" reverseOrder={false}/>
 
         </section>

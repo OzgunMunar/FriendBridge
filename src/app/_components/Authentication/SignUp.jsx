@@ -18,7 +18,7 @@ export default function SignupPage({changePage}) {
 
     const [buttonDisabled, setButtonDisabled] = React.useState(false);
     const [loading, setLoading] = React.useState(false);
-    const usernameRef = useRef()
+    const usernameRef = useRef();
     
     const onSignup = async () => {
 
@@ -109,11 +109,13 @@ export default function SignupPage({changePage}) {
 
             <button
                 onClick={onSignup}
-                className="login_form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}</button>
+                className="login_form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}
+            </button>
+
+            <div className="login_form_horizontal_line mt-3"></div>
 
             <button type="button" className="sign_up_tologinpage" onClick={()=> changePage(val => !val)}>
-                <img width="30" height="30" src="https://img.icons8.com/color/48/sort-left.png" alt="sort-left"/>
-                <span>To Login page</span>
+                <span>Log In</span>
             </button>
 
             <Toaster position="top-center" reverseOrder={false}/>
