@@ -99,7 +99,7 @@ const MainRightSide = () => {
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/yc4wdw9a" />
-                        <p>Dennis Dilneoux <span className='text-gray-500'>changed his profile picture.</span></p>
+                        <p>Dennis Dilneoux <span className="text-gray-500">changed his profile picture.</span></p>
                     </div>
                     <span className="text-end text-gray-500">1 min ago</span>
                 </div>
@@ -108,7 +108,7 @@ const MainRightSide = () => {
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/4snvu7b3" />
-                        <p>April O'Neille <span className='text-gray-500'>liked a post.</span></p>
+                        <p>April ONeille <span className='text-gray-500'>liked a post.</span></p>
                     </div>
                     <span className="text-end text-gray-500">1 min ago</span>
                 </div>
