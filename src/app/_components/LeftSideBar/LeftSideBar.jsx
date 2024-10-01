@@ -2,6 +2,7 @@ import "@/app/_styles/leftsidebar.css"
 import { UserContext } from "../Contexts/Contexts";
 import React, { useContext, useState } from 'react'
 import Link from "next/link";
+import Image from "next/image";
 
 const LeftSideBar = ({ page }) => {
 
@@ -26,6 +27,12 @@ const LeftSideBar = ({ page }) => {
             <Link href="/profile">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
                 <div className='iconContainer'>
+                  {/* <Image src={user.userImageLink} 
+                          alt="Picture of the post owner" 
+                          loading="lazy" 
+                          width={30}
+                          height={30}
+                          className="left_side_bar_post_photo"/> */}
                   <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
                 </div>
 

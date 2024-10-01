@@ -52,7 +52,7 @@ const Main = () => {
                 <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
                   <CreatePost />
                   <Feed />
-                  <MainRightSide />
+                  {/* <MainRightSide /> */}
                 </FeedChangeContext.Provider>
 
               </div>

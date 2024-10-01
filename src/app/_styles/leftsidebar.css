@@ -2,6 +2,7 @@
     transition: width 1s ease;
 
     @apply
+
     w-[50px]
     mt-[62px]
     mr-[50px]
