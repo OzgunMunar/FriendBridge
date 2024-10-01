@@ -10,10 +10,6 @@ export async function GET() {
             success: true
         })
 
-        // response.cookies.set("token", '', {
-        //     httpOnly:false, expires: new Date(0)
-        // })
-
         cookies().delete('token')
 
         return response

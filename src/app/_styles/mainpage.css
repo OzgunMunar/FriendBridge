@@ -9,26 +9,26 @@
 .left_sidebar_emptiness {
     @apply
 
-    bg-orange-500
     col-span-1 p-4
 }
 
 .posts_section {
     @apply
-    mt-[62px]
+    mt-20
     flex
     items-center
     justify-center
     flex-col
     /* max-[1000px]:mx-4 */
     col-span-3
+    gap-4
 }
 
 .right_sidebar_emptiness {
     @apply
 
-    bg-orange-500
-    col-span-2 p-4
+    col-span-2 
+    p-4
 }
 
 .posts_section > .horizontal_line {

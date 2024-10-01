@@ -45,7 +45,7 @@ const LeftSideBar = ({ page }) => {
 
             <div className="left_side_bar_horizontal_line"></div>
             <li className="left_side_bar_title">
-                <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap`}>Discover More</p>
+                <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>Discover More</p>
             </li>
 
             <Link href="/">
@@ -86,7 +86,7 @@ const LeftSideBar = ({ page }) => {
 
             <div className="left_side_bar_horizontal_line"></div>
               <li className="left_side_bar_title">
-              <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap`}>App Related</p>
+              <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>App Related</p>
             </li>
             
             <Link href="/">

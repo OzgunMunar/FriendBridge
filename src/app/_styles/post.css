@@ -1,3 +1,13 @@
+@keyframes visibilityChange {
+    from {
+      opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 .post_container {
     @apply
 
@@ -42,7 +52,7 @@
 
     text-xs
 }
-
+/* baba */
 .post_header_right_actions_section {
     border-radius: 50%;
     transition: all 500ms ease;
@@ -105,11 +115,10 @@
 }
 
 .post_body {
-    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
     
     @apply
     bg-white
-    my-5
+    mt-5 mb-3
     text-sm
     relative
     p-3
@@ -117,7 +126,7 @@
     rounded-xl
 }
 
-.post_body::before {
+.post_body::after {
     content: '';
     border: .75rem solid transparent;
 	border-top: none;
@@ -137,26 +146,58 @@
 }
 
 .post_dropdown_content{
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+    animation-name: visibilityChange;
+    animation-duration: 750ms;
+    animation-timing-function: ease;
+
     @apply
     absolute
-    bg-[#f9f9f9]
-    right-4
+    bg-white
+    right-0
+    top-10
     flex
     items-center
     justify-center
+    z-10
+    border
+    rounded-lg
+    h-10
 }
 
-.post_dropdown_content > *:not(div) {
-    @apply py-4 px-12
+.post_dropdown_content::after {
+    content: '';
+    border: .75rem solid transparent;
+	border-top: none;
+	border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+
+    @apply
+    absolute
+    w-0
+    h-0
+    bottom-full
+    right-3
 }
 
 .post_dropdown_content > p:first-child:hover {
-    @apply bg-green-200 text-black cursor-pointer
+    @apply 
+    bg-green-100 
+    text-black 
+    cursor-pointer
+    h-full
+    w-full
+    rounded-l-lg
 }
 
 .post_dropdown_content > p:last-child:hover {
-    @apply bg-red-200 text-black cursor-pointer
+    @apply 
+    bg-red-100 
+    text-black 
+    cursor-pointer
+    h-full
+    w-full
+    rounded-r-lg
 }
 
 .post_dropdown_content_action {
@@ -164,5 +205,6 @@
     flex
     items-center
     justify-center
-    gap-4
+    gap-2
+    px-6
 }

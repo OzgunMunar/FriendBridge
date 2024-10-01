@@ -4,6 +4,7 @@ import Feed from '../Feed/Feed';
 import axios from 'axios';
 import { UserContext, FeedChangeContext, PageLoaderContext } from "../Contexts/Contexts";
 import '@/app/_styles/mainpage.css'
+import MainRightSide from '../MainRightSide/MainRightSide';
 
 const Main = () => {
 
@@ -51,10 +52,11 @@ const Main = () => {
                 <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
                   <CreatePost />
                   <Feed />
+                  <MainRightSide />
                 </FeedChangeContext.Provider>
 
               </div>
-              <div className='right_sidebar_emptiness'></div>    
+              <div className='right_sidebar_emptiness'></div>
             </div>
           )
           :(

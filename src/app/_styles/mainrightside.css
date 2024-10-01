@@ -1,0 +1,87 @@
+.main_right_side_container {
+    @apply
+    
+    fixed
+    w-[30%]
+    right-0
+    top-20
+    text-sm
+}
+
+.main_right_side_suggestion_container,
+.main_right_side_activities_container {
+    @apply
+    p-3
+    bg-white
+    w-full
+    shadow-lg
+    mb-8
+}
+
+.main_right_side_title {
+    @apply
+    text-slate-500
+    pb-3
+}
+
+.main_right_side_suggested_people_container,
+.main_right_side_latest_activities_container {
+    @apply
+    flex
+    justify-center
+    items-start
+    flex-col
+}
+
+.suggested_person_container,
+.latest_activity_container {
+    @apply
+    flex
+    justify-between
+    items-center
+    pb-2
+    w-full
+}
+
+.suggested_person_container img,
+.latest_activity_info img {
+    @apply 
+    rounded-full
+}
+
+.suggested_person_info,
+.latest_activity_info {
+    @apply 
+    flex
+    justify-center
+    items-center
+    gap-3
+}
+
+.suggested_person_buttons {
+    @apply 
+    flex 
+    align-middle
+    justify-center
+}
+
+.suggested_person_button {
+    transition: background-color 500ms ease;
+    @apply 
+    border
+    flex align-middle justify-center
+    pl-2 pr-3 py-1
+    gap-2
+}
+
+.follow_button {
+    @apply
+    bg-green-500
+    hover:bg-green-600
+}
+
+.unfollow_button {
+    @apply
+    bg-rose-600
+    hover:bg-rose-700
+}

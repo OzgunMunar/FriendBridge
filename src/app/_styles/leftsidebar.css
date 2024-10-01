@@ -1,9 +1,7 @@
 .left_side_bar {
-    height: calc(100vh - 62px);
     transition: width 1s ease;
 
     @apply
-
     w-[50px]
     mt-[62px]
     mr-[50px]
@@ -11,14 +9,13 @@
     shadow-xl
     fixed 
     left-0
-    top-0
+    top-5
     z-10
     max-[1000px]:hidden
 }
 
 .leftSideBarOpen {
-    @apply 
-    
+    @apply
     w-[200px]
 }
 

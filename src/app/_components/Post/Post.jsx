@@ -145,16 +145,17 @@ const Post = ({ post }) => {
 
                         {isDropdown && (
 
-
                             <div className="post_dropdown_content">
 
                                 <p className="post_dropdown_content_action" onClick={openModal}>
-                                    <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                                    <img width="16" height="16" src="https://img.icons8.com/ink/48/edit.png" alt="edit"/>
                                     <span>Edit</span>
                                 </p>
-                                <div>|</div>
+
+                                <div class="border-l border-gray-400 h-6"></div>
+
                                 <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
-                                    <img width="30" height="30" src="https://img.icons8.com/color/48/delete-forever.png" alt="delete-forever"/>
+                                    <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/trash.png" alt="trash"/>
                                     <span>Delete</span>
                                 </p>
 
@@ -192,27 +193,23 @@ const Post = ({ post }) => {
             </div>
 
             <Toaster position="top-center" reverseOrder={false}/>
-
-            <div>
                 
-                <div className={isEditModalOpen ? "modal-container active":"modal-container"}>
+            <div className={isEditModalOpen ? "modal-container active":""}>
 
-                    <EditDeleteModal isOpen={ isEditModalOpen } onClose={closeModal}>
+                <EditDeleteModal isOpen={ isEditModalOpen } onClose={closeModal}>
 
-                        <PostForm
-                            type='Edit'
-                            post={postToEdit}
-                            setPost={setPostToEdit}
-                            submitting={submitting}
-                            handleSubmit={EditPost}
-                            textAreaRef={textAreaRef}
-                            rows={8}
-                        />
+                    <PostForm
+                        type='Edit'
+                        post={postToEdit}
+                        setPost={setPostToEdit}
+                        submitting={submitting}
+                        handleSubmit={EditPost}
+                        textAreaRef={textAreaRef}
+                        rows={8}
+                    />
 
-                    </EditDeleteModal>
-                    
-                </div>
-
+                </EditDeleteModal>
+                
             </div>
 
         </div>

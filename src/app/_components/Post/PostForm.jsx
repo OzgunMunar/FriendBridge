@@ -21,13 +21,8 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
       <div className="post_form">
 
-        <div className="form_header">
-          
-        </div>
-        <div className="fading-line"></div>
         <div className="form">
           <textarea id="post_text" rows={rows} placeholder={`What's on your mind, ${user.username}?`}
-          // ''
           ref={textAreaRef} 
           style={{ resize: (type==='Edit') ? 'none':'vertical' }}
           onChange = {(e) => setPost({...post, postText: e.target.value})}></textarea>

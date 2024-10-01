@@ -22,9 +22,8 @@
     @apply
 
     overflow-hidden
-    bg-[#403F4C]
+    bg-stone-700
     text-base
-    text-[#c4c4c454]
     fixed
     top-0
     left-0
@@ -45,14 +44,6 @@
 
 }
 
-.tabs .headerTab:hover, .navbar .dropbtn {
-    transition: color 1s ease;
-}
-
-.tabs .headerTab:hover, .navbar .dropbtn:hover{
-    color: #56A3A6;
-}
-
 .tabs{
     @apply
     float-right
@@ -66,24 +57,14 @@
     pl-2
 }
 
-
-.dropdown-content {
-    min-width: 20em;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    @apply
-
-    fixed
-    bg-[#f9f9f9]
-    right-4
-    mt-[33rem]
-}
-
 .dropdown {
     @apply
     overflow-hidden
 }
 
 .dropdown .dropbtn {
+
+    transition: background-color 500ms ease;
 
     @apply
 
@@ -94,9 +75,48 @@
     bg-inherit
     mt-0
     border-none
-
+    flex
+    align-middle
+    justify-center
+    gap-2
+    bg-stone-800
 }
 
+.icon {
+    transition: transform 0.5s ease;
+}
+  
+.rotate {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    min-width: 20em;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    @apply
+
+    fixed
+    bg-[#f9f9f9]
+    right-4
+    top-0
+    mt-16
+    rounded-lg
+}
+
+.dropdown-content::after {
+    content: '';
+    border: .75rem solid transparent;
+	border-top: none;
+	border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+
+    @apply
+    absolute
+    w-0
+    h-0
+    bottom-full
+    right-3
+}
 
 .dropdown-content a {
 
@@ -107,6 +127,8 @@
     no-underline
     block
     text-left  
+    rounded-lg
+    p-1.5
 }
 
 .dropdown-content>a {
@@ -118,7 +140,6 @@
     @apply
     bg-[#ddd]
 }
-
 
 .grid-container-dropdown {
     display: grid;
@@ -163,6 +184,16 @@
     border-radius: 50%;
     @apply
     object-cover
+}
+
+.nav_bar_dropdown_photo_size {
+    @apply
     w-[50px]
     h-[50px]
+}
+
+.nav_bar_navbar_photo_size {
+    @apply
+    w-[30px]
+    h-[30px]
 }

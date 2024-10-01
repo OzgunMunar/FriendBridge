@@ -87,7 +87,14 @@ const Navbar = () => {
                 <div ref={dropdownRef} className="dropdown">
 
                     <button className="dropbtn" onClick={() => headerMainDropdown()}>
-                        <img width="23" height="23" src="https://img.icons8.com/color/48/expand-arrow--v1.png" alt="expand-arrow--v1"/>
+                        
+                        <img src={`${user.userImageLink}`} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_navbar_photo_size"/>
+                        <span>{user.username}</span>
+                        
+                        <div className={`icon ${isDropdown ? 'rotate': ''}`}>
+                            <img width="23" height="23" src="https://img.icons8.com/color/48/expand-arrow--v1.png" alt="expand-arrow--v1" />
+                        </div>
+                        
                     </button>
 
                 </div>
@@ -101,7 +108,7 @@ const Navbar = () => {
                         <div className="grid-container-dropdown">
 
                             <div className="grid-item-dropdown-1">
-                                <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="nav_bar_photo" />
+                                <img src={user.userImageLink} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_dropdown_photo_size" />
                             </div>
 
                             <div className="grid-item-dropdown-2">
