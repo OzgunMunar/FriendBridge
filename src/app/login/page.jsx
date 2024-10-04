@@ -15,7 +15,7 @@ export default function Login() {
             <section className='login_text'>
 
                 <p className="login_header_app_name">Social App</p>
-                <p className="login_header_app_explanation">A chance to meet anyone across the world, share what you think and get to know people who are sharing same interests with you!</p>
+                <p className="login_header_app_explanation">A chance to meet people from around the world, share your thoughts, and connect with others who share your interests!</p>
 
             </section>
 

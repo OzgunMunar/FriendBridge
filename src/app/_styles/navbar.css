@@ -7,7 +7,6 @@
 
     absolute
     text-xl
-    ml-[25px]
     mt-0
     bg-clip-text 
     text-transparent 
@@ -15,13 +14,11 @@
 }
 
 .navbar{
-
     font-family: Tahoma, Verdana, sans-serif;
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,0.5);
     
     @apply
 
-    overflow-hidden
+    /* overflow-hidden */
     bg-stone-700
     text-base
     fixed
@@ -29,6 +26,8 @@
     left-0
     z-10
     w-full
+    shadow-md
+    pl-2
 
 }
 
@@ -52,9 +51,8 @@
     items-center
 }
 
-.headerNavbar{
-    @apply 
-    pl-2
+.tooltip {
+    position: fixed !important;
 }
 
 .dropdown {
@@ -92,7 +90,6 @@
 
 .dropdown-content {
     min-width: 20em;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     @apply
 
     fixed
@@ -101,6 +98,7 @@
     top-0
     mt-16
     rounded-lg
+    shadow-md
 }
 
 .dropdown-content::after {

@@ -6,6 +6,9 @@
     right-0
     top-20
     text-sm
+    hidden
+
+    md:block
 }
 
 .main_right_side_suggestion_container,
@@ -14,14 +17,16 @@
     p-3
     bg-white
     w-full
-    shadow-lg
+    shadow-md
     mb-8
+    rounded-md
 }
 
 .main_right_side_title {
     @apply
-    text-slate-500
-    pb-3
+    pb-4
+    text-purple-400
+    font-bold
 }
 
 .main_right_side_suggested_people_container,
@@ -31,6 +36,7 @@
     justify-center
     items-start
     flex-col
+    gap-2
 }
 
 .suggested_person_container,
@@ -39,14 +45,26 @@
     flex
     justify-between
     items-center
-    pb-2
     w-full
+    cursor-pointer
 }
 
 .suggested_person_container img,
 .latest_activity_info img {
     @apply 
     rounded-full
+}
+
+.latest_activity_info p,
+.suggested_person_info span {
+    @apply
+    font-bold 
+    text-zinc-700
+}
+
+.latest_activity_info span {
+    @apply
+    font-normal 
 }
 
 .suggested_person_info,
@@ -63,6 +81,7 @@
     flex 
     align-middle
     justify-center
+    gap-1
 }
 
 .suggested_person_button {
@@ -72,16 +91,32 @@
     flex align-middle justify-center
     pl-2 pr-3 py-1
     gap-2
+    rounded-md
+}
+
+.suggested_person_button_text {
+    @apply
+    hidden
+    xl:block
 }
 
 .follow_button {
     @apply
+    border
+    border-green-700
     bg-green-500
     hover:bg-green-600
 }
 
 .unfollow_button {
     @apply
+    border
+    border-rose-800
     bg-rose-600
     hover:bg-rose-700
+}
+
+.time-indicator {
+    @apply
+    text-blue-400
 }

@@ -1,6 +1,4 @@
 import "@/app/_styles/post.css"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faThumbsUp, faComments, faShare, faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { UserContext, FeedChangeContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"

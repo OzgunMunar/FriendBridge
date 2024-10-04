@@ -26,12 +26,12 @@ const MainRightSide = () => {
 
                         <button className="suggested_person_button follow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
-                            <span>Follow</span>
+                            <span className="suggested_person_button_text">Follow</span>
                         </button>
 
                         <button className="suggested_person_button unfollow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                            <span>Unfollow</span>
+                            <span className="suggested_person_button_text">Dismiss</span>
                         </button>
 
                     </div>
@@ -49,12 +49,12 @@ const MainRightSide = () => {
 
                         <button className="suggested_person_button follow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
-                            <span>Follow</span>
+                            <span className="suggested_person_button_text">Follow</span>
                         </button>
 
                         <button className="suggested_person_button unfollow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                            <span>Unfollow</span>
+                            <span className="suggested_person_button_text">Dismiss</span>
                         </button>
 
                     </div>
@@ -65,19 +65,19 @@ const MainRightSide = () => {
 
                     <div className="suggested_person_info">
                         <img width="50" height="50" src="https://tinyurl.com/3bzrs57n" />
-                        <span>Dennis Dilneoux</span>
+                        <span>Susan Scrumg</span>
                     </div>
 
                     <div className="suggested_person_buttons">
 
                         <button className="suggested_person_button follow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
-                            <span>Follow</span>
+                            <span className="suggested_person_button_text">Follow</span>
                         </button>
 
                         <button className="suggested_person_button unfollow_button">
                             <img width="20" height="20" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                            <span>Unfollow</span>
+                            <span className="suggested_person_button_text">Dismiss</span>
                         </button>
 
                     </div>
@@ -85,6 +85,7 @@ const MainRightSide = () => {
                 </div>
 
             </div>
+
         </div>
 
         <div className="main_right_side_activities_container">
@@ -99,45 +100,45 @@ const MainRightSide = () => {
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/yc4wdw9a" />
-                        <p>Dennis Dilneoux <span className="text-gray-500">changed his profile picture.</span></p>
+                        <p>Dennis Dilneoux<span className="text-gray-500"> changed his profile picture, <span className='time-indicator'>1 min ago</span>.</span></p>
                     </div>
-                    <span className="text-end text-gray-500">1 min ago</span>
+
                 </div>
 
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/4snvu7b3" />
-                        <p>April ONeille <span className='text-gray-500'>liked a post.</span></p>
+                        <p>April ONeille <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></p>
                     </div>
-                    <span className="text-end text-gray-500">1 min ago</span>
+                    
                 </div>
 
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/5n7vrxza" />
-                        <p>Sarah Digsop <span className='text-gray-500'>poked you.</span></p>
+                        <p>Sarah Digsop <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></p>
                     </div>
-                    <span className="text-end text-gray-500">3 min ago</span>
+                    
                 </div>
 
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/4zrbvv9r" />
-                        <p>Susan Froide <span className='text-gray-500'>liked a comment.</span></p>
+                        <p>Susan Froide <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></p>
                     </div>
-                    <span className="text-end text-gray-500">4 min ago</span>
+                    
                 </div>
 
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
                         <img width="50" height="50" src="https://tinyurl.com/3xppu43t" />
-                        <p>Mark Gubrell <span className='text-gray-500'>changed his profile picture.</span></p>
+                        <p>Mark Gubrell <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></p>
                     </div>
-                    <span className="text-end text-gray-500">10 min ago</span>
+                    
                 </div>
 
             </div>

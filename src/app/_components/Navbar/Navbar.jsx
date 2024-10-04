@@ -8,7 +8,7 @@ import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserContext } from "../Contexts/Contexts";
-import Tooltip from "../Tooltip/Tooltip";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
 
@@ -56,33 +56,48 @@ const Navbar = () => {
 
     return (
 
-      <div className="navbar" id="headerNavbar">
+      <div className="navbar">
 
             <Link href="/">
                 <span id="logo">
-                    Social App
+                    SocialApp
                 </span> 
             </Link>
 
             <div className="tabs">
                 
-                <Tooltip text='Feed'>
-                    <Link href="/" className="headerTab">
-                        <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
-                    </Link>
-                </Tooltip>
+                <Link href="/" className="headerTab" id='navbar_feed_tab'>
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
+                </Link>
+                <Tooltip 
+                    anchorSelect='#navbar_feed_tab' 
+                    content='Feed' 
+                    place='bottom' 
+                    offset={0}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
-                <Tooltip text='Notifications'>
-                    <Link href="/notifications" className="headerTab">
-                        <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
-                    </Link>
-                </Tooltip>
+                <Link href="/" className="headerTab" id='navbar_notification_tab'>
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
+                </Link>
+                <Tooltip 
+                    anchorSelect='#navbar_notification_tab' 
+                    content='Notifications'
+                    place='bottom' 
+                    offset={0}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
-                <Tooltip text='Messages'>
-                    <Link href="/messages" className="headerTab">
-                        <img width="23" height="23" src="https://img.icons8.com/color/48/paper-plane.png" alt="paper-plane"/>
-                    </Link>
-                </Tooltip>
+                <Link href="/" className="headerTab" id='navbar_messages_tab'>
+                    <img width="23" height="23" src="https://img.icons8.com/color/48/paper-plane.png" alt="paper-plane"/>
+                </Link>
+                <Tooltip 
+                    anchorSelect='#navbar_messages_tab' 
+                    content='Messages'
+                    place='bottom' 
+                    offset={0}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
                 <div ref={dropdownRef} className="dropdown">
 

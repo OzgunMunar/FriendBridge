@@ -1,5 +1,5 @@
 .feed_container {
     @apply
     w-full
-    max-[1000px]:w-full
+    /* max-[1000px]:w-full */
 }

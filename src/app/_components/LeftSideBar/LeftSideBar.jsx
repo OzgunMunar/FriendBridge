@@ -1,12 +1,10 @@
 import "@/app/_styles/leftsidebar.css"
-import { UserContext } from "../Contexts/Contexts";
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Link from "next/link";
-import Image from "next/image";
+import { Tooltip } from "react-tooltip";
 
-const LeftSideBar = ({ page }) => {
+const LeftSideBar = ({ page, show }) => {
 
-  let { user }  = useContext(UserContext)
   const [isMouseOver, setIsMouseOver] = useState(false)
 
   function handleMouseEnter()
@@ -24,23 +22,26 @@ const LeftSideBar = ({ page }) => {
 
         <ul className='left_side_bar_items'>
 
-            <Link href="/profile">
+            <Link href="/profile" id="profile_leftside_button">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  {/* <Image src={user.userImageLink} 
-                          alt="Picture of the post owner" 
-                          loading="lazy" 
-                          width={30}
-                          height={30}
-                          className="left_side_bar_post_photo"/> */}
-                  <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="left_side_bar_post_photo" />
+                  <img src="https://img.icons8.com/fluency/48/user-location.png" alt="profile" className="left_side_bar_post_photo"/>
                 </div>
 
-                <span>{user.username}</span>
+                <span>Profile</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#profile_leftside_button' 
+                    content='Profile' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    effect='solid'
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
             
-            <Link href="/">
+            <Link href="/" id="feed_leftside_button">
               <li className={`${page === 'Feed' ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
@@ -49,13 +50,21 @@ const LeftSideBar = ({ page }) => {
                 <span>Feed</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#feed_leftside_button' 
+                    content='Feed' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
             <div className="left_side_bar_horizontal_line"></div>
-            <li className="left_side_bar_title">
+            <li className="left_side_bar_title hidden lg:block">
                 <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>Discover More</p>
             </li>
 
-            <Link href="/">
+            <Link href="/" id="findgroup_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
@@ -63,8 +72,16 @@ const LeftSideBar = ({ page }) => {
                 <span>Find Groups</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#findgroup_leftside_button' 
+                    content='Find Group' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
             
-            <Link href="/">
+            <Link href="/" id="globalposts_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>
@@ -72,8 +89,16 @@ const LeftSideBar = ({ page }) => {
                 <span>Global Posts</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#globalposts_leftside_button' 
+                    content='Global Posts' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
-            <Link href="/">
+            <Link href="/" id="savedposts_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/save-all.png" alt="save-all"/>
@@ -81,8 +106,16 @@ const LeftSideBar = ({ page }) => {
                 <span>Saved Posts</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#savedposts_leftside_button' 
+                    content='Saved Posts' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
-            <Link href="/">
+            <Link href="/" id="events_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
@@ -90,13 +123,21 @@ const LeftSideBar = ({ page }) => {
                 <span>Events</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#events_leftside_button' 
+                    content='Events' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
             <div className="left_side_bar_horizontal_line"></div>
-              <li className="left_side_bar_title">
+            <li className="left_side_bar_title hidden lg:block">
               <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>App Related</p>
             </li>
             
-            <Link href="/">
+            <Link href="/" id="admanager_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
@@ -104,8 +145,16 @@ const LeftSideBar = ({ page }) => {
                 <span>Ad Manager</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#admanager_leftside_button' 
+                    content='Ad Manager' 
+                    place='right' 
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
             
-            <Link href="/">
+            <Link href="/" id="playgames_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
@@ -113,8 +162,16 @@ const LeftSideBar = ({ page }) => {
                 <span>Play Games</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#playgames_leftside_button' 
+                    content='Play Games' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
-            <Link href="/">
+            <Link href="/" id="readnews_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
@@ -122,6 +179,14 @@ const LeftSideBar = ({ page }) => {
                 <span>Read News</span>
               </li>
             </Link>
+            <Tooltip 
+                    anchorSelect='#readnews_leftside_button' 
+                    content='Read News' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
 
         </ul>
 

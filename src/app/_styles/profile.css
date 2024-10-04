@@ -19,7 +19,7 @@
     justify-center
     flex-col
     
-    max-[1000px]:mx-4
+    /* max-[1000px]:mx-4 */
 }
 
 .profile_first_section_container {
@@ -33,15 +33,15 @@
     flex
     items-center
 
-    max-[1000px]:mx-4
-    max-[1000px]:w-full
+    /* max-[1000px]:mx-4 */
+    /* max-[1000px]:w-full */
     
-    max-[850px]:p-6
-    max-[850px]:h-auto
+    /* max-[850px]:p-6 */
+    /* max-[850px]:h-auto */
 
-    max-[750px]:flex-col
+    /* max-[750px]:flex-col */
 
-    max-[600px]:pb-10
+    /* max-[600px]:pb-10 */
 }
 
 .profile_picture_container {
@@ -147,7 +147,7 @@
     flex
     items-center
     justify-center
-    max-[1000px]:w-full 
+    /* max-[1000px]:w-full  */
 }
 
 .profile_feed_title {
@@ -195,13 +195,6 @@
     flex items-center justify-center
 }
 
-.profile_edit_button_container .tooltip {
-    @apply
-    absolute
-    top-2.5
-    right-5
-}
-
 .profile_change_password_container {
     @apply
     flex
@@ -217,7 +210,7 @@
     transition
     duration-1000
     hover:bg-sky-300
-    hover:shadow-lg
+    hover:shadow-md
 }
 
 .profile_change_password_container.disabled-button {
@@ -238,14 +231,6 @@
     @apply
     mt-2
     text-[#333]
-}
-
-.profile_change_password_container .tooltip {
-    @apply
-    absolute
-    w-[200px]
-    top-2
-    left-[-115px]
 }
 
 .modalprofile_container {
@@ -319,7 +304,7 @@
     duration-300
     ease-in
     hover:bg-gray-500
-    hover:shadow-lg
+    hover:shadow-md
 }
 
 .modalprofile_submit_button {
@@ -332,5 +317,5 @@
     duration-300
     ease-in
     hover:bg-sky-500
-    hover:shadow-lg
+    hover:shadow-md
 }

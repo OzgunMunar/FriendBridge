@@ -5,7 +5,7 @@
 :root {
   
   --foreground-rgb: 0, 0, 0;
-  --body-background: #d6e4fc;
+  --body-background: #EDEFEF;
   @import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Sacramento&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 
@@ -26,22 +26,4 @@ body::-webkit-scrollbar-track{
 
 body::-webkit-scrollbar-thumb{
   background: black;
-}
-
-.icons_by_who {
-
-  @apply
-  
-  fixed
-  z-[999]
-  right-2.5
-  bottom-2.5
-  text-pink-900
-  max-[1000px]:hidden
-}
-
-.icons_by_who a {
-  @apply
-  text-blue-900
-  text-2xl
 }

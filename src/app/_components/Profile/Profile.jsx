@@ -3,7 +3,6 @@ import axios from "axios"
 import { Toaster, toast } from "react-hot-toast"
 import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
-import Tooltip from '../Tooltip/Tooltip'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/profile.css'
 
@@ -204,24 +203,21 @@ const Profile = () => {
 
                 <div className='profile_edit_button_container'>
 
-                    <Tooltip text='Edit'>
-                        <button type='button' className='profile_edit_button' onClick={openModalToEdit}>
-                            <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
-                        </button>
-                    </Tooltip>
+                    <button type='button' className='profile_edit_button' onClick={openModalToEdit}>
+                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                    </button>
 
                 </div>
 
                 <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
 
-                    <Tooltip text={`${isPasswordMailSent === true ? 'Email already sent':'Change Password'}`}>
-                        <button type='button' 
-                                className='profile_change_password_button'
-                                onClick={changePassword} 
-                                disabled={isPasswordMailSent}>
-                            <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/send-mass-email.png" alt="send-mass-email"/>
-                        </button>
-                    </Tooltip>
+                    
+                    <button type='button' 
+                            className='profile_change_password_button'
+                         ß   onClick={changePassword} 
+                            disabled={isPasswordMailSent}>
+                        <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/send-mass-email.png" alt="send-mass-email"/>
+                    </button>
 
                 </div>
 

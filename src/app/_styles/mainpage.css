@@ -1,43 +1,46 @@
 .body_sections {
     @apply
-
-    grid
-    grid-cols-6
     gap-4
+    px-5
+
+    md:grid
+    md:grid-cols-6
+    md:px-0
 }
 
 .left_sidebar_emptiness {
     @apply
-
-    col-span-1 p-4
+    hidden
+    
+    lg:block
+    lg:col-span-1
 }
 
 .posts_section {
     @apply
     mt-20
+    ml-10
     flex
     items-center
     justify-center
     flex-col
-    /* max-[1000px]:mx-4 */
     col-span-3
     gap-4
+
+    md:col-span-4
+    md:ml-20
+
+    lg:col-span-3
+    lg:ml-0
 }
 
 .right_sidebar_emptiness {
     @apply
+    hidden
+    p-0
 
-    col-span-2 
-    p-4
-}
-
-.posts_section > .horizontal_line {
-    background: linear-gradient(to left, transparent, black, transparent);
-    @apply
-    w-2/3
-    h-[2px]
-    my-4
-    max-[1000px]:w-full
+    lg:block
+    lg:col-span-2
 }
 
 .verification_warning_text {

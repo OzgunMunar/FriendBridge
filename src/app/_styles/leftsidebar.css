@@ -1,5 +1,5 @@
 .left_side_bar {
-    transition: width 1s ease;
+    transition: width 500ms ease;
 
     @apply
 
@@ -7,27 +7,29 @@
     mt-[62px]
     mr-[50px]
     bg-white
-    shadow-xl
+    shadow-md
     fixed 
     left-0
     top-5
     z-10
-    max-[1000px]:hidden
+    lg:block
 }
 
 .leftSideBarOpen {
     @apply
-    w-[200px]
+    lg:w-[175px]
 }
 
 .left_side_bar span {
     white-space: nowrap;
-    transition: 500ms ease;
-    @apply opacity-0
+    transition: color 2s ease;
+    @apply
+    hidden
 }
 
 .leftSideBarOpen span {
-    @apply opacity-100
+    @apply 
+    lg:block
 }
 
 .activeli > * {
@@ -62,7 +64,6 @@
     flex-col
     py-1
 }
-
 
 .left_side_bar_title {
     @apply
@@ -151,3 +152,8 @@
     h-[30px]
     object-cover
 }
+
+/* .tooltip {
+    position: fixed;
+
+} */

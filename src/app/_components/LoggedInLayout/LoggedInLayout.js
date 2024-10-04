@@ -51,7 +51,7 @@ const LoggedInLayout = ( {children} ) => {
         <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
-            <LeftSideBar page = { page }/>
+            <LeftSideBar page= { page }/>
             <PageLoader />
           </PageContext.Provider>
         </UserContext.Provider>
@@ -62,7 +62,7 @@ const LoggedInLayout = ( {children} ) => {
         <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <PageContext.Provider value = {{ setPage }}>
-            <LeftSideBar page={page}/>
+            <LeftSideBar page={page} />
             <PageLoaderContext.Provider value = {{ setLoader }}>
               { children }
             </PageLoaderContext.Provider>
