@@ -3,8 +3,8 @@
 import React, {useEffect, useRef} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import { Toaster, toast } from "react-hot-toast";
 import '@/app/_styles/login.css'
+import { toast } from "react-toastify";
 
 export default function LoginPage({changePage}) {
     
@@ -25,10 +25,11 @@ export default function LoginPage({changePage}) {
 
             setLoading(true)
             await axios.post("/api/users/login", user)
+            toast.success("Successfully signed in.", { theme: "light" })
             router.push("/")
             
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message, {theme: "dark"})
         } finally{
             setLoading(false)
         }
@@ -83,7 +84,6 @@ export default function LoginPage({changePage}) {
             <div className="login_form_horizontal_line"></div>
 
             <button type="button" className="login_form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
-            <Toaster position="top-center" reverseOrder={false}/>
 
         </section>
 

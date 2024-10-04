@@ -2,9 +2,9 @@ import "@/app/_styles/post.css"
 import { UserContext, FeedChangeContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
-import { Toaster, toast } from "react-hot-toast";
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
+import { toast } from "react-toastify";
 
 const Post = ({ post }) => {
 
@@ -78,15 +78,14 @@ const Post = ({ post }) => {
             setSubmitting(true)
 
             const result = await axios.patch(`/api/post/${post._id}`, postToEdit)
-                                        .then(() => toast.success("Post edited"))
-                                        .catch((error) => toast.error("An error occured during editing post."))
+                                        .then(() => toast.success("Post edited", { theme: "light" }))
+                                        .catch((error) => toast.error("An error occured during editing post."), { theme: "dark" })
             
             setShouldFeedChangeSwitch(val => !val)
             closeModal()
 
         } catch (error) {
-            console.log(error.data)
-            toast.error(error.data)
+            toast.error(error.data, { theme: "dark" })
         } finally {
             setSubmitting(false)
         }
@@ -98,15 +97,14 @@ const Post = ({ post }) => {
         try {
 
             await axios.delete(`/api/post/${postId}`)
-            .then(() => toast.success("Post deleted"))
-            .catch((error) => toast.error("An error occured during deleting post."))
+            .then(() => toast.success("Post deleted", { theme: "light" }))
+            .catch((error) => toast.error("An error occured during deleting post.", { theme: "dark"} ))
 
             setShouldFeedChangeSwitch(val => !val)
 
         } catch (error) {
 
-            console.log(error)
-            toast.error("An error occured during deleting post.")
+            toast.error("An error occured during deleting post.", { theme: "dark"})
 
         }
 
@@ -189,8 +187,6 @@ const Post = ({ post }) => {
                 </div>
 
             </div>
-
-            <Toaster position="top-center" reverseOrder={false}/>
                 
             <div className={isEditModalOpen ? "modal-container active":""}>
 

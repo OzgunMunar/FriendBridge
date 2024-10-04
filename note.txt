@@ -1,6 +1,6 @@
 npm i 
 axios bcryptjs jsonwebtoken nodemailer 
-react-hot-toast mongoose
+react-toastify mongoose
 
 
 middleware allows you to run code before a request is completed.

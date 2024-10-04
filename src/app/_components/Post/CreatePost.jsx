@@ -4,9 +4,10 @@ import Form from "./PostForm"
 import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Toaster, toast } from "react-hot-toast";
 import { FeedChangeContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
+import { toast } from "react-toastify";
+
 
 const CreatePost = () => {
 
@@ -30,14 +31,14 @@ const CreatePost = () => {
       setSubmitting(true)
 
       await axios.post("/api/post/new", post)
-      toast.success("Post created.")
+      toast.success("Post created.", { theme: "light" })
 
       textAreaRef.current.value = ""
       router.push('/')
       setShouldFeedChangeSwitch(val => !val)
 
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.message, { theme: "dark" })
     } finally {
       setSubmitting(false)
     }
@@ -59,8 +60,6 @@ const CreatePost = () => {
             rows={4}
 
           />
-
-          <Toaster position="top-center" reverseOrder={false}/>
 
       </div>
 

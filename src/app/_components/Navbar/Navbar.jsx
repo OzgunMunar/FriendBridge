@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import '@/app/_styles/navbar.css'
-
-import { Toaster, toast } from "react-hot-toast";
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserContext } from "../Contexts/Contexts";
 import { Tooltip } from "react-tooltip";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
 
@@ -44,12 +43,10 @@ const Navbar = () => {
         try {
             
             await axios.get('/api/users/logout')
-            toast.success('Logout successful')
             router.push('/login')
 
         } catch (error) {
-            console.log(error.message)
-            toast.error(error.message)
+            toast.error(error.message, { theme: "dark" })
         }
 
     }
@@ -208,8 +205,6 @@ const Navbar = () => {
                 )}
 
             </div>
-
-            <Toaster position="top-center" reverseOrder={false}/>
         
       </div>
 

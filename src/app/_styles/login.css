@@ -14,12 +14,13 @@
     @apply 
   
     flex
-    /* max-[1000px]:flex-col  */
-    flex-row 
-    items-center 
-    justify-center 
-    min-h-screen 
-    gap-x-20 
+    flex-col
+    items-center
+    justify-center
+    min-h-screen
+    gap-20
+    
+    lg:flex-row
   }
   
   .login_container .login_form {
@@ -36,21 +37,23 @@
     justify-center
     bg-white
     py-10
-    /* max-[1000px]:w-5/6 */
-    w-1/4
+    w-3/4
     shadow-md
     h-auto
     relative
     rounded-lg
+    
+    lg:w-1/4
+    lg:mr-7
   }
   
   .login_container .login_text {
     @apply 
-    w-1/3
-    /* max-[1000px]:w-5/6 */
-    /* max-[1000px]:h-full */
-    /* max-[1000px]:text-center  */
-    h-96
+    w-full
+    text-center
+    lg:px-2
+    lg:w-1/3
+    lg:h-full
   }
   
   .login_header_app_name {
@@ -59,13 +62,13 @@
     @apply
   
     font-extrabold 
-    /* max-[1000px]:text-8xl  */
     drop-shadow-md
     text-8xl 
     text-transparent 
     bg-clip-text 
     mb-5 
     py-2 
+    whitespace-nowrap
   }
   
   .login_header_app_explanation {
@@ -73,12 +76,13 @@
     font-family: 'Sacramento', cursive;
     font-size: 35px;
     @apply 
-    
+    hidden
+
+    lg:block
     font-normal 
-    text-gray-600
-    mb-5
-    py-2
-    /* max-[1000px]:hidden */
+    lg:text-gray-600
+    lg:p-2
+
   }
   
   .login_submit_button {
@@ -122,7 +126,7 @@
   .login_form_create_account_button {
     @apply
   
-    w-1/2
+    w-5/6
     text-center
     text-white
     border
@@ -146,7 +150,7 @@
 
     @apply
 
-    w-1/2
+    w-5/6
     text-center
     text-white
     border

@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState, useEffect } from "react"
-import { Toaster, toast } from "react-hot-toast"
 import Link from "next/link"
 import axios from "axios"
 import { useRouter } from "next/navigation"
+import { toast } from "react-toastify";
 
 const ChangePassword = () => {
 
@@ -41,7 +41,7 @@ const ChangePassword = () => {
 
             if(user.newpassword !== user.repeatnewpassword)
             {
-                toast.error("Passwords should match.")
+                toast.error("Passwords should match.", { theme: "dark" })
                 setInputBackground('pink')
                 return
             }
@@ -51,11 +51,11 @@ const ChangePassword = () => {
             await axios.post("/api/users/changepassword", user)
             await axios.get('/api/users/logout')
             
-            toast.success('Password change successful')
+            toast.success('Password change successful', { theme: "light" })
             router.push('/login')
 
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message, { theme: "dark" })
         }
         finally {
             setLoading(false)
@@ -140,8 +140,6 @@ const ChangePassword = () => {
                 disabled={buttonDisabled}>
                     {buttonDisabled ? "Provide Values" : "Change Password"}</button>
             <Link href="/">Cancel to Home Page</Link>
-
-            <Toaster position="top-center" reverseOrder={false}/>
 
         </div>
         

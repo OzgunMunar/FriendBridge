@@ -5,6 +5,8 @@ import Navbar from '../Navbar/Navbar'
 import LeftSideBar from '../LeftSideBar/LeftSideBar'
 import '@/app/_styles/mainpage.css'
 import PageLoader from '@/app/pageloader'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const LoggedInLayout = ( {children} ) => {
 
@@ -55,6 +57,17 @@ const LoggedInLayout = ( {children} ) => {
             <PageLoader />
           </PageContext.Provider>
         </UserContext.Provider>
+        <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                />
       </Fragment>
       : 
       (
@@ -68,6 +81,17 @@ const LoggedInLayout = ( {children} ) => {
             </PageLoaderContext.Provider>
           </PageContext.Provider>
         </UserContext.Provider>
+        <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                />
       </Fragment>
     )
 }

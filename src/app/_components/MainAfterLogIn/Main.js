@@ -5,6 +5,7 @@ import axios from 'axios';
 import { UserContext, FeedChangeContext, PageLoaderContext } from "../Contexts/Contexts";
 import '@/app/_styles/mainpage.css'
 import MainRightSide from '../MainRightSide/MainRightSide';
+import { toast } from "react-toastify";
 
 const Main = () => {
 
@@ -19,12 +20,11 @@ const Main = () => {
         try {
 
             await axios.get('/api/users/logout')
-            toast.success('Logout successful')
+            toast.success('Logout successful.', { theme: "light" })
             router.push('/login')
 
         } catch (error) {
-            console.log(error.message)
-            toast.error(error.message)
+            toast.error(error.message, { theme: "dark" })
         }
 
     }

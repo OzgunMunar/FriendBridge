@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-toastify";
 
 export default function SignupPage({changePage}) {
     
@@ -28,7 +28,7 @@ export default function SignupPage({changePage}) {
 
             if(user.password !== user.passwordRepeat)
             {
-                toast.error("Passwords doesn't match")
+                toast.error("Passwords doesn't match", { theme: "dark" })
                 return
             }
             
@@ -36,7 +36,7 @@ export default function SignupPage({changePage}) {
             window.location.reload();
             
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message, { theme: "dark" })
         }finally {
             setLoading(false);
         }
@@ -117,8 +117,6 @@ export default function SignupPage({changePage}) {
             <button type="button" className="sign_up_tologinpage" onClick={()=> changePage(val => !val)}>
                 <span>Log In</span>
             </button>
-
-            <Toaster position="top-center" reverseOrder={false}/>
 
         </div>
 

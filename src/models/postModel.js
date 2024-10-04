@@ -15,7 +15,13 @@ const PostSchema = new Schema({
         required: true,
         default: true
     },
-    comments: [{body: String, date: Date, likeNumber: Number}],
+    comments: [
+        { 
+            body: String,
+            date: Date, 
+            likeNumber: Number 
+        }
+    ],
     postedDate: {
         type: Date,
         default: Date.now
@@ -23,6 +29,12 @@ const PostSchema = new Schema({
     likeNumber: {
         type: Number,
         default: 0
+    },
+    imageUrlLink: {
+        type: String
+    },
+    location: {
+        type: String
     }
 
 })

@@ -1,10 +1,10 @@
-import React, { useState, useContext, useEffect, useRef, useLayoutEffect } from 'react'
+import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { Toaster, toast } from "react-hot-toast"
 import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/profile.css'
+import { toast } from "react-toastify";
 
 const Profile = () => {
 
@@ -79,11 +79,11 @@ const Profile = () => {
         try {
             
             await axios.post('/api/users/sendmailofchangepassword')
-            toast.success("Email sent to change password.")
+            toast.success("Email sent to change password.", { theme: "light" })
             setIsPasswordMailSent(true)
 
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message, { theme: "dark" })
             setIsPasswordMailSent(false)
         }
 
@@ -94,13 +94,13 @@ const Profile = () => {
         try {
 
             const result = await axios.post("/api/users/updateuserinfo", userInfo)
-            toast.success(result.data.message)
+            toast.success(result.data.message, { theme: "light" })
 
             setModalShow(false)
             setUserInfoRefreshSwitch(val => !val)
             
         } catch (error) {
-            toast.error(error.response.data.message)
+            toast.error(error.response.data.message, { theme: "dark" })
         }
 
     }
@@ -236,8 +236,6 @@ const Profile = () => {
                 </FeedChangeContext.Provider>
 
             </div>
-
-            <Toaster position="top-center" reverseOrder={false} />
 
             <div className='modal-code'>
 
