@@ -18,7 +18,7 @@ const MainRightSide = () => {
                 <div className="suggested_person_container">
 
                     <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://tinyurl.com/yc4wdw9a" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <span>Dennis Dilneoux</span>
                     </div>
 
@@ -41,7 +41,7 @@ const MainRightSide = () => {
                 <div className="suggested_person_container">
 
                     <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://tinyurl.com/4dkt64cx" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/11410644/pexels-photo-11410644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <span>Illinois Marbel</span>
                     </div>
 
@@ -64,7 +64,7 @@ const MainRightSide = () => {
                 <div className="suggested_person_container">
 
                     <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://tinyurl.com/3bzrs57n" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/11844361/pexels-photo-11844361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <span>Susan Scrumg</span>
                     </div>
 
@@ -99,7 +99,7 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://tinyurl.com/yc4wdw9a" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <p>Dennis Dilneoux<span className="text-gray-500"> changed his profile picture, <span className='time-indicator'>1 min ago</span>.</span></p>
                     </div>
 
@@ -108,7 +108,7 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://tinyurl.com/4snvu7b3" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/7790836/pexels-photo-7790836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <p>April ONeille <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></p>
                     </div>
                     
@@ -117,7 +117,7 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://tinyurl.com/5n7vrxza" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/7562139/pexels-photo-7562139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <p>Sarah Digsop <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></p>
                     </div>
                     
@@ -126,7 +126,7 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://tinyurl.com/4zrbvv9r" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/14686837/pexels-photo-14686837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <p>Susan Froide <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></p>
                     </div>
                     
@@ -135,7 +135,7 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://tinyurl.com/3xppu43t" />
+                        <img width="50" height="50" src="https://images.pexels.com/photos/14587417/pexels-photo-14587417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         <p>Mark Gubrell <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></p>
                     </div>
                     
