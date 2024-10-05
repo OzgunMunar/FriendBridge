@@ -14,6 +14,9 @@ const LoggedInLayout = ( {children} ) => {
     const [page, setPage] = useState('Feed')
     const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
+    
+    const malePlaceholderImage = "https://static.vecteezy.com/system/resources/previews/036/594/092/large_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
+    const femalePlaceholderImage = "https://media.istockphoto.com/id/2060009001/tr/vektör/avatar-user-profile-person-icon-profile-picture-for-social-media-profiles-icons-screensavers.jpg?s=2048x2048&w=is&k=20&c=OCWYH0zjMy_j_lurN7s0bioBWgnD0NCifQmnjp90yuI="
 
     useEffect(() => {
 
@@ -26,9 +29,9 @@ const LoggedInLayout = ( {children} ) => {
           
           if (!user.userImageLink) {
             if (user.gender === "Male") {
-              user.userImageLink = "https://media.istockphoto.com/id/2156808020/tr/vektör/monochromatic-avatar-of-a-man-with-a-beard-and-mustache-wearing-a-suit-and-tie-vector.jpg?s=2048x2048&w=is&k=20&c=kSGSfV1unt6VmY1RXxWpui4PCOSqhDRqckBEDEbMFmE="
+              user.userImageLink = malePlaceholderImage
             } else if (user.gender === "Female") {
-              user.userImageLink = "https://media.istockphoto.com/id/2060009001/tr/vektör/avatar-user-profile-person-icon-profile-picture-for-social-media-profiles-icons-screensavers.jpg?s=2048x2048&w=is&k=20&c=OCWYH0zjMy_j_lurN7s0bioBWgnD0NCifQmnjp90yuI="
+              user.userImageLink = femalePlaceholderImage
             } 
         }
         

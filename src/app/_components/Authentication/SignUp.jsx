@@ -2,8 +2,8 @@
 
 import React, { useEffect, useRef } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function SignupPage({changePage}) {
 
@@ -39,7 +39,7 @@ export default function SignupPage({changePage}) {
             }
 
             if(user.password !== user.passwordRepeat) {
-                toast.info("Passwords doesn't match!", { theme: "dark" })
+                toast.info("Passwords does not match!", { theme: "dark" })
                 return
             }
 
@@ -89,7 +89,7 @@ export default function SignupPage({changePage}) {
         <div className="signup_form main_form">
 
             <p className="main_form_title">Sign Up</p>
-            <p className="main_form_title_two">It's quick, easy and well-formulated to join others!</p>
+            <p className="main_form_title_two">It is quick, easy and well-formulated to join others!</p>
             <div className="login_form_horizontal_line_full"></div>
 
             <input 
