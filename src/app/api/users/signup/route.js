@@ -24,7 +24,7 @@ export async function POST(request){
         }
         
         if(!passwordPatternRegex.test(password)) {
-            return NextResponse.json({message: "Password is invalid: Minimum eight characters, at least one letter and one number!"}, {status: 400})
+            return NextResponse.json({message: "Password is invalid: Minimum eight characters, at least one letter and one number!"}, {status: 401})
         }
 
         //hash password
@@ -49,6 +49,5 @@ export async function POST(request){
         
     } catch (error) {
         return NextResponse.json({error: error.message}, {status: 500})
-
     }
 }

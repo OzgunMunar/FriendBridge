@@ -15,22 +15,16 @@ export async function POST(request){
 
         //check if user exists
         const user = await User.findOne({email})
-
-        if(!user){
-            return NextResponse.json({message: "User does not exist"}, {status: 400})
+        
+        if(user === null){
+            return NextResponse.json({ message: "Credentials are wrong." }, {status: 404})
         }
 
         //check if password is correct
         const validPassword = await bcryptjs.compare(password, user.password)
 
         if(!validPassword) {
-            // return NextResponse.json({error: "Invalid password"}, {status: 400})
-            return NextResponse.json({
-                message: "Password is wrong"
-            }, 
-            {
-                status: 400
-            })
+            return NextResponse.json({ message: "Password is wrong." }, { status: 400 })
         }
         
         // create token data

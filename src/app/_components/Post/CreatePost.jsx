@@ -30,6 +30,12 @@ const CreatePost = () => {
 
       setSubmitting(true)
 
+      if(post === null || post.postText === "")
+      {
+        toast.error("Please write something to post!", { theme: "dark" })
+        return 
+      }
+
       await axios.post("/api/post/new", post)
       toast.success("Post created.", { theme: "light" })
 

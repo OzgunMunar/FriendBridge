@@ -1,22 +1,23 @@
 "use client";
 
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useRouter} from "next/navigation";
 import axios from "axios";
 import '@/app/_styles/login.css'
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginPage({changePage}) {
     
     const router = useRouter();
     
-    const [user, setUser] = React.useState({
+    const [user, setUser] = useState({
         email: "",
         password: "",
     })
 
-    const [buttonDisabled, setButtonDisabled] = React.useState(true);
-    const [loading, setLoading] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [loading, setLoading] = useState(false);
     const emailRef = useRef()
 
     const onLogin = async () => {
@@ -25,11 +26,22 @@ export default function LoginPage({changePage}) {
 
             setLoading(true)
             await axios.post("/api/users/login", user)
-            toast.success("Successfully signed in.", { theme: "light" })
             router.push("/")
             
         } catch (error) {
-            toast.error(error.response.data.message, {theme: "dark"})
+            const response = error.response
+            if (response) {
+                const status = response.status;
+                if (status === 400) {
+                    toast.error(response.data.message, { theme: "dark" });
+                } else if (status === 404) {
+                    toast.info(response.data.message, { theme: "dark" });
+                } else {
+                    toast.error("An unexpected error occurred. Please try again later.", { theme: "dark" });
+                }
+            } else {
+                toast.error("Network error. Please try again later.", { theme: "dark" });
+            }
         } finally{
             setLoading(false)
         }
@@ -84,7 +96,17 @@ export default function LoginPage({changePage}) {
             <div className="login_form_horizontal_line"></div>
 
             <button type="button" className="login_form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
-
+            <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                />
         </section>
 
     )

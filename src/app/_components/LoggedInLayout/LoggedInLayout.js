@@ -5,7 +5,7 @@ import Navbar from '../Navbar/Navbar'
 import LeftSideBar from '../LeftSideBar/LeftSideBar'
 import '@/app/_styles/mainpage.css'
 import PageLoader from '@/app/pageloader'
-import { ToastContainer } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoggedInLayout = ( {children} ) => {
@@ -37,7 +37,7 @@ const LoggedInLayout = ( {children} ) => {
     }, [userInfoRefreshSwitch])
 
     useLayoutEffect(() => {
-
+      
       setLoader(true)
 
     }, [])
