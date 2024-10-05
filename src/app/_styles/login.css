@@ -19,11 +19,10 @@
     justify-center
     min-h-screen
     gap-20
-    
     lg:flex-row
   }
   
-  .login_container .login_form {
+.main_form{
     
     animation-name: visibilityChange;
     animation-duration: 1s;
@@ -36,15 +35,44 @@
     items-center
     justify-center
     bg-white
-    py-10
+    py-6
     w-3/4
     shadow-md
     h-auto
     relative
-    rounded-lg
-    
+    rounded-b-lg
+
     lg:w-1/4
     lg:mr-7
+  }
+
+.main_form_title {
+  
+  @apply
+  text-3xl
+  font-bold
+  pb-1
+}
+
+.main_form_title_two {
+  
+  @apply
+  text-sm
+  font-light
+  text-slate-600
+  pb-6
+}
+
+  .signup_form {
+    @apply
+    border-t-4 
+    border-green-600
+  }
+
+  .login_form {
+    @apply
+    border-t-4
+    border-blue-600
   }
   
   .login_container .login_text {
@@ -85,6 +113,37 @@
 
   }
   
+  .login_form_input {
+
+    @apply 
+  
+    p-2 
+    border
+    rounded-md
+    border-gray-300 
+    mb-4 
+    focus:outline-none 
+    text-black 
+    w-5/6 
+  }
+  
+  .login_form_horizontal_line {
+    @apply
+    
+    w-1/3
+    border
+    border-gray-300
+  }
+
+  .login_form_horizontal_line_full {
+    @apply
+    
+    w-full
+    border
+    border-gray-300
+    mb-6
+  }
+  
   .login_submit_button {
     @apply
     
@@ -100,29 +159,7 @@
     font-medium
     text-lg
   }
-  
-  .login_form_input {
 
-    @apply 
-  
-    p-2 
-    border-b-2
-    border-gray-300 
-    mb-4 
-    focus:outline-none 
-    focus:border-blue-600 
-    text-black 
-    w-5/6 
-  }
-  
-  .login_form_horizontal_line {
-    @apply
-    
-    w-5/6
-    border
-    border-gray-300
-  }
-  
   .login_form_create_account_button {
     @apply
   
@@ -136,6 +173,8 @@
     font-medium
     text-lg
     duration-500
+    mb-3
+
   }
 
   button:disabled,
@@ -151,11 +190,17 @@
     @apply
 
     w-5/6
+    cursor-pointer
     text-center
-    text-white
+    text-black
+
     border
-    bg-blue-700
-    hover:bg-blue-800
+    border-blue-500
+    text-blue-500
+    
+    hover:text-blue-800
+    hover:border-blue-800
+
     p-2
     font-medium
     text-lg

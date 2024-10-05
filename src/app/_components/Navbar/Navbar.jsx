@@ -28,9 +28,9 @@ const Navbar = () => {
           setIsDropdown(false);
         }
 
-      };
+      }
 
-      document.addEventListener('click', handleOutsideClick);
+      document.addEventListener('click', handleOutsideClick)
 
       return () => {
         document.removeEventListener('click', handleOutsideClick);
@@ -100,7 +100,7 @@ const Navbar = () => {
 
                     <button className="dropbtn" onClick={() => headerMainDropdown()}>
                         
-                        <img src={`${user.userImageLink}`} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_navbar_photo_size"/>
+                        <img src={user.userImageLink} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_navbar_photo_size"/>
                         <span>{user.username}</span>
                         
                         <div className={`icon ${isDropdown ? 'rotate': ''}`}>

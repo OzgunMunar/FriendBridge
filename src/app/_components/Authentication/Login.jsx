@@ -64,7 +64,11 @@ export default function LoginPage({changePage}) {
 
     return (
 
-        <section className="login_form">
+        <section className="login_form main_form">
+
+            <p className="main_form_title">Log In</p>
+            <p className="main_form_title_two">To connect and get to know others!</p>
+            <div className="login_form_horizontal_line_full"></div>
 
             <input 
                 className="login_form_input"
@@ -93,9 +97,16 @@ export default function LoginPage({changePage}) {
                     {loading ? "Processing..." : "Log In"}
             </button>
 
-            <div className="login_form_horizontal_line"></div>
+            <div className="flex justify-around items-center flex-row w-5/6">
+
+                <div className="login_form_horizontal_line"></div>
+                <span className="text-gray-400">or</span>
+                <div className="login_form_horizontal_line"></div>
+
+            </div>
 
             <button type="button" className="login_form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
+            
             <ToastContainer
                 position="bottom-right"
                 autoClose={3000}

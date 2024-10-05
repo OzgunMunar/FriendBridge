@@ -11,20 +11,13 @@ export async function POST(request){
     try {
         
         const reqBody = await request.json()
-        const {username, email, password, userImageLink} = reqBody
-        
-        // "Password is invalid: Minimum eight characters, at least one letter and one number!"
-        const passwordPatternRegex = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/
+        const {username, email, password, gender} = reqBody
 
         //check if user already exists
         const user = await User.findOne({email})
 
         if(user){
             return NextResponse.json({message: "User already exists"}, {status: 400})
-        }
-        
-        if(!passwordPatternRegex.test(password)) {
-            return NextResponse.json({message: "Password is invalid: Minimum eight characters, at least one letter and one number!"}, {status: 401})
         }
 
         //hash password
@@ -35,7 +28,7 @@ export async function POST(request){
             username,
             email,
             password: hashedPassword,
-            userImageLink
+            gender
         })
 
         const savedUser = await newUser.save()
