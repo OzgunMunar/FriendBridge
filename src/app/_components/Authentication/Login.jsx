@@ -20,9 +20,16 @@ export default function LoginPage({changePage}) {
     const [loading, setLoading] = useState(false);
     const emailRef = useRef()
 
+    const emailPatternRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
     const onLogin = async () => {
 
         try {
+
+            if(!emailPatternRegex.test(user.email)) {
+                toast.info("Email is invalid: \nFormat is format@email.com!", { theme: "light" })
+                return
+            }
 
             setLoading(true)
             await axios.post("/api/users/login", user)

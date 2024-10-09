@@ -95,4 +95,32 @@
     flex justify-center items-center
     text-xs
     gap-1
+    cursor-pointer
+}
+
+.post_form_extras_container {
+    transition: opacity 0.5s ease, height 0.5s ease;
+    @apply
+    opacity-0
+    h-0
+    flex
+    items-center
+    justify-center
+    flex-col
+    gap-4
+}
+
+.post_form_extras_container.expanded {
+    opacity: 1;
+    @apply h-48
+}
+
+.post_form_extras_container .post_form_extras_inputs {
+    @apply
+    border
+    border-2
+    rounded-md 
+    p-1
+    w-9/12
+    focus:outline-none
 }

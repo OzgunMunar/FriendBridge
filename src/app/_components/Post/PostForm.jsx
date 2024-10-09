@@ -1,8 +1,10 @@
 import "@/app/_styles/postform.css"
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { UserContext } from "../Contexts/Contexts"
 
 const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
+
+  const [expand, setExpand] = useState(false)
 
   let buttonTextOnSubmitting = (type === 'Create' ? "Creating..." : "Editing...")
   let userContext = useContext(UserContext);
@@ -14,6 +16,12 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
     textAreaRef.current.focus()
 
   } ,[])
+
+  function handleExpanding() {
+    
+    setExpand(val => !val)
+    
+  }
   
   return (
 
@@ -31,17 +39,17 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
             <div className='iconsContainer'>
 
-              <a href="#" className='form_icon_container'>
+              <a href="#" className='form_icon_container' onClick={handleExpanding}>
                 <img width="25" height="25" src="https://img.icons8.com/fluency/48/image--v1.png" alt="image--v1"/>
                 <span>Add Image</span>
               </a>
 
-              <a href="#" className='form_icon_container'>
+              <a href="#" className='form_icon_container' onClick={handleExpanding}>
                 <img className='mt-1' width="25" height="25" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" alt="external-tag-friends-ui-basic-anggara-flat-anggara-putra"/>
                 <span>Add Friend</span>
               </a>
 
-              <a href="#" className='form_icon_container'>
+              <a href="#" className='form_icon_container' onClick={handleExpanding}>
                 <img width="25" height="25" src="https://img.icons8.com/dusk/64/map.png" alt="map"/>
                 <span>Add Location</span>
               </a>
@@ -55,6 +63,13 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
             </button>
 
           </div>
+            
+          <div className={`${expand ? 'expanded':''} post_form_extras_container w-full`}>
+            <input type="text" className="post_form_extras_inputs" placeholder="Enter an image link"/>
+            <input type="text" className="post_form_extras_inputs" placeholder="Friends name for tagging."/>
+            <input type="text" className="post_form_extras_inputs" placeholder="City or Country name for location"/>
+          </div>
+
         </div>
       </div>
  

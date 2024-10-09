@@ -6,13 +6,19 @@ import { getDataFromToken } from "@/helpers/helper";
 export const POST = async(req) => {
 
     const reqBody = await req.json()
-    const {postText} = reqBody
+    const { postText } = reqBody
 
     try {
         
         ConnectToDB()
+
         const userId = await getDataFromToken(req)
-        const newPost = new Posts({creator: userId, post: postText, isActive: true})
+
+        const newPost = new Posts({
+            creator: userId, 
+            post: postText, 
+            isActive: true
+        })
 
         await newPost.save()
         return new NextResponse(JSON.stringify(newPost), {status: 201})

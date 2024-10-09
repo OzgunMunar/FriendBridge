@@ -7,13 +7,11 @@ const LeftSideBar = ({ page, show }) => {
 
   const [isMouseOver, setIsMouseOver] = useState(false)
 
-  function handleMouseEnter()
-  {
+  function handleMouseEnter() {
     setIsMouseOver(true)
   }
 
-  function handleMouseLeave()
-  {
+  function handleMouseLeave() {
     setIsMouseOver(false)
   }
 

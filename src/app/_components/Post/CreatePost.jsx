@@ -20,33 +20,41 @@ const CreatePost = () => {
   const [post, setPost] = useState({
     
     postText: "",
-    userId: ""
+    userId: "",
+    image: null
     
   })
 
   const createPost = async() => {
   
     try {
+      
+      setSubmitting(true);
+  
+      if (post === null || post.postText === "") {
 
-      setSubmitting(true)
-
-      if(post === null || post.postText === "")
-      {
-        toast.error("Please write something to post!", { theme: "dark" })
-        return 
+        toast.error("Please write something to post!", { theme: "dark" });
+        return;
+        
       }
 
       await axios.post("/api/post/new", post)
-      toast.success("Post created.", { theme: "light" })
+  
+      toast.success("Post created.", { theme: "light" });
+      textAreaRef.current.value = "";
 
-      textAreaRef.current.value = ""
-      router.push('/')
-      setShouldFeedChangeSwitch(val => !val)
+      router.push("/");
+
+      setShouldFeedChangeSwitch((val) => !val);
 
     } catch (error) {
-      toast.error(error.message, { theme: "dark" })
+
+      toast.error(error.message, { theme: "dark" });
+
     } finally {
-      setSubmitting(false)
+
+      setSubmitting(false);
+
     }
 
   }

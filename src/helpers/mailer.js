@@ -52,7 +52,7 @@ export const sendEmail = async ({ email, emailType, userId }) => {
       // service: 'gmail',
       auth: {
         user: 'ozgunmnr@gmail.com',
-        pass: 'nzve dbqz gmin jrui'
+        pass: env.email_password
       }
     });
   
