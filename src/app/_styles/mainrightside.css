@@ -19,7 +19,9 @@
     w-full
     shadow-md
     mb-8
-    rounded-md
+    rounded-b-md
+    border-t-2
+    border-orange-700
 }
 
 .main_right_side_title {

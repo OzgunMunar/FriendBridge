@@ -12,9 +12,7 @@ export const GET = async(req) => {
         const userId = await getDataFromToken(req)
         const posts = await Posts.find({ isActive: true, creator: userId }).sort({"postedDate": -1}).populate("creator")
 
-        return NextResponse.json({
-            posts
-        })
+        return NextResponse.json({ posts })
 
     } catch (error) {
 

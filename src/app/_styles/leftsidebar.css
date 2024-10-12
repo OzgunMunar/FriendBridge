@@ -5,7 +5,6 @@
 
     w-[50px]
     mt-[62px]
-    mr-[50px]
     bg-white
     shadow-md
     fixed 
@@ -13,6 +12,8 @@
     top-5
     z-10
     lg:block
+    border-t-2
+    border-orange-700
 }
 
 .leftSideBarOpen {
@@ -74,7 +75,7 @@
     font-bold
     text-red-900
     text-left
-    text-center
+    left-3
 }
 
 .left_side_bar_items a {
@@ -115,18 +116,12 @@
 .left_side_bar_items li span{
     @apply
     absolute
-    left-14
+    left-11
 }
 
 .left_side_bar_items li:hover {
     @apply
     cursor-pointer
-}
-
-.left_side_bar_icon {
-    font-size: 25px;
-    @apply
-    absolute
 }
 
 .iconContainer {
@@ -141,14 +136,6 @@
 .left_side_bar_horizontal_line {
     @apply 
     w-full
-    bg-slate-300
+    bg-red-900
     h-[2px]
-}
-
-.left_side_bar_post_photo {
-    border-radius: 50%;
-    @apply
-    w-[30px]
-    h-[30px]
-    object-cover
 }

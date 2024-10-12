@@ -19,7 +19,9 @@
     break-normal
     hyphens-auto
     shadow-md
-    rounded-lg
+    rounded-b-lg
+    border-t-2
+    border-orange-700
     
 }
 

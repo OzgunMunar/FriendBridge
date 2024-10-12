@@ -1,6 +1,5 @@
 .post_form_container {
     @apply
-    mt-1.5
     w-full
     h-full
 }
@@ -8,12 +7,14 @@
 .post_form {
     @apply
 
-    rounded-lg
+    rounded-b-lg
     border-solid
     border-white
     bg-neutral-100
     p-3
     shadow-xl
+    border-t-2
+    border-orange-700
 }
   
 .post_form label {

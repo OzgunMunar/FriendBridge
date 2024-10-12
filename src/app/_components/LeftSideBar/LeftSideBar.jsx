@@ -23,7 +23,7 @@ const LeftSideBar = ({ page, show }) => {
             <Link href="/profile" id="profile_leftside_button">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img src="https://img.icons8.com/fluency/48/user-location.png" alt="profile" className="left_side_bar_post_photo"/>
+                  <img width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
                 </div>
 
                 <span>Profile</span>
@@ -56,11 +56,6 @@ const LeftSideBar = ({ page, show }) => {
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
-
-            <div className="left_side_bar_horizontal_line"></div>
-            <li className="left_side_bar_title hidden lg:block">
-                <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>Discover More</p>
-            </li>
 
             <Link href="/" id="findgroup_leftside_button">
               <li>
@@ -129,11 +124,6 @@ const LeftSideBar = ({ page, show }) => {
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
-
-            <div className="left_side_bar_horizontal_line"></div>
-            <li className="left_side_bar_title hidden lg:block">
-              <p className={`${isMouseOver ? 'block':'hidden'} whitespace-nowrap mt-0.5`}>App Related</p>
-            </li>
             
             <Link href="/" id="admanager_leftside_button">
               <li>
