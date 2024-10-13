@@ -36,9 +36,9 @@ const PostSchema = new Schema({
     location: {
         type: String
     },
-    friends: [{
-        fullname: String
-    }]
+    friend: {
+        type: String
+    }
 
 })
 

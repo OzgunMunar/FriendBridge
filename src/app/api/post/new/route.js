@@ -6,7 +6,7 @@ import { getDataFromToken } from "@/helpers/helper";
 export const POST = async(req) => {
 
     const reqBody = await req.json()
-    const { postText } = reqBody
+    const { postText, imageUrlLink, friend, location } = reqBody
 
     try {
         
@@ -17,7 +17,12 @@ export const POST = async(req) => {
         const newPost = new Posts({
             creator: userId, 
             post: postText, 
-            isActive: true
+            isActive: true,
+            comments:[],
+            likeNumber: 0,
+            imageUrlLink: imageUrlLink,
+            location: location,
+            friend: friend
         })
 
         await newPost.save()

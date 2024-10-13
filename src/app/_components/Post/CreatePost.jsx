@@ -1,6 +1,6 @@
 'use client'
 
-import Form from "./PostForm"
+import PostForm from "./PostForm"
 import { useState, useRef, useContext } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -21,7 +21,9 @@ const CreatePost = () => {
     
     postText: "",
     userId: "",
-    image: null
+    imageUrlLink: "",
+    friend: "",
+    location: ""
     
   })
 
@@ -33,7 +35,7 @@ const CreatePost = () => {
   
       if (post === null || post.postText === "") {
 
-        toast.error("Please write something to post!", { theme: "dark" });
+        toast.info("Please write something to post!", { theme: "light" });
         return;
         
       }
@@ -46,6 +48,15 @@ const CreatePost = () => {
       router.push("/");
 
       setShouldFeedChangeSwitch((val) => !val);
+      setPost({
+    
+        postText: "",
+        userId: "",
+        imageUrlLink: "",
+        friend: "",
+        location: ""
+        
+      })
 
     } catch (error) {
 
@@ -63,7 +74,7 @@ const CreatePost = () => {
 
       <div className="create_post_container">
 
-          <Form
+          <PostForm
             
             type='Create'
             post={post}

@@ -2,6 +2,8 @@
     @apply
     w-full
     h-full
+    border-t-2
+    border-orange-700
 }
 
 .post_form {
@@ -13,8 +15,6 @@
     bg-neutral-100
     p-3
     shadow-xl
-    border-t-2
-    border-orange-700
 }
   
 .post_form label {
@@ -26,13 +26,13 @@
     @apply
     w-full
     p-2.5
-    mt-1.5
-    mb-1.5
+    my-1.5
     text-base
     bg-cover
     outline-none
     border
     border-b-4
+    h-36
 }
 
 .post_submit_button {
@@ -100,7 +100,6 @@
 }
 
 .post_form_extras_container {
-    transition: opacity 0.5s ease, height 0.5s ease;
     @apply
     opacity-0
     h-0
@@ -108,20 +107,41 @@
     items-center
     justify-center
     flex-col
-    gap-4
+    border-t-2
+    border-slate-300
+    pt-3
+    mt-3
 }
 
 .post_form_extras_container.expanded {
     opacity: 1;
-    @apply h-48
+    @apply h-12
 }
 
 .post_form_extras_container .post_form_extras_inputs {
+
     @apply
     border
     border-2
-    rounded-md 
-    p-1
+    p-2
     w-9/12
     focus:outline-none
+}
+
+.post_form_extras_line {
+    
+    @apply
+    w-full
+    flex
+    justify-around
+
+}
+
+.post_top_extra_info_text {
+
+    @apply
+
+    text-slate-500
+    text-xs
+
 }

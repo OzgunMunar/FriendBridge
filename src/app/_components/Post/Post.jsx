@@ -110,6 +110,8 @@ const Post = ({ post }) => {
 
     }
 
+
+
     return (
 
         <div className="post_container">
@@ -125,6 +127,7 @@ const Post = ({ post }) => {
                     <div className="post_info">
                         <p className="post_owners_name">{post.creator.username}</p>
                         <p className="post_posted_date">{fullDateText}</p>
+                        {post.location && <p className="post_top_extra_info_text">In {post.location}</p> }
                     </div>
 
                 </div>
@@ -164,7 +167,15 @@ const Post = ({ post }) => {
             </div>
 
             <div className="post_body">
-                <p>{post.post}</p>
+                {post.post && <p>{post.post}</p>}
+            </div>
+
+            <div className="w-full my-3">
+                <img src={post.imageUrlLink} className="rounded-md"/>
+            </div>
+
+            <div className="w-full mb-3">
+                {post.friend && <p className="post_top_extra_info_text">&#9830; With {post.friend}</p> }
             </div>
 
             <div className="post_horizontal_line"></div>

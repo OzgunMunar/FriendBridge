@@ -7,6 +7,8 @@
     top-20
     text-sm
     hidden
+    border-t-2
+    border-orange-700
 
     md:block
 }
@@ -20,8 +22,6 @@
     shadow-md
     mb-8
     rounded-b-md
-    border-t-2
-    border-orange-700
 }
 
 .main_right_side_title {
