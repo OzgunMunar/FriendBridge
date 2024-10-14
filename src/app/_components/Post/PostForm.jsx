@@ -1,5 +1,5 @@
 import "@/app/_styles/postform.css"
-import { useEffect, useContext, useState, useReducer } from 'react'
+import { useEffect, useContext, useReducer } from 'react'
 import { UserContext } from "../Contexts/Contexts"
 import { INITIAL_STATE, extraInfoReducer } from "@/app/reducers/extraInfoReducer"
 
@@ -65,19 +65,34 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
             <div className='iconsContainer'>
 
-              <a href="#" className='form_icon_container' onClick={() => dispatch({ type: "OpenImageSection" })}>
+              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenImageSection" })}>
                 <img width="25" height="25" src="https://img.icons8.com/fluency/48/image--v1.png" alt="image--v1"/>
-                <span>Add Image</span>
+                {
+                  post.friend !== "" ?
+                    <span>Change Image</span>
+                  :
+                    <span>Add Image</span>
+                }
               </a>
 
-              <a href="#" className='form_icon_container' onClick={() => dispatch({ type: "OpenFriendSection" })}>
+              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenFriendSection" })}>
                 <img className='mt-1' width="25" height="25" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" alt="external-tag-friends-ui-basic-anggara-flat-anggara-putra"/>
-                <span>Add Friend</span>
+                {
+                  post.friend !== "" ?
+                    <span>Change Friend</span>
+                  :
+                    <span>Add Friend</span>
+                }
               </a>
 
-              <a href="#" className='form_icon_container' onClick={() => dispatch({ type: "OpenLocationSection" })}>
+              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenLocationSection" })}>
                 <img width="25" height="25" src="https://img.icons8.com/dusk/64/map.png" alt="map"/>
-                <span>Add Location</span>
+                {
+                  post.location !== "" ?
+                    <span>Change Location</span>
+                  :
+                    <span>Add Location</span>
+                }
               </a>
 
             </div>
@@ -89,36 +104,50 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
             </button>
 
           </div>
-          
-          <div className={`${expand ? 'block':'hidden'}`}>
 
-            <div className={`${expand ? 'expanded':''} post_form_extras_container w-full`}>
+          <div className={`${expand ? 'expanded':''} post_form_extras_container w-full`}>
 
-              { state.image && 
+            { state.image && 
 
-                <div className="post_form_extras_line">
-                  <input type="text" className="post_form_extras_inputs" placeholder="Add Image Link" onChange={(e) => setPost({...post, imageUrlLink: e.target.value})}/> 
-                </div>
+              <div className="post_form_extras_line">
+                <input type="text" 
+                  className="post_form_extras_inputs" 
+                  placeholder="Add Image Link" 
+                  onChange={(e) => setPost({...post, imageUrlLink: e.target.value})}
+                  value={post.imageUrlLink}
+                  autoFocus
+                  /> 
+              </div>
 
-              }
+            }
 
-              { state.friend && 
+            { state.friend && 
 
-                <div className="post_form_extras_line">
-                  <input type="text" className="post_form_extras_inputs" placeholder="Add Friend(s) Name" onChange={(e) => setPost({...post, friend: e.target.value})}/> 
-                </div>
+              <div className="post_form_extras_line">
+                <input type="text" 
+                  className="post_form_extras_inputs" 
+                  placeholder="Add Friend(s) Name" 
+                  onChange={(e) => setPost({...post, friend: e.target.value})}
+                  value={post.friend}
+                  autoFocus
+                  /> 
+              </div>
 
-              }
+            }
 
-              { state.location && 
+            { state.location && 
+            
+              <div className="post_form_extras_line">
+                <input type="text" 
+                  className="post_form_extras_inputs" 
+                  placeholder="Add Location" 
+                  onChange={(e) => setPost({...post, location: e.target.value})}
+                  value={post.location}
+                  autoFocus
+                  /> 
+              </div>
 
-                <div className="post_form_extras_line">
-                  <input type="text" className="post_form_extras_inputs" placeholder="Add Location" onChange={(e) => setPost({...post, location: e.target.value})}/> 
-                </div>
-
-              }
-
-            </div>
+            }
 
           </div>
 

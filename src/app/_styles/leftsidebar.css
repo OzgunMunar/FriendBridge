@@ -1,5 +1,5 @@
 .left_side_bar {
-    transition: width 500ms ease;
+    transition: all 500ms ease;
 
     @apply
 
@@ -18,7 +18,7 @@
 
 .leftSideBarOpen {
     @apply
-    lg:w-[175px]
+    lg:w-44
 }
 
 .left_side_bar span {

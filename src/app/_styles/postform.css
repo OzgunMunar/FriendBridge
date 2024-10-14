@@ -100,6 +100,7 @@
 }
 
 .post_form_extras_container {
+    transition: all 500ms ease;
     @apply
     opacity-0
     h-0
@@ -109,13 +110,13 @@
     flex-col
     border-t-2
     border-slate-300
-    pt-3
-    mt-3
 }
 
 .post_form_extras_container.expanded {
-    opacity: 1;
-    @apply h-12
+    @apply 
+    opacity-100
+    h-12
+    pt-3 mt-3
 }
 
 .post_form_extras_container .post_form_extras_inputs {

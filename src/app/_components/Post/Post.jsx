@@ -17,7 +17,10 @@ const Post = ({ post }) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [postToEdit, setPostToEdit] = useState({
         postText: "",
-        postId: post._id
+        postId: post._id,
+        imageUrlLink: "",
+        friend: "",
+        location: ""
     })
     const [submitting, setSubmitting] = useState(false)
 
@@ -60,9 +63,12 @@ const Post = ({ post }) => {
         
         setPostToEdit({
             ...postToEdit,
-            postText: post.post
+            postText: post.post,
+            imageUrlLink: post.imageUrlLink,
+            friend: post.friend,
+            location: post.location
         })
-        // textAreaRef.current.focus()
+
         document.addEventListener('click', handleOutsideClick);
 
         return () => {
@@ -109,8 +115,6 @@ const Post = ({ post }) => {
         }
 
     }
-
-
 
     return (
 
@@ -198,10 +202,10 @@ const Post = ({ post }) => {
                 </div>
 
             </div>
-                
+            
             <div className={isEditModalOpen ? "modal-container active":""}>
 
-                <EditDeleteModal isOpen={ isEditModalOpen } onClose={closeModal}>
+                <EditDeleteModal isOpen={isEditModalOpen} onClose={closeModal}>
 
                     <PostForm
                         type='Edit'

@@ -32,8 +32,6 @@ const Feed = () => {
         
     },[shouldFeedChange])
 
-    console.table(posts)
-
     return (
         <div className="feed_container">
             {posts?.map((post) => {

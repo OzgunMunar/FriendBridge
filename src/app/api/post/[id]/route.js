@@ -27,7 +27,7 @@ export const PATCH = async(req, { params }) => {
         
         ConnectToDB()
 
-        const { postId, postText } = await req.json()
+        const { postId, postText, imageUrlLink, friend, location } = await req.json()
 
         const seekingPost = await Posts.findById(postId)
 
@@ -35,6 +35,9 @@ export const PATCH = async(req, { params }) => {
             return NextResponse.json({error: "Post that you are looking for couldn't found."}, {status: 400})
 
         seekingPost.post = postText
+        seekingPost.location = location
+        seekingPost.friend = friend
+        seekingPost.imageUrlLink = imageUrlLink
 
         await seekingPost.save()
 

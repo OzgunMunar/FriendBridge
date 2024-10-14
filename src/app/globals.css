@@ -2,28 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
 :root {
-  
   --foreground-rgb: 0, 0, 0;
   --body-background: #EDEFEF;
-  @import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Sacramento&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-
 }
 
 body {
   background-color: var(--body-background);
   @apply antialiased
-}
-
-body::-webkit-scrollbar{
-  width: 0.25em;
-}
-
-body::-webkit-scrollbar-track{
-  background: white;
-}
-
-body::-webkit-scrollbar-thumb{
-  background: black;
 }

@@ -47,7 +47,6 @@ const CreatePost = () => {
 
       router.push("/");
 
-      setShouldFeedChangeSwitch((val) => !val);
       setPost({
     
         postText: "",
@@ -57,6 +56,8 @@ const CreatePost = () => {
         location: ""
         
       })
+
+      setShouldFeedChangeSwitch((val) => !val);
 
     } catch (error) {
 
