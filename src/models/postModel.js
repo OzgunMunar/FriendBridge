@@ -17,19 +17,29 @@ const PostSchema = new Schema({
     },
     comments: [
         { 
-            body: String,
+            creator: {
+                type: Schema.Types.ObjectId,
+                ref: 'Users'
+            },
+            comment: String,
             date: Date, 
-            likeNumber: Number 
+            likedBy: [{
+                type: Schema.Types.ObjectId,
+                ref: 'Users'
+            }]
         }
     ],
     postedDate: {
         type: Date,
+    },
+    editedDate: {
+        type: Date,
         default: Date.now
     },
-    likeNumber: {
-        type: Number,
-        default: 0
-    },
+    likedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    }],
     imageUrlLink: {
         type: String
     },

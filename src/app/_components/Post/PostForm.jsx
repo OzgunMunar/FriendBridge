@@ -48,13 +48,14 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
         <div className={`${post.imageUrlLink ? 'block':'hidden'} post_top_extra_info_text`}>
 
           <span>&#9830; Image Link: </span>
-          <a className="overflow-hidden whitespace-nowrap text-ellipsis underline" href={post.imageUrlLink} target="_blank">
-            {post.imageUrlLink}
+          <a className="block overflow-hidden whitespace-nowrap text-ellipsis underline" href={ post.imageUrlLink } target="_blank">
+            { post.imageUrlLink }
           </a>
 
         </div>
 
         <div className="form">
+          
           <textarea rows={rows} placeholder={`${user.username ? `What do you think, ${user.username}?`:''}`}
           ref={textAreaRef} 
           className="post_form_textarea"
@@ -64,19 +65,19 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
           <div className="form_below_container">
 
             <div className='iconsContainer'>
-
-              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenImageSection" })}>
+              
+              <a className={`${post.imageUrlLink && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenImageSection" })}>
                 <img width="25" height="25" src="https://img.icons8.com/fluency/48/image--v1.png" alt="image--v1"/>
                 {
-                  post.friend !== "" ?
+                  post.imageUrlLink !== "" ?
                     <span>Change Image</span>
                   :
                     <span>Add Image</span>
                 }
               </a>
-
-              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenFriendSection" })}>
-                <img className='mt-1' width="25" height="25" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" alt="external-tag-friends-ui-basic-anggara-flat-anggara-putra"/>
+              
+              <a className={`${post.friend && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenFriendSection" })}>
+                <img className='mt-1' width="21" height="21" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" />
                 {
                   post.friend !== "" ?
                     <span>Change Friend</span>
@@ -84,8 +85,8 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
                     <span>Add Friend</span>
                 }
               </a>
-
-              <a className='form_icon_container' onClick={() => dispatch({ type: "OpenLocationSection" })}>
+              
+              <a className={`${post.location && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenLocationSection" })}>
                 <img width="25" height="25" src="https://img.icons8.com/dusk/64/map.png" alt="map"/>
                 {
                   post.location !== "" ?

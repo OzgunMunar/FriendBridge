@@ -23,7 +23,9 @@ const CreatePost = () => {
     userId: "",
     imageUrlLink: "",
     friend: "",
-    location: ""
+    location: "",
+    likedBy:[{}],
+    comments: [{}]
     
   })
 
@@ -41,7 +43,6 @@ const CreatePost = () => {
       }
 
       await axios.post("/api/post/new", post)
-  
       toast.success("Post created.", { theme: "light" });
       textAreaRef.current.value = "";
 
@@ -53,7 +54,9 @@ const CreatePost = () => {
         userId: "",
         imageUrlLink: "",
         friend: "",
-        location: ""
+        location: "",
+        likedBy: [{}],
+        comments: [{}],
         
       })
 

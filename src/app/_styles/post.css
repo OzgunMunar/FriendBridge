@@ -52,7 +52,7 @@
 
     text-xs
 }
-/* baba */
+
 .post_header_right_actions_section {
     border-radius: 50%;
     transition: all 500ms ease;
@@ -207,4 +207,115 @@
     justify-center
     gap-2
     px-6
+}
+
+.post_comment_section_container {
+    transition: all 250ms ease;
+    @apply
+    opacity-0
+    h-0
+    w-full
+}
+
+.post_comment_section_container.expanded {
+    @apply
+    opacity-100
+    h-auto
+}
+
+.post_comment_textarea {
+    @apply
+    w-full
+    p-2.5
+    ml-3
+    text-xs
+    bg-cover
+    outline-none
+    border
+    border-b-4
+    resize-none
+}
+
+.post_comment_top_section {
+    @apply
+    pt-4
+    pb-2
+    flex
+    justify-between
+    items-center
+}
+
+.post_comment_top_section_share_button {
+    @apply
+    px-4
+    py-1
+    text-base
+    bg-slate-500
+    text-white
+    border
+    border-slate-800
+    hover:bg-slate-600
+    transition-all
+    duration-300
+}
+
+.post_comment_middle_section {
+    @apply
+    flex
+    justify-between
+    mb-6
+}
+
+.post_comment_below_section {
+    @apply
+    mb-6
+}
+
+.post_comment {
+    @apply
+    mt-6
+    w-full
+}
+
+.post_comment_body {
+    @apply
+    bg-white
+    text-sm
+    relative
+    p-3
+    border
+    rounded-xl
+    mt-4
+}
+
+.post_comment_body::after {
+    content: '';
+    border: .75rem solid transparent;
+	border-top: none;
+	border-bottom-color: #fff;
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+
+    @apply
+    absolute
+    w-0
+    h-0
+    bottom-full
+    left-3
+}
+
+.post_comment_below_top_section {
+    @apply
+    flex
+    justify-start
+    items-center
+    gap-4
+    mt-2
+}
+
+.comment_horizontal_line {
+    @apply
+    w-full
+    border
+    border-dashed
+    border-gray-300
 }

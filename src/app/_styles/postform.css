@@ -146,3 +146,11 @@
     text-xs
 
 }
+
+.post_image {
+    max-height: 640px;
+
+    @apply
+    rounded-md
+    object-cover
+}

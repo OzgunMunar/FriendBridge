@@ -22,6 +22,10 @@
 }
 
 .modal {
+  animation-name: visibilityChange;
+  animation-duration: 750ms;
+  animation-timing-function: ease;
+  
   @apply
   bg-neutral-300
   relative

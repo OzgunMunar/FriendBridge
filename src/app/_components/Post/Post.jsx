@@ -5,6 +5,7 @@ import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
 import { toast } from "react-toastify";
+import provideFullDateText from "@/helpers/dateFixer"
 
 const Post = ({ post }) => {
 
@@ -12,17 +13,31 @@ const Post = ({ post }) => {
     const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
+    const commentTextAreaRef = useRef()
 
-    const [isDropdown, setIsDropdown] = useState(false)
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [postToEdit, setPostToEdit] = useState({
         postText: "",
         postId: post._id,
-        imageUrlLink: "",
+        userImageLink: "",
         friend: "",
-        location: ""
+        location: "",
+        likedBy: [{}],
+        comments: [{}]
     })
+
+    const [comment, setComment] = useState({
+        creator: user._id,
+        comment: "",
+        date: Date.now(),
+        likedBy: []
+    })
+
+    const [isDropdown, setIsDropdown] = useState(false)
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [submitting, setSubmitting] = useState(false)
+    const [expand, setExpand] = useState(false)
+
+    const fullDateTextForPost = provideFullDateText(post.postedDate)
 
     const openModal = () => {
         setIsEditModalOpen(true)
@@ -31,21 +46,6 @@ const Post = ({ post }) => {
     const closeModal = () => {
         setIsEditModalOpen(false)
     }
-
-    const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-    ]
-
-    const dateAndTime = post.postedDate.split('T')
-    const dayMonthYear = dateAndTime[0].split('-')
-    const time = dateAndTime[1].split(":")
-    
-    function returnMonthName(monthNumber) {
-        return monthNames[monthNumber - 1]
-    }
-
-    const fullDateText = `${dayMonthYear[2]} ${returnMonthName(dayMonthYear[1])} ${dayMonthYear[0]} at ${time[0]}:${time[1]}`
 
     function EditOrDeleteOpener() {
         setIsDropdown(status => !status)
@@ -64,9 +64,11 @@ const Post = ({ post }) => {
         setPostToEdit({
             ...postToEdit,
             postText: post.post,
-            imageUrlLink: post.imageUrlLink,
+            userImageLink: post.userImageLink,
             friend: post.friend,
-            location: post.location
+            location: post.location,
+            likedBy: post.likedBy,
+            comments: post.comments
         })
 
         document.addEventListener('click', handleOutsideClick);
@@ -76,6 +78,15 @@ const Post = ({ post }) => {
         };
         
     }, []);
+
+    useEffect(() => {
+
+        if(expand === true) {
+            commentTextAreaRef.current.value = ""
+            commentTextAreaRef.current.focus()
+        }
+
+    }, [expand])
     
     const EditPost = async() => {
 
@@ -116,6 +127,39 @@ const Post = ({ post }) => {
 
     }
 
+    const LikePost = async(postId) => {
+
+        try {
+
+            await axios.post("/api/post/likepost", { postId })
+            setShouldFeedChangeSwitch(val => !val)
+            
+        } catch (error) {
+            toast.error("There's been a problem with liking the post.", { theme: "dark" })
+        }
+
+    }
+
+    const HandleExpand = () => {
+        setExpand(val => !val)
+    }
+
+    const HandleCommentShare = async() => {
+        
+        const postId = post._id
+
+        await axios.patch(`/api/post/comment`, { postId, comment })
+                                    .then(() => {
+                                        toast.success("Comment added", { theme: "light" })
+                                        setShouldFeedChangeSwitch(val => !val)
+                                    })
+                                    .catch((error) => toast.error("An error occured during adding comment."), { theme: "dark" })
+
+        commentTextAreaRef.current.value = ""
+        commentTextAreaRef.current.focus()
+        
+    }
+
     return (
 
         <div className="post_container">
@@ -130,11 +174,12 @@ const Post = ({ post }) => {
 
                     <div className="post_info">
                         <p className="post_owners_name">{post.creator.username}</p>
-                        <p className="post_posted_date">{fullDateText}</p>
-                        {post.location && <p className="post_top_extra_info_text">In {post.location}</p> }
+                        <p className="post_posted_date">{fullDateTextForPost}</p>
+                        { post.location && <p className="post_top_extra_info_text">In {post.location}</p> }
                     </div>
 
                 </div>
+
                 {(post.creator._id === user._id) &&
                     <div className="right_section_container">
 
@@ -155,7 +200,7 @@ const Post = ({ post }) => {
                                     <span>Edit</span>
                                 </p>
 
-                                <div class="border-l border-gray-400 h-6"></div>
+                                <div className="border-l border-gray-400 h-6"></div>
 
                                 <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
                                     <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/trash.png" alt="trash"/>
@@ -175,7 +220,7 @@ const Post = ({ post }) => {
             </div>
 
             <div className="w-full my-3">
-                <img src={post.imageUrlLink} className="rounded-md"/>
+                <img className="post_image" src={post.imageUrlLink} />
             </div>
 
             <div className="w-full mb-3">
@@ -186,12 +231,17 @@ const Post = ({ post }) => {
 
             <div className="post_like_comment_share">
 
-                <div className="post_action_button">
-                    <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
-                    <p>{post.likeNumber} Likes</p>
+                <div className="post_action_button" onClick={() => LikePost(post._id)}>
+                    {
+                        post.likedBy.includes(user._id) ?
+                        <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
+                        :
+                        <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
+                    }    
+                    <p>{post.likedBy.length} Likes</p>
                 </div>
 
-                <div className="post_action_button">
+                <div className="post_action_button" onClick={() => HandleExpand()}>
                     <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
                     <p>{post.comments.length} Comments</p>
                 </div>
@@ -201,6 +251,66 @@ const Post = ({ post }) => {
                     <p>Share</p>
                 </div>
 
+            </div>
+            
+            <div className={`${expand ? 'expanded':''} post_comment_section_container`}>
+
+                <div className="post_horizontal_line"></div>
+
+                <div className="post_comment_top_section">
+                    <p className="display-6">New Comment</p>
+                    <button type="button" className="post_comment_top_section_share_button" onClick={() => HandleCommentShare()}>Share</button>
+                </div>
+
+                <div className="post_comment_middle_section">
+
+                    <img className="post_photo" src={user.userImageLink} alt="user photo"/>
+                    
+                    <textarea 
+                        rows={4} 
+                        placeholder={`${user.username ? `What is your comment, ${user.username}?`:''}`}
+                        className="post_comment_textarea"
+                        onChange={(e) => setComment({ ...comment, comment: e.target.value })}
+                        ref={commentTextAreaRef}
+                        ></textarea>
+
+                </div>
+                
+                <div className="post_comment_below_section">
+                    {
+                        post.comments.length !== 0 && 
+                        <div>
+                            <div className="comment_horizontal_line"></div>
+                            <p className="display-6 my-3">Comments</p>
+                            { post.comments.map((comment) => {
+
+                                return (
+                                    <div key={comment._id} className="post_comment">
+
+                                        <div className="post_comment_below_top_section">
+
+                                            <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
+
+                                            <div className="comment_info">
+                                                <p className="font-bold">{comment.creator.username}</p>
+                                                <p className="text-xs">{provideFullDateText(comment.date)}</p>
+                                            </div>
+
+                                        </div>
+
+                                        <div className="post_comment_body">
+                                            <p>{comment.comment}</p>
+                                        </div>
+
+                                    </div>
+                                )
+
+                            })}
+                        </div>
+                    }
+
+                </div>
+                
             </div>
             
             <div className={isEditModalOpen ? "modal-container active":""}>

@@ -57,6 +57,7 @@
 .dropdown {
     @apply
     overflow-hidden
+    cursor-pointer
 }
 
 .dropdown .dropbtn {

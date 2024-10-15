@@ -48,3 +48,26 @@ export const PATCH = async(req, { params }) => {
     }
 
 }
+
+export async function GET(req) {
+
+    try {
+        
+        ConnectToDB()
+
+        const { postId } = await req.json()
+
+        const seekingPost = await Posts.findById(postId)
+
+        if(!seekingPost)
+            return
+
+        return NextResponse.json({
+            data: seekingPost
+        })
+
+    } catch (error) {
+        return NextResponse.json({ message: "Problem occured while fetching post." }, { status: 500 })
+    }
+
+}

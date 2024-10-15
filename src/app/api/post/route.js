@@ -10,7 +10,13 @@ export const GET = async(req) => {
         ConnectToDB()
 
         const userId = await getDataFromToken(req)
-        const posts = await Posts.find({ isActive: true, creator: userId }).sort({"postedDate": -1}).populate("creator")
+        const posts = await Posts.find({ isActive: true, creator: userId })
+                                    .sort({"postedDate": -1})
+                                    .populate("creator")
+                                    .populate({
+                                        path: "comments.creator",
+                                        select: "username userImageLink"
+                                    })
 
         return NextResponse.json({ posts })
 
