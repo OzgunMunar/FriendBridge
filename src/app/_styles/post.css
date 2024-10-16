@@ -220,20 +220,20 @@
 .post_comment_section_container.expanded {
     @apply
     opacity-100
-    h-auto
+    /* h-auto */
 }
 
 .post_comment_textarea {
     @apply
     w-full
     p-2.5
-    ml-3
     text-xs
     bg-cover
     outline-none
-    border
-    border-b-4
     resize-none
+    border
+    border-t-2
+    border-t-slate-500
 }
 
 .post_comment_top_section {
@@ -263,18 +263,16 @@
     @apply
     flex
     justify-between
-    mb-6
-}
-
-.post_comment_below_section {
-    @apply
-    mb-6
+    mb-4
 }
 
 .post_comment {
     @apply
-    mt-6
+    mt-3
     w-full
+    flex
+    items-start
+    justify-center
 }
 
 .post_comment_body {
@@ -283,33 +281,11 @@
     text-sm
     relative
     p-3
+    w-full
+    ml-4
     border
-    rounded-xl
-    mt-4
-}
-
-.post_comment_body::after {
-    content: '';
-    border: .75rem solid transparent;
-	border-top: none;
-	border-bottom-color: #fff;
-    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
-
-    @apply
-    absolute
-    w-0
-    h-0
-    bottom-full
-    left-3
-}
-
-.post_comment_below_top_section {
-    @apply
-    flex
-    justify-start
-    items-center
-    gap-4
-    mt-2
+    border-t-2
+    border-t-slate-500
 }
 
 .comment_horizontal_line {

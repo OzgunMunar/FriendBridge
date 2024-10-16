@@ -1,6 +1,5 @@
 .left_side_bar {
     transition: all 500ms ease;
-
     @apply
 
     w-[50px]
@@ -23,7 +22,6 @@
 
 .left_side_bar span {
     white-space: nowrap;
-    transition: color 2s ease;
     @apply
     hidden
 }

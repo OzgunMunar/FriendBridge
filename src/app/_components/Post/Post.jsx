@@ -14,6 +14,7 @@ const Post = ({ post }) => {
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
     const commentTextAreaRef = useRef()
+    const commentRef = useRef()
 
     const [postToEdit, setPostToEdit] = useState({
         postText: "",
@@ -38,6 +39,7 @@ const Post = ({ post }) => {
     const [expand, setExpand] = useState(false)
 
     const fullDateTextForPost = provideFullDateText(post.postedDate)
+    const height = expand ? commentRef.current.scrollHeight : 0;
 
     const openModal = () => {
         setIsEditModalOpen(true)
@@ -131,6 +133,9 @@ const Post = ({ post }) => {
 
         try {
 
+            if(expand === true)
+                setExpand(val => !val)
+
             await axios.post("/api/post/likepost", { postId })
             setShouldFeedChangeSwitch(val => !val)
             
@@ -146,18 +151,26 @@ const Post = ({ post }) => {
 
     const HandleCommentShare = async() => {
         
+        if(commentTextAreaRef.current.value === "") {
+            toast.info("Write a comment to share.", { theme: "light" })
+            return
+        }
+
         const postId = post._id
+
+        comment.comment = commentTextAreaRef.current.value
 
         await axios.patch(`/api/post/comment`, { postId, comment })
                                     .then(() => {
                                         toast.success("Comment added", { theme: "light" })
                                         setShouldFeedChangeSwitch(val => !val)
+                                        setExpand(val => !val)
                                     })
                                     .catch((error) => toast.error("An error occured during adding comment."), { theme: "dark" })
 
         commentTextAreaRef.current.value = ""
         commentTextAreaRef.current.focus()
-        
+
     }
 
     return (
@@ -253,7 +266,9 @@ const Post = ({ post }) => {
 
             </div>
             
-            <div className={`${expand ? 'expanded':''} post_comment_section_container`}>
+            <div className={`${expand ? 'expanded':''} post_comment_section_container`}
+                ref={commentRef}
+                style={{ height: `${expand ? `${height + 16}px`:`${height}px`}` }}>
 
                 <div className="post_horizontal_line"></div>
 
@@ -263,14 +278,11 @@ const Post = ({ post }) => {
                 </div>
 
                 <div className="post_comment_middle_section">
-
-                    <img className="post_photo" src={user.userImageLink} alt="user photo"/>
                     
                     <textarea 
                         rows={4} 
-                        placeholder={`${user.username ? `What is your comment, ${user.username}?`:''}`}
-                        className="post_comment_textarea"
-                        onChange={(e) => setComment({ ...comment, comment: e.target.value })}
+                        placeholder={`${user.username ? `What do you think, ${user.username}?`:''}`}
+                        className="post_comment_textarea overflow-hidden"
                         ref={commentTextAreaRef}
                         ></textarea>
 
@@ -278,34 +290,31 @@ const Post = ({ post }) => {
                 
                 <div className="post_comment_below_section">
                     {
+                         
                         post.comments.length !== 0 && 
                         <div>
+
                             <div className="comment_horizontal_line"></div>
-                            <p className="display-6 my-3">Comments</p>
+                            <p className="mt-3">Comments</p>
+
                             { post.comments.map((comment) => {
-
+                                
                                 return (
-                                    <div key={comment._id} className="post_comment">
-
-                                        <div className="post_comment_below_top_section">
-
+                                    <div key={comment._id}>
+                                        <div className="post_comment">
                                             <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
-
-                                            <div className="comment_info">
-                                                <p className="font-bold">{comment.creator.username}</p>
-                                                <p className="text-xs">{provideFullDateText(comment.date)}</p>
+                                    
+                                            <div className="post_comment_body">
+                                                <span className="font-bold">{comment.creator.username}</span>
+                                                <p className="text-xs mb-4">{provideFullDateText(comment.date)}</p>
+                                                <p>{comment.comment}</p>
                                             </div>
-
                                         </div>
-
-                                        <div className="post_comment_body">
-                                            <p>{comment.comment}</p>
-                                        </div>
-
                                     </div>
                                 )
 
                             })}
+
                         </div>
                     }
 

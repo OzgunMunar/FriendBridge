@@ -97,6 +97,9 @@
     text-xs
     gap-1
     cursor-pointer
+    hover:text-gray-500
+    transition-all
+    duration-300
 }
 
 .post_form_extras_container {
