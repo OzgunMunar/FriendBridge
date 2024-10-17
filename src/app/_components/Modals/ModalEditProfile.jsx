@@ -34,14 +34,6 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
               </div>
 
               <div className='modal_info_row'>
-                  <label htmlFor='city'>City:</label>
-                  <input type='text' id='city'
-                         className='modal_info_input'
-                         value={userInfo.city}
-                         onChange={(e) => setuserInfo({...userInfo, city: e.target.value})}/>
-              </div>
-
-              <div className='modal_info_row'>
                   <label htmlFor='profession'>Profession:</label>
                   <input type='text' id='profession'
                          className='modal_info_input'

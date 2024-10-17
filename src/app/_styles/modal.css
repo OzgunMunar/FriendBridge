@@ -29,9 +29,11 @@
   @apply
   bg-neutral-300
   relative
-  w-6/12
+  /* w-6/12 */
+  w-[80vw]
   rounded-lg
-  p-0 m-0
+  p-0 
+  m-0
   shadow-md
 }
 

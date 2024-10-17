@@ -27,10 +27,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
-    city: {
-        type: String,
-        default: 'unshared'
-    },
     profession: {
         type: String,
         default: 'unshared'
@@ -49,7 +45,7 @@ const userSchema = new mongoose.Schema({
     },
     birthday: {
         type: String,
-        default: new Date('1900-01-01'),
+        default: 'unshared',
     },
     gender: {
         type: String,

@@ -23,7 +23,6 @@ const Profile = () => {
         username: '',
         userImageLink: '',
         address: '',
-        city: '',
         personalwebsite: '',
         phonenumber: '',
         profession: '',
@@ -46,7 +45,6 @@ const Profile = () => {
             username: user?.username || '',
             userImageLink: user?.userImageLink || '',
             address: user?.address || '',
-            city: user?.city || '',
             personalwebsite: user?.personalwebsite || '',
             phonenumber: user?.phonenumber || '',
             profession: user?.profession || '',
@@ -78,6 +76,7 @@ const Profile = () => {
 
         try {
             
+            setProcessing(val => !val)
             await axios.post('/api/users/sendmailofchangepassword')
             toast.success("Email sent to change password.", { theme: "light" })
             setIsPasswordMailSent(true)
@@ -86,7 +85,6 @@ const Profile = () => {
             toast.error(error.response.data.message, { theme: "dark" })
             setIsPasswordMailSent(false)
         }
-
     }
 
     const handleSubmit = async() => {
@@ -120,10 +118,6 @@ const Profile = () => {
                     <div className='profile_personal_info1_layer1'>
 
                         <span className='profile_username'>{userInfo.username}</span>
-                        <div className='profile_city_container'>
-                            <img width="16" height="16" src="https://img.icons8.com/office/16/marker.png" alt="marker"/>
-                            <span className='profile_city'>{userInfo.city}</span>
-                        </div>
 
                     </div>
                     
@@ -176,7 +170,7 @@ const Profile = () => {
                             </div>
                             <div className='profile_personal_info_value blue-text website-text'>
                                 <a href={`${userInfo.personalwebsite}`} target='_blank'>
-                                    {userInfo.personalwebsite}
+                                    { userInfo.personalwebsite }
                                 </a>
                             </div>
                         </div>
@@ -186,7 +180,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 <span>Birthday: </span>
                             </div>
-                            <div className='profile_personal_info_value'>{userInfo.birthday}</div>
+                            <div className='profile_personal_info_value'>{ userInfo.birthday ? userInfo.birthday : "unshared" }</div>
                         </div>
 
                         <div className='row'>
@@ -201,24 +195,29 @@ const Profile = () => {
 
                 </div>
 
-                <div className='profile_edit_button_container'>
+                <div className="profile_action_buttons">
 
-                    <button type='button' className='profile_edit_button' onClick={openModalToEdit}>
-                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
-                    </button>
+                    <div className='profile_edit_button_container'>
 
-                </div>
+                        <button type='button' className='profile_edit_button' onClick={openModalToEdit}>
+                            <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
+                            Edit Profile
+                        </button>
 
-                <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
+                    </div>
 
+                    <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
+
+                        <button type='button' 
+                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed':''}`}
+                                onClick={changePassword} 
+                                disabled={isPasswordMailSent}>
+                            <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
+                            {isPasswordMailSent ? 'Email sent':'Change Password'}
+                        </button>
+
+                    </div>
                     
-                    <button type='button' 
-                            className='profile_change_password_button'
-                         ß   onClick={changePassword} 
-                            disabled={isPasswordMailSent}>
-                        <img width="30" height="30" src="https://img.icons8.com/ios-filled/50/send-mass-email.png" alt="send-mass-email"/>
-                    </button>
-
                 </div>
 
             </div>
