@@ -75,14 +75,14 @@ const Profile = () => {
     const changePassword = async() => {
 
         try {
-            
-            setProcessing(val => !val)
+
             await axios.post('/api/users/sendmailofchangepassword')
             toast.success("Email sent to change password.", { theme: "light" })
             setIsPasswordMailSent(true)
 
         } catch (error) {
-            toast.error(error.response.data.message, { theme: "dark" })
+            console.log(error)
+            toast.error(error, { theme: "dark" })
             setIsPasswordMailSent(false)
         }
     }
@@ -113,15 +113,16 @@ const Profile = () => {
                     <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="profile_picture" />
                 </div>
 
-                <div className='profile_personal_info'>
+                <div className='profile_divider_div'>
+                    <div className='profile_personal_info'>
 
-                    <div className='profile_personal_info1_layer1'>
+                        <div className='profile_personal_info1_layer1'>
 
-                        <span className='profile_username'>{userInfo.username}</span>
+                            <span className='profile_username'>{userInfo.username}</span>
 
-                    </div>
+                        </div>
                     
-                    <div className='profile_personal_info1_layer2'>
+                        <div className='profile_personal_info1_layer2'>
                         
                         <div className='row'>
                             <div className='profile_personal_info_title'>
@@ -191,11 +192,11 @@ const Profile = () => {
                             <div className='profile_personal_info_value'>{userInfo.gender}</div>
                         </div>
 
+                        </div>
+
                     </div>
 
-                </div>
-
-                <div className="profile_action_buttons">
+                    <div className="profile_action_buttons">
 
                     <div className='profile_edit_button_container'>
 
@@ -209,15 +210,25 @@ const Profile = () => {
                     <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
 
                         <button type='button' 
-                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed':''}`}
+                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 rounded-full text-dark':''}`}
                                 onClick={changePassword} 
                                 disabled={isPasswordMailSent}>
-                            <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
+                            
+                            {
+                                isPasswordMailSent ? 
+
+                                    <img width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>
+                                    :
+                                    <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
+
+                            }
+                            
                             {isPasswordMailSent ? 'Email sent':'Change Password'}
                         </button>
 
                     </div>
-                    
+
+                    </div>
                 </div>
 
             </div>

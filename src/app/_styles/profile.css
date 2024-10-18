@@ -8,10 +8,6 @@
     items-center
     justify-center
     flex-col
-
-    /* lg:bg-red-100 */
-    xl:bg-gray-700
-    2xl:bg-sky-500
 }
 
 .profile_container > .post_container {
@@ -23,7 +19,7 @@
     @apply
     break-all
 }
-/* xl'dan sonra yan yana yap */
+
 .profile_first_section_container {
     @apply
     relative
@@ -42,6 +38,11 @@
     top-5
     mb-6
     w-[80vw]
+    
+    lg:w-[70vw]
+    lg:ml-20
+    lg:justify-around
+    xl:flex-row
 }
 
 .profile_picture_container {
@@ -55,6 +56,12 @@
     w-full
     h-full
     object-cover
+}
+
+.profile_divider_div {
+    @apply 
+    md:w-full
+    lg:w-full
 }
 
 .profile_personal_info {
@@ -89,7 +96,6 @@
     md:items-center
     flex-col
     gap-3
-    bg-rose-100
 }
 
 .row {
@@ -97,7 +103,6 @@
     flex
     items-start
     md:w-3/4
-    bg-blue-100
 }
 
 .profile_personal_info_title {
@@ -127,7 +132,9 @@
     flex
     items-center
     justify-center
-    lg:w-[60vw]
+    
+    lg:w-[70vw]
+    lg:ml-20
 }
 
 .profile_feed_title {
@@ -145,6 +152,9 @@
     items-center 
     justify-center 
     w-[80vw]
+
+    lg:w-[70vw]
+    lg:ml-20
 }
 
 .divider {
@@ -204,15 +214,7 @@
 
 .profile_change_password_container.disabled-button {
     @apply
-    flex
-    items-center
-    justify-center
-    absolute
-    bottom-4
-    right-4
-    rounded-lg
     bg-slate-500
-    h-12
 }
 
 .profile_change_password_button {

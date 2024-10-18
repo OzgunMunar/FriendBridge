@@ -22,13 +22,15 @@
 
 .left_side_bar span {
     white-space: nowrap;
+    transition: opacity 300ms ease;
     @apply
-    hidden
+    opacity-0
 }
 
 .leftSideBarOpen span {
     @apply 
-    lg:block
+    opacity-100
+    delay-200
 }
 
 .activeli > * {
