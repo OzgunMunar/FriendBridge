@@ -231,14 +231,19 @@ const Post = ({ post }) => {
             <div className="post_body">
                 {post.post && <p>{post.post}</p>}
             </div>
+            {
+                post.imageUrlLink && 
+                <div className="w-full my-3">
+                    <img className="post_image" src={post.imageUrlLink} />
+                </div>
+            }
 
-            <div className="w-full my-3">
-                <img className="post_image" src={post.imageUrlLink} />
-            </div>
-
-            <div className="w-full mb-3">
-                {post.friend && <p className="post_top_extra_info_text">&#9830; With {post.friend}</p> }
-            </div>
+            {
+                post.friend && 
+                <div className="w-full mb-3">
+                    {post.friend && <p className="post_top_extra_info_text">&#9830; With {post.friend}</p> }
+                </div>
+            }
 
             <div className="post_horizontal_line"></div>
 
