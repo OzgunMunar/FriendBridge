@@ -71,14 +71,14 @@ export default function LoginPage({changePage}) {
 
     return (
 
-        <section className="login_form main_form">
+        <section className="form main_form">
 
             <p className="main_form_title">Log In</p>
             <p className="main_form_title_two">To connect and get to know others!</p>
-            <div className="login_form_horizontal_line_full"></div>
+            <div className="form_horizontal_line_full"></div>
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 id="email"
                 type="text"
                 ref={emailRef}
@@ -89,7 +89,7 @@ export default function LoginPage({changePage}) {
             />
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 id="password"
                 type="password"
                 value={user.password}
@@ -106,13 +106,13 @@ export default function LoginPage({changePage}) {
 
             <div className="flex justify-around items-center flex-row w-5/6">
 
-                <div className="login_form_horizontal_line"></div>
+                <div className="form_horizontal_line"></div>
                 <span className="text-gray-400">or</span>
-                <div className="login_form_horizontal_line"></div>
+                <div className="form_horizontal_line"></div>
 
             </div>
 
-            <button type="button" className="login_form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
+            <button type="button" className="form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
             
             <ToastContainer
                 position="bottom-right"

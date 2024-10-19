@@ -29,8 +29,8 @@
   @apply
   bg-neutral-300
   relative
-  /* w-6/12 */
-  w-[80vw]
+  w-full
+  max-w-4xl
   rounded-lg
   p-0 
   m-0

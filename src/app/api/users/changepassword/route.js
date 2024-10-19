@@ -11,7 +11,6 @@ export async function POST(request) {
         
         const reqBody = await request.json()
         const {
-            username,
             oldpassword,
             newpassword,
             email,
@@ -37,7 +36,7 @@ export async function POST(request) {
         await user.save()
 
         return NextResponse.json({
-            message: "Successful operation",
+            message: "Password successfully changed!",
             success: true
         })
 

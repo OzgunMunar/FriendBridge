@@ -35,7 +35,6 @@ const Feed = () => {
     return (
         <div className="feed_container">
             {posts?.map((post) => {
-              
                 return (
                     <div key={post._id}>
                         <Post post={post}/>

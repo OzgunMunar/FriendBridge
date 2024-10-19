@@ -54,7 +54,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
         </div>
 
-        <div className="form">
+        <div className="create_post_form">
           
           <textarea rows={rows} placeholder={`${user.username ? `What do you think, ${user.username}?`:''}`}
           ref={textAreaRef} 

@@ -90,10 +90,10 @@ export default function SignupPage({changePage}) {
 
             <p className="main_form_title">Sign Up</p>
             <p className="main_form_title_two">It is quick, easy and well-formulated to join others!</p>
-            <div className="login_form_horizontal_line_full"></div>
+            <div className="form_horizontal_line_full"></div>
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 type="text"
                 ref={usernameRef}
                 value={user.username}
@@ -103,7 +103,7 @@ export default function SignupPage({changePage}) {
                 />
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 type="email"
                 value={user.email}
                 onChange={(e) => setUser({...user, email: e.target.value})}
@@ -112,7 +112,7 @@ export default function SignupPage({changePage}) {
                 />
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 type="password"
                 value={user.password}
                 onChange={(e) => setUser({...user, password: e.target.value})}
@@ -121,7 +121,7 @@ export default function SignupPage({changePage}) {
                 />
 
             <input 
-                className="login_form_input"
+                className="form_input"
                 type="password"
                 value={user.passwordRepeat}
                 onChange={(e) => setUser({...user, passwordRepeat: e.target.value})}
@@ -130,7 +130,7 @@ export default function SignupPage({changePage}) {
                 />
 
             <select 
-                className="login_form_input h-10" 
+                className="form_input h-10" 
                 value={user.gender} onChange={(e) => setUser({...user, gender: e.target.value})}
                 required>
                 <option disabled value="">Select Gender</option>
@@ -141,14 +141,14 @@ export default function SignupPage({changePage}) {
             <button
                 type="button"
                 onClick={onSignup}
-                className="login_form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}
+                className="form_create_account_button" disabled={buttonDisabled}>{loading ? "Processing..." : "Sign Up"}
             </button>
 
             <div className="flex justify-around items-center flex-row w-5/6">
 
-                <div className="login_form_horizontal_line"></div>
+                <div className="form_horizontal_line"></div>
                 <span className="text-gray-400">or</span>
-                <div className="login_form_horizontal_line"></div>
+                <div className="form_horizontal_line"></div>
 
             </div>
 
