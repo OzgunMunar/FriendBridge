@@ -8,7 +8,7 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Social App',
+  title: 'Friend Bridge',
   description: 'Written by Ozgun Munar',
 }
 

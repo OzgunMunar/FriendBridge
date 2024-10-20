@@ -58,7 +58,7 @@ export const sendEmail = async ({ email, emailType, userId }) => {
   
     const mailOptions = {
 
-      from: '"Social App" <ozgunmnr@gmail.com>', // sender address
+      from: '"Friend Bridge" <ozgunmnr@gmail.com>', // sender address
       to: email, // list of receivers
       subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password", // Subject line
       html: htmlText

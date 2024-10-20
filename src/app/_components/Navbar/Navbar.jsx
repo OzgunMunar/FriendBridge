@@ -57,7 +57,7 @@ const Navbar = () => {
 
             <Link href="/">
                 <span id="logo">
-                    SocialApp
+                    Friend Bridge
                 </span> 
             </Link>
 

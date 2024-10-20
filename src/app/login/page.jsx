@@ -14,7 +14,7 @@ export default function Login() {
             
             <section className='login_text'>
 
-                <p className="login_header_app_name">Social App</p>
+                <p className="login_header_app_name">Friend Bridge</p>
                 <p className="login_header_app_explanation">A chance to meet people from around the world, share your thoughts, and connect with others who share your interests!</p>
 
             </section>
