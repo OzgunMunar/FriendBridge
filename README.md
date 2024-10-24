@@ -1,6 +1,4 @@
 # Welcome To Friend Bridge
-
-## Description
 This project is a social media internet project where people all over the world who are interested in the same topics will get to know each other.
 
 ## Currently Working Parts
