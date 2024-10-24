@@ -51,7 +51,11 @@ export default function LoginPage({changePage}) {
             } else {
                 toast.error("Network error. Please try again later.", { theme: "dark" });
             }
+<<<<<<< HEAD
         } 
+=======
+        }
+>>>>>>> 2cb8f0f (login setProcessing fixed)
     }
 
     useEffect(() => {
