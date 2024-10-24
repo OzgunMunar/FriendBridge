@@ -34,7 +34,6 @@ export default function LoginPage({changePage}) {
             setLoading(true)
             await axios.post("/api/users/login", user)
             router.push("/")
-            setLoading(false)
             
         } catch (error) {
             const response = error.response
@@ -51,11 +50,7 @@ export default function LoginPage({changePage}) {
             } else {
                 toast.error("Network error. Please try again later.", { theme: "dark" });
             }
-<<<<<<< HEAD
-        } 
-=======
         }
->>>>>>> 2cb8f0f (login setProcessing fixed)
     }
 
     useEffect(() => {
