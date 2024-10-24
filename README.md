@@ -19,9 +19,6 @@ Login with dummy credential so that you can see what's inside.
 User Email: ozgunmnr@gmail.com 
 Password:   351Admin
 
-## License
-This project is licensed under the MIT License.
-
 ## Contact
 - [ozgunmnr@gmail.com](mailto:ozgunmnr@gmail.com)
 - Özgün MUNAR
