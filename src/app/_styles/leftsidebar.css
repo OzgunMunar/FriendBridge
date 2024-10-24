@@ -29,7 +29,7 @@
 
 .leftSideBarOpen span {
     @apply 
-    opacity-100
+    lg:opacity-100
     delay-200
 }
 
