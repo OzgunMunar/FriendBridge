@@ -20,30 +20,36 @@
     min-h-screen
     gap-20
     lg:flex-row
-  }
+}
+
+.login_container .login_text {
+    @apply 
+    w-full
+    text-center
+    lg:px-2
+    lg:w-1/2
+    lg:h-full
+}
   
 .main_form{
-    
-    animation-name: visibilityChange;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-
-    @apply
+  animation-name: visibilityChange;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;  
+  @apply
   
-    flex
-    flex-col
-    items-center
-    justify-center
-    bg-white
-    py-6
-    w-3/4
-    shadow-md
-    h-auto
-    relative
-    rounded-b-lg
-
-    lg:w-1/4
-    lg:mr-7
+  flex
+  flex-col
+  items-center
+  justify-center
+  bg-white
+  py-6
+  w-3/4
+  shadow-md
+  h-auto
+  relative
+  rounded-b-lg     
+  lg:w-1/4
+  lg:mr-7
 }
 
 .main_form_title {
@@ -73,15 +79,6 @@
     @apply
     border-t-4
     border-blue-600
-}
-
-.login_container .login_text {
-    @apply 
-    w-full
-    text-center
-    lg:px-2
-    lg:w-1/3
-    lg:h-full
 }
 
 .login_header_app_name {
