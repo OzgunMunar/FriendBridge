@@ -11,6 +11,7 @@ export default function Login() {
     return (
         
         <div className="login_container">
+
             <section className='login_text'>
 
                 <p className="login_header_app_name">Friend Bridge</p>
@@ -21,6 +22,7 @@ export default function Login() {
             {isSignUp ? (<SignupPage changePage={setIsSignUp}/>)
             :
             (<LoginPage changePage={setIsSignUp}/>)}
+            
         </div>
             
     )
