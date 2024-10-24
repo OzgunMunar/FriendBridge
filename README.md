@@ -22,4 +22,3 @@ Login with dummy credential so that you can see what's inside.
 ## Contact
 - [ozgunmnr@gmail.com](mailto:ozgunmnr@gmail.com)
 - Özgün MUNAR
-
