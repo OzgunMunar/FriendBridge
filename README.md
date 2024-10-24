@@ -1,5 +1,11 @@
 # Welcome To Friend Bridge
-This project is a social media internet project where people all over the world who are interested in the same topics will get to know each other.
+This fully responsible NextJS/NodeJS/MongoDB/TailwindCSS project is a social media internet project where people all over the world who are interested in the same topics will get to know each other.
+
+## Some Screenshots of my project
+![Login Page](public/screenshots/ScreenShot_1.png)
+![Sign Up Page](public/screenshots/ScreenShot_4.png)
+![Feed Page](public/screenshots/ScreenShot_2.png)
+![Profile Page](public/screenshots/ScreenShot_3.png)
 
 ## Currently Working Parts
 - Create Account (Be sure you entered your real E-Mail Address because you will have a receive an email for verification purpose)
