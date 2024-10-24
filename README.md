@@ -16,8 +16,8 @@ You can view the project at [Friend Bridge](https://friendbridge.vercel.app/)
 
 ## Dummy User to See The Website
 Login with dummy credential so that you can see what's inside.
-User Email: ozgunmnr@gmail.com 
-Password:   351Admin
+User Email: "ozgunmnr@gmail.com"
+Password:   "351Admin"
 
 ## Contact
 - [ozgunmnr@gmail.com](mailto:ozgunmnr@gmail.com)
