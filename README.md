@@ -23,5 +23,6 @@ Password:   351Admin
 This project is licensed under the MIT License.
 
 ## Contact
-Özgün MUNAR - [ozgunmnr@gmail.com](mailto:ozgunmnr@gmail.com)
+- [ozgunmnr@gmail.com](mailto:ozgunmnr@gmail.com)
+- Özgün MUNAR
 
