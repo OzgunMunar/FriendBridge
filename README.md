@@ -1,5 +1,5 @@
 # Welcome To Friend Bridge
-This fully responsible NextJS/NodeJS/MongoDB/TailwindCSS project is a social media internet project where people all over the world who are interested in the same topics will get to know each other.
+This fully responsible NextJS/NodeJS/MongoDB/TailwindCSS project is a social media web app that lets people all over the world who are interested in the same topics will get to know each other.
 
 ## Some Screenshots of my project
 ![Login Page](public/screenshots/ScreenShot_1.png)
