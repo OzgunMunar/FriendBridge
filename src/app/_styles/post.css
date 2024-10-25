@@ -211,17 +211,16 @@
 
 .post_comment_section_container {
     transition: all 250ms ease;
-
     @apply
     opacity-0
-    w-full
-    hidden
+    h-0
 }
 
 .post_comment_section_container.expanded {
     @apply
     opacity-100
-    block
+    h-svh
+    pb-6
 }
 
 .post_comment_textarea {

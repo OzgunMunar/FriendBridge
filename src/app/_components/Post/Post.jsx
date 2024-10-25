@@ -86,12 +86,8 @@ const Post = ({ post }) => {
         if(expand === true) {
             commentTextAreaRef.current.value = ""
             commentTextAreaRef.current.focus()
-        }
-
-        if(expand) {
             setHeight(commentRef.current.scrollHeight);
-        }
-        else {
+        } else {
             setHeight(0)
         }
 
@@ -109,11 +105,9 @@ const Post = ({ post }) => {
             
             setShouldFeedChangeSwitch(val => !val)
             closeModal()
-
+            setSubmitting(false)
         } catch (error) {
             toast.error(error.data, { theme: "dark" })
-        } finally {
-            setSubmitting(false)
         }
 
     }
@@ -280,8 +274,8 @@ const Post = ({ post }) => {
             
             <div className={`${expand ? 'expanded':''} post_comment_section_container`}
                 ref={commentRef}
-                style={{ height: `${expand ? `${height + 16}px`:`${height}px`}` }}>
-
+                style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}` }}>
+                    {/* `${expand ? `${height + 16}px`:`${height}px`}` */}
                 <div className="post_horizontal_line"></div>
 
                 <div className="post_comment_top_section">
