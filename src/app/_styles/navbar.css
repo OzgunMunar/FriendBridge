@@ -1,16 +1,13 @@
 #logo{
-    
     font-family: Poppins, sans-serif;
-    letter-spacing: 5px;
     background-image: linear-gradient(to bottom right, red, yellow);
+    
     @apply
-
     absolute
     text-xl
     mt-0
     bg-clip-text 
     text-transparent 
-
 }
 
 .navbar{

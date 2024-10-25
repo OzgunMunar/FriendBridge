@@ -32,10 +32,8 @@ const Profile = () => {
     })
 
     useEffect(() => {
-
         setPage('Profile')
         setLoader(false)
-
     }, [])
 
     useEffect(() => {
@@ -106,7 +104,7 @@ const Profile = () => {
     return (
 
         <div className='profile_container'>
-
+            
             <div className='profile_first_section_container'>
 
                 <div className='profile_picture_container'>
@@ -137,7 +135,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
                                 <span>Phone Number:</span> 
                             </div>
-                            <div className='profile_personal_info_value blue-text'>
+                            <div className='profile_personal_info_value text-sky-600'>
                                 <a href={`tel:${userInfo.phonenumber}`}>
                                     {userInfo.phonenumber}
                                 </a>
@@ -157,7 +155,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
                                 <span>Email:</span>
                             </div>
-                            <div className='profile_personal_info_value blue-text'>
+                            <div className='profile_personal_info_value text-sky-600'>
                                 <a href={`mailto:${user.email}`}>
                                     {user.email}
                                 </a>
@@ -169,7 +167,7 @@ const Profile = () => {
                                 <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 <span>Personal Web Site: </span>
                             </div>
-                            <div className='profile_personal_info_value blue-text website-text'>
+                            <div className='profile_personal_info_value text-sky-600 website-text'>
                                 <a href={`${userInfo.personalwebsite}`} target='_blank'>
                                     { userInfo.personalwebsite }
                                 </a>
