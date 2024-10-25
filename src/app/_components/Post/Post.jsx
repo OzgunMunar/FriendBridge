@@ -37,9 +37,9 @@ const Post = ({ post }) => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [submitting, setSubmitting] = useState(false)
     const [expand, setExpand] = useState(false)
+    const [height, setHeight] = useState(0)
 
     const fullDateTextForPost = provideFullDateText(post.postedDate)
-    const height = expand ? commentRef.current.scrollHeight : 0;
 
     const openModal = () => {
         setIsEditModalOpen(true)
@@ -86,6 +86,13 @@ const Post = ({ post }) => {
         if(expand === true) {
             commentTextAreaRef.current.value = ""
             commentTextAreaRef.current.focus()
+        }
+
+        if(expand) {
+            setHeight(commentRef.current.scrollHeight);
+        }
+        else {
+            setHeight(0)
         }
 
     }, [expand])

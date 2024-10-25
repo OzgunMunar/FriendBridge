@@ -90,7 +90,7 @@
     @apply
     flex
     items-center
-    
+    relative
 }
 
 .post_horizontal_line {
@@ -211,16 +211,17 @@
 
 .post_comment_section_container {
     transition: all 250ms ease;
+
     @apply
     opacity-0
-    h-0
     w-full
+    hidden
 }
 
 .post_comment_section_container.expanded {
     @apply
     opacity-100
-    /* h-auto */
+    block
 }
 
 .post_comment_textarea {
