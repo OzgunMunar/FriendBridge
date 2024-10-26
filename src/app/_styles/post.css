@@ -19,7 +19,6 @@
     break-normal
     hyphens-auto
     shadow-md
-    rounded-b-lg
     
 }
 
@@ -105,7 +104,6 @@
     h-12
     w-12
     text-black
-    rounded-full
 }
 
 .right_actions_button span {
@@ -123,7 +121,6 @@
     relative
     p-3
     border
-    rounded-xl
 }
 
 .post_body::after {
@@ -161,7 +158,6 @@
     justify-center
     z-10
     border
-    rounded-lg
     h-10
 }
 
@@ -187,7 +183,6 @@
     cursor-pointer
     h-full
     w-full
-    rounded-l-lg
 }
 
 .post_dropdown_content > p:last-child:hover {
@@ -197,7 +192,6 @@
     cursor-pointer
     h-full
     w-full
-    rounded-r-lg
 }
 
 .post_dropdown_content_action {

@@ -208,7 +208,7 @@ const Profile = () => {
                     <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
 
                         <button type='button' 
-                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 rounded-full text-dark':''}`}
+                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 text-dark':''}`}
                                 onClick={changePassword} 
                                 disabled={isPasswordMailSent}>
                             

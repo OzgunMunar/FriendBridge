@@ -8,8 +8,6 @@
 
 .post_form {
     @apply
-
-    rounded-b-lg
     border-solid
     border-white
     bg-neutral-100
@@ -154,6 +152,5 @@
     max-height: 640px;
 
     @apply
-    rounded-md
     object-cover
 }

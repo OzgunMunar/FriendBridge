@@ -26,7 +26,6 @@
     items-center
     justify-center
     flex-col
-    rounded-b-lg
     shadow-md
     border-t-2
     border-orange-700
@@ -174,7 +173,6 @@
 
 .profile_edit_button_container {
     @apply
-    rounded-full
     bg-slate-400
     h-12
     flex
@@ -200,7 +198,6 @@
     flex
     items-center
     justify-center
-    rounded-full
     bg-indigo-400
     h-12
     transition

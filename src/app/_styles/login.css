@@ -46,8 +46,7 @@
   w-3/4
   shadow-md
   h-auto
-  relative
-  rounded-b-lg     
+  relative   
   lg:w-1/4
   lg:mr-7
 }
@@ -115,7 +114,6 @@
   
     p-2 
     border
-    rounded-md
     border-gray-300 
     mb-4 
     focus:outline-none 

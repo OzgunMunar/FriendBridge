@@ -21,7 +21,6 @@
     w-full
     shadow-md
     mb-8
-    rounded-b-md
 }
 
 .main_right_side_title {
@@ -48,13 +47,13 @@
     justify-between
     items-center
     w-full
-    cursor-pointer
 }
 
 .suggested_person_container img,
 .latest_activity_info img {
     @apply 
     rounded-full
+    cursor-pointer
 }
 
 .latest_activity_info p,
@@ -62,6 +61,7 @@
     @apply
     font-bold 
     text-zinc-700
+    cursor-pointer
 }
 
 .latest_activity_info span {
@@ -93,7 +93,6 @@
     flex align-middle justify-center
     pl-2 pr-3 py-1
     gap-2
-    rounded-md
 }
 
 .suggested_person_button_text {
