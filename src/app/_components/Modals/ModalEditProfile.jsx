@@ -1,7 +1,7 @@
 import React from 'react'
 import '@/app/_styles/modal.css'
 
-const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit, setuserInfo }) => {
+const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit, setuserInfo, changePassword, isPasswordMailSent }) => {
 
   return isOpen ? (
     <div className="modal-overlay">
@@ -87,9 +87,30 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
           </div>
 
           <div className='modalprofile_footer_container'>
-            <button className='modalprofile_close_button' onClick={onClose}>Close</button>
             
+            <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
+
+                <button type='button' 
+                        className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 text-dark':''}`}
+                        onClick={changePassword} 
+                        disabled={isPasswordMailSent}>
+                    
+                    {
+                        isPasswordMailSent ? 
+
+                            <img width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>
+                            :
+                            <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
+
+                    }
+                    
+                    {isPasswordMailSent ? 'Email sent':'Change Password'}
+                </button>
+
+            </div>
+
             <button className='modalprofile_submit_button' type='button' onClick={handleSubmit}>Submit</button>
+          
           </div>
 
         </div>

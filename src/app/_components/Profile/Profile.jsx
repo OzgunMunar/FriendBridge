@@ -3,8 +3,10 @@ import axios from "axios"
 import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
-import '@/app/_styles/profile.css'
+import '@/app/_styles/newprofile.css'
 import { toast } from "react-toastify";
+import Link from 'next/link'
+import CreatePost from '../Post/CreatePost'
 
 const Profile = () => {
 
@@ -103,145 +105,155 @@ const Profile = () => {
 
     return (
 
-        <div className='profile_container'>
+        <div className="profile_container">
             
-            <div className='profile_first_section_container'>
+            <div className="profile_top_section">
 
-                <div className='profile_picture_container'>
-                    <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="profile_picture" />
-                </div>
-
-                <div className='profile_divider_div'>
-                    <div className='profile_personal_info'>
-
-                        <div className='profile_personal_info1_layer1'>
-
-                            <span className='profile_username'>{userInfo.username}</span>
-
-                        </div>
+                <div className="profile_top_container_one">
                     
-                        <div className='profile_personal_info1_layer2'>
-                        
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
-                                <span>Profession: </span>
-                            </div>
-                            <div className='profile_personal_info_value'>{userInfo.profession}</div>
-                        </div>
+                    <div className="profile_top_userimage_container">
+                        <img src={user.userImageLink} className="profile_top_userimage" />
+                    </div>
+                    
+                    <div className='profile_top_user_info'>
 
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
-                                <span>Phone Number:</span> 
-                            </div>
-                            <div className='profile_personal_info_value text-sky-600'>
-                                <a href={`tel:${userInfo.phonenumber}`}>
-                                    {userInfo.phonenumber}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
-                                <span>Address: </span>
-                            </div>
-                            <div className='profile_personal_info_value'>{userInfo.address}</div>
-                        </div>
-
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
-                                <span>Email:</span>
-                            </div>
-                            <div className='profile_personal_info_value text-sky-600'>
-                                <a href={`mailto:${user.email}`}>
-                                    {user.email}
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
-                                <span>Personal Web Site: </span>
-                            </div>
-                            <div className='profile_personal_info_value text-sky-600 website-text'>
-                                <a href={`${userInfo.personalwebsite}`} target='_blank'>
-                                    { userInfo.personalwebsite }
-                                </a>
-                            </div>
-                        </div>
-
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
-                                <span>Birthday: </span>
-                            </div>
-                            <div className='profile_personal_info_value'>{ userInfo.birthday ? userInfo.birthday : "unshared" }</div>
-                        </div>
-
-                        <div className='row'>
-                            <div className='profile_personal_info_title'>
-                                <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
-                                <span>Gender: </span>
-                            </div>
-                            <div className='profile_personal_info_value'>{userInfo.gender}</div>
-                        </div>
-
-                        </div>
+                        <span className='profile_username'>{userInfo.username}</span>
+                        <span className='cursor_pointer text-slate-500'>{`@${userInfo.username.replace(/\s+/g, "").toLowerCase()}`}</span>
 
                     </div>
 
-                    <div className="profile_action_buttons">
+                </div>
 
-                    <div className='profile_edit_button_container'>
+                <div className="profile_top_container_two">
 
-                        <button type='button' className='profile_edit_button' onClick={openModalToEdit}>
+                    <div className="profile_top_profilepages">
+
+                        <button href="/profile" className="profile_top_profilepages_button active">
+                            <span className="profile_top_profilepages_title">Posts</span>
+                            <span className="profile_top_profilepages_number">{user.postNumber}</span>
+                        </button>
+        
+                        <button href="/profile" className="profile_top_profilepages_button">
+                            <span className="profile_top_profilepages_title">Following</span>
+                            <span className="profile_top_profilepages_number">0</span>
+                        </button>
+        
+                        <button href="/profile" className="profile_top_profilepages_button">
+                            <span className="profile_top_profilepages_title">Followers</span>
+                            <span className="profile_top_profilepages_number">0</span>
+                        </button>
+        
+                        <button href="/profile" className="profile_top_profilepages_button">
+                            <span className="profile_top_profilepages_title">Likes</span>
+                            <span className="profile_top_profilepages_number">0</span>
+                        </button>
+        
+                    </div>
+        
+                    <div className='profile_top_editprofilebutton_container'>
+        
+                        <button type='button' className='profile_top_edit_button' onClick={openModalToEdit}>
                             <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
                             Edit Profile
                         </button>
-
+        
                     </div>
 
-                    <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
-
-                        <button type='button' 
-                                className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 text-dark':''}`}
-                                onClick={changePassword} 
-                                disabled={isPasswordMailSent}>
-                            
-                            {
-                                isPasswordMailSent ? 
-
-                                    <img width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>
-                                    :
-                                    <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
-
-                            }
-                            
-                            {isPasswordMailSent ? 'Email sent':'Change Password'}
-                        </button>
-
-                    </div>
-
-                    </div>
                 </div>
 
             </div>
 
-            <div className='profile_feed_title_container'>
-                <span className='divider'></span>
-                <p className='profile_feed_title'>Post History</p>
-                <span className='divider'></span>
-            </div>
+            <div className="profile_below_section">
 
-            <div className='profile_feed_container'>
+                <div className="profile_below_about_section">
+
+                    <div className='profile_personal_info'>
+
+                        <div className='profile_personal_info_toprow'>
+
+                            <span className='profile_username'>{userInfo.username}</span>
+                            <p className='cursor_pointer text-slate-500'>{`@${userInfo.username.replace(/\s+/g, "").toLowerCase()}`}</p>
+
+                        </div>
+                    
+                        <div className='profile_personal_info_belowrow'>
+                        
+                            <div className='row'>
+                                <div className='profile_personal_info_title'>
+                                    <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
+                                </div>
+                                <div className='profile_personal_info_value'>{userInfo.profession}</div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title mt-0.5'>
+                                    <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
+                                </div>
+                                <div className='profile_personal_info_value text-sky-600'>
+                                    <a href={`tel:${userInfo.phonenumber}`}>
+                                        {userInfo.phonenumber}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title mt-0.5'>
+                                    <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
+                                </div>
+                                <div className='profile_personal_info_value'>{userInfo.address}</div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title mt-0.5'>
+                                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
+                                </div>
+                                <div className='profile_personal_info_value text-sky-600'>
+                                    <a href={`mailto:${user.email}`}>
+                                        {user.email}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title mt-0.5'>
+                                    <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
+                                </div>
+                                <div className='profile_personal_info_value text-sky-600 website-text'>
+                                    <a href={`${userInfo.personalwebsite}`} target='_blank'>
+                                        { userInfo.personalwebsite }
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title mt-0.5'>
+                                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
+                                </div>
+                                <div className='profile_personal_info_value'>{ userInfo.birthday ? userInfo.birthday : "unshared" }</div>
+                            </div>
+
+                            <div className='row'>
+                                <div className='profile_personal_info_title'>
+                                    <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
+                                </div>
+                                <div className='profile_personal_info_value'>{userInfo.gender}</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div className="profile_below_feed_container">
             
-                <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
-                    <Feed />
-                </FeedChangeContext.Provider>
+                    <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                        <CreatePost />
+                        <div className='my-5'></div>
+                        <Feed />
+                    </FeedChangeContext.Provider>
+
+                </div>
 
             </div>
 
@@ -249,9 +261,15 @@ const Profile = () => {
 
                 <div className={`${isModalShow === true ? "modal-container active":"modal-container"}`}>
 
-                    <ModalEditProfile usernameRef={usernameRef} userInfo={userInfo} 
-                                      isOpen={isModalShow} onClose={closeModalToEdit} 
-                                      handleSubmit={handleSubmit} setuserInfo={setuserInfo} />
+                    <ModalEditProfile usernameRef={usernameRef} 
+                                      userInfo={userInfo} 
+                                      isOpen={isModalShow} 
+                                      onClose={closeModalToEdit} 
+                                      handleSubmit={handleSubmit} 
+                                      setuserInfo={setuserInfo} 
+                                      isPasswordMailSent={isPasswordMailSent}
+                                      changePassword={changePassword}
+                                      />
 
                 </div>
 

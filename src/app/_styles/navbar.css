@@ -177,9 +177,7 @@
 }
 
 .nav_bar_photo {
-    border-radius: 50%;
-    @apply
-    object-cover
+    @apply object-cover rounded-full
 }
 
 .nav_bar_dropdown_photo_size {

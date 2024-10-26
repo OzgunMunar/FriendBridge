@@ -1,12 +1,14 @@
 import "@/app/_styles/postform.css"
-import { useEffect, useContext, useReducer } from 'react'
+import { useEffect, useContext, useReducer, useState } from 'react'
 import { UserContext } from "../Contexts/Contexts"
 import { INITIAL_STATE, extraInfoReducer } from "@/app/reducers/extraInfoReducer"
 
-const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows }) => {
+const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows, pathName }) => {
 
   const [state, dispatch] = useReducer(extraInfoReducer, INITIAL_STATE)
-
+  const expand = state.image || state.friend || state.location;
+  const [borderColor, setBorderColor] = useState('bg-slate-900')
+  
   let buttonTextOnSubmitting = (type === 'Create' ? "Creating..." : "Editing...")
   let userContext = useContext(UserContext);
   let user = userContext.user;
@@ -25,11 +27,23 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
   }
 
-  const expand = state.image || state.friend || state.location;
+  useEffect(() => {
+
+    if(pathName === "/") {
+      setBorderColor("border-orange-700")
+    }
+    else if(pathName === "/profile") {
+      setBorderColor("border-blue-700")
+    }
+    else {
+      setBorderColor("border-fuchsia-700")  //temporary color assign
+    }
+
+  }, [])
 
   return (
 
-    <div className="post_form_container">
+    <div className={`post_form_container ${borderColor}`}>
 
       <div className="post_form">
 

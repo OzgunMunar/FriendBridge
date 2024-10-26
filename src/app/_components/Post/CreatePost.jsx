@@ -1,8 +1,8 @@
 'use client'
 
 import PostForm from "./PostForm"
-import { useState, useRef, useContext } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useRef, useContext, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
 import { FeedChangeContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
@@ -12,10 +12,12 @@ import { toast } from "react-toastify";
 const CreatePost = () => {
 
   const router = useRouter()
+  const pathName = usePathname()
   const textAreaRef = useRef()
 
   const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
 
+  const [activePathName, setActivePathName] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
     
@@ -73,6 +75,12 @@ const CreatePost = () => {
     }
 
   }
+
+  useEffect(() => {
+
+    setActivePathName(pathName)
+
+  }, [])
   
   return (
 
@@ -87,6 +95,7 @@ const CreatePost = () => {
             handleSubmit={createPost}
             textAreaRef={textAreaRef}
             rows={4}
+            pathName={pathName}
 
           />
 

@@ -1,0 +1,213 @@
+.profile_container {
+    @apply
+    /* px-52 */
+    relative w-full w-auto h-auto top-5 mt-[62px] gap-16 px-10 ml-6
+
+    lg:px-44
+
+    xl:pr-5
+    xl:pl-44
+    
+    2xl:px-52
+}
+
+.profile_top_section {
+    @apply bg-white w-full h-auto max-w-screen-xl flex items-center justify-between flex-col border-t-2 border-blue-700 shadow-lg mb-5 py-1 gap-2
+
+    md:flex-row
+    md:mt-32
+    md:mb-20
+}
+
+.profile_top_container_one {
+    @apply relative flex items-center justify-center w-full flex-col 
+    
+    md:w-1/3
+}
+
+.profile_top_userimage_container {
+    @apply w-[200px] h-[200px] border-4 border-white rounded rounded-full
+    
+    md:absolute
+}
+
+.profile_top_userimage{
+    @apply w-full h-full object-cover rounded rounded-full
+}
+
+.profile_top_user_info {
+    @apply flex items-center justify-center flex-col
+
+    md:hidden
+}
+
+.profile_top_container_two {
+    @apply w-full flex items-center justify-between gap-4
+
+    md:w-2/3
+    md:flex-row 
+    xl:pl-0.5
+    xl:pr-2
+}
+
+.profile_top_profilepages {
+    @apply flex items-center justify-center gap-2
+}
+
+.profile_top_profilepages_button {
+    @apply flex items-center justify-center flex-col cursor-pointer h-full px-2
+}
+
+.profile_top_profilepages_button.active {
+    @apply relative
+}
+
+.profile_top_profilepages_button.active .profile_top_profilepages_number {
+    @apply text-green-600 font-extrabold
+}
+
+.profile_top_profilepages_button.active::after {
+    content: '';
+    @apply block absolute w-full left-0 bottom-[-5px] h-[3px] bg-green-600
+}
+
+.profile_top_profilepages_title {
+    @apply text-slate-500
+}
+
+.profile_top_profilepages_number {
+    @apply text-2xl
+}
+
+.profile_top_editprofilebutton_container {
+    @apply bg-slate-400 h-12 flex items-center justify-center transition duration-300 hover:bg-slate-500 shadow-md
+}
+
+.profile_top_edit_button {
+    @apply px-6 h-12 gap-2 text-white flex items-center justify-center
+}
+
+.profile_below_section {
+    @apply flex items-start flex-col max-w-screen-xl w-full
+    
+    xl:flex-row
+    xl:gap-3
+}
+
+.profile_personal_info {
+    @apply 
+    xs:h-auto w-full flex flex-col justify-start p-5 shadow-lg border-t-2 border-blue-700
+}
+
+.profile_personal_info_toprow {
+    @apply 
+    xs:hidden
+    md:block font-bold mb-10
+}
+
+.profile_username {
+    @apply text-4xl
+}
+
+.profile_personal_info_belowrow {
+    @apply flex flex-col justify-center items-start md:items-center gap-4
+}
+
+.row {
+    @apply flex flex-row justify-start items-start w-full gap-3
+}
+
+.profile_personal_info_title img {
+    @apply mb-0.5
+}
+
+.profile_feed_title_container {
+    @apply mt-2 w-[80vw] h-[50px] flex items-center justify-center lg:w-[70vw] lg:ml-20
+}
+
+.profile_feed_title {
+    @apply text-slate-400 text-2xl whitespace-nowrap mx-8
+}
+
+.profile_below_about_section {
+    @apply
+    xs:w-full
+    xl:w-1/3
+}
+
+.profile_below_feed_container {
+    @apply w-full mt-5
+    
+    xl:w-2/3
+    xl:max-w-screen-xl
+    xl:mt-0
+    /* md:w-2/3 max-w-screen-xl */
+}
+
+.modalprofile_container {
+    @apply flex flex-col divide-y-2 divide-gray-400 p-4
+}
+
+.modalprofile_header {
+    @apply text-3xl text-center mb-4
+}
+
+.modalprofile_body_container {
+    @apply py-4
+}
+
+.modal_info_row {
+    @apply flex items-center m-3
+}
+  
+.modal_info_row label {
+    flex: 1;
+    margin-right: 10px;
+}
+  
+.modal_info_input{
+    flex: 2;
+    @apply px-3 py-0.5 border-b-2 border-gray-600 focus:outline-none
+}
+
+.modal_info_select_input {
+    @apply px-3 py-0.5 border-b-2 border-gray-600 w-8/12 focus:outline-none
+}
+
+.modalprofile_footer_container {
+    @apply flex items-center justify-evenly gap-16 pt-5
+}
+
+.modalprofile_close_button {
+    @apply bg-gray-700 px-10 py-2 text-white transition duration-300 ease-in hover:bg-gray-500 hover:shadow-md
+}
+
+.modalprofile_submit_button {
+    @apply bg-sky-700 px-10 py-2 text-white transition duration-300 ease-in hover:bg-sky-500 hover:shadow-md
+} 
+
+.profile_change_password_container {
+    @apply
+    flex
+    items-center
+    justify-center
+    bg-indigo-700
+    py-1
+    transition
+    duration-300
+    shadow-md
+    hover:bg-indigo-500
+}
+
+.profile_change_password_container.disabled-button {
+    @apply
+    bg-slate-500
+}
+
+.profile_change_password_button {
+    @apply
+    flex items-center justify-center
+    gap-2
+    text-white
+    px-6
+}
