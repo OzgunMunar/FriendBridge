@@ -2,9 +2,21 @@
 This fully responsible NextJS/NodeJS/MongoDB/TailwindCSS project is a social media web app that lets people all over the world who are interested in the same topics will get to know each other.
 
 ## Some Screenshots of my project
+
+- Login Page:
+
 ![Login Page](public/screenshots/ScreenShot_1.png)
+
+- Sign Up Page:
+
 ![Sign Up Page](public/screenshots/ScreenShot_4.png)
+
+- Feed Page:
+
 ![Feed Page](public/screenshots/ScreenShot_2.png)
+
+- Profile Page:
+
 ![Profile Page](public/screenshots/ScreenShot_3.png)
 
 ## Currently Working Parts
