@@ -35,8 +35,8 @@ const Feed = () => {
     useEffect(() => {
 
         fetchData()
-
-    }, [])
+        
+    },[])
 
     return (
         <div className="feed_container">
