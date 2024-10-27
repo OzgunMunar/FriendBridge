@@ -32,6 +32,12 @@ const Feed = () => {
         
     },[shouldFeedChange])
 
+    useEffect(() => {
+
+        fetchData()
+
+    }, [])
+
     return (
         <div className="feed_container">
             {posts?.map((post) => {
