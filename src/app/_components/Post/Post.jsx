@@ -173,7 +173,7 @@ const Post = ({ post }) => {
         commentTextAreaRef.current.focus()
 
     }
-
+    
     return (
 
         <div className="post_container">
@@ -274,7 +274,7 @@ const Post = ({ post }) => {
             
             <div className={`${expand ? 'expanded':''} post_comment_section_container`}
                 ref={commentRef}
-                style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}` }}>
+                style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflow: 'hidden' }}>
                     {/* `${expand ? `${height + 16}px`:`${height}px`}` */}
                 <div className="post_horizontal_line"></div>
 
