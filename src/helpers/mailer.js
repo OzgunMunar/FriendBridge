@@ -55,6 +55,8 @@ export const sendEmail = async ({ email, emailType, userId }) => {
         pass: process.env.email_password
       }
     });
+
+    console.log(transporter.auth.user, transporter.auth.pass)
   
     const mailOptions = {
 
