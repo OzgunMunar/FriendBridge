@@ -49,14 +49,14 @@ export const sendEmail = async ({ email, emailType, userId }) => {
       host: "smtp.gmail.com",
       port: 465,
       secure: true,
-      // service: 'gmail',
+      service: 'gmail',
       auth: {
         user: 'ozgunmnr@gmail.com',
         pass: process.env.email_password
       }
     });
 
-    console.log(transporter.auth.user, transporter.auth.pass)
+    console.log(transporter)
   
     const mailOptions = {
 
