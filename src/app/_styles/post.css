@@ -121,6 +121,7 @@
     relative
     p-3
     border
+    rounded-xl
 }
 
 .post_body::after {

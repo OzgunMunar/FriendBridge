@@ -101,6 +101,7 @@
 .profile_personal_info_toprow {
     @apply hidden
     md:block font-bold mb-10
+    xl:text-center
 }
 
 .profile_username {

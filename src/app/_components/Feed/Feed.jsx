@@ -4,6 +4,7 @@ import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"
 import { FeedChangeContext } from '../Contexts/Contexts'
+import PageLoader from '@/app/pageloader'
 
 const Feed = () => {
 
@@ -27,26 +28,27 @@ const Feed = () => {
     }
 
     useEffect(() => {
-        
         fetchData()
-        
     },[shouldFeedChange])
 
     useEffect(() => {
-
         fetchData()
-        
     },[])
 
     return (
         <div className="feed_container">
-            {posts?.map((post) => {
-                return (
-                    <div key={post._id}>
-                        <Post post={post}/>
-                    </div>
-                )
-            })}
+            {
+                posts ?
+                    posts?.map((post) => {
+                        return (
+                            <div key={post._id}>
+                                <Post post={post}/>
+                            </div>
+                        )
+                    })
+                :
+                <PageLoader />
+            }
         </div>
     )
 

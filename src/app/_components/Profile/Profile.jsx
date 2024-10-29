@@ -5,7 +5,6 @@ import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
 import { toast } from "react-toastify";
-import Link from 'next/link'
 import CreatePost from '../Post/CreatePost'
 
 const Profile = () => {

@@ -1,22 +1,20 @@
 import React from 'react'
+import { ClipLoader } from 'react-spinners';
 
 const PageLoader = () => {
     return (
         <div className="page-loader">
-          Loading...
+          <ClipLoader color="blue" />
           <style jsx>{`
             .page-loader {
-              position: fixed;
-              top: 0;
+              position: absolute;
+              top: 100px;
               left: 0;
               width: 100%;
               height: 100%;
-              background-color: rgba(255, 255, 255, 0.5);
-              opacity:0.1;
               display: flex;
               justify-content: center;
               align-items: center;
-              font-size: 2em;
             }
           `}</style>
         </div>
