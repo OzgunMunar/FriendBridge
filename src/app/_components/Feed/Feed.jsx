@@ -8,11 +8,14 @@ import PageLoader from '@/app/pageloader'
 
 const Feed = () => {
 
-    const [posts, setPosts] = useState()
+    const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const {shouldFeedChange} = useContext(FeedChangeContext)
 
     const fetchData = async() => {
+
+        setLoading(true)
 
         try {
             
@@ -23,31 +26,30 @@ const Feed = () => {
             
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false)
         }
 
     }
 
     useEffect(() => {
-        fetchData()
-    },[shouldFeedChange])
 
-    useEffect(() => {
         fetchData()
-    },[])
+        
+    },[shouldFeedChange])
 
     return (
         <div className="feed_container">
             {
-                posts ?
-                    posts?.map((post) => {
-                        return (
-                            <div key={post._id}>
-                                <Post post={post}/>
-                            </div>
-                        )
-                    })
-                :
-                <PageLoader />
+                loading ?
+                    <PageLoader />
+                    :
+                    posts.map((post) => (
+                        <div key={post._id}>
+                            <Post post={post} />
+                        </div>
+                    ))
+                
             }
         </div>
     )
