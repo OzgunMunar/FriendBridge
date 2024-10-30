@@ -135,7 +135,7 @@ const Navbar = () => {
                     
                     <hr />
                     
-                    <Link href="/givefeedback">
+                    <Link href="/">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <img width="30" height="30" src="https://img.icons8.com/color/48/popular-topic.png" alt="popular-topic"/>
@@ -149,7 +149,7 @@ const Navbar = () => {
                     
                     <hr />
                     
-                    <Link href="/settings">
+                    <Link href="/">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <img width="30" height="30" src="https://img.icons8.com/color/48/gear.png" alt="gear"/>
@@ -161,7 +161,7 @@ const Navbar = () => {
                         </div>
                     </Link>
 
-                    <Link href="/helpandsupport">
+                    <Link href="/">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <img width="30" height="30" src="https://img.icons8.com/color/48/help--v1.png" alt="help--v1"/>
@@ -173,7 +173,7 @@ const Navbar = () => {
                         </div>
                     </Link>
 
-                    <Link href="/display">
+                    <Link href="/">
                         <div className="grid-container-dropdown">
                             <div className="grid-item-dropdown-normal-first">
                                 <img width="30" height="30" src="https://img.icons8.com/color/48/roller-brush--v1.png" alt="roller-brush--v1"/>
