@@ -10,6 +10,11 @@ const PostSchema = new Schema({
         type: String,
         required: [true, 'Post is required.'],
     },
+    postType: {
+        type: String,
+        enum: ['FeedPost', 'GroupPost', 'GlobalPost'],
+        required: true
+    },
     isActive: {
         type: Boolean,
         required: true,
@@ -48,9 +53,13 @@ const PostSchema = new Schema({
     },
     friend: {
         type: String
+    },
+    groupId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Groups'
     }
 
-})
+}, { timestamps: true })
 
 const Posts = models.Posts || model('Posts', PostSchema);
 

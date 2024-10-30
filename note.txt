@@ -1,9 +1,55 @@
-npm i 
+npm packages list
 axios bcryptjs jsonwebtoken nodemailer 
 react-toastify mongoose
+react-spinners
 
 
-middleware allows you to run code before a request is completed.
-then based on the incoming request, you can modify the response 
-by rewriting, redirecting, modifying the request or response header
-or responding directly
+
+
+fields to add userModel: 
+
+Following people & followed people. (Added)
+
+(Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
+Manipulate arrays of following and followed fields in userModel...)
+
+
+
+Collections to add (All added)
+- SavedPosts: this field will keep of the posts that saved by user. 25 tane ile limitle!
+        postid 
+        userid
+        createdAt
+
+- Groups: 
+        creator
+        GroupName
+        GroupType // Public, Privated, Authored
+        GroupPosts[{}]   // Fetch 10 by 10
+        GroupMembers[{}]
+
+Events: 
+        creator
+        eventName
+        eventLocation
+        eventPrice
+        eventType
+        eventDate
+
+
+
+
+fields to add posts collection:
+
+        dislikedBy Array field for Global Posts. Global Post is something that admin of the webpage shares.
+        
+        groupId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Groups' // Reference to the group if it's a group post
+        },
+        
+        postType: {
+        type: String,
+        enum: ['FeedPost', 'GroupPost', 'GlobalPost'], // New field to differentiate post types
+        required: true
+        },

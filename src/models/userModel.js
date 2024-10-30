@@ -1,10 +1,11 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const userSchema = new mongoose.Schema({
 
     username: {
         type: String,
         required: [true, "Please provide a username"],
+        trim: true
     },
     email: {
         type: String,
@@ -51,12 +52,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: 'unshared',
     },
+    followingPeople: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    }],
+    followedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    }],
     passwordToken: String,
     passwordTokenExpiry: Date,
     verifyToken: String,
     verifyTokenExpiry: Date,
     
-})
+}, { timestamps: true })
 
 const Users = mongoose.models.Users || mongoose.model("Users", userSchema);
 
