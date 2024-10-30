@@ -1,6 +1,6 @@
 import "@/app/_styles/post.css"
 import { UserContext, FeedChangeContext } from "../Contexts/Contexts"
-import { useContext, useRef, useState, useEffect } from 'react'
+import { useContext, useRef, useState, useEffect, Fragment } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
@@ -38,6 +38,7 @@ const Post = ({ post }) => {
     const [submitting, setSubmitting] = useState(false)
     const [expand, setExpand] = useState(false)
     const [height, setHeight] = useState(0)
+    const [isLiking, setIsLiking] = useState(false)
 
     const fullDateTextForPost = provideFullDateText(post.postedDate)
 
@@ -134,14 +135,28 @@ const Post = ({ post }) => {
 
         try {
 
+            if(isLiking)
+                return
+
+            setIsLiking(val => !val)
+
             if(expand === true)
                 setExpand(val => !val)
+            
+            if(post.likedBy.includes(user._id)) {
+                post.likedBy.length -= 1
+                post.likedBy.splice(post.likedBy.indexOf(user._id), 1)
+            } else {
+                post.likedBy.length += 1
+            }
 
             await axios.post("/api/post/likepost", { postId })
             setShouldFeedChangeSwitch(val => !val)
             
         } catch (error) {
             toast.error("There's been a problem with liking the post.", { theme: "dark" })
+        } finally {
+            setIsLiking(val => !val)
         }
 
     }
@@ -209,15 +224,34 @@ const Post = ({ post }) => {
 
                             <div className="post_dropdown_content">
 
-                                <p className="post_dropdown_content_action" onClick={openModal}>
-                                    <img width="16" height="16" src="https://img.icons8.com/ink/48/edit.png" alt="edit"/>
-                                    <span>Edit</span>
+                                <p className="post_dropdown_content_action">
+                                    <img width="20" height="20" src="https://img.icons8.com/ios/50/save--v1.png" alt="save--v1"/>
+                                    <span>Save Post</span>
                                 </p>
 
-                                <div className="border-l border-gray-400 h-6"></div>
+                                <div className="w-full border border-gray-300 mx-1"></div>
+
+                                <p className="post_dropdown_content_action">
+                                    <img width="20" height="20" src="https://img.icons8.com/windows/50/complaint.png" alt="report-post"/>
+                                    <span>Report Post</span>
+                                </p>
+
+                                <div className="w-full border border-gray-300 mx-1"></div>
+
+                                {
+                                    (post.likedBy.length === 0 & post.comments.length === 0) ?
+                                    (
+                                        <p className="post_dropdown_content_action" onClick={openModal}>
+                                            <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
+                                            <span>Edit</span>
+                                        </p>
+                                    ) 
+                                    :
+                                    (<div></div>)
+                                }
 
                                 <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
-                                    <img width="16" height="16" src="https://img.icons8.com/ios-filled/50/trash.png" alt="trash"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
                                     <span>Delete</span>
                                 </p>
 
@@ -250,7 +284,7 @@ const Post = ({ post }) => {
 
             <div className="post_like_comment_share">
 
-                <div className="post_action_button" onClick={() => LikePost(post._id)}>
+                <div className="post_action_button" onClick={() => LikePost(post._id)} aria-disabled={isLiking}>
                     {
                         post.likedBy.includes(user._id) ?
                         <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>

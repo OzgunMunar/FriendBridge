@@ -157,9 +157,11 @@
     flex
     items-center
     justify-center
+    flex-col
     z-10
     border
-    h-10
+    h-auto
+    w-[200px]
 }
 
 .post_dropdown_content::after {
@@ -177,31 +179,18 @@
     right-3
 }
 
-.post_dropdown_content > p:first-child:hover {
-    @apply 
-    bg-green-100 
-    text-black 
-    cursor-pointer
-    h-full
-    w-full
-}
-
-.post_dropdown_content > p:last-child:hover {
-    @apply 
-    bg-red-100 
-    text-black 
-    cursor-pointer
-    h-full
-    w-full
-}
-
 .post_dropdown_content_action {
     @apply
     flex
     items-center
-    justify-center
+    justify-start
     gap-2
     px-6
+    py-2
+    w-full
+    cursor-pointer
+    hover:bg-slate-200
+    gap-3
 }
 
 .post_comment_section_container {

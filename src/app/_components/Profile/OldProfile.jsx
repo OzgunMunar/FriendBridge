@@ -6,8 +6,8 @@ import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/profile.css'
 import { toast } from "react-toastify";
 
-const Profile = () => {
-
+const OldProfile = () => {
+    return
     const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setPage } = useContext(PageContext)
     const { setLoader } = useContext(PageLoaderContext)
@@ -263,4 +263,4 @@ const Profile = () => {
 
 }
 
-export default Profile
+export default OldProfile

@@ -1,26 +1,30 @@
 import "@/app/_styles/leftsidebar.css"
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
+import { UserContext } from "../Contexts/Contexts";
 
-const LeftSideBar = ({ page, show }) => {
+const LeftSideBar = ({ page }) => {
 
-  const [isMouseOver, setIsMouseOver] = useState(false)
+  // const [isMouseOver, setIsMouseOver] = useState(false)
+  const { user } = useContext(UserContext)
 
-  function handleMouseEnter() {
-    setIsMouseOver(true)
-  }
+  // function handleMouseEnter() {
+  //   setIsMouseOver(true)
+  // }
 
-  function handleMouseLeave() {
-    setIsMouseOver(false)
-  }
+  // function handleMouseLeave() {
+  //   setIsMouseOver(false)
+  // }
 
   return (
-    <div className={`left_side_bar ${isMouseOver ? 'leftSideBarOpen':''}`}  onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    // {`left_side_bar ${isMouseOver ? 'leftSideBarOpen':''}`}
+    // onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+    <div className="left_side_bar leftSideBarOpen">
 
         <ul className='left_side_bar_items'>
 
-            <Link href="/profile" id="profile_leftside_button">
+            <Link href={`/${user._id}`} id="profile_leftside_button">
               <li className={`${page === 'Profile' ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
@@ -57,17 +61,17 @@ const LeftSideBar = ({ page, show }) => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="findgroup_leftside_button">
+            <Link href="/" id="savedposts_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/save-all.png" alt="save-all"/>
                 </div>
-                <span>Find Groups</span>
+                <span>Saved Posts</span>
               </li>
             </Link>
             <Tooltip 
-                    anchorSelect='#findgroup_leftside_button' 
-                    content='Find Group' 
+                    anchorSelect='#savedposts_leftside_button' 
+                    content='Saved Posts' 
                     place='right'
                     className='lg:hidden'
                     offset={10}
@@ -91,17 +95,17 @@ const LeftSideBar = ({ page, show }) => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="savedposts_leftside_button">
+            <Link href="/" id="findgroup_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img width="30" height="30" src="https://img.icons8.com/color/48/save-all.png" alt="save-all"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
                 </div>
-                <span>Saved Posts</span>
+                <span>Find Groups</span>
               </li>
             </Link>
             <Tooltip 
-                    anchorSelect='#savedposts_leftside_button' 
-                    content='Saved Posts' 
+                    anchorSelect='#findgroup_leftside_button' 
+                    content='Find Group' 
                     place='right'
                     className='lg:hidden'
                     offset={10}
