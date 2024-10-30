@@ -10,7 +10,7 @@ export async function POST(req) {
 
     try {
 
-        ConnectToDB()
+        await ConnectToDB()
 
         const userid = await getDataFromToken(req)
         const user = await Users.findById(userid)

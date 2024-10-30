@@ -4,12 +4,12 @@ import User from "@/models/userModel";
 import { ConnectToDB } from "@/dbConfig/dbConfig";
 import Posts from "@/models/postModel";
 
-ConnectToDB()
-
 export async function GET(request) {
 
     try {
         
+        await ConnectToDB()
+
         const userId = await getDataFromToken(request)
         
         const user = await User.findById(userId)

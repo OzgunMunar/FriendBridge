@@ -1,28 +1,36 @@
 import mongoose from 'mongoose';
 
+let isConnected;
+
 export async function ConnectToDB() {
+
+    if(isConnected)
+        return
+
     try{
 
-        mongoose.connect(process.env.MONGO_URI, {
+        await mongoose.connect(process.env.MONGO_URI, {
+
             dbName: "MySocialMediaApp",
             useNewUrlParser: true,
             useUnifiedTopology: true,
+            
         })
 
-        const connection = mongoose.connection;
+        isConnected = mongoose.connection.readyState;
 
-        connection.on('connected', () => {
+        mongoose.connection.on('connected', () => {
             console.log('MongoDB connected successfully');
         })
 
-        connection.on('error', (err) => {
+        mongoose.connection.on('error', (err) => {
             console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
-            process.exit();
+            process.exit(1);
         })
 
     } catch (error) {
-        console.log('Something goes wrong!');
-        console.log(error);
+        console.error('Something went wrong while connecting to MongoDB:', error);
+        process.exit(1);
         
     }
 

@@ -7,7 +7,7 @@ export const GET = async(req) => {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
 
         const userId = await getDataFromToken(req)
         const posts = await Posts.find({ isActive: true, creator: userId })

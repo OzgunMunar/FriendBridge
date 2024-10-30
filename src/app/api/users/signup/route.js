@@ -4,12 +4,12 @@ import { NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
 
-ConnectToDB()
-
 export async function POST(request){
 
     try {
         
+        await ConnectToDB()
+
         const reqBody = await request.json()
         const {username, email, password, gender} = reqBody
 

@@ -7,7 +7,7 @@ export async function POST(req) {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
         
         const { postId } = await req.json();
         const Post = await Posts.findById(postId)

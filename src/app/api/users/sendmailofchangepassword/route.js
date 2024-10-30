@@ -4,12 +4,12 @@ import User from "@/models/userModel";
 import { sendEmail } from "@/helpers/mailer";
 import { getDataFromToken } from "@/helpers/helper";
 
-ConnectToDB()
-
 export async function POST(req) {
 
     try {
         
+        await ConnectToDB()
+
         const userId = await getDataFromToken(req)
         const user = await User.findById(userId)
         

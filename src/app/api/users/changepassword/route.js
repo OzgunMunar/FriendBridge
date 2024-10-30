@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 import { ConnectToDB } from "@/dbConfig/dbConfig";
 import bcryptjs from "bcryptjs";
 
-ConnectToDB()
-
 export async function POST(request) {
 
     try {
         
+        await ConnectToDB()
+
         const reqBody = await request.json()
         const {
             oldpassword,

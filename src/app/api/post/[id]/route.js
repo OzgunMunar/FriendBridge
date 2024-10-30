@@ -7,7 +7,7 @@ export const DELETE = async(req, {params}) => {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
 
         const {id} = params
         
@@ -25,7 +25,7 @@ export const PATCH = async(req, { params }) => {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
 
         const { postId, postText, imageUrlLink, friend, location } = await req.json()
 
@@ -53,7 +53,7 @@ export async function GET(req) {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
 
         const { postId } = await req.json()
 

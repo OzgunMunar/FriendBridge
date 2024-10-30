@@ -10,7 +10,7 @@ export const POST = async(req) => {
 
     try {
         
-        ConnectToDB()
+        await ConnectToDB()
 
         const userId = await getDataFromToken(req)
         const newPost = new Posts({
