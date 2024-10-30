@@ -22,7 +22,7 @@ export const GET = async(req) => {
 
     } catch (error) {
 
-        return new NextResponse("An error occured while fetching posts", {status: 500})
+        return new NextResponse({ error: error.message }, {status: 500})
 
     }
 

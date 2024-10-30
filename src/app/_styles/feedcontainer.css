@@ -1,5 +1,7 @@
 .feed_container {
-    @apply
-    w-full
-    relative
+    @apply w-full relative
+}
+
+.fetch-error-container {
+    @apply flex items-center justify-center flex-col text-red-400
 }
