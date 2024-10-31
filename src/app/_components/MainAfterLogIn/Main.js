@@ -49,7 +49,7 @@ const Main = () => {
               <div className='left_sidebar_emptiness'></div>
               <div className='posts_section'>
 
-                <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost' }}>
+                <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: user._id}}>
                   <CreatePost />
                   <Feed />
                   <MainRightSide />

@@ -1,7 +1,6 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig";
 import { NextResponse } from "next/server";
 import Posts from "@/models/postModel";
-import { getDataFromToken } from "@/helpers/helper";
 
 export const GET = async(req) => {
 
@@ -9,7 +8,9 @@ export const GET = async(req) => {
         
         await ConnectToDB()
 
-        const userId = await getDataFromToken(req)
+        const { searchParams } = new URL(req.url)
+        const userId = searchParams.get('userId')
+
         const posts = await Posts.find({ isActive: true, creator: userId })
                                     .sort({"createdAt": -1})
                                     .populate("creator")

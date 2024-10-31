@@ -6,18 +6,25 @@ import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
 import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
+import { usePathname } from 'next/navigation'
 
 const Profile = () => {
 
     const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setLoader } = useContext(PageLoaderContext)
-    
+
+    const pathName = usePathname()
+    const userCodeName = pathName?.split('/')[1]
+
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
+    const [viewUser, setViewUser] = useState('')
+    const [isLoggedInProfile, setIsLoggedInProfile] = useState(false)
+
     const usernameRef = useRef(null)
 
-    const [userInfo, setuserInfo] = useState({
+    const [userInfo, setUserInfo] = useState({
 
         username: '',
         userImageLink: '',
@@ -31,12 +38,36 @@ const Profile = () => {
     })
 
     useEffect(() => {
+
+        const fetchData = async() => {
+
+            if(userCodeName) {
+
+                if(userCodeName === user.userCodeName) {
+
+                    setViewUser(user)
+                    setIsLoggedInProfile(true)
+
+                } else {
+
+                    const userData = await axios.get(`/api/users/${userCodeName}`)
+                    setViewUser(userData.data.data)
+                    setIsLoggedInProfile(false)
+
+                }
+
+            }
+
+        }
+
+        fetchData()
         setLoader(false)
+
     }, [])
 
     useEffect(() => {
 
-        setuserInfo({
+        setUserInfo({
 
             username: user?.username || '',
             userImageLink: user?.userImageLink || '',
@@ -103,8 +134,6 @@ const Profile = () => {
 
     }
 
-    console.log('profile re-rendered')
-
     return (
 
         <div className="profile_container">
@@ -114,13 +143,13 @@ const Profile = () => {
                 <div className="profile_top_container_one">
                     
                     <div className="profile_top_userimage_container">
-                        <img src={user.userImageLink} className="profile_top_userimage" />
+                        <img src={viewUser?.userImageLink || ""} className="profile_top_userimage" />
                     </div>
                     
                     <div className='profile_top_user_info'>
 
-                        <span className='profile_username'>{userInfo.username}</span>
-                        <span className='cursor_pointer text-slate-500'>{`@${user.userCodeName}`}</span>
+                        <span className='profile_username'>{viewUser?.username || ""}</span>
+                        <span className='cursor_pointer text-slate-500'>{`@${viewUser?.userCodeName || ""}`}</span>
 
                     </div>
 
@@ -132,34 +161,40 @@ const Profile = () => {
 
                         <button className="profile_top_profilepages_button active">
                             <span className="profile_top_profilepages_title">Posts</span>
-                            <span className="profile_top_profilepages_number">{user.postNumber || 0}</span>
+                            <span className="profile_top_profilepages_number">{viewUser?.postNumber || 0}</span>
                         </button>
 
                         <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Following</span>
-                            <span className="profile_top_profilepages_number">{user.followingPeople?.length}</span>
+                            <span className="profile_top_profilepages_number">{viewUser?.followingPeople?.length || 0}</span>
                         </button>
 
                         <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Followers</span>
-                            <span className="profile_top_profilepages_number">{user.followedBy?.length}</span>
+                            <span className="profile_top_profilepages_number">{viewUser?.followedBy?.length || 0}</span>
                         </button>
         
                         <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Likes</span>
-                            <span className="profile_top_profilepages_number">{user.userlikeNumber}</span>
+                            <span className="profile_top_profilepages_number">{viewUser?.userlikeNumber || 0}</span>
                         </button>
         
                     </div>
-        
-                    <div className='profile_top_editprofilebutton_container'>
-        
-                        <button type='button' className='profile_top_edit_button' onClick={openModalToEdit}>
-                            <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing"/>
-                            Edit Profile
-                        </button>
-        
-                    </div>
+
+                    {
+                        isLoggedInProfile && (
+
+                            <div className="profile_top_editprofilebutton_container">
+                    
+                                <button type='button' className="profile_top_edit_button" onClick={openModalToEdit}>
+                                    <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
+                                    Edit Profile
+                                </button>
+
+                            </div>
+
+                        )
+                    }
 
                 </div>
 
@@ -173,8 +208,8 @@ const Profile = () => {
 
                         <div className='profile_personal_info_toprow'>
 
-                            <span className='profile_username'>{userInfo.username}</span>
-                            <p className='cursor_pointer text-slate-500'>{`@${userInfo.username.replace(/\s+/g, "").toLowerCase()}`}</p>
+                            <span className='profile_username'>{viewUser?.username || ""}</span>
+                            <p className='cursor_pointer text-slate-500'>{`@${viewUser?.userCodeName || ""}`}</p>
 
                         </div>
                     
@@ -184,7 +219,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{userInfo.profession}</div>
+                                <div className='profile_personal_info_value'>{viewUser?.profession || ""}</div>
                             </div>
 
                             <div className='row'>
@@ -192,8 +227,8 @@ const Profile = () => {
                                     <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
                                 </div>
                                 <div className='profile_personal_info_value text-sky-600'>
-                                    <a href={`tel:${userInfo.phonenumber}`}>
-                                        {userInfo.phonenumber}
+                                    <a href={`tel:${viewUser?.phonenumber}`}>
+                                        {viewUser?.phonenumber || ""}
                                     </a>
                                 </div>
                             </div>
@@ -202,7 +237,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{userInfo.address}</div>
+                                <div className='profile_personal_info_value'>{viewUser?.address || ""}</div>
                             </div>
 
                             <div className='row'>
@@ -210,8 +245,8 @@ const Profile = () => {
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
                                 </div>
                                 <div className='profile_personal_info_value text-sky-600'>
-                                    <a href={`mailto:${user.email}`}>
-                                        {user.email}
+                                    <a href={`mailto:${viewUser?.email || ""}`}>
+                                        {viewUser?.email || ""}
                                     </a>
                                 </div>
                             </div>
@@ -221,8 +256,8 @@ const Profile = () => {
                                     <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 </div>
                                 <div className='profile_personal_info_value text-sky-600 website-text'>
-                                    <a href={`${userInfo.personalwebsite}`} target='_blank'>
-                                        { userInfo.personalwebsite }
+                                    <a href={`${viewUser?.personalwebsite || ""}`} target='_blank'>
+                                        {viewUser?.personalwebsite || ""}
                                     </a>
                                 </div>
                             </div>
@@ -231,14 +266,14 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{ userInfo.birthday ? userInfo.birthday : "unshared" }</div>
+                                <div className='profile_personal_info_value'>{viewUser?.birthday ? viewUser.birthday : ""}</div>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{userInfo.gender}</div>
+                                <div className='profile_personal_info_value'>{viewUser?.gender || ""}</div>
                             </div>
 
                         </div>
@@ -249,9 +284,12 @@ const Profile = () => {
 
                 <div className="profile_below_feed_container">
             
-                    <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost' }}>
-                        <CreatePost />
-                        <div className='my-5'></div>
+                    <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: viewUser._id }}>
+
+                        {
+                            (userCodeName === user.userCodeName) ? (<><CreatePost /> <div className='my-5'></div></>):(<div></div>)
+                        }
+
                         <Feed />
                     </FeedContext.Provider>
 
@@ -268,7 +306,7 @@ const Profile = () => {
                                       isOpen={isModalShow} 
                                       onClose={closeModalToEdit} 
                                       handleSubmit={handleSubmit} 
-                                      setuserInfo={setuserInfo} 
+                                      setuserInfo={setUserInfo} 
                                       isPasswordMailSent={isPasswordMailSent}
                                       changePassword={changePassword}
                                       />

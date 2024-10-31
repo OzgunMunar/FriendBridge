@@ -23,7 +23,7 @@ const LoggedInLayout = ( {children} ) => {
 
         try {
         
-          const loggedUser = await axios.get('api/users/me')
+          const loggedUser = await axios.get('api/users/loggedinuser')
           const user = loggedUser.data.data
           
           if (!user.userImageLink) {

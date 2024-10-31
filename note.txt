@@ -10,6 +10,11 @@ react-spinners
 
 
 Things to do:
+
+1- Add other users(Done) and Following people & followed people:
+        
+        (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
+        Manipulate arrays of following and followed fields in userModel...)
         
 2- Make the page of 
         
@@ -34,11 +39,6 @@ Things to do:
         eventPrice
         eventType
         eventDate
-
-5- Add other users and Following people & followed people:
-        
-        (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
-        Manipulate arrays of following and followed fields in userModel...)
 
 
 
@@ -85,6 +85,7 @@ Portfolio Website: www.susanscrumg.com
 Birthday: December 5, 1985
 Gender: Female
 ScruM8!Project
+susanscrumg
 
 
 4. Dennis Dilneoux (Duplicate)

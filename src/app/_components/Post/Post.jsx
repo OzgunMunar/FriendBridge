@@ -188,7 +188,7 @@ const Post = ({ post }) => {
                 <div className="post_header_left_section">
 
                     <div className="post_user_image">
-                        <img src={user.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
+                        <img src={post.creator.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
                     </div>
 
                     <div className="post_info">

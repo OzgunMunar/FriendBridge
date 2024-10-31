@@ -2,7 +2,7 @@
 
 import PostForm from "./PostForm"
 import { useState, useRef, useContext, useEffect } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import axios from "axios";
 import { FeedContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 
 const CreatePost = () => {
 
-  const router = useRouter()
   const pathName = usePathname()
   const textAreaRef = useRef()
 

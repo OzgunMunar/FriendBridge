@@ -36,7 +36,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
       setBorderColor("border-blue-700")
     }
     else {
-      setBorderColor("border-fuchsia-700")  //temporary color assign
+      setBorderColor("border-fuchsia-700")
     }
 
   }, [])

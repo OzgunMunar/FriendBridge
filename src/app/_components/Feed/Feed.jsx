@@ -14,32 +14,38 @@ const Feed = () => {
     const [fetchError, setFetchError] = useState(false)
     const [waitingSeconds, setWaitingSeconds] = useState(3);
 
-    const {shouldFeedChange, setShouldFeedChangeSwitch} = useContext(FeedContext)
-
-    const fetchData = async() => {
-
-        try {
-            
-            const result = await axios.get('/api/post')
-            const data = result.data.posts
-
-            setPosts(data)
- 
-        } catch (error) {
-            setFetchError(true)
-            console.log(error);
-        } finally {
-            setLoading(false)
-        }
-
-    }
+    const { shouldFeedChange, setShouldFeedChangeSwitch, userId } = useContext(FeedContext)
 
     useEffect(() => {
 
-        fetchData()
-        
-    },[shouldFeedChange])
+        const fetchData = async () => {
+            
+            if(!userId) 
+                return
 
+            try {
+
+                const result = await axios.get(`/api/post?userId=${userId}`)
+                const data = result.data.posts
+        
+                setPosts(data)
+
+            } catch (error) {
+
+                setFetchError(true)
+                console.log(error)
+
+            } finally {
+
+                setLoading(false)
+
+            }
+        };
+
+        fetchData()
+
+    }, [shouldFeedChange, userId])
+    
     useEffect(() => {
 
         let timer;
@@ -59,12 +65,12 @@ const Feed = () => {
                 });
 
             }, 1000);
+            
         }
     
         return () => clearInterval(timer);
 
     }, [fetchError]);
-    
 
     return (
         <div className="feed_container">

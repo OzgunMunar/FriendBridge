@@ -11,15 +11,6 @@ export async function GET(request) {
         
         await ConnectToDB()
 
-        const users = await User.find()
-
-        users.forEach(async (user) => {
-            user.isVerified = true;
-            user.verifyToken = undefined;
-            user.verifyTokenExpiry = undefined;
-            await user.save(); 
-        });
-
         const userId = await getDataFromToken(request)
         
         const user = await User.findById(userId)
