@@ -4,7 +4,7 @@ import PostForm from "./PostForm"
 import { useState, useRef, useContext, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import axios from "axios";
-import { FeedChangeContext } from "../Contexts/Contexts";
+import { FeedContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
 import { toast } from "react-toastify";
 
@@ -15,18 +15,20 @@ const CreatePost = () => {
   const pathName = usePathname()
   const textAreaRef = useRef()
 
-  const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
+  const { setShouldFeedChangeSwitch, postType } = useContext(FeedContext)
 
   const [activePathName, setActivePathName] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
     
     postText: "",
+    postType: postType,
     userId: "",
     imageUrlLink: "",
     friend: "",
     location: "",
     likedBy:[{}],
+    dislikedBy:[{}],
     comments: [{}]
     
   })
@@ -47,17 +49,17 @@ const CreatePost = () => {
       await axios.post("/api/post/new", post)
       toast.success("Post created.", { theme: "light" });
       textAreaRef.current.value = "";
-
-      router.push("/");
-
+      
       setPost({
     
         postText: "",
+        postType: postType,
         userId: "",
         imageUrlLink: "",
         friend: "",
         location: "",
         likedBy: [{}],
+        dislikedBy: [{}],
         comments: [{}],
         
       })

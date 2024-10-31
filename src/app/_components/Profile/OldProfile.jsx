@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
+import { UserContext, FeedContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/profile.css'
@@ -32,7 +32,7 @@ const OldProfile = () => {
     })
 
     useEffect(() => {
-        setPage('Profile')
+        // setPage('Profile')
         setLoader(false)
     }, [])
 
@@ -239,9 +239,9 @@ const OldProfile = () => {
 
             <div className='profile_feed_container'>
             
-                <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
                     <Feed />
-                </FeedChangeContext.Provider>
+                </FeedContext.Provider>
 
             </div>
 

@@ -1,34 +1,33 @@
 npm packages list
-axios bcryptjs jsonwebtoken nodemailer 
-react-toastify mongoose
+
+axios 
+bcryptjs 
+jsonwebtoken 
+nodemailer 
+react-toastify 
+mongoose
 react-spinners
 
 
-
-
-fields to add userModel: 
-
-Following people & followed people. (Added)
-
-(Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
-Manipulate arrays of following and followed fields in userModel...)
-
-
-
-Collections to add (All added)
-- SavedPosts: this field will keep of the posts that saved by user. 25 tane ile limitle!
+Things to do:
+        
+2- Make the page of 
+        
+        SavedPosts: this field will keep of the posts that saved by user, limit with 25 posts!
         postid 
         userid
-        createdAt
 
-- Groups: 
+3- Make the page of 
+       
+        - Groups: 
         creator
         GroupName
         GroupType // Public, Privated, Authored
         GroupPosts[{}]   // Fetch 10 by 10
         GroupMembers[{}]
 
-Events: 
+4- Make  the page of Events: 
+        
         creator
         eventName
         eventLocation
@@ -36,20 +35,130 @@ Events:
         eventType
         eventDate
 
-
-
-
-fields to add posts collection:
-
-        dislikedBy Array field for Global Posts. Global Post is something that admin of the webpage shares.
+5- Add other users and Following people & followed people:
         
-        groupId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Groups' // Reference to the group if it's a group post
-        },
-        
-        postType: {
-        type: String,
-        enum: ['FeedPost', 'GroupPost', 'GlobalPost'], // New field to differentiate post types
-        required: true
-        },
+        (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
+        Manipulate arrays of following and followed fields in userModel...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Dennis Dilneoux
+Job: Software Engineer at Tech Innovations
+Turkish Phone Number: +90 532 123 4567
+Address: 123 Tech Street, Istanbul, Turkey
+Email Address: dennis.dilneoux@example.com
+Portfolio Website: www.dennisdilneoux.dev
+Birthday: March 15, 1988
+Gender: Male
+D3nn1s@Tech!
+
+
+2. Illinois Marbel
+Job: Marketing Specialist at Creative Agency
+Turkish Phone Number: +90 532 765 4321
+Address: 456 Marketing Avenue, Ankara, Turkey
+Email Address: illinois.marbel@example.com
+Portfolio Website: www.illinoismarbel.com
+Birthday: July 22, 1990
+Gender: Female
+M@rbel2024!
+
+
+3. Susan Scrumg
+Job: Project Manager at Build It Right
+Turkish Phone Number: +90 532 234 5678
+Address: 789 Project Lane, Izmir, Turkey
+Email Address: susan.scrumg@example.com
+Portfolio Website: www.susanscrumg.com
+Birthday: December 5, 1985
+Gender: Female
+ScruM8!Project
+
+
+4. Dennis Dilneoux (Duplicate)
+Job: Data Analyst at Insight Analytics
+Turkish Phone Number: +90 532 345 6789
+Address: 321 Data Drive, Bursa, Turkey
+Email Address: dennis.dilneoux2@example.com
+Portfolio Website: www.dennisdilneoux2.dev
+Birthday: March 15, 1988
+Gender: Male
+D3nn1s@Data!
+
+
+5. April ONeille
+Job: Graphic Designer at Visual Arts Co.
+Turkish Phone Number: +90 532 456 7890
+Address: 654 Art Street, Antalya, Turkey
+Email Address: april.oneille@example.com
+Portfolio Website: www.apriloneille.com
+Birthday: September 10, 1992
+Gender: Female
+April*Designs92
+
+
+6. Sarah Digsop
+Job: UX Researcher at UserFirst
+Turkish Phone Number: +90 532 987 6543
+Address: 987 User Way, Konya, Turkey
+Email Address: sarah.digsop@example.com
+Portfolio Website: www.sarahdigsop.com
+Birthday: January 25, 1991
+Gender: Female
+Digsop#UX2023
+
+
+7. Susan Froide
+Job: Content Writer at Storytelling Hub
+Turkish Phone Number: +90 532 321 4567
+Address: 321 Content Crescent, Gaziantep, Turkey
+Email Address: susan.froide@example.com
+Portfolio Website: www.susanfroide.com
+Birthday: May 18, 1987
+Gender: Female
+11Froide$Content!
+
+
+8. Mark Gubrell
+Job: Sales Manager at Global Sales Corp
+Turkish Phone Number: +90 532 654 3210
+Address: 654 Sales Boulevard, Trabzon, Turkey
+Email Address: mark.gubrell@example.com
+Portfolio Website: www.markgubrell.com
+Birthday: August 30, 1980
+Gender: Male
+Gubrell#Sales80
+
+
+9. Dennis Dilneoux (Another Duplicate)
+Job: Systems Analyst at Future Tech Solutions
+Turkish Phone Number: +90 532 135 7910
+Address: 147 Future Rd, Kayseri, Turkey
+Email Address: dennis.dilneoux3@example.com
+Portfolio Website: www.dennisdilneoux3.dev
+Birthday: March 15, 1988
+Gender: Male
+D3nn1s@Future!
+
+
+10. Sakir Humbleson
+Job: Digital Marketing Coordinator at Online Presence
+Turkish Phone Number: +90 532 246 8130
+Address: 258 Digital St, Mersin, Turkey
+Email Address: shakirhumbleson@example.com
+Portfolio Website: www.shakirhumbleson.com
+Birthday: September 10, 1992
+Gender: Male
+ONeille*Digital21

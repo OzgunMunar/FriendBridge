@@ -10,9 +10,6 @@ const savedPostSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Users'
     },
-    savedAt: {
-        type: Date
-    }
     
 }, { timestamps: true })
 

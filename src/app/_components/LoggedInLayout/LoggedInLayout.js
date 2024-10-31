@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect, useLayoutEffect } from 'react'
-import { UserContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
+import { UserContext, PageLoaderContext } from '../Contexts/Contexts'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'
 import LeftSideBar from '../LeftSideBar/LeftSideBar'
@@ -11,7 +11,6 @@ import 'react-toastify/dist/ReactToastify.css';
 const LoggedInLayout = ( {children} ) => {
 
     const [user, setUser] = useState('')
-    const [page, setPage] = useState('Feed')
     const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
     
@@ -63,10 +62,8 @@ const LoggedInLayout = ( {children} ) => {
       <Fragment>
         <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
-          <PageContext.Provider value = {{ setPage }}>
-            <LeftSideBar page= { page }/>
-            <PageLoader />
-          </PageContext.Provider>
+          <LeftSideBar />
+          <PageLoader />
         </UserContext.Provider>
         <ToastContainer
                 position="bottom-right"
@@ -85,12 +82,10 @@ const LoggedInLayout = ( {children} ) => {
       <Fragment>
         <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
           <Navbar/>
-          <PageContext.Provider value = {{ setPage }}>
-            <LeftSideBar page={page} />
-            <PageLoaderContext.Provider value = {{ setLoader }}>
-              { children }
-            </PageLoaderContext.Provider>
-          </PageContext.Provider>
+          <LeftSideBar />
+          <PageLoaderContext.Provider value = {{ setLoader }}>
+            { children }
+          </PageLoaderContext.Provider>
         </UserContext.Provider>
         <ToastContainer
                 position="bottom-right"

@@ -9,7 +9,7 @@ export const DELETE = async(req, {params}) => {
         
         await ConnectToDB()
 
-        const {id} = params
+        const { id } = params
         
         await Posts.findByIdAndDelete(id)
 

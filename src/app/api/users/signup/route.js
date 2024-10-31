@@ -12,20 +12,32 @@ export async function POST(request){
 
         const reqBody = await request.json()
         const {username, email, password, gender} = reqBody
+        let lastIndexOfUserCodeNames
+        let userCodeName
 
-        //check if user already exists
+        // check if user already exists
         const user = await User.findOne({email})
 
         if(user){
-            return NextResponse.json({message: "User already exists"}, {status: 400})
+            return NextResponse.json({message: "Email is actively being used by another user."}, {status: 400})
         }
 
-        //hash password
+        // hash password
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
 
+        const userCodeNameTemporary = username.replace(/\s+/g, "").toLowerCase()
+        const searchUserForCodeNames = await User.find({ userCodeName: { $regex: `^${userCodeNameTemporary}`, $options: 'i' } })
+
+        if(searchUserForCodeNames) {
+            userCodeName = `${userCodeNameTemporary}${searchUserForCodeNames.length}`
+        } else {
+            userCodeName = userCodeNameTemporary
+        }
+
         const newUser = new User({
             username,
+            userCodeName,
             email,
             password: hashedPassword,
             gender

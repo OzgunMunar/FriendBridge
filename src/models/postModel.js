@@ -34,14 +34,11 @@ const PostSchema = new Schema({
             }]
         }
     ],
-    postedDate: {
-        type: Date,
-    },
-    editedDate: {
-        type: Date,
-        default: Date.now
-    },
     likedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Users'
+    }],
+    dislikedBy: [{
         type: Schema.Types.ObjectId,
         ref: 'Users'
     }],

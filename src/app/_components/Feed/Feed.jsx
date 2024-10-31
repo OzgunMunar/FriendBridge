@@ -3,7 +3,7 @@ import {useState, useEffect, useContext, useRef} from 'react'
 import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"
-import { FeedChangeContext } from '../Contexts/Contexts'
+import { FeedContext } from '../Contexts/Contexts'
 import PageLoader from '@/app/pageloader'
 import ComponentWaiter from '@/app/componentwaiter'
 
@@ -14,7 +14,7 @@ const Feed = () => {
     const [fetchError, setFetchError] = useState(false)
     const [waitingSeconds, setWaitingSeconds] = useState(3);
 
-    const {shouldFeedChange, setShouldFeedChangeSwitch} = useContext(FeedChangeContext)
+    const {shouldFeedChange, setShouldFeedChangeSwitch} = useContext(FeedContext)
 
     const fetchData = async() => {
 

@@ -3,29 +3,21 @@ import React, { useState, useContext } from 'react'
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
 import { UserContext } from "../Contexts/Contexts";
+import { usePathname } from "next/navigation";
 
-const LeftSideBar = ({ page }) => {
+const LeftSideBar = () => {
 
-  // const [isMouseOver, setIsMouseOver] = useState(false)
   const { user } = useContext(UserContext)
-
-  // function handleMouseEnter() {
-  //   setIsMouseOver(true)
-  // }
-
-  // function handleMouseLeave() {
-  //   setIsMouseOver(false)
-  // }
+  const pathname = usePathname()
 
   return (
-    // {`left_side_bar ${isMouseOver ? 'leftSideBarOpen':''}`}
-    // onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
+    
     <div className="left_side_bar leftSideBarOpen">
 
         <ul className='left_side_bar_items'>
 
-            <Link href={`/${user._id}`} id="profile_leftside_button">
-              <li className={`${page === 'Profile' ? "activeli":""}`}>
+            <Link href={`/${user.userCodeName}`} id="profile_leftside_button">
+              <li className={`${pathname === `/${user.userCodeName}` ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
                 </div>
@@ -44,7 +36,7 @@ const LeftSideBar = ({ page }) => {
                     />
             
             <Link href="/" id="feed_leftside_button">
-              <li className={`${page === 'Feed' ? "activeli":""}`}>
+              <li className={`${pathname === "/" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
                 </div>
@@ -64,7 +56,7 @@ const LeftSideBar = ({ page }) => {
             <Link href="/" id="savedposts_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img width="30" height="30" src="https://img.icons8.com/color/48/save-all.png" alt="save-all"/>
+                  <img width="25" height="25" src="https://img.icons8.com/external-prettycons-flat-prettycons/47/external-bookmark-web-seo-prettycons-flat-prettycons.png" alt="save-all"/>
                 </div>
                 <span>Saved Posts</span>
               </li>

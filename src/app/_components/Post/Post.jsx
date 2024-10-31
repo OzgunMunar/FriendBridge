@@ -1,5 +1,5 @@
 import "@/app/_styles/post.css"
-import { UserContext, FeedChangeContext } from "../Contexts/Contexts"
+import { UserContext, FeedContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect, Fragment } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
@@ -10,7 +10,7 @@ import provideFullDateText from "@/helpers/dateFixer"
 const Post = ({ post }) => {
 
     const { user } = useContext(UserContext)
-    const { setShouldFeedChangeSwitch } = useContext(FeedChangeContext)
+    const { setShouldFeedChangeSwitch } = useContext(FeedContext)
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
     const commentTextAreaRef = useRef()
@@ -40,7 +40,7 @@ const Post = ({ post }) => {
     const [height, setHeight] = useState(0)
     const [isLiking, setIsLiking] = useState(false)
 
-    const fullDateTextForPost = provideFullDateText(post.postedDate)
+    const fullDateTextForPost = provideFullDateText(post.createdAt)
 
     const openModal = () => {
         setIsEditModalOpen(true)
@@ -139,22 +139,12 @@ const Post = ({ post }) => {
                 return
 
             setIsLiking(val => !val)
-
-            if(expand === true)
-                setExpand(val => !val)
             
-            if(post.likedBy.includes(user._id)) {
-                post.likedBy.length -= 1
-                post.likedBy.splice(post.likedBy.indexOf(user._id), 1)
-            } else {
-                post.likedBy.length += 1
-            }
-
             await axios.post("/api/post/likepost", { postId })
             setShouldFeedChangeSwitch(val => !val)
             
         } catch (error) {
-            toast.error("There's been a problem with liking the post.", { theme: "dark" })
+            toast.error(error.message, { theme: "dark" })
         } finally {
             setIsLiking(val => !val)
         }
@@ -225,7 +215,7 @@ const Post = ({ post }) => {
                             <div className="post_dropdown_content">
 
                                 <p className="post_dropdown_content_action">
-                                    <img width="20" height="20" src="https://img.icons8.com/ios/50/save--v1.png" alt="save--v1"/>
+                                <img width="20" height="20" src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/external-bookmark-interface-dreamstale-lineal-dreamstale.png" alt="external-bookmark-interface-dreamstale-lineal-dreamstale"/>
                                     <span>Save Post</span>
                                 </p>
 
@@ -309,7 +299,7 @@ const Post = ({ post }) => {
             <div className={`${expand ? 'expanded':''} post_comment_section_container`}
                 ref={commentRef}
                 style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflow: 'hidden' }}>
-                    {/* `${expand ? `${height + 16}px`:`${height}px`}` */}
+                    
                 <div className="post_horizontal_line"></div>
 
                 <div className="post_comment_top_section">

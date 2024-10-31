@@ -11,7 +11,7 @@ export const GET = async(req) => {
 
         const userId = await getDataFromToken(req)
         const posts = await Posts.find({ isActive: true, creator: userId })
-                                    .sort({"postedDate": -1})
+                                    .sort({"createdAt": -1})
                                     .populate("creator")
                                     .populate({
                                         path: "comments.creator",

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { UserContext, FeedChangeContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
+import { UserContext, FeedContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
@@ -10,13 +10,11 @@ import CreatePost from '../Post/CreatePost'
 const Profile = () => {
 
     const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
-    const { setPage } = useContext(PageContext)
     const { setLoader } = useContext(PageLoaderContext)
     
     const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
-
     const usernameRef = useRef(null)
 
     const [userInfo, setuserInfo] = useState({
@@ -33,7 +31,6 @@ const Profile = () => {
     })
 
     useEffect(() => {
-        setPage('Profile')
         setLoader(false)
     }, [])
 
@@ -59,7 +56,11 @@ const Profile = () => {
         if (isModalShow === true) 
             usernameRef.current.focus()
 
-    }, [isModalShow])
+    },[isModalShow])
+
+    useEffect(() => {
+        setUserInfoRefreshSwitch(val => !val)
+    },[shouldFeedChange])
 
     const openModalToEdit = () => {
         setModalShow(true)
@@ -102,6 +103,8 @@ const Profile = () => {
 
     }
 
+    console.log('profile re-rendered')
+
     return (
 
         <div className="profile_container">
@@ -117,7 +120,7 @@ const Profile = () => {
                     <div className='profile_top_user_info'>
 
                         <span className='profile_username'>{userInfo.username}</span>
-                        <span className='cursor_pointer text-slate-500'>{`@${userInfo.username.replace(/\s+/g, "").toLowerCase()}`}</span>
+                        <span className='cursor_pointer text-slate-500'>{`@${user.userCodeName}`}</span>
 
                     </div>
 
@@ -127,24 +130,24 @@ const Profile = () => {
 
                     <div className="profile_top_profilepages">
 
-                        <button href="/profile" className="profile_top_profilepages_button active">
+                        <button className="profile_top_profilepages_button active">
                             <span className="profile_top_profilepages_title">Posts</span>
-                            <span className="profile_top_profilepages_number">{user.postNumber}</span>
+                            <span className="profile_top_profilepages_number">{user.postNumber || 0}</span>
                         </button>
-        
-                        <button href="/profile" className="profile_top_profilepages_button">
+
+                        <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Following</span>
-                            <span className="profile_top_profilepages_number">0</span>
+                            <span className="profile_top_profilepages_number">{user.followingPeople?.length}</span>
                         </button>
-        
-                        <button href="/profile" className="profile_top_profilepages_button">
+
+                        <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Followers</span>
-                            <span className="profile_top_profilepages_number">0</span>
+                            <span className="profile_top_profilepages_number">{user.followedBy?.length}</span>
                         </button>
         
-                        <button href="/profile" className="profile_top_profilepages_button">
+                        <button className="profile_top_profilepages_button">
                             <span className="profile_top_profilepages_title">Likes</span>
-                            <span className="profile_top_profilepages_number">0</span>
+                            <span className="profile_top_profilepages_number">{user.userlikeNumber}</span>
                         </button>
         
                     </div>
@@ -246,11 +249,11 @@ const Profile = () => {
 
                 <div className="profile_below_feed_container">
             
-                    <FeedChangeContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch }}>
+                    <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost' }}>
                         <CreatePost />
                         <div className='my-5'></div>
                         <Feed />
-                    </FeedChangeContext.Provider>
+                    </FeedContext.Provider>
 
                 </div>
 
