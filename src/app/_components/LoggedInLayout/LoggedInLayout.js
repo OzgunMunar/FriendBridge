@@ -15,7 +15,7 @@ const LoggedInLayout = ( {children} ) => {
     const [loader, setLoader] = useState(true)
     
     const malePlaceholderImage = "https://static.vecteezy.com/system/resources/previews/036/594/092/large_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
-    const femalePlaceholderImage = "https://media.istockphoto.com/id/2060009001/tr/vektör/avatar-user-profile-person-icon-profile-picture-for-social-media-profiles-icons-screensavers.jpg?s=2048x2048&w=is&k=20&c=OCWYH0zjMy_j_lurN7s0bioBWgnD0NCifQmnjp90yuI="
+    const femalePlaceholderImage = "https://st4.depositphotos.com/9998432/24360/v/450/depositphotos_243600690-stock-illustration-person-gray-photo-placeholder-girl.jpg"
 
     useEffect(() => {
 
