@@ -1,6 +1,6 @@
 .profile_container {
     @apply
-    relative w-full w-auto h-auto top-5 mt-[62px] gap-16 px-10 ml-6
+    relative w-full w-auto h-auto top-5 mt-[60px] gap-16 px-10 ml-6
 
     lg:px-44
 
