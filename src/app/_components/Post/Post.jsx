@@ -42,6 +42,8 @@ const Post = ({ post }) => {
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
 
+    const [asd, setAsd] = useState('')
+
     const openModal = () => {
         setIsEditModalOpen(true)
     }
@@ -50,9 +52,21 @@ const Post = ({ post }) => {
         setIsEditModalOpen(false)
     }
 
-    function EditOrDeleteOpener() {
+    const EditOrDeleteOpener = () => {
         setIsDropdown(status => !status)
     }
+
+    const formatPostText = (postBody) => {
+
+        return postBody.split('\n').map((line, index) => (
+
+            <div key={index}>
+                {index !== 0 ? <br />:''} {line}
+            </div>
+
+        ));
+
+    };
 
     useEffect(() => {
 
@@ -63,7 +77,7 @@ const Post = ({ post }) => {
           }
   
         };
-        
+
         setPostToEdit({
             ...postToEdit,
             postText: post.post,
@@ -100,7 +114,7 @@ const Post = ({ post }) => {
 
             setSubmitting(true)
 
-            const result = await axios.patch(`/api/post/${post._id}`, postToEdit)
+            await axios.patch(`/api/post/${post._id}`, postToEdit)
                                         .then(() => toast.success("Post edited", { theme: "light" }))
                                         .catch((error) => toast.error("An error occured during editing post."), { theme: "dark" })
             
@@ -254,7 +268,7 @@ const Post = ({ post }) => {
             </div>
 
             <div className="post_body">
-                {post.post && <p>{post.post}</p>}
+                {post.post && <div>{formatPostText(post.post)}</div>}
             </div>
             {
                 post.imageUrlLink && 

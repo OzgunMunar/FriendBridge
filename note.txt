@@ -54,7 +54,7 @@ Things to do:
 
 
 
-1. Dennis Dilneoux
+1. Dennis Dilneoux (1)
 Job: Software Engineer at Tech Innovations
 Turkish Phone Number: +90 532 123 4567
 Address: 123 Tech Street, Istanbul, Turkey
@@ -65,7 +65,7 @@ Gender: Male
 D3nn1s@Tech!
 
 
-2. Illinois Marbel
+2. Illinois Marbel (2)
 Job: Marketing Specialist at Creative Agency
 Turkish Phone Number: +90 532 765 4321
 Address: 456 Marketing Avenue, Ankara, Turkey
@@ -76,7 +76,7 @@ Gender: Female
 M@rbel2024!
 
 
-3. Susan Scrumg
+3. Susan Scrumg (2)
 Job: Project Manager at Build It Right
 Turkish Phone Number: +90 532 234 5678
 Address: 789 Project Lane, Izmir, Turkey
@@ -88,7 +88,7 @@ ScruM8!Project
 susanscrumg
 
 
-4. Dennis Dilneoux (Duplicate)
+4. Dennis Dilneoux (Duplicate) (1)
 Job: Data Analyst at Insight Analytics
 Turkish Phone Number: +90 532 345 6789
 Address: 321 Data Drive, Bursa, Turkey
@@ -99,7 +99,7 @@ Gender: Male
 D3nn1s@Data!
 
 
-5. April ONeille
+5. April ONeille (2)
 Job: Graphic Designer at Visual Arts Co.
 Turkish Phone Number: +90 532 456 7890
 Address: 654 Art Street, Antalya, Turkey
@@ -110,7 +110,7 @@ Gender: Female
 April*Designs92
 
 
-6. Sarah Digsop
+6. Sarah Digsop (1)
 Job: UX Researcher at UserFirst
 Turkish Phone Number: +90 532 987 6543
 Address: 987 User Way, Konya, Turkey
@@ -121,7 +121,7 @@ Gender: Female
 Digsop#UX2023
 
 
-7. Susan Froide
+7. Susan Froide (2)
 Job: Content Writer at Storytelling Hub
 Turkish Phone Number: +90 532 321 4567
 Address: 321 Content Crescent, Gaziantep, Turkey
@@ -132,7 +132,7 @@ Gender: Female
 11Froide$Content!
 
 
-8. Mark Gubrell
+8. Mark Gubrell (2)
 Job: Sales Manager at Global Sales Corp
 Turkish Phone Number: +90 532 654 3210
 Address: 654 Sales Boulevard, Trabzon, Turkey
@@ -143,7 +143,7 @@ Gender: Male
 Gubrell#Sales80
 
 
-9. Dennis Dilneoux (Another Duplicate)
+9. Dennis Dilneoux (Another Duplicate) (2)
 Job: Systems Analyst at Future Tech Solutions
 Turkish Phone Number: +90 532 135 7910
 Address: 147 Future Rd, Kayseri, Turkey
@@ -154,7 +154,7 @@ Gender: Male
 D3nn1s@Future!
 
 
-10. Sakir Humbleson
+10. Sakir Humbleson (2)
 Job: Digital Marketing Coordinator at Online Presence
 Turkish Phone Number: +90 532 246 8130
 Address: 258 Digital St, Mersin, Turkey
