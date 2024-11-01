@@ -85,11 +85,16 @@
     color: grey;
 }
 
+.post_below_container {
+    @apply flex items-center justify-between flex-row relative w-full
+}
+
 .post_like_comment_share {
-    @apply
-    flex
-    items-center
-    relative
+    @apply flex justify-between items-center flex-row
+}
+
+.post_saved_mark {
+    @apply mx-4
 }
 
 .post_horizontal_line {

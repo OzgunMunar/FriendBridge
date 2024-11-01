@@ -11,12 +11,12 @@ export const GET = async(request) => {
         await ConnectToDB()
         const userId = getDataFromToken(request)
 
-        const savedPosts = await SavedPosts.findOne({ userId })
+        let savedPosts = await SavedPosts.findOne({ userId })
 
         if(!savedPosts)
-            return NextResponse.json({ message: "No saved post(s) found." })
+            savedPosts = { userId: userId, postIds: [] }
 
-        return NextResponse.json({ savedPosts })
+        return NextResponse.json({ savedPosts, status: 200 })
 
     } catch (error) {
         console.log(error.message)

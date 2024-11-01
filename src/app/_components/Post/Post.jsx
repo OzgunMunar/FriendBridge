@@ -10,7 +10,7 @@ import provideFullDateText from "@/helpers/dateFixer"
 const Post = ({ post }) => {
 
     const { user } = useContext(UserContext)
-    const { setShouldFeedChangeSwitch } = useContext(FeedContext)
+    const { shouldFeedChange, setShouldFeedChangeSwitch } = useContext(FeedContext)
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
     const commentTextAreaRef = useRef()
@@ -23,7 +23,8 @@ const Post = ({ post }) => {
         friend: "",
         location: "",
         likedBy: [{}],
-        comments: [{}]
+        comments: [{}],
+        dislikedBy: [{}]
     })
 
     const [comment, setComment] = useState({
@@ -41,8 +42,6 @@ const Post = ({ post }) => {
     const [isLiking, setIsLiking] = useState(false)
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
-
-    const [asd, setAsd] = useState('')
 
     const openModal = () => {
         setIsEditModalOpen(true)
@@ -119,8 +118,10 @@ const Post = ({ post }) => {
                                         .catch((error) => toast.error("An error occured during editing post."), { theme: "dark" })
             
             setShouldFeedChangeSwitch(val => !val)
+            setUserInfoRefreshSwitch(val => !val)
             closeModal()
             setSubmitting(false)
+            
         } catch (error) {
             toast.error(error.data, { theme: "dark" })
         }
@@ -186,10 +187,20 @@ const Post = ({ post }) => {
                                         setShouldFeedChangeSwitch(val => !val)
                                         setExpand(val => !val)
                                     })
-                                    .catch((error) => toast.error("An error occured during adding comment."), { theme: "dark" })
+                                    .catch((error) => toast.error("An error occured during adding comment.", { theme: "dark" }))
 
         commentTextAreaRef.current.value = ""
         commentTextAreaRef.current.focus()
+
+    }
+
+    const SavePost = async(postId) => {
+
+        await axios.post('/api/savedposts/new/', { postId })
+                    .then(() => toast.success("Post saved.", { theme: "light" }))
+                    .catch((error) => toast.error("An error occured during saving the post.", { theme: "dark" }))
+
+        setShouldFeedChangeSwitch(val => !val)
 
     }
     
@@ -227,9 +238,24 @@ const Post = ({ post }) => {
 
                         <div className="post_dropdown_content">
 
-                            <p className="post_dropdown_content_action">
-                                <img width="20" height="20" src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/external-bookmark-interface-dreamstale-lineal-dreamstale.png" alt="external-bookmark-interface-dreamstale-lineal-dreamstale"/>
-                                <span>Save Post</span>
+                            <p className="post_dropdown_content_action" onClick={() => SavePost(post._id)}>
+                                
+                                {
+                                    post.isSaved ? (
+                                        <>
+                                            <img width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                                            <span>Unsave Post</span>
+                                        </>
+                                    ) : (
+
+                                        <>
+                                            <img width="20" height="20" src=" https://img.icons8.com/ios/50/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                                            <span>Save Post</span>
+                                        </>
+
+                                    )
+                                }
+
                             </p>
 
                             {
@@ -299,26 +325,36 @@ const Post = ({ post }) => {
 
             <div className="post_horizontal_line"></div>
 
-            <div className="post_like_comment_share">
+            <div className="post_below_container">
 
-                <div className="post_action_button" onClick={() => LikePost(post._id)} aria-disabled={isLiking}>
+                <div className="post_like_comment_share">
+
+                    <div className="post_action_button" onClick={() => LikePost(post._id)} aria-disabled={isLiking}>
+                        {
+                            post.likedBy.includes(user._id) ?
+                            <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
+                            :
+                            <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
+                        }    
+                        <p>{post.likedBy.length} Likes</p>
+                    </div>
+
+                    <div className="post_action_button" onClick={() => HandleExpand()}>
+                        <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
+                        <p>{post.comments.length} Comments</p>
+                    </div>
+
+                    <div className="post_action_button">
+                        <img width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
+                        <p>Share</p>
+                    </div>
+
+                </div>
+
+                <div className="post_saved_mark">
                     {
-                        post.likedBy.includes(user._id) ?
-                        <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
-                        :
-                        <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
-                    }    
-                    <p>{post.likedBy.length} Likes</p>
-                </div>
-
-                <div className="post_action_button" onClick={() => HandleExpand()}>
-                    <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
-                    <p>{post.comments.length} Comments</p>
-                </div>
-
-                <div className="post_action_button">
-                    <img width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
-                    <p>Share</p>
+                        post.isSaved === true && <img width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                    }
                 </div>
 
             </div>

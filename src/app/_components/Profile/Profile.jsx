@@ -41,7 +41,7 @@ const Profile = () => {
     useEffect(() => {
 
         const fetchData = async() => {
-
+            
             if(user.userCodeName) {
                 
                 if(userCodeName === user.userCodeName) {
@@ -64,7 +64,7 @@ const Profile = () => {
         fetchData()
         setLoader(false)
 
-    }, [user.userCodeName])
+    }, [shouldFeedChange, user.userCodeName])
 
     useEffect(() => {
 
@@ -89,10 +89,6 @@ const Profile = () => {
             usernameRef.current.focus()
 
     },[isModalShow])
-
-    useEffect(() => {
-        setUserInfoRefreshSwitch(val => !val)
-    },[shouldFeedChange])
 
     const openModalToEdit = () => {
         setModalShow(true)
@@ -134,6 +130,8 @@ const Profile = () => {
         }
 
     }
+
+    console.log("viewUser: ", viewUser)
 
     return (
 

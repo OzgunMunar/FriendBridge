@@ -7,7 +7,7 @@ import { NextResponse } from "next/server"
 export const POST = async(request) => {
 
     try {
-        
+
         await ConnectToDB()
 
         const userId = getDataFromToken(request)
@@ -16,7 +16,7 @@ export const POST = async(request) => {
         let savedPostDocument = await SavedPosts.findOne({ userId })
         if(savedPostDocument) {
     
-            if(!savedPostDocument.postIds.include(postId)) {
+            if(!savedPostDocument.postIds.includes(postId)) {
 
                 savedPostDocument.postIds.push(postId)
 

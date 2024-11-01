@@ -6,7 +6,7 @@ import { getDataFromToken } from "@/helpers/helper";
 export const POST = async(req) => {
 
     const reqBody = await req.json()
-    const { postText, imageUrlLink, friend, location, likedBy, dislikedBy, comments, postType, groupId } = reqBody
+    const { postText, imageUrlLink, friend, location, likedBy, dislikedBy,comments, postType, groupId } = reqBody
 
     try {
         
