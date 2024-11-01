@@ -57,20 +57,20 @@ const Feed = () => {
                 setWaitingSeconds(prev => {
 
                     if (prev > 1) {
-                        return prev - 1;
+                        return prev - 1
                     } else {
-                        setShouldFeedChangeSwitch(val => !val);
-                        return 3;
+                        setShouldFeedChangeSwitch(val => !val)
+                        return 3
                     }
-                });
+                })
 
-            }, 1000);
+            }, 1000)
             
         }
     
-        return () => clearInterval(timer);
+        return () => clearInterval(timer)
 
-    }, [fetchError]);
+    }, [fetchError])
 
     return (
         <div className="feed_container">

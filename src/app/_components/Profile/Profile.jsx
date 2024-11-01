@@ -41,18 +41,19 @@ const Profile = () => {
 
         const fetchData = async() => {
 
-            if(userCodeName) {
-
+            if(user.userCodeName) {
+                
                 if(userCodeName === user.userCodeName) {
-
-                    setViewUser(user)
+                    
+                    console.log("i am inside")
                     setIsLoggedInProfile(true)
+                    setViewUser(user)
 
                 } else {
-
+                    
                     const userData = await axios.get(`/api/users/${userCodeName}`)
-                    setViewUser(userData.data.data)
                     setIsLoggedInProfile(false)
+                    setViewUser(userData.data.data)
 
                 }
 
@@ -63,7 +64,7 @@ const Profile = () => {
         fetchData()
         setLoader(false)
 
-    }, [])
+    }, [user.userCodeName])
 
     useEffect(() => {
 
@@ -182,7 +183,7 @@ const Profile = () => {
                     </div>
 
                     {
-                        isLoggedInProfile && (
+                        (isLoggedInProfile) && (
 
                             <div className="profile_top_editprofilebutton_container">
                     
@@ -284,14 +285,12 @@ const Profile = () => {
 
                 <div className="profile_below_feed_container">
             
-                    <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: viewUser._id }}>
-
-                        {
-                            (userCodeName === user.userCodeName) ? (<><CreatePost /> <div className='my-5'></div></>):(<div></div>)
-                        }
-
-                        <Feed />
-                    </FeedContext.Provider>
+                        <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: viewUser._id }}>
+                            {
+                                (userCodeName === user.userCodeName) ? (<><CreatePost /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
+                            }
+                            <Feed />
+                        </FeedContext.Provider>
 
                 </div>
 

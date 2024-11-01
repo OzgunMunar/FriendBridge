@@ -132,10 +132,11 @@
     @apply
     xs:w-full
     xl:w-1/3
+    bg-white
 }
 
 .profile_below_feed_container {
-    @apply w-full mt-5
+    @apply w-full mt-5 
     xl:w-2/3
     xl:max-w-screen-xl
     xl:mt-0
