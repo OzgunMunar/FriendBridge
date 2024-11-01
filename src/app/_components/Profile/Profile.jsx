@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation'
 
 const Profile = () => {
 
-    const { user, userInfoRefreshSwitch, setUserInfoRefreshSwitch } = useContext(UserContext)
+    const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setLoader } = useContext(PageLoaderContext)
 
     const pathName = usePathname()
@@ -46,6 +46,19 @@ const Profile = () => {
 
     useEffect(() => {
 
+        setUserInfo({
+
+            username: user?.username || '',
+            userImageLink: user?.userImageLink || '',
+            address: user?.address || '',
+            personalwebsite: user?.personalwebsite || '',
+            phonenumber: user?.phonenumber || '',
+            profession: user?.profession || '',
+            birthday: user?.birthday || '',
+            gender: user?.gender || ''
+    
+        })
+
         const fetchData = async() => {
             
             if(user.userCodeName) {
@@ -73,23 +86,6 @@ const Profile = () => {
         setLoader(false)
 
     }, [user])
-
-    useEffect(() => {
-
-        setUserInfo({
-
-            username: user?.username || '',
-            userImageLink: user?.userImageLink || '',
-            address: user?.address || '',
-            personalwebsite: user?.personalwebsite || '',
-            phonenumber: user?.phonenumber || '',
-            profession: user?.profession || '',
-            birthday: user?.birthday || '',
-            gender: user?.gender || ''
-    
-        })
-
-    },[user])
 
     useEffect(() => {
 
