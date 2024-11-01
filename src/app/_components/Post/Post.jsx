@@ -212,59 +212,72 @@ const Post = ({ post }) => {
                     </div>
 
                 </div>
+                
+                <div className="right_section_container">
 
-                {(post.creator._id === user._id) &&
-                    <div className="right_section_container">
+                    <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
 
-                        <div ref={EditOrDeleteRef} className="post_header_right_actions_section">
+                        <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
+                            <span>...</span>
+                        </button>
 
-                            <button className="right_actions_button" onClick={() => EditOrDeleteOpener()}>
-                                <span>...</span>
-                            </button>
+                    </div>
+
+                    {isDropdown && (
+
+                        <div className="post_dropdown_content">
+
+                            <p className="post_dropdown_content_action">
+                                <img width="20" height="20" src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/external-bookmark-interface-dreamstale-lineal-dreamstale.png" alt="external-bookmark-interface-dreamstale-lineal-dreamstale"/>
+                                <span>Save Post</span>
+                            </p>
+
+                            {
+
+                                (post.creator._id !== user._id) ? (
+
+                                    <p className="post_dropdown_content_action">
+                                        <img width="20" height="20" src="https://img.icons8.com/windows/50/complaint.png" alt="report-post"/>
+                                        <span>Report Post</span>
+                                    </p>
+
+                                ):
+                                (<div></div>)
+
+                            }
+
+                            {
+                                (post.likedBy.length === 0 & post.comments.length === 0) ?
+                                (
+                                    <p className="post_dropdown_content_action" onClick={openModal}>
+                                        <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
+                                        <span>Edit</span>
+                                    </p>
+                                ) 
+                                :
+                                (<div></div>)
+                            }
+
+                            {
+                                (post.creator._id === user._id) ? (
+
+                                    <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
+
+                                        <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
+                                        <span>Delete</span>
+                                        
+                                    </p>
+
+                                ):
+                                (<div></div>)
+                            }
 
                         </div>
 
-                        {isDropdown && (
+                    )}
 
-                            <div className="post_dropdown_content">
-
-                                <p className="post_dropdown_content_action">
-                                <img width="20" height="20" src="https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/external-bookmark-interface-dreamstale-lineal-dreamstale.png" alt="external-bookmark-interface-dreamstale-lineal-dreamstale"/>
-                                    <span>Save Post</span>
-                                </p>
-
-                                <div className="w-full border border-gray-300 mx-1"></div>
-
-                                <p className="post_dropdown_content_action">
-                                    <img width="20" height="20" src="https://img.icons8.com/windows/50/complaint.png" alt="report-post"/>
-                                    <span>Report Post</span>
-                                </p>
-
-                                <div className="w-full border border-gray-300 mx-1"></div>
-
-                                {
-                                    (post.likedBy.length === 0 & post.comments.length === 0) ?
-                                    (
-                                        <p className="post_dropdown_content_action" onClick={openModal}>
-                                            <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
-                                            <span>Edit</span>
-                                        </p>
-                                    ) 
-                                    :
-                                    (<div></div>)
-                                }
-
-                                <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
-                                    <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
-                                    <span>Delete</span>
-                                </p>
-
-                            </div>
-
-                        )}
-
-                    </div>
-                }
+                </div>
+                
             </div>
 
             <div className="post_body">
