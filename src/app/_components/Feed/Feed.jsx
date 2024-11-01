@@ -94,7 +94,7 @@ const Feed = () => {
                             <div key={post._id}>
                                 <Post post={post} />
                             </div>
-                    ))
+                        ))
 
                 )
                 
