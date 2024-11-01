@@ -46,12 +46,6 @@ const LoggedInLayout = ( {children} ) => {
 
     }, [userInfoRefreshSwitch])
 
-    useLayoutEffect(() => {
-      
-      setLoader(true)
-
-    }, [])
-
     useEffect(() => {
 
       setLoader(false)

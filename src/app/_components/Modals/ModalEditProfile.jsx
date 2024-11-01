@@ -96,6 +96,7 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
                         disabled={isPasswordMailSent}>
                     
                     {
+                      
                         isPasswordMailSent ? 
 
                             <img width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>

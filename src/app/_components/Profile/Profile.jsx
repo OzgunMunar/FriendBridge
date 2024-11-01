@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation'
 
 const Profile = () => {
 
-    const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
+    const { user, userInfoRefreshSwitch, setUserInfoRefreshSwitch } = useContext(UserContext)
     const { setLoader } = useContext(PageLoaderContext)
 
     const pathName = usePathname()
@@ -40,20 +40,28 @@ const Profile = () => {
 
     useEffect(() => {
 
+        setUserInfoRefreshSwitch(val => !val)
+
+    }, [shouldFeedChange])
+
+    useEffect(() => {
+
         const fetchData = async() => {
             
             if(user.userCodeName) {
                 
                 if(userCodeName === user.userCodeName) {
                     
-                    setIsLoggedInProfile(true)
+                    console.log("userCodeName === user.userCodeName: ", user)
                     setViewUser(user)
+                    setIsLoggedInProfile(true)
 
                 } else {
                     
                     const userData = await axios.get(`/api/users/${userCodeName}`)
-                    setIsLoggedInProfile(false)
+                    console.log("userData ius fetched: ", userData)
                     setViewUser(userData.data.data)
+                    setIsLoggedInProfile(false)
 
                 }
 
@@ -64,7 +72,7 @@ const Profile = () => {
         fetchData()
         setLoader(false)
 
-    }, [shouldFeedChange, user.userCodeName])
+    }, [user])
 
     useEffect(() => {
 
@@ -130,8 +138,6 @@ const Profile = () => {
         }
 
     }
-
-    console.log("viewUser: ", viewUser)
 
     return (
 

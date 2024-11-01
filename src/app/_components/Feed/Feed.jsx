@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {useState, useEffect, useContext, useRef} from 'react'
+import {useState, useEffect, useContext} from 'react'
 import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"

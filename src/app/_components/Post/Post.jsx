@@ -1,6 +1,6 @@
 import "@/app/_styles/post.css"
 import { UserContext, FeedContext } from "../Contexts/Contexts"
-import { useContext, useRef, useState, useEffect, Fragment } from 'react'
+import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
@@ -118,7 +118,6 @@ const Post = ({ post }) => {
                                         .catch((error) => toast.error("An error occured during editing post."), { theme: "dark" })
             
             setShouldFeedChangeSwitch(val => !val)
-            setUserInfoRefreshSwitch(val => !val)
             closeModal()
             setSubmitting(false)
             
