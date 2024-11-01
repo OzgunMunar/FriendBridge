@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useContext } from "react";
 import '@/app/_styles/navbar.css'
+import '@/app/_styles/skeletonloader.css'
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -34,9 +35,9 @@ const Navbar = () => {
 
       return () => {
         document.removeEventListener('click', handleOutsideClick);
-      };
+      }
 
-    }, []);
+    }, [])
 
     const LogOut = async() => {
 
@@ -100,8 +101,10 @@ const Navbar = () => {
 
                     <button className="dropbtn" onClick={() => headerMainDropdown()}>
                         
-                        <img src={user.userImageLink} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_navbar_photo_size"/>
-                        <span>{user.username}</span>
+                        <img src={user.userImageLink} alt="Picture of the user" loading="lazy" className="nav_bar_photo nav_bar_navbar_photo_size skeleton"/>
+                        <span className={`${user.username ? '' : 'skeleton skeleton-navbar-title'}`}> 
+                            {user?.username || ""} 
+                        </span>
                         
                         <div className={`icon ${isDropdown ? 'rotate': ''}`}>
                             <img width="23" height="23" src="https://img.icons8.com/color/48/expand-arrow--v1.png" alt="expand-arrow--v1" />

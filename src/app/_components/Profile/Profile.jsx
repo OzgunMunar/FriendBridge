@@ -4,6 +4,7 @@ import { UserContext, FeedContext, PageContext, PageLoaderContext } from '../Con
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
+import '@/app/_styles/skeletonloader.css'
 import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
 import { usePathname } from 'next/navigation'
@@ -45,7 +46,6 @@ const Profile = () => {
                 
                 if(userCodeName === user.userCodeName) {
                     
-                    console.log("i am inside")
                     setIsLoggedInProfile(true)
                     setViewUser(user)
 
@@ -144,13 +144,18 @@ const Profile = () => {
                 <div className="profile_top_container_one">
                     
                     <div className="profile_top_userimage_container">
-                        <img src={viewUser?.userImageLink || ""} className="profile_top_userimage" />
+                        <img src={viewUser?.userImageLink || ""} className="profile_top_userimage skeleton" />
                     </div>
                     
                     <div className='profile_top_user_info'>
 
-                        <span className='profile_username'>{viewUser?.username || ""}</span>
-                        <span className='cursor_pointer text-slate-500'>{`@${viewUser?.userCodeName || ""}`}</span>
+                        <span className={`profile_username mb-0.5 ${viewUser?.username ? '' : 'skeleton skeleton-title'}`}> 
+                            {viewUser?.username || ""} 
+                        </span>
+
+                        <span className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? '' : 'skeleton skeleton-text'}`}> 
+                            {viewUser?.userCodeName ? `@${viewUser.userCodeName}` : ""} 
+                        </span>
 
                     </div>
 
@@ -209,8 +214,13 @@ const Profile = () => {
 
                         <div className='profile_personal_info_toprow'>
 
-                            <span className='profile_username'>{viewUser?.username || ""}</span>
-                            <p className='cursor_pointer text-slate-500'>{`@${viewUser?.userCodeName || ""}`}</p>
+                            <span className={`profile_username ${viewUser?.username ? '' : 'skeleton skeleton-title'}`}> 
+                                {viewUser?.username || ""} 
+                            </span>
+
+                            <p className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? '' : 'skeleton skeleton-text'}`}> 
+                                {viewUser?.userCodeName ? `@${viewUser.userCodeName}` : ""} 
+                            </p>
 
                         </div>
                     
@@ -220,61 +230,69 @@ const Profile = () => {
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{viewUser?.profession || ""}</div>
+                                <span className={`profile_personal_info_value ${viewUser?.profession ? '' : 'skeleton skeleton-text'}`}> 
+                                    {viewUser?.profession || ""} 
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
                                 </div>
-                                <div className='profile_personal_info_value text-sky-600'>
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.phonenumber ? '' : 'skeleton skeleton-text'}`}> 
                                     <a href={`tel:${viewUser?.phonenumber}`}>
                                         {viewUser?.phonenumber || ""}
                                     </a>
-                                </div>
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{viewUser?.address || ""}</div>
+                                <span className={`profile_personal_info_value ${viewUser?.address ? '' : 'skeleton skeleton-text'}`}> 
+                                    {viewUser?.address || ""} 
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
                                 </div>
-                                <div className='profile_personal_info_value text-sky-600'>
-                                    <a href={`mailto:${viewUser?.email || ""}`}>
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.email ? '' : 'skeleton skeleton-text'}`}> 
+                                    <a href={`mailto:${viewUser?.email}`}>
                                         {viewUser?.email || ""}
                                     </a>
-                                </div>
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 </div>
-                                <div className='profile_personal_info_value text-sky-600 website-text'>
-                                    <a href={`${viewUser?.personalwebsite || ""}`} target='_blank'>
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.personalwebsite ? '' : 'skeleton skeleton-text'}`}> 
+                                    <a href={`${viewUser?.personalwebsite}`} target='_blank'>
                                         {viewUser?.personalwebsite || ""}
                                     </a>
-                                </div>
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{viewUser?.birthday ? viewUser.birthday : ""}</div>
+                                <span className={`profile_personal_info_value ${viewUser?.birthday ? '' : 'skeleton skeleton-text'}`}> 
+                                    {viewUser?.birthday || ""} 
+                                </span>
                             </div>
 
                             <div className='row'>
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
                                 </div>
-                                <div className='profile_personal_info_value'>{viewUser?.gender || ""}</div>
+                                <span className={`profile_personal_info_value ${viewUser?.gender ? '' : 'skeleton skeleton-text'}`}> 
+                                    {viewUser?.gender || ""} 
+                                </span>
                             </div>
 
                         </div>
