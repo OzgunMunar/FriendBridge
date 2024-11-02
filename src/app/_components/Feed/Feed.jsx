@@ -39,12 +39,15 @@ const Feed = () => {
 
                     for(let i=0; i < postDatas.length; i++) {
 
-                        isSavedByUser = savedPostDatas.includes(postDatas[i]._id)
+                        isSavedByUser = savedPostDatas.some((post) => post._id === postDatas[i]._id);
 
                         postDatasWithSavedPosts.push({
                             ...postDatas[i],
                             isSaved: isSavedByUser
-                        })
+                        });
+                    
+
+                        console.log(postDatasWithSavedPosts)
 
                     }
 

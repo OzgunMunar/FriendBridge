@@ -3,16 +3,27 @@ import { getDataFromToken } from "@/helpers/helper"
 import SavedPosts from "@/models/savedPostsModel"
 import { NextResponse } from "next/server"
 
-
 export const GET = async(request) => {
 
     try {
-        
+      
         await ConnectToDB()
         const userId = getDataFromToken(request)
 
         let savedPosts = await SavedPosts.findOne({ userId })
-                                         .populate('postIds')
+                                       .sort({ "createdAt": -1 })
+                                       .populate({
+                                           path: "postIds",
+                                           populate: {
+                                               path: "creator"
+                                           }
+                                       })
+                                       .populate({
+                                           path: "postIds",
+                                           populate: {
+                                               path: "comments.creator"
+                                           }
+                                       })
 
         if(!savedPosts)
             savedPosts = { userId: userId, postIds: [] }

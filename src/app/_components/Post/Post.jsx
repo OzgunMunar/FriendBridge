@@ -47,12 +47,12 @@ const Post = ({ post }) => {
         setIsEditModalOpen(true)
     }
     
-    const closeModal = () => {
-        setIsEditModalOpen(false)
-    }
-
     const EditOrDeleteOpener = () => {
         setIsDropdown(status => !status)
+    }
+
+    const closeModal = () => {
+        setIsEditModalOpen(false)
     }
 
     const formatPostText = (postBody) => {
