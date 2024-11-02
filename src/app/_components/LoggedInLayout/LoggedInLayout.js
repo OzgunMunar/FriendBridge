@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useLayoutEffect } from 'react'
+import React, { Fragment, useState, useEffect } from 'react'
 import { UserContext, PageLoaderContext } from '../Contexts/Contexts'
 import axios from 'axios'
 import Navbar from '../Navbar/Navbar'

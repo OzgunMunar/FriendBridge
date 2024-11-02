@@ -53,7 +53,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="savedposts_leftside_button">
+            <Link href="/savedposts" id="savedposts_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="25" height="25" src="https://img.icons8.com/external-prettycons-flat-prettycons/47/external-bookmark-web-seo-prettycons-flat-prettycons.png" alt="save-all"/>

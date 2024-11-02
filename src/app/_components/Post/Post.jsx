@@ -272,7 +272,7 @@ const Post = ({ post }) => {
                             }
 
                             {
-                                (post.likedBy.length === 0 & post.comments.length === 0) ?
+                                (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
                                 (
                                     <p className="post_dropdown_content_action" onClick={openModal}>
                                         <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>

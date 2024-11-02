@@ -12,6 +12,7 @@ export const GET = async(request) => {
         const userId = getDataFromToken(request)
 
         let savedPosts = await SavedPosts.findOne({ userId })
+                                         .populate('postIds')
 
         if(!savedPosts)
             savedPosts = { userId: userId, postIds: [] }

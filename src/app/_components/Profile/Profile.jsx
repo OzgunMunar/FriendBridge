@@ -65,14 +65,12 @@ const Profile = () => {
                 
                 if(userCodeName === user.userCodeName) {
                     
-                    console.log("userCodeName === user.userCodeName: ", user)
                     setViewUser(user)
                     setIsLoggedInProfile(true)
 
                 } else {
                     
                     const userData = await axios.get(`/api/users/${userCodeName}`)
-                    console.log("userData ius fetched: ", userData)
                     setViewUser(userData.data.data)
                     setIsLoggedInProfile(false)
 
