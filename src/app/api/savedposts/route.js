@@ -24,7 +24,6 @@ export const GET = async(request) => {
                                                path: "comments.creator"
                                            }
                                        })
-
         if(!savedPosts)
             savedPosts = { userId: userId, postIds: [] }
 

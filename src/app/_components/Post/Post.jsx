@@ -1,4 +1,3 @@
-import "@/app/_styles/post.css"
 import { UserContext, FeedContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
@@ -6,6 +5,7 @@ import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
 import { toast } from "react-toastify";
 import provideFullDateText from "@/helpers/dateFixer"
+import "@/app/_styles/post.css"
 
 const Post = ({ post }) => {
 
@@ -195,9 +195,19 @@ const Post = ({ post }) => {
 
     const SavePost = async(postId) => {
 
+        let successText, unsuccessText
+
+        if(post.isSaved) {
+            successText = "Post unsaved."
+            unsuccessText = "An error occured during unsaving the post."
+        } else {
+            successText = "Post saved."
+            unsuccessText = "An error occured during saving the post."
+        }
+
         await axios.post('/api/savedposts/new/', { postId })
-                    .then(() => toast.success("Post saved.", { theme: "light" }))
-                    .catch((error) => toast.error("An error occured during saving the post.", { theme: "dark" }))
+                    .then(() => toast.success(successText, { theme: "light" }))
+                    .catch((error) => toast.error(unsuccessText, { theme: "dark" }))
 
         setShouldFeedChangeSwitch(val => !val)
 

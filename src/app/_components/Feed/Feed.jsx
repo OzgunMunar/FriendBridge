@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {useState, useEffect, useContext} from 'react'
 import Post from '../Post/Post'
 
@@ -6,8 +5,11 @@ import "@/app/_styles/feedcontainer.css"
 import { FeedContext } from '../Contexts/Contexts'
 import PageLoader from '@/app/pageloader'
 import ComponentWaiter from '@/app/componentwaiter'
+import { GetProfileFeed } from '../FeedDbQueries/ProfileFeedQuery'
+import { feedTypes } from '../FeedEnum/FeedEnum'
+import { GetSavedPostsFeed } from '../FeedDbQueries/SavedPostsFeedQuery'
 
-const Feed = () => {
+const Feed = ({ feedType }) => {
 
     const [posts, setPosts] = useState([])
     const [loading, setLoading] = useState(true)
@@ -18,53 +20,54 @@ const Feed = () => {
 
     useEffect(() => {
 
+        setLoading(true)
+
         const fetchData = async () => {
-            
-            if(!userId) 
-                return
+
+            let feedData = []
 
             try {
 
-                const resultPostRequest = await axios.get(`/api/post?userId=${userId}`)
-                const postDatas = resultPostRequest.data.posts
+                if(!userId) return
 
-                const resultSavedPostRequest = await axios.get('/api/savedposts')
-                let postDatasWithSavedPosts = []
-                let savedPostDatas 
-                let isSavedByUser
+                switch (feedType) {
 
-                if(resultSavedPostRequest.data.savedPosts.postIds.length > 0) {
+                    case feedTypes.ProfileFeed:
 
-                    savedPostDatas = resultSavedPostRequest.data.savedPosts.postIds
+                        feedData = await GetProfileFeed(userId)
 
-                    for(let i=0; i < postDatas.length; i++) {
+                    break;
 
-                        isSavedByUser = savedPostDatas.some((post) => post._id === postDatas[i]._id);
+                    case feedTypes.MainFeed:
 
-                        postDatasWithSavedPosts.push({
-                            ...postDatas[i],
-                            isSaved: isSavedByUser
-                        });
-                    
-
-                        console.log(postDatasWithSavedPosts)
-
-                    }
-
-                } else {
-                    
-                    postDatasWithSavedPosts = postDatas.map((postData) => {
+                        // mainfeed query
                         
-                        return {
-                            ...postData,
-                            isSaved: false
-                        }
+                    break;
 
-                    })
+                    case feedTypes.SavedPostsFeed:
+
+                        feedData = await GetSavedPostsFeed()
+
+                    break;
+
+                    case feedTypes.ProfileFeed:
+                        
+                        // profilefeed
+
+                    break;
+
+                    case feedTypes.ProfileFeed:
+                        
+                        // profilefeed
+
+                    break;
+                
+                    default:
+                        break;
 
                 }
 
-                setPosts(postDatasWithSavedPosts)
+                setPosts(feedData)
 
             } catch (error) {
                 setFetchError(true)

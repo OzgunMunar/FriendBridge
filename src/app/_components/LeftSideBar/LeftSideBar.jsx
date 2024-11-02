@@ -54,7 +54,7 @@ const LeftSideBar = () => {
                     />
 
             <Link href="/savedposts" id="savedposts_leftside_button">
-              <li>
+              <li className={`${pathname === "/savedposts" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="25" height="25" src="https://img.icons8.com/external-prettycons-flat-prettycons/47/external-bookmark-web-seo-prettycons-flat-prettycons.png" alt="save-all"/>
                 </div>

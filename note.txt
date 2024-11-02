@@ -9,6 +9,7 @@ mongoose
 react-spinners
 
 
+
 Things to do:
 
 1- Add other users(Done) and Following people & followed people:
@@ -16,13 +17,8 @@ Things to do:
         (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
         Manipulate arrays of following and followed fields in userModel...)
         
-2- Make the page of 
-        
-        SavedPosts: this field will keep of the posts that saved by user, limit with 25 posts!
-        postid 
-        userid
 
-3- Make the page of 
+2- Make the page of 
        
         - Groups: 
         creator
@@ -31,7 +27,7 @@ Things to do:
         GroupPosts[{}]   // Fetch 10 by 10
         GroupMembers[{}]
 
-4- Make  the page of Events: 
+3- Make  the page of Events: 
         
         creator
         eventName
@@ -65,7 +61,7 @@ Gender: Male
 D3nn1s@Tech!
 
 
-2. Illinois Marbel (2)
+2. Illinois Marbel (3)
 Job: Marketing Specialist at Creative Agency
 Turkish Phone Number: +90 532 765 4321
 Address: 456 Marketing Avenue, Ankara, Turkey
@@ -88,7 +84,7 @@ ScruM8!Project
 susanscrumg
 
 
-4. Dennis Dilneoux (Duplicate) (1)
+4. Dennis Dilneoux (Duplicate) (2) 
 Job: Data Analyst at Insight Analytics
 Turkish Phone Number: +90 532 345 6789
 Address: 321 Data Drive, Bursa, Turkey
@@ -99,7 +95,7 @@ Gender: Male
 D3nn1s@Data!
 
 
-5. April ONeille (2)
+5. April ONeille (3) 
 Job: Graphic Designer at Visual Arts Co.
 Turkish Phone Number: +90 532 456 7890
 Address: 654 Art Street, Antalya, Turkey
@@ -110,7 +106,7 @@ Gender: Female
 April*Designs92
 
 
-6. Sarah Digsop (1)
+6. Sarah Digsop (2)
 Job: UX Researcher at UserFirst
 Turkish Phone Number: +90 532 987 6543
 Address: 987 User Way, Konya, Turkey
@@ -132,7 +128,7 @@ Gender: Female
 11Froide$Content!
 
 
-8. Mark Gubrell (2)
+8. Mark Gubrell (3) 
 Job: Sales Manager at Global Sales Corp
 Turkish Phone Number: +90 532 654 3210
 Address: 654 Sales Boulevard, Trabzon, Turkey
@@ -143,7 +139,7 @@ Gender: Male
 Gubrell#Sales80
 
 
-9. Dennis Dilneoux (Another Duplicate) (2)
+9. Dennis Dilneoux (Another Duplicate) (3)
 Job: Systems Analyst at Future Tech Solutions
 Turkish Phone Number: +90 532 135 7910
 Address: 147 Future Rd, Kayseri, Turkey

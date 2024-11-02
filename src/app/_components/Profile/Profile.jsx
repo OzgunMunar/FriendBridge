@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { UserContext, FeedContext, PageContext, PageLoaderContext } from '../Contexts/Contexts'
+import { UserContext, FeedContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
@@ -8,6 +8,7 @@ import '@/app/_styles/skeletonloader.css'
 import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
 import { usePathname } from 'next/navigation'
+import { feedTypes } from '../FeedEnum/FeedEnum'
 
 const Profile = () => {
 
@@ -305,7 +306,7 @@ const Profile = () => {
                             {
                                 (userCodeName === user.userCodeName) ? (<><CreatePost /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
                             }
-                            <Feed />
+                            <Feed feedType={feedTypes.ProfileFeed} />
                         </FeedContext.Provider>
 
                 </div>
