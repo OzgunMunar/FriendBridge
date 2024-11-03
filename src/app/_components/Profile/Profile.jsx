@@ -134,6 +134,12 @@ const Profile = () => {
 
     }
 
+    const unfollowUser = async() => {
+
+        // await axios.get('/api/user/followuser')
+
+    }
+
     return (
 
         <div className="profile_container">
@@ -187,17 +193,39 @@ const Profile = () => {
                     </div>
 
                     {
-                        (isLoggedInProfile) && (
+                        (isLoggedInProfile) ? (
 
-                            <div className="profile_top_editprofilebutton_container">
+                            <div className="profile_top_profilebutton_container bg-slate-400 hover:bg-slate-500 border-slate-500">
                     
-                                <button type='button' className="profile_top_edit_button" onClick={openModalToEdit}>
+                                <button type='button' className="profile_top_button" onClick={openModalToEdit}>
                                     <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
-                                    Edit Profile
+                                    <span className="text-white">Edit Profile</span>
                                 </button>
 
                             </div>
 
+                        )
+                        :
+                        (
+                            // // If user is not following...
+                            // <div className="profile_top_profilebutton_container bg-red-400 hover:bg-red-500 border-red-500">
+
+                            //     <button type='button' className="profile_top_button" onClick={() => unfollowUser()}>
+                            //         <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                            //         Unfollow
+                            //     </button>
+
+                            // </div>
+
+                            // If user is following...
+                            <div className="profile_top_profilebutton_container bg-green-400 hover:bg-green-500 border-green-500">
+
+                                <button type='button' className="profile_top_button" onClick={() => unfollowUser()}>
+                                    <img width="25" height="25" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
+                                    Follow
+                                </button>
+
+                            </div>
                         )
                     }
 

@@ -9,17 +9,24 @@
 }
 
 .post_container {
+
     @apply
 
+    transition-all duration-200 ease-in
     bg-neutral-50
     w-full
     h-full
+    opacity-100
     pt-6 pl-6 pr-6
     mb-5
     break-normal
     hyphens-auto
     shadow-md
-    
+
+}
+
+.post_container.removePost {
+    @apply h-0 opacity-0
 }
 
 .post_photo {
@@ -199,8 +206,8 @@
 }
 
 .post_comment_section_container {
-    transition: all 250ms ease;
     @apply
+    transition-all duration-200 ease-in
     opacity-0
     h-0
 }

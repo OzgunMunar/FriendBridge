@@ -1,5 +1,6 @@
 import React from 'react'
 import "@/app/_styles/mainrightside.css"
+import Link from 'next/link'
 
 const MainRightSide = () => {
 
@@ -17,10 +18,12 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <span>Dennis Dilneoux</span>
-                    </div>
+                    <Link href={`/dennisdilneoux`}>
+                        <div className="suggested_person_info">
+                            <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                            <span>Dennis Dilneoux</span>
+                        </div>
+                    </Link>
 
                     <div className="suggested_person_buttons">
 
@@ -40,10 +43,12 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/11410644/pexels-photo-11410644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <span>Illinois Marbel</span>
-                    </div>
+                    <Link href={`/illinoismarbel`}>
+                        <div className="suggested_person_info">
+                            <img width="50" height="50" src="https://images.pexels.com/photos/11410644/pexels-photo-11410644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                            <span>Illinois Marbel</span>
+                        </div>
+                    </Link>
 
                     <div className="suggested_person_buttons">
 
@@ -63,10 +68,12 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <div className="suggested_person_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/11844361/pexels-photo-11844361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <span>Susan Scrumg</span>
-                    </div>
+                    <Link href={`/susanscrumg`}>
+                        <div className="suggested_person_info">
+                            <img width="50" height="50" src="https://images.pexels.com/photos/11844361/pexels-photo-11844361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                            <span>Susan Scrumg</span>
+                        </div>
+                    </Link>
 
                     <div className="suggested_person_buttons">
 
@@ -99,8 +106,12 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <p>Dennis Dilneoux<span className="text-gray-500"> changed his profile picture, <span className='time-indicator'>1 min ago</span>.</span></p>
+
+                        <Link href={`/dennisdilneoux`}>
+                            <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                        </Link>
+                        <p><Link href={`/dennisdilneoux`}>Dennis Dilneoux</Link><span className="text-gray-500"> changed his profile picture, <span className='time-indicator'>1 min ago</span>.</span></p>
+
                     </div>
 
                 </div>
@@ -108,26 +119,12 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/7790836/pexels-photo-7790836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <p>April ONeille <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></p>
-                    </div>
-                    
-                </div>
 
-                <div className="latest_activity_container">
+                        <Link href={`/apriloneille`}>
+                            <img width="50" height="50" src="https://images.pexels.com/photos/7790836/pexels-photo-7790836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                        </Link>
+                        <p><Link href={`/apriloneille`}>April ONeille</Link> <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></p>
 
-                    <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/7562139/pexels-photo-7562139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <p>Sarah Digsop <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></p>
-                    </div>
-                    
-                </div>
-
-                <div className="latest_activity_container">
-
-                    <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/14686837/pexels-photo-14686837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <p>Susan Froide <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></p>
                     </div>
                     
                 </div>
@@ -135,8 +132,32 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <img width="50" height="50" src="https://images.pexels.com/photos/14587417/pexels-photo-14587417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
-                        <p>Mark Gubrell <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></p>
+                        <Link href={`/sarahdigsop`}>
+                            <img width="50" height="50" src="https://images.pexels.com/photos/7562139/pexels-photo-7562139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                        </Link>
+                        <p><Link href={`/sarahdigsop`}>Sarah Digsop</Link> <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></p>
+                    </div>
+                    
+                </div>
+
+                <div className="latest_activity_container">
+
+                    <div className="latest_activity_info">
+                        <Link href={`/susanfroide`}>
+                            <img width="50" height="50" src="https://images.pexels.com/photos/14686837/pexels-photo-14686837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                        </Link>
+                        <p><Link href={`/susanfroide`}>Susan Froide</Link> <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></p>
+                    </div>
+                    
+                </div>
+
+                <div className="latest_activity_container">
+
+                    <div className="latest_activity_info">
+                        <Link href={`/markgubrell`}>
+                            <img width="50" height="50" src="https://images.pexels.com/photos/14587417/pexels-photo-14587417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
+                        </Link>
+                        <p><Link href={`/markgubrell`}>Mark Gubrell</Link> <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></p>
                     </div>
                     
                 </div>

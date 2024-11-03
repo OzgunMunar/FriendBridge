@@ -4,6 +4,7 @@ export const feedTypes = Object.freeze({
     MainFeed: "Shuffled posts",
     SavedPostsFeed: "Only user's liked posts",
     GroupFeed: "Group's posts",
-    GlobalFeed: "Admin's posts"
+    GlobalFeed: "Admin's posts",
+    LikedFeed: "Feeds liked by user"
     
 }) 

@@ -78,12 +78,12 @@
     @apply text-2xl
 }
 
-.profile_top_editprofilebutton_container {
-    @apply bg-slate-400 h-12 flex items-center justify-center transition duration-300 hover:bg-slate-500 shadow-md
+.profile_top_profilebutton_container {
+    @apply h-10 flex items-center justify-center transition duration-300 shadow-md border border-2
 }
 
-.profile_top_edit_button {
-    @apply px-6 h-12 gap-2 text-white flex items-center justify-center
+.profile_top_button {
+    @apply px-6 h-10 gap-2 text-black flex items-center justify-center 
 }
 
 .profile_below_section {

@@ -11,7 +11,6 @@ export const GET = async(request) => {
         const userId = getDataFromToken(request)
 
         let savedPosts = await SavedPosts.findOne({ userId })
-                                       .sort({ "createdAt": -1 })
                                        .populate({
                                            path: "postIds",
                                            populate: {
@@ -24,8 +23,11 @@ export const GET = async(request) => {
                                                path: "comments.creator"
                                            }
                                        })
-        if(!savedPosts)
+        if(!savedPosts) {
             savedPosts = { userId: userId, postIds: [] }
+        } else {
+            savedPosts.postIds.reverse()
+        }
 
         return NextResponse.json({ savedPosts, status: 200 })
 

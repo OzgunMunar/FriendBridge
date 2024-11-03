@@ -8,7 +8,8 @@ react-toastify
 mongoose
 react-spinners
 
-
+ 
+UI enhancements lıke gett data and assign into an array when user deletes it, remove from the list.
 
 Things to do:
 
@@ -16,9 +17,10 @@ Things to do:
         
         (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
         Manipulate arrays of following and followed fields in userModel...)
-        
 
-2- Make the page of 
+2- Tabs in the profile
+
+3- Make the page of 
        
         - Groups: 
         creator
@@ -27,7 +29,7 @@ Things to do:
         GroupPosts[{}]   // Fetch 10 by 10
         GroupMembers[{}]
 
-3- Make  the page of Events: 
+4- Make  the page of Events: 
         
         creator
         eventName

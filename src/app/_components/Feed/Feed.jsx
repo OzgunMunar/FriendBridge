@@ -1,4 +1,4 @@
-import {useState, useEffect, useContext} from 'react'
+import {useState, useEffect, useContext, useRef} from 'react'
 import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"
@@ -17,6 +17,8 @@ const Feed = ({ feedType }) => {
     const [waitingSeconds, setWaitingSeconds] = useState(3);
 
     const { shouldFeedChange, setShouldFeedChangeSwitch, userId } = useContext(FeedContext)
+
+    const feedRef = useRef()
 
     useEffect(() => {
 
@@ -45,7 +47,7 @@ const Feed = ({ feedType }) => {
                     break;
 
                     case feedTypes.SavedPostsFeed:
-
+                    
                         feedData = await GetSavedPostsFeed()
 
                     break;
@@ -108,6 +110,7 @@ const Feed = ({ feedType }) => {
     }, [fetchError])
 
     return (
+
         <div className="feed_container">
             {
                 fetchError ? (
