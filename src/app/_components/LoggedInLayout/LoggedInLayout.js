@@ -13,9 +13,6 @@ const LoggedInLayout = ( {children} ) => {
     const [user, setUser] = useState('')
     const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
-    
-    const malePlaceholderImage = "https://static.vecteezy.com/system/resources/previews/036/594/092/large_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
-    const femalePlaceholderImage = "https://st4.depositphotos.com/9998432/24360/v/450/depositphotos_243600690-stock-illustration-person-gray-photo-placeholder-girl.jpg"
 
     useEffect(() => {
 
@@ -25,14 +22,6 @@ const LoggedInLayout = ( {children} ) => {
         
           const loggedUser = await axios.get('api/users/loggedinuser')
           const user = loggedUser.data.data
-          
-          if (!user.userImageLink) {
-            if (user.gender === "Male") {
-              user.userImageLink = malePlaceholderImage
-            } else if (user.gender === "Female") {
-              user.userImageLink = femalePlaceholderImage
-            } 
-        }
         
           setUser(user)
         

@@ -12,6 +12,8 @@ export async function POST(request){
 
         const reqBody = await request.json()
         const {username, email, password, gender} = reqBody
+        
+        let userImageLink = ""
         let lastIndexOfUserCodeNames
         let userCodeName
 
@@ -20,6 +22,12 @@ export async function POST(request){
 
         if(user){
             return NextResponse.json({message: "Email is actively being used by another user."}, {status: 400})
+        }
+
+        if(gender === "Female") {
+            userImageLink = "https://st4.depositphotos.com/9998432/24360/v/450/depositphotos_243600690-stock-illustration-person-gray-photo-placeholder-girl.jpg"
+        } else {
+            userImageLink = "https://static.vecteezy.com/system/resources/previews/036/594/092/large_2x/man-empty-avatar-photo-placeholder-for-social-networks-resumes-forums-and-dating-sites-male-and-female-no-photo-images-for-unfilled-user-profile-free-vector.jpg"
         }
 
         // hash password
@@ -40,7 +48,8 @@ export async function POST(request){
             userCodeName,
             email,
             password: hashedPassword,
-            gender
+            gender,
+            userImageLink: userImageLink
         })
 
         const savedUser = await newUser.save()

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Khand:wght@300&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
 @keyframes visibilityChange {
   from {
@@ -81,6 +81,7 @@
 }
 
 .login_header_app_name {
+
     font-family: 'Khand', sans-serif;
     background-image: linear-gradient(to bottom right, red, yellow);
     @apply
@@ -93,12 +94,12 @@
     mb-5 
     py-2 
     whitespace-nowrap
+
 }
 
 .login_header_app_explanation {
   
-    font-family: 'Sacramento', cursive;
-    font-size: 35px;
+    font-family: 'Roboto Condensed', cursive;
     @apply 
     hidden
 
@@ -106,6 +107,7 @@
     font-normal 
     lg:text-gray-600
     lg:p-2
+    lg:text-2xl
 
 }
 

@@ -23,6 +23,7 @@ export const config = {
         '/profile',
         '/login',
         '/verifyemail',
-        '/changepassword'
+        '/changepassword',
+        '/[...]'
     ]
 }
