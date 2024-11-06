@@ -14,7 +14,6 @@ const Main = () => {
     const { setLoader } = useContext(PageLoaderContext)
 
     const [isVerified, setIsVerified] = useState(true)
-    const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
 
     const logout = async () => {
 

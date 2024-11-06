@@ -215,12 +215,8 @@ const Post = ({ post }) => {
                                         toast.success("Comment added", { theme: "light" })
 
                                         response.data.comments.map(userComment => {
-
-                                            console.log(response.data.comments.length)
                                             
                                             if(userComment.creator === user._id) {
-                                                
-                                                console.log("true")
 
                                                 userComment.creator = {
                                                     _id: user._id,
@@ -232,9 +228,6 @@ const Post = ({ post }) => {
                                         })
 
                                         addComments(response.data)
-                                        
-                                        console.log(response.data)
-
                                         setExpand(val => !val)
 
                                     })

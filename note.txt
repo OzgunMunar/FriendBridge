@@ -8,15 +8,9 @@ react-toastify
 mongoose
 react-spinners
 
- 
-UI enhancements lıke gett data and assign into an array when user deletes it, remove from the list.
-
 Things to do:
 
-1- Add other users(Done) and Following people & followed people:
-        
-        (Everytime a person follows that user or that user follows anyone, there will be change of the user's record and other user's record.
-        Manipulate arrays of following and followed fields in userModel...)
+1- Mixed Feed user's posts with other people's posts 
 
 2- Tabs in the profile
 

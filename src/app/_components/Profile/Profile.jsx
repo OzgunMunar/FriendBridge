@@ -23,6 +23,9 @@ const Profile = () => {
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
     const [viewUser, setViewUser] = useState('')
     const [isLoggedInProfile, setIsLoggedInProfile] = useState(false)
+    const [isFollowing, setIsFollowing] = useState(false)
+    const [followingProcess, setFollowingProcess] = useState(false)
+    const [shouldRenderButton, setShouldRenderButton] = useState(false)
 
     const usernameRef = useRef(null)
 
@@ -62,12 +65,22 @@ const Profile = () => {
                     
                     setViewUser(user)
                     setIsLoggedInProfile(true)
+                    setShouldRenderButton(true)
 
                 } else {
                     
                     const userData = await axios.get(`/api/users/${userCodeName}`)
+                    console.log(userData.data.data)
+
+                    if(userData.data.data.followedBy.includes(user._id)) {
+
+                        setIsFollowing(true)
+
+                    }
+
                     setViewUser(userData.data.data)
                     setIsLoggedInProfile(false)
+                    setShouldRenderButton(true)
 
                 }
 
@@ -89,12 +102,12 @@ const Profile = () => {
 
     const openModalToEdit = () => {
         setModalShow(true)
-        setUserInfoRefreshSwitch(val => !val)
+        // setUserInfoRefreshSwitch(val => !val)
     }
 
     const closeModalToEdit = () => {
         setModalShow(false)
-        setUserInfoRefreshSwitch(val => !val)
+        // setUserInfoRefreshSwitch(val => !val)
     }
 
     const changePassword = async() => {
@@ -120,7 +133,7 @@ const Profile = () => {
             toast.success(result.data.message, { theme: "light" })
 
             setModalShow(false)
-            setUserInfoRefreshSwitch(val => !val)
+            // setUserInfoRefreshSwitch(val => !val)
             
         } catch (error) {
             toast.error(error.response.data.message, { theme: "dark" })
@@ -128,9 +141,43 @@ const Profile = () => {
 
     }
 
+    const followUser = async() => {
+
+        const matcherCodeName = userCodeName
+        const userId = user._id
+
+        setFollowingProcess(true)
+        await axios.post('/api/users/followuser', { userId, matcherCodeName })
+                                    .then(() => {
+                                        toast.info("You are following the user.", { theme: "light" })
+                                        setIsFollowing(true)
+                                    })
+                                    .catch((error) => {
+                                        toast.error("There has been an error.", { theme: "dark" })
+                                        console.log(error)
+                                    }).finally(() => {
+                                        setFollowingProcess(false)
+                                    })
+        
+    }
+
     const unfollowUser = async() => {
 
-        // await axios.get('/api/user/followuser')
+        const matcherCodeName = userCodeName
+        const userId = user._id
+
+        setFollowingProcess(true)
+        await axios.post('/api/users/unfollowuser', { userId, matcherCodeName })
+                                    .then(() => {
+                                        toast.info("You unfollowed the user.", { theme: "light" })
+                                        setIsFollowing(false)
+                                    })
+                                    .catch((error) => {
+                                        toast.error("There has been an error.", { theme: "dark" })
+                                        console.log(error)
+                                    }).finally(() => {
+                                        setFollowingProcess(false)
+                                    })
 
     }
 
@@ -187,9 +234,10 @@ const Profile = () => {
                     </div>
 
                     {
+                        shouldRenderButton ? (
                         (isLoggedInProfile) ? (
 
-                            <div className="profile_top_profilebutton_container bg-slate-400 hover:bg-slate-500 border-slate-500">
+                            <div className="profile_top_profilebutton_container bg-slate-300 hover:bg-slate-400 border-slate-400">
                     
                                 <button type='button' className="profile_top_button" onClick={openModalToEdit}>
                                     <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
@@ -201,26 +249,33 @@ const Profile = () => {
                         )
                         :
                         (
-                            // // If user is not following...
-                            // <div className="profile_top_profilebutton_container bg-red-400 hover:bg-red-500 border-red-500">
+                            (isFollowing ? (
 
-                            //     <button type='button' className="profile_top_button" onClick={() => unfollowUser()}>
-                            //         <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                            //         Unfollow
-                            //     </button>
+                                    <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400">
 
-                            // </div>
+                                        <button type='button' className="profile_top_button" onClick={() => unfollowUser()} disabled={followingProcess}>
+                                            <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                                            {followingProcess ? "Unfollowing..." : "Unfollow"}
+                                        </button>
 
-                            // If user is following...
-                            <div className="profile_top_profilebutton_container bg-green-400 hover:bg-green-500 border-green-500">
+                                    </div>
 
-                                <button type='button' className="profile_top_button" onClick={() => unfollowUser()}>
-                                    <img width="25" height="25" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
-                                    Follow
-                                </button>
+                                )
+                                :
+                                (
 
-                            </div>
-                        )
+                                    <div className="profile_top_profilebutton_container bg-green-300 hover:bg-green-400 border-green-400" disabled={followingProcess}>
+
+                                        <button type='button' className="profile_top_button" onClick={() => followUser()}>
+                                            <img width="25" height="25" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
+                                            {followingProcess ? "Following..." : "Follow"}
+                                        </button>
+
+                                    </div>
+
+                                )
+                            )
+                        )) : null
                     }
 
                 </div>
