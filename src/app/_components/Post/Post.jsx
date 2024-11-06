@@ -141,10 +141,11 @@ const Post = ({ post }) => {
             .then(() => { 
                 toast.success("Post deleted", { theme: "light" })
                 makePostDisappear()
+                setShouldFeedChangeSwitch(val => !val)
             })
             .catch((error) => toast.error("An error occured during deleting post.", { theme: "dark"} ))
+            makePostDisappear()
 
-            setShouldFeedChangeSwitch(val => !val)
 
         } catch (error) {
 
