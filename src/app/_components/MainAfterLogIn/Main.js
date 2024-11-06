@@ -2,10 +2,11 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import CreatePost from '../Post/CreatePost';
 import Feed from '../Feed/Feed';
 import axios from 'axios';
-import { UserContext, FeedContext, PageLoaderContext } from "../Contexts/Contexts";
+import { UserContext, PageLoaderContext } from "../Contexts/Contexts";
 import '@/app/_styles/mainpage.css'
 import MainRightSide from '../MainRightSide/MainRightSide';
 import { toast } from "react-toastify";
+import { FeedProvider } from '../Contexts/FeedContext';
 
 const Main = () => {
 
@@ -49,11 +50,11 @@ const Main = () => {
               <div className='left_sidebar_emptiness'></div>
               <div className='posts_section'>
 
-                <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: user._id}}>
-                  <CreatePost />
-                  <Feed />
-                  <MainRightSide />
-                </FeedContext.Provider>
+                <FeedProvider>
+                    <CreatePost postType={'FeedPost'} />
+                    <Feed />
+                    <MainRightSide />
+                </FeedProvider>
 
               </div>
               <div className='right_sidebar_emptiness'></div>

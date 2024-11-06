@@ -1,23 +1,23 @@
 'use client'
 
 import PostForm from "./PostForm"
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 import { usePathname } from "next/navigation";
 import axios from "axios";
-import { FeedContext, UserContext } from "../Contexts/Contexts";
 import "@/app/_styles/createpost.css"
 import { toast } from "react-toastify";
+import { useFeedContext } from "../Contexts/FeedContext";
+import { UserContext } from "../Contexts/Contexts";
 
 
-const CreatePost = () => {
+const CreatePost = ({ postType }) => {
+
+  const { addPost } = useFeedContext()
+  const { user, setUser } = useContext(UserContext)
 
   const pathName = usePathname()
   const textAreaRef = useRef()
 
-  const { setShouldFeedChangeSwitch, postType } = useContext(FeedContext)
-  const { setUserInfoRefreshSwitch } = useContext(UserContext)
-
-  const [activePathName, setActivePathName] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const [post, setPost] = useState({
 
@@ -45,10 +45,24 @@ const CreatePost = () => {
         return;
         
       }
+      let newPost = await axios.post("/api/post/new", post)
+      toast.success("Post created.", { theme: "light" })
 
-      await axios.post("/api/post/new", post)
-      toast.success("Post created.", { theme: "light" });
+      const id = newPost.data.creator
       
+      newPost.data.creator = {
+        _id: id,
+        username: user.username,
+        userImageLink: user.userImageLink
+      }
+
+      addPost(newPost.data)
+      
+      setUser((prevUser) => ({
+        ...prevUser,
+        postNumber: prevUser.postNumber + 1
+      }))
+
       textAreaRef.current.value = "";
       
       setPost({
@@ -65,8 +79,6 @@ const CreatePost = () => {
         
       })
 
-      setShouldFeedChangeSwitch(val => !val)
-
     } catch (error) {
 
       toast.error(error.message, { theme: "dark" });
@@ -78,12 +90,6 @@ const CreatePost = () => {
     }
 
   }
-
-  useEffect(() => {
-
-    setActivePathName(pathName)
-
-  }, [])
   
   return (
 

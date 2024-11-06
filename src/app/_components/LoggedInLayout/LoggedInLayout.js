@@ -33,7 +33,7 @@ const LoggedInLayout = ( {children} ) => {
 
       fetchUserData()
 
-    }, [userInfoRefreshSwitch])
+    }, [setUserInfoRefreshSwitch])
 
     useEffect(() => {
 
@@ -43,7 +43,7 @@ const LoggedInLayout = ( {children} ) => {
 
     return loader ? 
       <Fragment>
-        <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
+        <UserContext.Provider value = {{user, setUser, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <LeftSideBar />
           <PageLoader />
@@ -63,7 +63,7 @@ const LoggedInLayout = ( {children} ) => {
       : 
       (
       <Fragment>
-        <UserContext.Provider value = {{user, setUserInfoRefreshSwitch}}>
+        <UserContext.Provider value = {{user, setUser, setUserInfoRefreshSwitch}}>
           <Navbar/>
           <LeftSideBar />
           <PageLoaderContext.Provider value = {{ setLoader }}>

@@ -2,23 +2,17 @@ import {useState, useEffect, useContext, useRef} from 'react'
 import Post from '../Post/Post'
 
 import "@/app/_styles/feedcontainer.css"
-import { FeedContext } from '../Contexts/Contexts'
 import PageLoader from '@/app/pageloader'
 import ComponentWaiter from '@/app/componentwaiter'
 import { GetProfileFeed } from '../FeedDbQueries/ProfileFeedQuery'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { GetSavedPostsFeed } from '../FeedDbQueries/SavedPostsFeedQuery'
+import { useFeedContext } from '../Contexts/FeedContext'
 
-const Feed = ({ feedType }) => {
+const Feed = ({ feedType, userId }) => {
 
-    const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [fetchError, setFetchError] = useState(false)
+    const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost } = useFeedContext()
     const [waitingSeconds, setWaitingSeconds] = useState(3);
-
-    const { shouldFeedChange, setShouldFeedChangeSwitch, userId } = useContext(FeedContext)
-
-    const feedRef = useRef()
 
     useEffect(() => {
 
@@ -69,11 +63,10 @@ const Feed = ({ feedType }) => {
 
                 }
 
-                setPosts(feedData)
+                getFeedPosts(feedData)
 
             } catch (error) {
-                setFetchError(true)
-                console.log(error)
+                handleFetchError(true)
             } finally {
                 setLoading(false)
             }
@@ -81,7 +74,7 @@ const Feed = ({ feedType }) => {
 
         fetchData()
 
-    }, [shouldFeedChange, userId])
+    }, [userId])
     
     useEffect(() => {
 
@@ -96,7 +89,6 @@ const Feed = ({ feedType }) => {
                     if (prev > 1) {
                         return prev - 1
                     } else {
-                        setShouldFeedChangeSwitch(val => !val)
                         return 3
                     }
                 })
@@ -129,7 +121,7 @@ const Feed = ({ feedType }) => {
                         <PageLoader />
                         :
                         posts.map((post) => (
-                            <div key={post._id}>
+                            <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':''}`} >
                                 <Post post={post} />
                             </div>
                         ))

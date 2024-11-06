@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { FeedContext, UserContext } from '../Contexts/Contexts'
+import { UserContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 

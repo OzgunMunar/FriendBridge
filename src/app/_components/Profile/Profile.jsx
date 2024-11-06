@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { UserContext, FeedContext, PageLoaderContext } from '../Contexts/Contexts'
+import { UserContext, PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import '@/app/_styles/newprofile.css'
@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
 import { usePathname } from 'next/navigation'
 import { feedTypes } from '../FeedEnum/FeedEnum'
+import { FeedProvider } from '../Contexts/FeedContext'
 
 const Profile = () => {
 
@@ -18,7 +19,6 @@ const Profile = () => {
     const pathName = usePathname()
     const userCodeName = pathName?.split('/')[1]
 
-    const [shouldFeedChange, setShouldFeedChangeSwitch] = useState(false)
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
     const [viewUser, setViewUser] = useState('')
@@ -38,12 +38,6 @@ const Profile = () => {
         gender: ''
 
     })
-
-    useEffect(() => {
-
-        setUserInfoRefreshSwitch(val => !val)
-
-    }, [shouldFeedChange])
 
     useEffect(() => {
 
@@ -329,13 +323,18 @@ const Profile = () => {
                 </div>
 
                 <div className="profile_below_feed_container">
-            
-                        <FeedContext.Provider value={{ shouldFeedChange, setShouldFeedChangeSwitch, postType: 'FeedPost', userId: viewUser._id }}>
-                            {
-                                (userCodeName === user.userCodeName) ? (<><CreatePost /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
-                            }
-                            <Feed feedType={feedTypes.ProfileFeed} />
-                        </FeedContext.Provider>
+
+                    <FeedProvider>
+
+                        {
+
+                            (userCodeName === user.userCodeName) ? (<><CreatePost postType={'FeedPost'} /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
+
+                        }
+
+                        <Feed feedType={feedTypes.ProfileFeed} userId={viewUser._id} />
+
+                    </FeedProvider>
 
                 </div>
 

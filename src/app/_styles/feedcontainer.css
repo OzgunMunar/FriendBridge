@@ -5,3 +5,16 @@
 .fetch-error-container {
     @apply flex items-center justify-center flex-col text-red-400
 }
+
+@keyframes FeedContainerBlink {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .blink {
+    animation: FeedContainerBlink 1s ease-in-out 1;
+  }

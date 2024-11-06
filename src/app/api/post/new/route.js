@@ -29,7 +29,7 @@ export const POST = async(req) => {
         })
 
         await newPost.save()
-        return new NextResponse(JSON.stringify(newPost), {status: 201})
+        return new NextResponse(JSON.stringify(newPost), {status: 200})
 
     } catch (error) {
         console.log(error)

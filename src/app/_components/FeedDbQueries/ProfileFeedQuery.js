@@ -12,8 +12,6 @@ export const GetProfileFeed = async(userId) => {
         let savedPostDatas 
         let isSavedByUser
 
-        console.log(resultSavedPostRequest)
-
         if(resultSavedPostRequest.data.savedPosts.postIds.length > 0) {
 
             savedPostDatas = resultSavedPostRequest.data.savedPosts.postIds

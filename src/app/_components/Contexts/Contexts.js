@@ -1,7 +1,6 @@
 import React from 'react'
 
-const UserContext = React.createContext()
-const FeedContext = React.createContext()
 const PageLoaderContext = React.createContext()
+const UserContext = React.createContext()
 
-export { UserContext, FeedContext, PageLoaderContext }
+export { PageLoaderContext, UserContext }

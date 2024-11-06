@@ -1,18 +1,20 @@
-import { UserContext, FeedContext } from "../Contexts/Contexts"
+import { UserContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
 import { toast } from "react-toastify";
 import provideFullDateText from "@/helpers/dateFixer"
-import "@/app/_styles/post.css"
 import { usePathname } from "next/navigation"
 import { formatPostText } from "@/helpers/formatPostText"
+import "@/app/_styles/post.css"
+import { useFeedContext } from "../Contexts/FeedContext"
 
 const Post = ({ post }) => {
 
-    const { user } = useContext(UserContext)
-    const { shouldFeedChange, setShouldFeedChangeSwitch } = useContext(FeedContext)
+    const { updatePost, addComments } = useFeedContext()
+    const { user, setUser } = useContext(UserContext)
+
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
     const commentTextAreaRef = useRef()
@@ -22,8 +24,8 @@ const Post = ({ post }) => {
     const [postToEdit, setPostToEdit] = useState({
         postText: "",
         postId: post._id,
-        userImageLink: "",
         friend: "",
+        imageUrlLink: "",
         location: "",
         likedBy: [{}],
         comments: [{}],
@@ -42,7 +44,6 @@ const Post = ({ post }) => {
     const [submitting, setSubmitting] = useState(false)
     const [expand, setExpand] = useState(false)
     const [height, setHeight] = useState(0)
-    const [postHeight, setPostHeight] = useState(0)
     const [isLiking, setIsLiking] = useState(false)
     const [isSaved, setIsSaved] = useState(post.isSaved)
     const [isLiked, setIsLiked] = useState(post.likedBy.includes(user._id) || false)
@@ -85,7 +86,7 @@ const Post = ({ post }) => {
         setPostToEdit({
             ...postToEdit,
             postText: post.post,
-            userImageLink: post.userImageLink,
+            imageUrlLink: post.imageUrlLink,
             friend: post.friend,
             location: post.location,
             likedBy: post.likedBy,
@@ -98,7 +99,7 @@ const Post = ({ post }) => {
           document.removeEventListener('click', handleOutsideClick);
         };
         
-    }, []);
+    }, [])
 
     useEffect(() => {
 
@@ -111,7 +112,6 @@ const Post = ({ post }) => {
         }
 
     }, [expand])
-
     
     const EditPost = async() => {
 
@@ -123,12 +123,13 @@ const Post = ({ post }) => {
                                         .then(() => toast.success("Post edited", { theme: "light" }))
                                         .catch((error) => toast.error("An error occured during editing post."), { theme: "dark" })
             
-            setShouldFeedChangeSwitch(val => !val)
             closeModal()
-            setSubmitting(false)
+            updatePost(post._id, postToEdit)
             
         } catch (error) {
             toast.error(error.data, { theme: "dark" })
+        } finally {
+            setSubmitting(false)
         }
 
     }
@@ -139,13 +140,18 @@ const Post = ({ post }) => {
 
             await axios.delete(`/api/post/${postId}`)
             .then(() => { 
+
                 toast.success("Post deleted", { theme: "light" })
+                
                 makePostDisappear()
-                setShouldFeedChangeSwitch(val => !val)
+                
+                setUser((prevUser) => ({
+                    ...prevUser,
+                    postNumber: prevUser.postNumber - 1
+                  }))
+
             })
             .catch((error) => toast.error("An error occured during deleting post.", { theme: "dark"} ))
-            makePostDisappear()
-
 
         } catch (error) {
 
@@ -193,14 +199,44 @@ const Post = ({ post }) => {
         }
 
         const postId = post._id
-
         comment.comment = commentTextAreaRef.current.value
+        setComment(oldComment => ({
+            ...oldComment,
+            creator : {
+                _id: user._id,
+                username: user.username,
+                imageUrlLink: user.imageUrlLink
+            }
+        }))
 
-        await axios.patch(`/api/post/comment`, { postId, comment })
-                                    .then(() => {
+        const relatedPost = await axios.patch(`/api/post/comment`, { postId, comment })
+                                    .then((response) => {
+
                                         toast.success("Comment added", { theme: "light" })
-                                        setShouldFeedChangeSwitch(val => !val)
+
+                                        response.data.comments.map(userComment => {
+
+                                            console.log(response.data.comments.length)
+                                            
+                                            if(userComment.creator === user._id) {
+                                                
+                                                console.log("true")
+
+                                                userComment.creator = {
+                                                    _id: user._id,
+                                                    username: user.username,
+                                                    userImageLink: user.userImageLink
+                                                }
+                                            }
+
+                                        })
+
+                                        addComments(response.data)
+                                        
+                                        console.log(response.data)
+
                                         setExpand(val => !val)
+
                                     })
                                     .catch((error) => toast.error("An error occured during adding comment.", { theme: "dark" }))
 
