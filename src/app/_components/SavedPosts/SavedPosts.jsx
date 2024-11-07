@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../Contexts/Contexts'
+import React, { useContext } from 'react'
 import Feed from '../Feed/Feed'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { FeedProvider } from '../Contexts/FeedContext'
+import { useUserContext } from '../Contexts/UserContext'
 
 const SavedPosts = () => {
 
-    const { user } = useContext(UserContext)
+    const { user } = useUserContext()
 
     return (
 

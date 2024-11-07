@@ -2,15 +2,16 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import CreatePost from '../Post/CreatePost';
 import Feed from '../Feed/Feed';
 import axios from 'axios';
-import { UserContext, PageLoaderContext } from "../Contexts/Contexts";
-import '@/app/_styles/mainpage.css'
+import { PageLoaderContext } from "../Contexts/Contexts";
 import MainRightSide from '../MainRightSide/MainRightSide';
 import { toast } from "react-toastify";
 import { FeedProvider } from '../Contexts/FeedContext';
+import { useUserContext } from '../Contexts/UserContext';
+import '@/app/_styles/mainpage.css'
 
 const Main = () => {
 
-    const { user } = useContext(UserContext)
+    const { user } = useUserContext()
     const { setLoader } = useContext(PageLoaderContext)
 
     const [isVerified, setIsVerified] = useState(true)
@@ -30,9 +31,7 @@ const Main = () => {
     }
 
     useEffect(() => {
-
       user.isVerified === false && setIsVerified(false)
-
     }, [user])
 
     useEffect(() => {

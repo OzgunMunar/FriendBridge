@@ -1,19 +1,20 @@
 import React, { useState, useContext, useEffect, useRef  } from 'react'
 import axios from "axios"
-import { UserContext, PageLoaderContext } from '../Contexts/Contexts'
+import { PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
-import '@/app/_styles/newprofile.css'
-import '@/app/_styles/skeletonloader.css'
 import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
 import { usePathname } from 'next/navigation'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { FeedProvider } from '../Contexts/FeedContext'
+import { useUserContext } from '../Contexts/UserContext'
+import '@/app/_styles/newprofile.css'
+import '@/app/_styles/skeletonloader.css'
 
 const Profile = () => {
 
-    const { user, setUserInfoRefreshSwitch } = useContext(UserContext)
+    const { user } = useUserContext()
     const { setLoader } = useContext(PageLoaderContext)
 
     const pathName = usePathname()

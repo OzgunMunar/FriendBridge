@@ -1,39 +1,17 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import { UserContext, PageLoaderContext } from '../Contexts/Contexts'
-import axios from 'axios'
+import { PageLoaderContext } from '../Contexts/Contexts'
 import Navbar from '../Navbar/Navbar'
 import LeftSideBar from '../LeftSideBar/LeftSideBar'
-import '@/app/_styles/mainpage.css'
 import PageLoader from '@/app/pageloader'
 import { ToastContainer } from 'react-toastify';
+import { UserProvider } from '../Contexts/UserContext'
+import '@/app/_styles/mainpage.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoggedInLayout = ( {children} ) => {
 
-    const [user, setUser] = useState('')
     // const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
-
-    useEffect(() => {
-
-      const fetchUserData = async() => {
-
-        try {
-        
-          const loggedUser = await axios.get('api/users/loggedinuser')
-          const user = loggedUser.data.data
-        
-          setUser(user)
-        
-        } catch (error) {
-          console.log(error)
-        }
-
-      }
-
-      fetchUserData()
-
-    }, [])
 
     useEffect(() => {
 
@@ -44,11 +22,11 @@ const LoggedInLayout = ( {children} ) => {
     return loader ? 
       <Fragment>
         {/* setUserInfoRefreshSwitch */}
-        <UserContext.Provider value = {{user, setUser}}>
+        <UserProvider>
           <Navbar/>
           <LeftSideBar />
           <PageLoader />
-        </UserContext.Provider>
+        </UserProvider>
         <ToastContainer
                 position="bottom-right"
                 autoClose={3000}
@@ -65,13 +43,13 @@ const LoggedInLayout = ( {children} ) => {
       (
       <Fragment>
         {/* setUserInfoRefreshSwitch */}
-        <UserContext.Provider value = {{user, setUser}}> 
+        <UserProvider> 
           <Navbar/>
           <LeftSideBar />
           <PageLoaderContext.Provider value = {{ setLoader }}>
             { children }
           </PageLoaderContext.Provider>
-        </UserContext.Provider>
+        </UserProvider>
         <ToastContainer
                 position="bottom-right"
                 autoClose={3000}

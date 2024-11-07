@@ -4,16 +4,16 @@ import PostForm from "./PostForm"
 import { useState, useRef, useContext } from "react";
 import { usePathname } from "next/navigation";
 import axios from "axios";
-import "@/app/_styles/createpost.css"
 import { toast } from "react-toastify";
 import { useFeedContext } from "../Contexts/FeedContext";
-import { UserContext } from "../Contexts/Contexts";
+import { useUserContext } from "../Contexts/UserContext";
+import "@/app/_styles/createpost.css"
 
 
 const CreatePost = ({ postType }) => {
 
   const { addPost } = useFeedContext()
-  const { user, setUser } = useContext(UserContext)
+  const { user, setUser } = useUserContext()
 
   const pathName = usePathname()
   const textAreaRef = useRef()

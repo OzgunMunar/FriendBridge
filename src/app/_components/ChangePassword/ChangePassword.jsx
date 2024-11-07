@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ChangePassword = () => {
 
-    const [user, setUser] = useState({
+    const [newUserInfo, setNewUserInfo] = useState({
         oldpassword: "",
         newpassword: "",
         repeatnewpassword: "",
@@ -26,21 +26,21 @@ const ChangePassword = () => {
 
     useEffect(()=> {
 
-        if(user.oldpassword.length > 0 && user.email.length > 0 
-            && user.newpassword.length > 0 && user.repeatnewpassword.length > 0) {
+        if(newUserInfo.oldpassword.length > 0 && newUserInfo.email.length > 0 
+            && newUserInfo.newpassword.length > 0 && newUserInfo.repeatnewpassword.length > 0) {
             setButtonDisabled(false)
         }
         else {
             setButtonDisabled(true)
         }
 
-    }, [user])
+    }, [newUserInfo])
 
     const onPasswordChange = async() => {
 
         try {
 
-            if(user.newpassword !== user.repeatnewpassword)
+            if(newUserInfo.newpassword !== newUserInfo.repeatnewpassword)
             {
                 toast.error("Passwords should match.", { theme: "dark" })
                 setInputBackground('pink')
@@ -49,7 +49,7 @@ const ChangePassword = () => {
             
             setLoading(true)
 
-            await axios.post("/api/users/changepassword", user)
+            await axios.post("/api/users/changepassword", newUserInfo)
             await axios.get('/api/users/logout')
             
             toast.success('Password change successful', { theme: "light" })
@@ -67,7 +67,7 @@ const ChangePassword = () => {
     useEffect(() => {
 
         const urlToken = window.location.search.split('=')[1]
-        setUser(data => {
+        setNewUserInfo(data => {
             return {
                 ...data,
                 token: urlToken || ""
@@ -89,8 +89,8 @@ const ChangePassword = () => {
                     className="form_input"
                     id="email"
                     type="text"
-                    value={user.email}
-                    onChange={(e) => setUser({...user, email: e.target.value})}
+                    value={newUserInfo.email}
+                    onChange={(e) => setNewUserInfo({...newUserInfo, email: e.target.value})}
                     placeholder="Email Address"
                     autoFocus
                 />
@@ -99,8 +99,8 @@ const ChangePassword = () => {
                     className="form_input"
                     id="oldpassword"
                     type="password"
-                    value={user.oldpassword}
-                    onChange={(e) => setUser({...user, oldpassword: e.target.value})}
+                    value={newUserInfo.oldpassword}
+                    onChange={(e) => setNewUserInfo({...newUserInfo, oldpassword: e.target.value})}
                     placeholder="Current Password"
                 />
 
@@ -108,8 +108,8 @@ const ChangePassword = () => {
                     className="form_input"
                     id="newpassword"
                     type="password"
-                    value={user.newpassword}
-                    onChange={(e) => setUser({...user, newpassword: e.target.value})}
+                    value={newUserInfo.newpassword}
+                    onChange={(e) => setNewUserInfo({...newUserInfo, newpassword: e.target.value})}
                     placeholder="New Password"
                 />
 
@@ -117,9 +117,9 @@ const ChangePassword = () => {
                     className="form_input"
                     id="repeatpassword"
                     type="password"
-                    value={user.repeatnewpassword}
+                    value={newUserInfo.repeatnewpassword}
                     style={{ background: inputBackground }}
-                    onChange={(e) => setUser({...user, repeatnewpassword: e.target.value})}
+                    onChange={(e) => setNewUserInfo({...newUserInfo, repeatnewpassword: e.target.value})}
                     placeholder="Repeat New Password"
                 />
 

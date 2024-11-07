@@ -1,21 +1,21 @@
 'use client'
 
 import React, { useState, useEffect, useRef, useContext } from "react";
-import '@/app/_styles/navbar.css'
-import '@/app/_styles/skeletonloader.css'
 import axios from "axios"
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserContext } from "../Contexts/Contexts";
 import { Tooltip } from "react-tooltip";
 import { toast } from "react-toastify";
+import { useUserContext } from "../Contexts/UserContext";
+import '@/app/_styles/navbar.css'
+import '@/app/_styles/skeletonloader.css'
 
 const Navbar = () => {
 
     const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
     const dropdownRef = useRef(null)
-    const {user} = useContext(UserContext)
+    const { user } = useUserContext()
 
     function headerMainDropdown() {
         setIsDropdown(status=> !status)

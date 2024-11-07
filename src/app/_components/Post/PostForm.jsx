@@ -1,7 +1,7 @@
 import "@/app/_styles/postform.css"
 import { useEffect, useContext, useReducer, useState } from 'react'
-import { UserContext } from "../Contexts/Contexts"
 import { INITIAL_STATE, extraInfoReducer } from "@/app/reducers/extraInfoReducer"
+import { useUserContext } from "../Contexts/UserContext"
 
 const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, rows, pathName }) => {
 
@@ -10,8 +10,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
   const [borderColor, setBorderColor] = useState('bg-slate-900')
   
   let buttonTextOnSubmitting = (type === 'Create' ? "Creating..." : "Editing...")
-  let userContext = useContext(UserContext);
-  let user = userContext.user;
+  const { user } = useUserContext()
 
   useEffect(() => {
     if (textAreaRef.current) {

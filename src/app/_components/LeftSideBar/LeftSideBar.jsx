@@ -1,13 +1,13 @@
 import "@/app/_styles/leftsidebar.css"
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
-import { UserContext } from "../Contexts/Contexts";
 import { usePathname } from "next/navigation";
+import { useUserContext } from "../Contexts/UserContext";
 
 const LeftSideBar = () => {
 
-  const { user } = useContext(UserContext)
+  const { user } = useUserContext()
   const pathname = usePathname()
 
   return (

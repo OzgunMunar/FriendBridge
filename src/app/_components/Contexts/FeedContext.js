@@ -55,8 +55,21 @@ export const FeedProvider = ({ children }) => {
     }, [])
 
     return (
-        <FeedContext.Provider value={{ posts, addComments, getFeedPosts, updatePost, addPost, loading, fetchError, setLoading, handleFetchError, lastAddedPost }}>
+        <FeedContext.Provider value={{ 
+            posts, 
+            addComments, 
+            getFeedPosts, 
+            updatePost, 
+            addPost, 
+            loading, 
+            fetchError, 
+            setLoading, 
+            handleFetchError, 
+            lastAddedPost 
+            }}>
+
             {children}
+
         </FeedContext.Provider>
     )
 

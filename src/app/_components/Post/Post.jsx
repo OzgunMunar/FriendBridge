@@ -1,4 +1,3 @@
-import { UserContext } from "../Contexts/Contexts"
 import { useContext, useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
@@ -7,13 +6,14 @@ import { toast } from "react-toastify";
 import provideFullDateText from "@/helpers/dateFixer"
 import { usePathname } from "next/navigation"
 import { formatPostText } from "@/helpers/formatPostText"
-import "@/app/_styles/post.css"
 import { useFeedContext } from "../Contexts/FeedContext"
+import { useUserContext } from '../Contexts/UserContext';
+import "@/app/_styles/post.css"
 
 const Post = ({ post }) => {
 
     const { updatePost, addComments } = useFeedContext()
-    const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useUserContext()
 
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
