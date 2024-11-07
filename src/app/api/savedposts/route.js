@@ -3,7 +3,7 @@ import { getDataFromToken } from "@/helpers/helper"
 import SavedPosts from "@/models/savedPostsModel"
 import { NextResponse } from "next/server"
 
-export const GET = async(request, response) => {
+export const POST = async(request) => {
 
     try {
       

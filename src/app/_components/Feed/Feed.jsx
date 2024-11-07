@@ -43,7 +43,7 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.SavedPostsFeed:
                     
-                        feedData = await GetSavedPostsFeed()
+                        feedData = await GetSavedPostsFeed(userId)
 
                     break;
                 

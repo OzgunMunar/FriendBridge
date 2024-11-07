@@ -1,10 +1,10 @@
 import axios from "axios"
 
-export const GetSavedPostsFeed = async() => {
+export const GetSavedPostsFeed = async(userId) => {
 
     try {
         
-        const savedPostsByUser = await axios.get('/api/savedposts')
+        const savedPostsByUser = await axios.post('/api/savedposts', { userId })
         
         const savedPosts = savedPostsByUser?.data?.savedPosts?.postIds?.map((post) => {
             return ({
