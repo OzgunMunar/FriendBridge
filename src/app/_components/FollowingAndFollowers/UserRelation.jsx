@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 
-const UserRelation = ({ unfollowUser, user }) => {
+const UserRelation = ({ unfollowUser, user, relationType }) => {
     
     const [fadeOut, setFadeOut] = useState(false)
     const [shouldRender, setShouldRender] = useState(true)
@@ -16,7 +16,9 @@ const UserRelation = ({ unfollowUser, user }) => {
     }
   
     return (
+        
         shouldRender ? (
+            
         <div className={`followingandfollowers_userinfo ${fadeOut ? 'removeUserContainer':''}`}>
 
             <div className="followingandfollowers_userinfo_leftside">
@@ -33,20 +35,29 @@ const UserRelation = ({ unfollowUser, user }) => {
 
             </div>
 
-            <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400" 
-                onClick={ () => { 
+            {
 
-                    unfollowUser(user.userCodeName) 
-                    makePostDisappear(false)
+                relationType === "Followed" ? (
 
-                }}>
+                    <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400" 
 
-                <button className="profile_top_button"> 
-                    <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                    Unfollow
-                </button>
+                        onClick={ () => { 
+    
+                        unfollowUser(user.userCodeName) 
+                        makePostDisappear(false)
+    
+                    }}>
+    
+                    <button className="profile_top_button"> 
+                        <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                        Unfollow
+                    </button>
+    
+                    </div>
 
-            </div>
+                ) : null
+
+            }
 
         </div>) : null
 

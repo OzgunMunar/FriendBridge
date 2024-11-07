@@ -217,7 +217,6 @@ const Profile = () => {
                                     })
 
     }
-    
 
     return (
 
@@ -268,14 +267,14 @@ const Profile = () => {
 
                     {
                         shouldRenderButton ? (
-                        (isLoggedInProfile) ? (
+                            (isLoggedInProfile) ? (
 
-                            <div className="profile_top_profilebutton_container bg-slate-300 hover:bg-slate-400 border-slate-400">
+                                <div className="profile_top_profilebutton_container bg-slate-300 hover:bg-slate-400 border-slate-400">
                     
-                                <button type='button' className="profile_top_button" onClick={openModalToEdit}>
-                                    <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
-                                    <span className="text-white">Edit Profile</span>
-                                </button>
+                                    <button type='button' className="profile_top_button" onClick={openModalToEdit}>
+                                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
+                                        <span className="text-white">Edit Profile</span>
+                                    </button>
 
                             </div>
 
@@ -438,7 +437,9 @@ const Profile = () => {
                         state.followingPeople ? 
 
                         (
+
                             <FollowingAndFollowers relationType={"Following"} unfollowUser={unfollowUser} userId={viewUser._id} />
+                            
                         ) : null
 
                     }
@@ -448,7 +449,9 @@ const Profile = () => {
                         state.followedPeople ? 
                     
                         (
-                            <FollowingAndFollowers relationType={"Follower"} />
+
+                            <FollowingAndFollowers relationType={"Follower"} followUser={followUser} userId={viewUser._id} />
+
                         ) : null
 
                     }

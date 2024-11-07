@@ -13,7 +13,7 @@ const FollowingAndFollowers = ({ relationType, unfollowUser, userId }) => {
 
         const fetchData = async() => {
             
-            await axios.post('/api/users/followingusers', { userId })
+            await axios.post('/api/users/followingorfollowerusers', { userId, relationType })
                                     .then((response) => {
                                         setUserList(response.data.data)
                                     })
@@ -37,7 +37,7 @@ const FollowingAndFollowers = ({ relationType, unfollowUser, userId }) => {
 
             <div className="followingandfollowers_header">
                 <img width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/50/external-follower-gamification-flaticons-lineal-color-flat-icons.png" alt="external-follower-gamification-flaticons-lineal-color-flat-icons"/>
-                <span>{relationType} Users</span>
+                <span>{ relationType === "Following" ? "Following Users" : "Followers" }</span>
             </div>
 
             <div className="followingandfollowers_userinfo_container relative">
@@ -51,7 +51,7 @@ const FollowingAndFollowers = ({ relationType, unfollowUser, userId }) => {
 
                             <div key={user._id} className="w-full h-full">
 
-                                <UserRelation user={user} unfollowUser={unfollowUser} />
+                                <UserRelation user={user} unfollowUser={unfollowUser} relationType={relationType}/>
 
                             </div>
 
