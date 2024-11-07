@@ -99,7 +99,7 @@ const Feed = ({ feedType, userId }) => {
                 return (
                     <div className="flex items-center justify-center mt-6 py-5 flex-col gap-5 border border-yellow-300 bg-yellow-100 text-orange-700">
                         <img width="48" height="48" src="https://img.icons8.com/color/48/general-warning-sign.png" alt="general-warning-sign"/>
-                        <p>There are no saved posts. To save one, click on the "..." button < br/>at the top-right of any post and select "Save Post".</p>
+                        <p>There are no saved posts. To save one, click on the &quot;...&quot; button < br/>at the top-right of any post and select &quot;Save Post&quot;.</p>
                     </div>
                 )
 
