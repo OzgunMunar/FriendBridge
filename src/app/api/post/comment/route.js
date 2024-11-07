@@ -24,7 +24,7 @@ export async function PATCH(req) {
         return new NextResponse(JSON.stringify(post), {status: 200})
 
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
         return NextResponse.json({message: "Problem occured while saving the comment."}, {status: 500})
     }
 

@@ -8,11 +8,12 @@ import { GetProfileFeed } from '../FeedDbQueries/ProfileFeedQuery'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { GetSavedPostsFeed } from '../FeedDbQueries/SavedPostsFeedQuery'
 import { useFeedContext } from '../Contexts/FeedContext'
+import { GetMainFeed } from '../FeedDbQueries/MainFeedQuery'
 
 const Feed = ({ feedType, userId }) => {
 
     const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost } = useFeedContext()
-    const [waitingSeconds, setWaitingSeconds] = useState(3);
+    const [ waitingSeconds, setWaitingSeconds ] = useState(3);
 
     useEffect(() => {
 
@@ -36,7 +37,7 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.MainFeed:
 
-                        // mainfeed query
+                        feedData = await GetMainFeed()
                         
                     break;
 
@@ -120,7 +121,7 @@ const Feed = ({ feedType, userId }) => {
                     loading ?
                         <PageLoader />
                         :
-                        posts.map((post) => (
+                        posts?.map((post) => (
                             <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':''}`} >
                                 <Post post={post} />
                             </div>

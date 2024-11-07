@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import Feed from '../Feed/Feed'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { FeedProvider } from '../Contexts/FeedContext'

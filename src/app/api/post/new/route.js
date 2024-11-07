@@ -32,7 +32,7 @@ export const POST = async(req) => {
         return new NextResponse(JSON.stringify(newPost), {status: 200})
 
     } catch (error) {
-        console.log(error)
+        console.log(error.message)
         return new NextResponse({message: "Problem occured while saving."}, {status: 500})
     }
 

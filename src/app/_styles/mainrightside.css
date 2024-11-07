@@ -50,7 +50,7 @@
 }
 
 .suggested_person_container img,
-.latest_activity_info img {
+.latest_activity_container img {
     @apply 
     rounded-full
     cursor-pointer
@@ -68,6 +68,10 @@
     @apply
     font-normal 
 }
+
+.latest_activity_info img {
+    @apply object-cover w-[50px] h-[50px] rounded
+} 
 
 .suggested_person_info,
 .latest_activity_info {

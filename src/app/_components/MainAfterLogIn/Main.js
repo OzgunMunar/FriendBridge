@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 import { FeedProvider } from '../Contexts/FeedContext';
 import { useUserContext } from '../Contexts/UserContext';
 import '@/app/_styles/mainpage.css'
+import { feedTypes } from '../FeedEnum/FeedEnum';
 
 const Main = () => {
 
@@ -50,7 +51,7 @@ const Main = () => {
 
                 <FeedProvider>
                     <CreatePost postType={'FeedPost'} />
-                    <Feed />
+                    <Feed feedType={feedTypes.MainFeed} userId={user._id} />
                     <MainRightSide />
                 </FeedProvider>
 

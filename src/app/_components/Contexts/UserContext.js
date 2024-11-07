@@ -30,14 +30,10 @@ export const UserProvider = ({ children }) => {
         setUser(newUserInfo)
     }, [])
 
-    const updateUsersFollowingStatus = useCallback((loggedinuser, viewuser) => {
+    const updateUsersFollowingStatus = useCallback((loggedinuser) => {
 
         setUser((prevUserValue) => {
-
-            const newFollowingPeopleList = prevUserValue.followingPeople ? [ ...prevUserValue.followingPeople, viewuser._id ] : [ viewuser._id ]
-
-            return { ...prevUserValue, followingPeople: newFollowingPeopleList }
-
+            return { ...prevUserValue, followingPeople: loggedinuser.followingPeople }
         })
         
     }, [])

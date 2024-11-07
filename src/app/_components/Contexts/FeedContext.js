@@ -51,7 +51,7 @@ export const FeedProvider = ({ children }) => {
 
     const handleFetchError = useCallback((error) => {
         setFetchError(true)
-        console.log(error)
+        console.log(error.message)
     }, [])
 
     return (

@@ -1,5 +1,5 @@
 import "@/app/_styles/postform.css"
-import { useEffect, useContext, useReducer, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import { INITIAL_STATE, extraInfoReducer } from "@/app/reducers/extraInfoReducer"
 import { useUserContext } from "../Contexts/UserContext"
 

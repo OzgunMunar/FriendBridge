@@ -333,15 +333,15 @@ const Post = ({ post }) => {
                                 }
 
                                 {
-                                    (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
-                                    (
+                                    // (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
+                                    // (
                                         <p className="post_dropdown_content_action" onClick={openModal}>
                                             <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
                                             <span>Edit</span>
                                         </p>
-                                    ) 
-                                    :
-                                    (<div></div>)
+                                    // ) 
+                                    // :
+                                    // (<div></div>)
                                 }
 
                                 {
@@ -372,7 +372,7 @@ const Post = ({ post }) => {
                 {
                     post.imageUrlLink && 
                     <div className="w-full my-3">
-                        <img className="post_image" src={post.imageUrlLink} />
+                        <img className="post_image rounded-xl" src={post.imageUrlLink} />
                     </div>
                 }
 

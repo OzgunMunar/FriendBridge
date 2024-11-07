@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef  } from 'react'
+import React, { useState, useContext, useEffect, useRef, useReducer  } from 'react'
 import axios from "axios"
 import { PageLoaderContext } from '../Contexts/Contexts'
 import Feed from '../Feed/Feed'
@@ -11,6 +11,8 @@ import { FeedProvider } from '../Contexts/FeedContext'
 import { useUserContext } from '../Contexts/UserContext'
 import '@/app/_styles/newprofile.css'
 import '@/app/_styles/skeletonloader.css'
+import { INITIAL_STATE, profileTabsReducer } from '@/app/reducers/profileTabsReducer'
+import FollowingAndFollowers from '../FollowingAndFollowers/FollowingAndFollowers'
 
 const Profile = () => {
 
@@ -28,6 +30,8 @@ const Profile = () => {
     const [followingProcess, setFollowingProcess] = useState(false)
     const [shouldRenderButton, setShouldRenderButton] = useState(false)
 
+    const [state, dispatch] = useReducer(profileTabsReducer, INITIAL_STATE)
+
     const usernameRef = useRef(null)
 
     const [userInfo, setUserInfo] = useState({
@@ -44,7 +48,7 @@ const Profile = () => {
     })
 
     useEffect(() => {
-
+        
         setUserInfo({
 
             username: user?.username || '',
@@ -117,7 +121,7 @@ const Profile = () => {
             setIsPasswordMailSent(true)
 
         } catch (error) {
-            console.log(error)
+            console.log(error.message)
             toast.error(error, { theme: "dark" })
             setIsPasswordMailSent(false)
         }
@@ -151,7 +155,7 @@ const Profile = () => {
         }
 
     }
-
+    
     const followUser = async() => {
 
         const matcherCodeName = userCodeName
@@ -167,14 +171,13 @@ const Profile = () => {
                                         setIsFollowing(true)
 
                                         loggedinuser = response.data
-
-                                        updateUsersFollowingStatus(loggedinuser, viewUser)
+                                        updateUsersFollowingStatus(loggedinuser)
 
                                     })
                                     .catch((error) => {
 
                                         toast.error("There has been an error.", { theme: "dark" })
-                                        console.log(error)
+                                        console.log(error.message)
 
                                     }).finally(() => {
 
@@ -184,12 +187,12 @@ const Profile = () => {
         
     }
 
-    const unfollowUser = async() => {
+    const unfollowUser = async(userCodeName) => {
 
         const matcherCodeName = userCodeName
         const userId = user._id
 
-        let loggedinuser = ''
+        let loggedinuser = ""
 
         setFollowingProcess(true)
         await axios.post('/api/users/unfollowuser', { userId, matcherCodeName })
@@ -199,14 +202,13 @@ const Profile = () => {
                                         setIsFollowing(false)
 
                                         loggedinuser = response.data
-
-                                        updateUsersFollowingStatus(loggedinuser, viewUser)
+                                        updateUsersFollowingStatus(loggedinuser)
 
                                     })
                                     .catch((error) => {
 
                                         toast.error("There has been an error.", { theme: "dark" })
-                                        console.log(error)
+                                        console.log(error.message)
 
                                     }).finally(() => {
 
@@ -215,6 +217,7 @@ const Profile = () => {
                                     })
 
     }
+    
 
     return (
 
@@ -246,24 +249,19 @@ const Profile = () => {
 
                     <div className="profile_top_profilepages">
 
-                        <button className="profile_top_profilepages_button active">
+                        <button className={`profile_top_profilepages_button ${state.posts ? "active":""}`} onClick={() => { dispatch({ type: "onPosts" }) }}>
                             <span className="profile_top_profilepages_title">Posts</span>
                             <span className="profile_top_profilepages_number">{viewUser?.postNumber || 0}</span>
                         </button>
 
-                        <button className="profile_top_profilepages_button">
+                        <button className={`profile_top_profilepages_button ${state.followingPeople ? "active":""}`} onClick={() => { dispatch({ type: "onFollowingPeople" }) }}>
                             <span className="profile_top_profilepages_title">Following</span>
                             <span className="profile_top_profilepages_number">{viewUser?.followingPeople?.length || 0}</span>
                         </button>
 
-                        <button className="profile_top_profilepages_button">
+                        <button className={`profile_top_profilepages_button ${state.followedPeople ? "active":""}`} onClick={() => { dispatch({ type: "onFollowedPeople" }) }}>
                             <span className="profile_top_profilepages_title">Followers</span>
                             <span className="profile_top_profilepages_number">{viewUser?.followedBy?.length || 0}</span>
-                        </button>
-        
-                        <button className="profile_top_profilepages_button">
-                            <span className="profile_top_profilepages_title">Likes</span>
-                            <span className="profile_top_profilepages_number">{viewUser?.userlikeNumber || 0}</span>
                         </button>
         
                     </div>
@@ -288,7 +286,7 @@ const Profile = () => {
 
                                     <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400">
 
-                                        <button type='button' className="profile_top_button" onClick={() => unfollowUser()} disabled={followingProcess}>
+                                        <button type='button' className="profile_top_button" onClick={() => unfollowUser(viewUser.userCodeName)} disabled={followingProcess}>
                                             <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
                                             {followingProcess ? "Unfollowing..." : "Unfollow"}
                                         </button>
@@ -412,19 +410,48 @@ const Profile = () => {
 
                 </div>
 
-                <div className="profile_below_feed_container">
+                <div className="profile_below_tab_container">
 
-                    <FeedProvider>
+                    {
+                        state.posts ? 
 
-                        {
+                        (
 
-                            (userCodeName === user.userCodeName) ? (<><CreatePost postType={'FeedPost'} /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
+                            <FeedProvider>
 
-                        }
+                                {
 
-                        <Feed feedType={feedTypes.ProfileFeed} userId={viewUser._id} />
+                                    (userCodeName === user.userCodeName) ? (<><CreatePost postType={'FeedPost'} /> <div className='my-5'></div></>):(<div className='border-t border-t-2 border-t-blue-700'></div>)
 
-                    </FeedProvider>
+                                }
+
+                                <Feed feedType={feedTypes.ProfileFeed} userId={viewUser._id} />
+
+                            </FeedProvider>
+                            
+                        ) : null
+
+                    }
+
+                    {
+
+                        state.followingPeople ? 
+
+                        (
+                            <FollowingAndFollowers relationType={"Following"} unfollowUser={unfollowUser} userId={viewUser._id} />
+                        ) : null
+
+                    }
+
+                    {
+                    
+                        state.followedPeople ? 
+                    
+                        (
+                            <FollowingAndFollowers relationType={"Follower"} />
+                        ) : null
+
+                    }
 
                 </div>
 

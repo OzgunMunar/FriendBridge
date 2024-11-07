@@ -50,11 +50,11 @@
 }
 
 .profile_top_profilepages {
-    @apply flex items-center justify-center gap-2
+    @apply flex items-center justify-center gap-5
 }
 
 .profile_top_profilepages_button {
-    @apply flex items-center justify-center flex-col cursor-pointer h-full px-2
+    @apply flex items-center justify-center flex-col cursor-pointer h-full px-2 
 }
 
 .profile_top_profilepages_button.active {
@@ -62,13 +62,23 @@
 }
 
 .profile_top_profilepages_button.active .profile_top_profilepages_number {
-    @apply text-green-600 font-extrabold
+    @apply text-blue-500 font-extrabold transition-all duration-200 ease-in
 }
 
 .profile_top_profilepages_button.active::after {
     content: '';
-    @apply block absolute w-full left-0 bottom-[-5px] h-[3px] bg-green-600
+    @apply block absolute w-full left-0 bottom-[-5px] h-[3px] bg-blue-500
+    transition-all duration-200 ease-in
 }
+
+/* .profile_top_profilepages_button.mouseOver .profile_top_profilepages_number {
+    @apply text-slate-50 font-extrabold
+}
+
+.profile_top_profilepages_button.mouseOver::after {
+    content: '';
+    @apply block absolute w-full left-0 bottom-[-5px] h-[3px] bg-slate-50
+} */
 
 .profile_top_profilepages_title {
     @apply text-slate-500
@@ -134,7 +144,7 @@
     bg-white
 }
 
-.profile_below_feed_container {
+.profile_below_tab_container {
     @apply w-full mt-5 
     xl:w-2/3
     xl:max-w-screen-xl
@@ -207,4 +217,57 @@
     gap-2
     text-white
     px-6
+}
+
+
+
+.followingandfollowers_container {
+    @apply w-full
+}
+
+.followingandfollowers_header {
+    @apply w-full border-t border-t-2 border-t-blue-700 bg-white flex items-center justify-center gap-2 text-xl py-2 mb-4 shadow-md
+}
+
+.followingandfollowers_userinfo {
+    @apply w-full h-full 
+    flex items-center justify-between flex-row
+    bg-neutral-100 shadow-md h-full
+    opacity-100
+    p-6
+    mb-5
+    transition-all duration-300 ease-in
+}
+
+.followingandfollowers_userinfo.removeUserContainer {
+    @apply opacity-0
+}
+
+.followingandfollowers_userinfo_leftside {
+    @apply
+    break-normal
+    hyphens-auto
+    flex items-start justify-start
+}
+
+.followingandfollowers_userinfo_leftside_img_container img {
+    @apply rounded-lg border border-2 border-gray-400 shadow-md cursor-pointer
+}
+
+.followingandfollowers_userinfo_leftside_text {
+    @apply flex items-start justify-start flex-col ml-6
+}
+
+.followingandfollowers_userinfo_leftside_text span:nth-child(1),
+.followingandfollowers_userinfo_leftside_text span:nth-child(2) {
+    @apply cursor-pointer
+}
+
+.followingandfollowers_userinfo_leftside_text span:nth-child(1) {
+    @apply text-2xl
+}
+
+.followingandfollowers_userinfo_leftside_text span:nth-child(2),
+.followingandfollowers_userinfo_leftside_text span:nth-child(3) {
+    @apply text-sm
 }
