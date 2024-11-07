@@ -24,7 +24,7 @@ const Profile = () => {
 
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
-    const [viewUser, setViewUser] = useState('')
+    const [viewUser, setViewUser] = useState("")
     const [isLoggedInProfile, setIsLoggedInProfile] = useState(false)
     const [isFollowing, setIsFollowing] = useState(false)
     const [followingProcess, setFollowingProcess] = useState(false)
@@ -36,14 +36,14 @@ const Profile = () => {
 
     const [userInfo, setUserInfo] = useState({
 
-        username: '',
-        userImageLink: '',
-        address: '',
-        personalwebsite: '',
-        phonenumber: '',
-        profession: '',
-        birthday: '',
-        gender: ''
+        username: "",
+        userImageLink: "",
+        address: "",
+        personalwebsite: "",
+        phonenumber: "",
+        profession: "",
+        birthday: "",
+        gender: ""
 
     })
 
@@ -51,14 +51,14 @@ const Profile = () => {
         
         setUserInfo({
 
-            username: user?.username || '',
-            userImageLink: user?.userImageLink || '',
-            address: user?.address || '',
-            personalwebsite: user?.personalwebsite || '',
-            phonenumber: user?.phonenumber || '',
-            profession: user?.profession || '',
-            birthday: user?.birthday || '',
-            gender: user?.gender || ''
+            username: user?.username || "",
+            userImageLink: user?.userImageLink || "",
+            address: user?.address || "",
+            personalwebsite: user?.personalwebsite || "",
+            phonenumber: user?.phonenumber || "",
+            profession: user?.profession || "",
+            birthday: user?.birthday || "",
+            gender: user?.gender || ""
     
         })
 
@@ -161,7 +161,7 @@ const Profile = () => {
         const matcherCodeName = userCodeName
         const userId = user._id
         
-        let loggedinuser = ''
+        let loggedinuser = ""
 
         setFollowingProcess(true)
         await axios.post('/api/users/followuser', { userId, matcherCodeName })
@@ -232,11 +232,11 @@ const Profile = () => {
                     
                     <div className='profile_top_user_info'>
 
-                        <span className={`profile_username mb-0.5 ${viewUser?.username ? '' : 'skeleton skeleton-title'}`}> 
+                        <span className={`profile_username mb-0.5 ${viewUser?.username ? "" : 'skeleton skeleton-title'}`}> 
                             {viewUser?.username || ""} 
                         </span>
 
-                        <span className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? '' : 'skeleton skeleton-text'}`}> 
+                        <span className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? "" : 'skeleton skeleton-text'}`}> 
                             {viewUser?.userCodeName ? `@${viewUser.userCodeName}` : ""} 
                         </span>
 
@@ -322,11 +322,11 @@ const Profile = () => {
 
                         <div className='profile_personal_info_toprow'>
 
-                            <span className={`profile_username ${viewUser?.username ? '' : 'skeleton skeleton-title'}`}> 
+                            <span className={`profile_username ${viewUser?.username ? "" : 'skeleton skeleton-title'}`}> 
                                 {viewUser?.username || ""} 
                             </span>
 
-                            <p className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? '' : 'skeleton skeleton-text'}`}> 
+                            <p className={`cursor_pointer text-slate-500 ${viewUser?.userCodeName ? "" : 'skeleton skeleton-text'}`}> 
                                 {viewUser?.userCodeName ? `@${viewUser.userCodeName}` : ""} 
                             </p>
 
@@ -338,7 +338,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
                                 </div>
-                                <span className={`profile_personal_info_value ${viewUser?.profession ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value ${viewUser?.profession ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.profession || ""} 
                                 </span>
                             </div>
@@ -347,7 +347,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
                                 </div>
-                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.phonenumber ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.phonenumber ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`tel:${viewUser?.phonenumber}`}>
                                         {viewUser?.phonenumber || ""}
                                     </a>
@@ -358,7 +358,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
                                 </div>
-                                <span className={`profile_personal_info_value ${viewUser?.address ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value ${viewUser?.address ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.address || ""} 
                                 </span>
                             </div>
@@ -367,7 +367,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
                                 </div>
-                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.email ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.email ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`mailto:${viewUser?.email}`}>
                                         {viewUser?.email || ""}
                                     </a>
@@ -378,7 +378,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 </div>
-                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.personalwebsite ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value text-sky-600 ${viewUser?.personalwebsite ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`${viewUser?.personalwebsite}`} target='_blank'>
                                         {viewUser?.personalwebsite || ""}
                                     </a>
@@ -389,7 +389,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title mt-0.5'>
                                     <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 </div>
-                                <span className={`profile_personal_info_value ${viewUser?.birthday ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value ${viewUser?.birthday ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.birthday || ""} 
                                 </span>
                             </div>
@@ -398,7 +398,7 @@ const Profile = () => {
                                 <div className='profile_personal_info_title'>
                                     <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
                                 </div>
-                                <span className={`profile_personal_info_value ${viewUser?.gender ? '' : 'skeleton skeleton-text'}`}> 
+                                <span className={`profile_personal_info_value ${viewUser?.gender ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.gender || ""} 
                                 </span>
                             </div>

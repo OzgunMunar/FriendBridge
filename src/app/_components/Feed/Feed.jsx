@@ -124,7 +124,7 @@ const Feed = ({ feedType, userId }) => {
             } else {
 
                 return null
-                
+
             } 
 
         }
@@ -154,7 +154,7 @@ const Feed = ({ feedType, userId }) => {
                             posts.length !== 0 ? (
 
                                 posts?.map((post) => (
-                                    <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':''}`} >
+                                    <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`} >
                                         <Post post={post} />
                                     </div>
                                 ))

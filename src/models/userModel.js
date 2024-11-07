@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     },
     userImageLink: {
         type: String,
-        default: ''
+        default: ""
     },
     profession: {
         type: String,

@@ -88,10 +88,10 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
 
           <div className='modalprofile_footer_container'>
             
-            <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':''}`}>
+            <div className={`profile_change_password_container  ${isPasswordMailSent === true ? 'disabled-button':""}`}>
 
                 <button type='button' 
-                        className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 text-dark':''}`}
+                        className={`profile_change_password_button ${isPasswordMailSent ? 'cursor-not-allowed bg-rose-500 text-dark':""}`}
                         onClick={changePassword} 
                         disabled={isPasswordMailSent}>
                     

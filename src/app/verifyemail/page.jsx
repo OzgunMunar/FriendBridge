@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 const VerifyEmail = () => {
 
-    const [token, setToken] = useState('')
+    const [token, setToken] = useState("")
     const [verified, setVerified] = useState(false)
     const [error, setError] = useState(false)
 
@@ -28,7 +28,7 @@ const VerifyEmail = () => {
     useEffect(() => {
 
         const urlToken = window.location.search.split('=')[1]
-        setToken(urlToken || '')
+        setToken(urlToken || "")
 
     },[])
 

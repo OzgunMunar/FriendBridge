@@ -19,7 +19,7 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
         
         shouldRender ? (
             
-        <div className={`followingandfollowers_userinfo ${fadeOut ? 'removeUserContainer':''}`}>
+        <div className={`followingandfollowers_userinfo ${fadeOut ? 'removeUserContainer':""}`}>
 
             <div className="followingandfollowers_userinfo_leftside">
 

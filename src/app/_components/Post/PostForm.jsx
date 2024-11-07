@@ -69,7 +69,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
         <div className="create_post_form">
           
-          <textarea rows={rows} placeholder={`${user.username ? `What do you think, ${user.username}?`:''}`}
+          <textarea rows={rows} placeholder={`${user.username ? `What do you think, ${user.username}?`:""}`}
           ref={textAreaRef} 
           className="post_form_textarea"
           style={{ resize: (type==='Edit') ? 'none':'vertical' }}
@@ -119,7 +119,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
           </div>
 
-          <div className={`${expand ? 'expanded':''} post_form_extras_container w-full`}>
+          <div className={`${expand ? 'expanded':""} post_form_extras_container w-full`}>
 
             { state.image && 
 

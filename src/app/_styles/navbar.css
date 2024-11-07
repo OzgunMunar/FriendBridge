@@ -100,7 +100,7 @@
 }
 
 .dropdown-content::after {
-    content: '';
+    content: "";
     border: .75rem solid transparent;
 	border-top: none;
 	border-bottom-color: #fff;

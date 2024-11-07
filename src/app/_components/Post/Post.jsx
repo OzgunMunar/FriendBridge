@@ -266,7 +266,7 @@ const Post = ({ post }) => {
         
         shouldRenderPost ? (
 
-            <div className={`post_container ${fadeOut ? 'removePost' : ''}`}>
+            <div className={`post_container ${fadeOut ? 'removePost' : ""}`}>
                 
                 <div className="post_header">
 
@@ -419,7 +419,7 @@ const Post = ({ post }) => {
 
                 </div>
                 
-                <div className={`${expand ? 'expanded':''} post_comment_section_container`}
+                <div className={`${expand ? 'expanded':""} post_comment_section_container`}
                     ref={commentRef}
                     style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflow: 'hidden' }}>
                         
@@ -434,7 +434,7 @@ const Post = ({ post }) => {
                         
                         <textarea 
                             rows={4} 
-                            placeholder={`${user.username ? `What do you think, ${user.username}?`:''}`}
+                            placeholder={`${user.username ? `What do you think, ${user.username}?`:""}`}
                             className="post_comment_textarea overflow-hidden"
                             ref={commentTextAreaRef}
                             ></textarea>
