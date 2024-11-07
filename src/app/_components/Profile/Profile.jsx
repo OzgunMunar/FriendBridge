@@ -9,10 +9,10 @@ import { usePathname } from 'next/navigation'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { FeedProvider } from '../Contexts/FeedContext'
 import { useUserContext } from '../Contexts/UserContext'
-import '@/app/_styles/newprofile.css'
-import '@/app/_styles/skeletonloader.css'
 import { INITIAL_STATE, profileTabsReducer } from '@/app/reducers/profileTabsReducer'
 import FollowingAndFollowers from '../FollowingAndFollowers/FollowingAndFollowers'
+import '@/app/_styles/newprofile.css'
+import '@/app/_styles/skeletonloader.css'
 
 const Profile = () => {
 
