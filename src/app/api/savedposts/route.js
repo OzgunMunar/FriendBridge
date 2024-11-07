@@ -10,8 +10,6 @@ export const GET = async(request, response) => {
         await ConnectToDB()
         // const userId = getDataFromToken(request)
 
-        response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
-
         const { userId } = await request.json()
 
         let savedPosts = await SavedPosts.findOne({ userId })
