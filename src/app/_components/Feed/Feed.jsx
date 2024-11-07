@@ -32,7 +32,7 @@ const Feed = ({ feedType, userId }) => {
                     case feedTypes.ProfileFeed:
 
                         feedData = await GetProfileFeed(userId)
-
+                        
                     break;
 
                     case feedTypes.MainFeed:

@@ -12,7 +12,7 @@ export const GetProfileFeed = async(userId) => {
         let savedPostDatas 
         let isSavedByUser
 
-        if(resultSavedPostRequest.data.savedPosts.postIds.length > 0) {
+        if(resultSavedPostRequest?.data?.savedPosts?.postIds?.length > 0) {
 
             savedPostDatas = resultSavedPostRequest.data.savedPosts.postIds
 
@@ -43,7 +43,7 @@ export const GetProfileFeed = async(userId) => {
         return postDatasWithSavedPosts
 
     } catch (error) {
-        console.log(error.message)
+        console.log("ProfileFeedQuery.js: ", error.message)
     }
 
 }

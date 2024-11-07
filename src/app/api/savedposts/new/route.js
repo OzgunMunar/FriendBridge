@@ -40,7 +40,8 @@ export const POST = async(request) => {
 
     } catch (error) {
         
-        console.log(error.message)
+        // console.log(error.message)
+        console.log("api/savedposts/new error: ", error.message)
         return NextResponse.json({ message: error.message, status: 500 })
 
     }

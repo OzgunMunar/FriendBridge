@@ -6,7 +6,7 @@ export const GetSavedPostsFeed = async() => {
         
         const savedPostsByUser = await axios.get('/api/savedposts/')
         
-        const savedPosts = savedPostsByUser.data.savedPosts.postIds.map((post) => {
+        const savedPosts = savedPostsByUser?.data?.savedPosts?.postIds?.map((post) => {
             return ({
                 ...post,
                 isSaved: true
@@ -16,7 +16,7 @@ export const GetSavedPostsFeed = async() => {
         return savedPosts
 
     } catch (error) {
-        console.log(error.message)
+        console.log("SavedPostsFeedQuery.js: ", error.message)
     }
 
 }

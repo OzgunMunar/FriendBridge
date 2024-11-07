@@ -32,7 +32,8 @@ export const GET = async(request) => {
         return NextResponse.json({ savedPosts, status: 200 })
 
     } catch (error) {
-        console.log(error.message)
+        // console.log(error.message)
+        console.log("api/savedposts error: ", error.message)
         return NextResponse.json({ message: error.message, status: 500 })
     }
 
