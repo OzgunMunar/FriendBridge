@@ -3,12 +3,14 @@ import { getDataFromToken } from "@/helpers/helper"
 import SavedPosts from "@/models/savedPostsModel"
 import { NextResponse } from "next/server"
 
-export const GET = async(request) => {
+export const GET = async(request, response) => {
 
     try {
       
         await ConnectToDB()
         // const userId = getDataFromToken(request)
+
+        response.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
 
         const { userId } = await request.json()
 
