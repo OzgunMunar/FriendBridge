@@ -8,7 +8,9 @@ export const GET = async(request) => {
     try {
       
         await ConnectToDB()
-        const userId = getDataFromToken(request)
+        // const userId = getDataFromToken(request)
+
+        const { userId } = await request.json()
 
         let savedPosts = await SavedPosts.findOne({ userId })
                                        .populate({

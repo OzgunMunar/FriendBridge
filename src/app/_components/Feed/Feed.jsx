@@ -63,7 +63,7 @@ const Feed = ({ feedType, userId }) => {
  
         fetchData()
 
-    }, [userId, feedType, getFeedPosts, handleFetchError, setLoading])
+    }, [userId])
     
     useEffect(() => {
 
