@@ -6,6 +6,6 @@ export const feedTypes = Object.freeze({
     
     GroupFeed: "Group's posts",
     GlobalFeed: "Admin's posts",
-    LikedFeed: "Feeds liked by user"
+    DefaultFeed: "Default Feed"
     
 }) 

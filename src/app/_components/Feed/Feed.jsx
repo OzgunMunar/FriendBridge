@@ -46,18 +46,6 @@ const Feed = ({ feedType, userId }) => {
                         feedData = await GetSavedPostsFeed()
 
                     break;
-
-                    case feedTypes.ProfileFeed:
-                        
-                        // profilefeed
-
-                    break;
-
-                    case feedTypes.ProfileFeed:
-                        
-                        // profilefeed
-
-                    break;
                 
                     default:
                         break;
@@ -102,6 +90,47 @@ const Feed = ({ feedType, userId }) => {
 
     }, [fetchError])
 
+    const renderNoPostsMessage = () => {
+
+        if (userId) {
+
+            if (feedType === feedTypes.SavedPostsFeed) {
+
+                return (
+                    <div className="flex items-center justify-center mt-6 py-5 flex-col gap-5 border border-yellow-300 bg-yellow-100 text-orange-700">
+                        <img width="48" height="48" src="https://img.icons8.com/color/48/general-warning-sign.png" alt="general-warning-sign"/>
+                        <p>There are no saved posts. To save one, click on the "..." button < br/>at the top-right of any post and select "Save Post".</p>
+                    </div>
+                )
+
+            } else if (feedType === feedTypes.MainFeed) {
+
+                return (
+                    <div className="flex items-center justify-center mt-6 py-5 flex-col gap-5 border border-yellow-300 bg-yellow-100 text-orange-700">
+                        <img width="48" height="48" src="https://img.icons8.com/color/48/general-warning-sign.png" alt="general-warning-sign"/>
+                        <p>There are no post to show. In main feed, user sees his/her posts <br />mixed with the users he/she follows. Please follow others or share your thoughts.</p>
+                    </div>
+                )
+
+            } else if (feedType === feedTypes.ProfileFeed) {
+
+                return (
+                    <div className="flex items-center justify-center mt-6 py-5 flex-col gap-5 border border-yellow-300 bg-yellow-100 text-orange-700">
+                        <img width="48" height="48" src="https://img.icons8.com/color/48/general-warning-sign.png" alt="general-warning-sign"/>
+                        <p>There are no post to show. You might consider <br />sharing your thoughts with others.</p>
+                    </div>
+                )
+
+            } else {
+
+                return null
+                
+            } 
+
+        }
+
+    }
+
     return (
 
         <div className="feed_container">
@@ -121,11 +150,20 @@ const Feed = ({ feedType, userId }) => {
                     loading ?
                         <PageLoader />
                         :
-                        posts?.map((post) => (
-                            <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':''}`} >
-                                <Post post={post} />
-                            </div>
-                        ))
+                        (
+                            posts.length !== 0 ? (
+
+                                posts?.map((post) => (
+                                    <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':''}`} >
+                                        <Post post={post} />
+                                    </div>
+                                ))
+
+                            ) : (
+                                renderNoPostsMessage()
+                            )
+
+                        )
 
                 )
                 

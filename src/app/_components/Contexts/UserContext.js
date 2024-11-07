@@ -14,7 +14,7 @@ export const UserProvider = ({ children }) => {
             try {
 
                 const loggedinuser = await axios.get('/api/users/loggedinuser')
-                setUser(loggedinuser.data.data)   
+                setUser(loggedinuser.data.data)
 
             } catch (error) {
                 console.log(error.message)
@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
 
         fetchUser()
 
-    }, [])
+    }, [user])
 
     const updateUser = useCallback((newUserInfo) => {
         setUser(newUserInfo)
