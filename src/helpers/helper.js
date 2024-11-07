@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
 
 export const getDataFromToken = (request) => {
-    
-    try {
-        
-        const token = request.cookies.get('token')?.value
 
+    try {
+
+        const token = request.cookies.get('token')?.value
+        
         if (!token) {
             throw new Error("JWT must be provided")
         }
@@ -23,6 +23,6 @@ export const getDataFromToken = (request) => {
         }
 
         throw new Error(error.message || "Token verification failed")
-
     }
-};
+
+}

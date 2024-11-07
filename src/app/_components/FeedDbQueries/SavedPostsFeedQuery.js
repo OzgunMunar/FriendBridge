@@ -4,7 +4,7 @@ export const GetSavedPostsFeed = async() => {
 
     try {
         
-        const savedPostsByUser = await axios.get('/api/savedposts/')
+        const savedPostsByUser = await axios.get('/api/savedposts')
         
         const savedPosts = savedPostsByUser?.data?.savedPosts?.postIds?.map((post) => {
             return ({
