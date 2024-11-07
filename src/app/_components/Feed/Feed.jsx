@@ -151,17 +151,20 @@ const Feed = ({ feedType, userId }) => {
                         <PageLoader />
                         :
                         (
-                            posts?.length !== 0 ? (
+                            posts ? (
 
-                                posts?.map((post) => (
-                                    <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`} >
-                                        <Post post={post} />
-                                    </div>
-                                ))
+                                posts.length !== 0 ? (
 
-                            ) : (
-                                renderNoPostsMessage()
-                            )
+                                    posts?.map((post) => (
+                                        <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`} >
+                                            <Post post={post} />
+                                        </div>
+                                    ))
+
+                                ) : (
+                                    renderNoPostsMessage()
+                                )
+                            ) : null
 
                         )
 
