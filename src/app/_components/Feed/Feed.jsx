@@ -60,7 +60,7 @@ const Feed = ({ feedType, userId }) => {
                 setLoading(false)
             }
         }
-
+ 
         fetchData()
 
     }, [userId])
