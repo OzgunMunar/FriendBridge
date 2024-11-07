@@ -24,7 +24,7 @@ export const UserProvider = ({ children }) => {
 
         fetchUser()
 
-    }, [user])
+    }, [])
 
     const updateUser = useCallback((newUserInfo) => {
         setUser(newUserInfo)
