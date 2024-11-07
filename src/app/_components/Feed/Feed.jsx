@@ -151,7 +151,7 @@ const Feed = ({ feedType, userId }) => {
                         <PageLoader />
                         :
                         (
-                            posts.length !== 0 ? (
+                            posts?.length !== 0 ? (
 
                                 posts?.map((post) => (
                                     <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`} >
