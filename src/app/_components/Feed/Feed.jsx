@@ -50,7 +50,7 @@ const Feed = ({ feedType, userId }) => {
                     default:
                         break;
 
-                }
+                } 
 
                 getFeedPosts(feedData)
 
