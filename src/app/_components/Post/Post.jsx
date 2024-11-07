@@ -52,6 +52,12 @@ const Post = ({ post }) => {
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
 
+    const isVideo = (url) => {
+        const videoExtensions = ['mp4', 'webm', 'ogg']
+        const fileExtension = url.split('.').pop().toLowerCase()
+        return videoExtensions.includes(fileExtension)
+    }
+
     const openModal = () => {
         setIsEditModalOpen(true)
     }
@@ -333,15 +339,15 @@ const Post = ({ post }) => {
                                 }
 
                                 {
-                                    // (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
-                                    // (
+                                    (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
+                                    (
                                         <p className="post_dropdown_content_action" onClick={openModal}>
                                             <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
                                             <span>Edit</span>
                                         </p>
-                                    // ) 
-                                    // :
-                                    // (<div></div>)
+                                    ) 
+                                    :
+                                    (<div></div>)
                                 }
 
                                 {

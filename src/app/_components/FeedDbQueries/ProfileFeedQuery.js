@@ -7,12 +7,12 @@ export const GetProfileFeed = async(userId) => {
         const resultPostRequest = await axios.get(`/api/post?userId=${userId}`)
         const postDatas = resultPostRequest.data.posts
 
-        const resultSavedPostRequest = await axios.get('/api/savedposts', { userId })
+        const resultSavedPostRequest = await axios.post('/api/savedposts', { userId })
         let postDatasWithSavedPosts = []
         let savedPostDatas 
         let isSavedByUser
 
-        if(resultSavedPostRequest?.data?.savedPosts?.postIds?.length > 0) {
+        if(resultSavedPostRequest?.data?.savedPosts.postIds.length > 0) {
 
             savedPostDatas = resultSavedPostRequest.data.savedPosts.postIds
 
