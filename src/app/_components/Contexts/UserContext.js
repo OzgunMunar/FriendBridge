@@ -1,5 +1,5 @@
 import axios from "axios"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useCallback, useContext, useEffect, useState } from "react"
 
 const UserContext = createContext()
 
@@ -26,8 +26,24 @@ export const UserProvider = ({ children }) => {
 
     }, [])
 
+    const updateUser = useCallback((newUserInfo) => {
+        setUser(newUserInfo)
+    }, [])
+
+    const updateUsersFollowingStatus = useCallback((loggedinuser, viewuser) => {
+
+        setUser((prevUserValue) => {
+
+            const newFollowingPeopleList = prevUserValue.followingPeople ? [ ...prevUserValue.followingPeople, viewuser._id ] : [ viewuser._id ]
+
+            return { ...prevUserValue, followingPeople: newFollowingPeopleList }
+
+        })
+        
+    }, [])
+
     return (
-        <UserContext.Provider value={{ user, setUser }}>
+        <UserContext.Provider value={{ user, setUser, updateUser, updateUsersFollowingStatus }}>
             { children }
         </UserContext.Provider>
     )

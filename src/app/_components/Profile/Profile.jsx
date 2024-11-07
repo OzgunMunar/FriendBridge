@@ -14,7 +14,7 @@ import '@/app/_styles/skeletonloader.css'
 
 const Profile = () => {
 
-    const { user } = useUserContext()
+    const { user, updateUser, updateUsersFollowingStatus } = useUserContext()
     const { setLoader } = useContext(PageLoaderContext)
 
     const pathName = usePathname()
@@ -71,7 +71,6 @@ const Profile = () => {
                 } else {
                     
                     const userData = await axios.get(`/api/users/${userCodeName}`)
-                    console.log(userData.data.data)
 
                     if(userData.data.data.followedBy.includes(user._id)) {
 
@@ -103,12 +102,10 @@ const Profile = () => {
 
     const openModalToEdit = () => {
         setModalShow(true)
-        // setUserInfoRefreshSwitch(val => !val)
     }
 
     const closeModalToEdit = () => {
         setModalShow(false)
-        // setUserInfoRefreshSwitch(val => !val)
     }
 
     const changePassword = async() => {
@@ -130,11 +127,24 @@ const Profile = () => {
 
         try {
 
-            const result = await axios.post("/api/users/updateuserinfo", userInfo)
-            toast.success(result.data.message, { theme: "light" })
+            await axios.post("/api/users/updateuserinfo", userInfo)
+                                        .then((response) => {
 
-            setModalShow(false)
-            // setUserInfoRefreshSwitch(val => !val)
+                                            const updatedUserInfo = response.data.data
+                                            toast.success("User updated.", { theme: "light" })
+                                
+                                            updateUser(updatedUserInfo)
+
+                                        }).catch((error) => {
+
+                                            console.log(error.message)
+                                            toast.error("There's been an error while updating the user.", { theme: "dark" })
+
+                                        }).finally(() => {
+
+                                            setModalShow(false)
+
+                                        })
             
         } catch (error) {
             toast.error(error.response.data.message, { theme: "dark" })
@@ -146,18 +156,30 @@ const Profile = () => {
 
         const matcherCodeName = userCodeName
         const userId = user._id
+        
+        let loggedinuser = ''
 
         setFollowingProcess(true)
         await axios.post('/api/users/followuser', { userId, matcherCodeName })
-                                    .then(() => {
+                                    .then((response) => {
+
                                         toast.info("You are following the user.", { theme: "light" })
                                         setIsFollowing(true)
+
+                                        loggedinuser = response.data
+
+                                        updateUsersFollowingStatus(loggedinuser, viewUser)
+
                                     })
                                     .catch((error) => {
+
                                         toast.error("There has been an error.", { theme: "dark" })
                                         console.log(error)
+
                                     }).finally(() => {
+
                                         setFollowingProcess(false)
+
                                     })
         
     }
@@ -167,17 +189,29 @@ const Profile = () => {
         const matcherCodeName = userCodeName
         const userId = user._id
 
+        let loggedinuser = ''
+
         setFollowingProcess(true)
         await axios.post('/api/users/unfollowuser', { userId, matcherCodeName })
-                                    .then(() => {
+                                    .then((response) => {
+
                                         toast.info("You unfollowed the user.", { theme: "light" })
                                         setIsFollowing(false)
+
+                                        loggedinuser = response.data
+
+                                        updateUsersFollowingStatus(loggedinuser, viewUser)
+
                                     })
                                     .catch((error) => {
+
                                         toast.error("There has been an error.", { theme: "dark" })
                                         console.log(error)
+
                                     }).finally(() => {
+
                                         setFollowingProcess(false)
+
                                     })
 
     }

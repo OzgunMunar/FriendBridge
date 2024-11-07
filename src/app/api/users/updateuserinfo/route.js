@@ -2,6 +2,8 @@ import { ConnectToDB } from "@/dbConfig/dbConfig";
 import { NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/helper";
 import Users from "@/models/userModel";
+import Posts from "@/models/postModel";
+import LikedPosts from "@/models/likedPostsModel";
 
 export async function POST(req) {
 
@@ -12,8 +14,11 @@ export async function POST(req) {
 
         await ConnectToDB()
 
-        const userid = await getDataFromToken(req)
-        const user = await Users.findById(userid)
+        const userId = await getDataFromToken(req)
+        const user = await Users.findById(userId)
+        const userPosts = await Posts.find({ creator: userId, postType: 'FeedPost' })
+        const userLikes = await LikedPosts.findOne({ userId: userId })
+        let userObject = null
 
         const birthdayRegexPattern = /^(January|February|March|April|May|June|July|August|September|October|November|December)-\d{2}, \d{4}$/
         const genderRegexPattern = /(Male|Female)/
@@ -35,12 +40,13 @@ export async function POST(req) {
         user.birthday = birthday
         user.gender = gender
 
+        userObject = user.toObject()
+        userObject.postNumber = userPosts.length
+        userObject.userlikeNumber = userLikes?.LikedPosts?.length || 0
+
         await user.save()
 
-        return NextResponse.json({
-            message: 'User updated',
-            success: true
-        })
+        return NextResponse.json({ data: userObject }, { status: 200 })
 
     } catch (error) {
         return NextResponse.json({error: error.message}, {status: 500})
