@@ -6,9 +6,8 @@ import { NextResponse } from "next/server"
 export const POST = async(request) => {
 
     try {
-      
+        
         await ConnectToDB()
-        // const userId = getDataFromToken(request)
 
         const { userId } = await request.json()
 
@@ -25,6 +24,7 @@ export const POST = async(request) => {
                                                path: "comments.creator"
                                            }
                                        })
+        
         if(!savedPosts) {
             savedPosts = { userId: userId, postIds: [] }
         } else {

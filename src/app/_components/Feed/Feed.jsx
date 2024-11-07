@@ -37,7 +37,7 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.MainFeed:
 
-                        feedData = await GetMainFeed()
+                        feedData = await GetMainFeed(userId)
                         
                     break;
 

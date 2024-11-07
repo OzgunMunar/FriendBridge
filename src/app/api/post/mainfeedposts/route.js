@@ -1,17 +1,15 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
-import { getDataFromToken } from "@/helpers/helper"
 import Posts from "@/models/postModel"
 import Users from "@/models/userModel"
 import { NextResponse } from "next/server"
 
-export const GET = async(request) => {
-
+export const POST = async(request) => {
 
     try {
         
         await ConnectToDB()
         
-        const userId = getDataFromToken(request)
+        const { userId } = await request.json()
         const loggedinuser = await Users.findById(userId)
                                         .populate('followingPeople')
 
