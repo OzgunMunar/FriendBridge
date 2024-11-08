@@ -1,5 +1,4 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
-import { getDataFromToken } from "@/helpers/helper"
 import SavedPosts from "@/models/savedPostsModel"
 import { NextResponse } from "next/server"
 

@@ -1,5 +1,4 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
-import { getDataFromToken } from "@/helpers/helper"
 import Users from "@/models/userModel"
 import { NextResponse } from "next/server"
 
