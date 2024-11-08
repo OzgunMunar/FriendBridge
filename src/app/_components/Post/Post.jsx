@@ -279,7 +279,7 @@ const Post = ({ post }) => {
                     <div className="post_header_left_section">
 
                         <div className="post_user_image">
-                            <img src={post.creator.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
+                            <img loading="lazy" src={post.creator.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
                         </div>
 
                         <div className="post_info">
@@ -309,13 +309,13 @@ const Post = ({ post }) => {
                                     {
                                         isSaved ? (
                                             <>
-                                                <img width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                                                <img loading="lazy" width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
                                                 <span>Unsave Post</span>
                                             </>
                                         ) : (
 
                                             <>
-                                                <img width="20" height="20" src=" https://img.icons8.com/ios/50/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                                                <img loading="lazy" width="20" height="20" src=" https://img.icons8.com/ios/50/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
                                                 <span>Save Post</span>
                                             </>
 
@@ -329,7 +329,7 @@ const Post = ({ post }) => {
                                     (post.creator._id !== user._id) ? (
 
                                         <p className="post_dropdown_content_action">
-                                            <img width="20" height="20" src="https://img.icons8.com/windows/50/complaint.png" alt="report-post"/>
+                                            <img loading="lazy" width="20" height="20" src="https://img.icons8.com/windows/50/complaint.png" alt="report-post"/>
                                             <span>Report Post</span>
                                         </p>
 
@@ -342,7 +342,7 @@ const Post = ({ post }) => {
                                     (post.likedBy.length === 0 & post.comments.length === 0 & post.creator._id === user._id) ?
                                     (
                                         <p className="post_dropdown_content_action" onClick={openModal}>
-                                            <img width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
+                                            <img loading="lazy" width="20" height="20" src="https://img.icons8.com/ink/48/edit.png" alt="edit-post"/>
                                             <span>Edit</span>
                                         </p>
                                     ) 
@@ -355,7 +355,7 @@ const Post = ({ post }) => {
 
                                         <p className="post_dropdown_content_action" onClick={() => DeletePost(post._id)}>
 
-                                            <img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
+                                            <img loading="lazy" width="20" height="20" src="https://img.icons8.com/pulsar-line/48/filled-trash.png" alt="filled-trash"/>
                                             <span>Delete</span>
                                             
                                         </p>
@@ -378,7 +378,7 @@ const Post = ({ post }) => {
                 {
                     post.imageUrlLink && 
                     <div className="w-full my-3">
-                        <img className="post_image rounded-xl" src={post.imageUrlLink} />
+                        <img loading="lazy" className="post_image rounded-xl" src={post.imageUrlLink} />
                     </div>
                 }
 
@@ -398,20 +398,20 @@ const Post = ({ post }) => {
                         <div className="post_action_button" onClick={() => LikePost(post._id)} aria-disabled={isLiking}>
                             {
                                 isLiked ?
-                                <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
+                                <img loading="lazy" width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
                                 :
-                                <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
+                                <img loading="lazy" width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
                             }    
                             <p>{post.likedBy.length} Likes</p>
                         </div>
 
                         <div className="post_action_button" onClick={() => HandleExpand()}>
-                            <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
+                            <img loading="lazy" width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
                             <p>{post.comments.length} Comments</p>
                         </div>
 
                         <div className="post_action_button">
-                            <img width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
+                            <img loading="lazy" width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
                             <p>Share</p>
                         </div>
 
@@ -419,7 +419,7 @@ const Post = ({ post }) => {
 
                     <div className="post_saved_mark">
                         {
-                            isSaved === true && <img width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
+                            isSaved === true && <img loading="lazy" width="20" height="20" src="https://img.icons8.com/office/40/bookmark-ribbon--v1.png" alt="bookmark-ribbon--v1"/>
                         }
                     </div>
 
@@ -461,7 +461,7 @@ const Post = ({ post }) => {
                                     return (
                                         <div key={comment._id}>
                                             <div className="post_comment">
-                                                <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
+                                                <img loading="lazy" className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
                                         
                                                 <div className="post_comment_body">
                                                     <span className="font-bold">{comment.creator.username}</span>

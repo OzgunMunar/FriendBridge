@@ -7,7 +7,7 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
     <div className="modal-overlay">
       <div className="modal">
         <button className="close-button" onClick={onClose}>
-          <img width="30" height="30" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/>
+          <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/>
         </button>
         <div className='modalprofile_container'>
                             
@@ -99,9 +99,9 @@ const ModalEditProfile = ({ isOpen, onClose, userInfo, usernameRef, handleSubmit
                       
                         isPasswordMailSent ? 
 
-                            <img width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>
+                            <img loading="lazy" width="30" height="30" src="https://img.icons8.com/office/30/reading-confirmation.png" alt="reading-confirmation"/>
                             :
-                            <img width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
+                            <img loading="lazy" width="30" height="30" src="https://img.icons8.com/dusk/64/send.png" alt="send"/>
 
                     }
                     
