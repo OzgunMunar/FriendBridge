@@ -14,14 +14,6 @@ react-spinners
 
 Things to do:
 
-1- Tabs in the profile (
-        
-        Get main feed 10 by 10
-        Unfollow button for following users tab
-        Reject button for followers tab
-
-)
-
 2- Make the page of 
        
         - Groups: 
