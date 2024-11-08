@@ -80,7 +80,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
             <div className='iconsContainer'>
               
               <a className={`${post.imageUrlLink && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenImageSection" })}>
-                <img loading="lazy" width="25" height="25" src="https://img.icons8.com/fluency/48/image--v1.png" alt="image--v1"/>
+                <img width="25" height="25" src="https://img.icons8.com/fluency/48/image--v1.png" alt="image--v1"/>
                 {
                   post.imageUrlLink !== "" ?
                     <span>Change Image</span>
@@ -90,7 +90,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
               </a>
               
               <a className={`${post.friend && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenFriendSection" })}>
-                <img loading="lazy" className='mt-1' width="21" height="21" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" />
+                <img className='mt-1' width="21" height="21" src="https://img.icons8.com/external-anggara-flat-anggara-putra/32/external-tag-friends-ui-basic-anggara-flat-anggara-putra.png" />
                 {
                   post.friend !== "" ?
                     <span>Change Friend</span>
@@ -100,7 +100,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
               </a>
               
               <a className={`${post.location && 'text-green-500'} form_icon_container`} onClick={() => dispatch({ type: "OpenLocationSection" })}>
-                <img loading="lazy" width="25" height="25" src="https://img.icons8.com/dusk/64/map.png" alt="map"/>
+                <img width="25" height="25" src="https://img.icons8.com/dusk/64/map.png" alt="map"/>
                 {
                   post.location !== "" ?
                     <span>Change Location</span>

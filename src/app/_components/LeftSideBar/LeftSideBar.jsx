@@ -19,7 +19,7 @@ const LeftSideBar = () => {
             <Link href={`/${user.userCodeName || ""}`} id="profile_leftside_button">
               <li className={`${pathname === `/${user.userCodeName}` ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
+                  <img width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
                 </div>
 
                 <span>Profile</span>
@@ -38,7 +38,7 @@ const LeftSideBar = () => {
             <Link href="/" id="feed_leftside_button">
               <li className={`${pathname === "/" ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
                 </div>
 
                 <span>Feed</span>
@@ -56,7 +56,7 @@ const LeftSideBar = () => {
             <Link href="/savedposts" id="savedposts_leftside_button">
               <li className={`${pathname === "/savedposts" ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="25" height="25" src="https://img.icons8.com/external-prettycons-flat-prettycons/47/external-bookmark-web-seo-prettycons-flat-prettycons.png" alt="save-all"/>
+                  <img width="25" height="25" src="https://img.icons8.com/external-prettycons-flat-prettycons/47/external-bookmark-web-seo-prettycons-flat-prettycons.png" alt="save-all"/>
                 </div>
                 <span>Saved Posts</span>
               </li>
@@ -73,7 +73,7 @@ const LeftSideBar = () => {
             <Link href="/" id="globalposts_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>
                 </div>
                 <span>Global Posts</span>
               </li>
@@ -90,7 +90,7 @@ const LeftSideBar = () => {
             <Link href="/" id="findgroup_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
                 </div>
                 <span>Find Groups</span>
               </li>
@@ -107,7 +107,7 @@ const LeftSideBar = () => {
             <Link href="/" id="events_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
                 </div>
                 <span>Events</span>
               </li>
@@ -124,7 +124,7 @@ const LeftSideBar = () => {
             <Link href="/" id="admanager_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
                 </div>
                 <span>Ad Manager</span>
               </li>
@@ -141,7 +141,7 @@ const LeftSideBar = () => {
             <Link href="/" id="playgames_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
                 </div>
                 <span>Play Games</span>
               </li>
@@ -158,7 +158,7 @@ const LeftSideBar = () => {
             <Link href="/" id="readnews_leftside_button">
               <li>
                 <div className='iconContainer'>
-                  <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
+                  <img width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
                 </div>
                 <span>Read News</span>
               </li>

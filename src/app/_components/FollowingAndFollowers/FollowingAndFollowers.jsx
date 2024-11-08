@@ -36,7 +36,7 @@ const FollowingAndFollowers = ({ relationType, unfollowUser, userId }) => {
         <div className="followingandfollowers_container">
 
             <div className="followingandfollowers_header">
-                <img loading="lazy" width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/50/external-follower-gamification-flaticons-lineal-color-flat-icons.png" alt="external-follower-gamification-flaticons-lineal-color-flat-icons"/>
+                <img width="25" height="25" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/50/external-follower-gamification-flaticons-lineal-color-flat-icons.png" alt="external-follower-gamification-flaticons-lineal-color-flat-icons"/>
                 <span>{ relationType === "Following" ? "Following Users" : "Followers" }</span>
             </div>
 

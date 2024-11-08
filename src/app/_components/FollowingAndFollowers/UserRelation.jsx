@@ -24,7 +24,7 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
             <div className="followingandfollowers_userinfo_leftside">
 
                 <div className="followingandfollowers_userinfo_leftside_img_container">
-                    <Link href={`/${user.userCodeName}`}><img loading="lazy" width={75} height={75} src={user.userImageLink} /></Link>
+                    <Link href={`/${user.userCodeName}`}><img width={75} height={75} src={user.userImageLink} /></Link>
                 </div>
 
                 <div className="followingandfollowers_userinfo_leftside_text">
@@ -49,7 +49,7 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
                     }}>
     
                     <button className="profile_top_button"> 
-                        <img loading="lazy" width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                        <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
                         Unfollow
                     </button>
     

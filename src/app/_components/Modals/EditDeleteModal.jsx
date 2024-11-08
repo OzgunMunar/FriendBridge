@@ -6,7 +6,7 @@ const EditDeleteModal = ({ isOpen, onClose, children }) => {
       <div className="modal-overlay">
         <div className="modal">
           <button className="close-button" onClick={onClose}>
-            <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/>
+            <img width="30" height="30" src="https://img.icons8.com/color/48/delete-sign--v1.png" alt="delete-sign--v1"/>
           </button>
           {children}
         </div>

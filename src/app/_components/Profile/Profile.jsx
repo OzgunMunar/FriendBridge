@@ -227,7 +227,7 @@ const Profile = () => {
                 <div className="profile_top_container_one">
                     
                     <div className="profile_top_userimage_container">
-                        <img loading="lazy" src={viewUser?.userImageLink || ""} className="profile_top_userimage skeleton" />
+                        <img src={viewUser?.userImageLink || ""} className="profile_top_userimage skeleton" />
                     </div>
                     
                     <div className='profile_top_user_info'>
@@ -272,7 +272,7 @@ const Profile = () => {
                                 <div className="profile_top_profilebutton_container bg-slate-300 hover:bg-slate-400 border-slate-400">
                     
                                     <button type='button' className="profile_top_button" onClick={openModalToEdit}>
-                                        <img loading="lazy" width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
+                                        <img width="30" height="30" src="https://img.icons8.com/color/48/map-editing.png" alt="map-editing" />
                                         <span className="text-white">Edit Profile</span>
                                     </button>
 
@@ -286,7 +286,7 @@ const Profile = () => {
                                     <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400">
 
                                         <button type='button' className="profile_top_button" onClick={() => unfollowUser(viewUser.userCodeName)} disabled={followingProcess}>
-                                            <img loading="lazy" width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
+                                            <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
                                             {followingProcess ? "Unfollowing..." : "Unfollow"}
                                         </button>
 
@@ -299,7 +299,7 @@ const Profile = () => {
                                     <div className="profile_top_profilebutton_container bg-green-300 hover:bg-green-400 border-green-400" disabled={followingProcess}>
 
                                         <button type='button' className="profile_top_button" onClick={() => followUser()}>
-                                            <img loading="lazy" width="25" height="25" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
+                                            <img width="25" height="25" src="https://img.icons8.com/ios/50/checkmark--v1.png" alt="checkmark--v1"/>
                                             {followingProcess ? "Following..." : "Follow"}
                                         </button>
 
@@ -336,7 +336,7 @@ const Profile = () => {
                         
                             <div className='row'>
                                 <div className='profile_personal_info_title'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-job-job-search-flaticons-lineal-color-flat-icons-3.png" alt="external-job-job-search-flaticons-lineal-color-flat-icons-3"/>
                                 </div>
                                 <span className={`profile_personal_info_value ${viewUser?.profession ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.profession || ""} 
@@ -345,7 +345,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/doodle/48/phone--v1.png" alt="phone--v1"/>
                                 </div>
                                 <span className={`profile_personal_info_value text-sky-600 ${viewUser?.phonenumber ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`tel:${viewUser?.phonenumber}`}>
@@ -356,7 +356,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/plasticine/100/home.png" alt="home"/>
                                 </div>
                                 <span className={`profile_personal_info_value ${viewUser?.address ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.address || ""} 
@@ -365,7 +365,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/mail--v1.png" alt="mail--v1"/>
                                 </div>
                                 <span className={`profile_personal_info_value text-sky-600 ${viewUser?.email ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`mailto:${viewUser?.email}`}>
@@ -376,7 +376,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/color/48/domain--v1.png" alt="domain--v1"/>
                                 </div>
                                 <span className={`profile_personal_info_value text-sky-600 ${viewUser?.personalwebsite ? "" : 'skeleton skeleton-text'}`}> 
                                     <a href={`${viewUser?.personalwebsite}`} target='_blank'>
@@ -387,7 +387,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title mt-0.5'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/fluency/48/birthday.png" alt="birthday"/>
                                 </div>
                                 <span className={`profile_personal_info_value ${viewUser?.birthday ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.birthday || ""} 
@@ -396,7 +396,7 @@ const Profile = () => {
 
                             <div className='row'>
                                 <div className='profile_personal_info_title'>
-                                    <img loading="lazy" width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
+                                    <img width="20" height="20" src="https://img.icons8.com/dusk/64/gender.png" alt="gender"/>
                                 </div>
                                 <span className={`profile_personal_info_value ${viewUser?.gender ? "" : 'skeleton skeleton-text'}`}> 
                                     {viewUser?.gender || ""} 
