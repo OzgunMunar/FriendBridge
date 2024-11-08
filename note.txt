@@ -14,7 +14,7 @@ react-spinners
 
 Things to do:
 
-2- Make the page of 
+1- Make the page of 
        
         - Groups: 
         creator
@@ -23,7 +23,7 @@ Things to do:
         GroupPosts[{}]   // Fetch 10 by 10
         GroupMembers[{}]
 
-3- Make  the page of Events: 
+2- Make  the page of Events: 
         
         creator
         eventName
@@ -31,6 +31,10 @@ Things to do:
         eventPrice
         eventType
         eventDate
+
+
+
+
 
 
 
