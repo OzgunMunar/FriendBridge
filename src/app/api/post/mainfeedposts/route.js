@@ -1,5 +1,6 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
 import Posts from "@/models/postModel"
+import SavedPosts from "@/models/savedPostsModel"
 import Users from "@/models/userModel"
 import { NextResponse } from "next/server"
 
@@ -17,8 +18,11 @@ export const POST = async(request) => {
                                             .populate('creator', 'username userImageLink')
                                             .populate('comments.creator', 'username userImageLink')
 
+        const savedPosts = await SavedPosts.findOne({ userId })
+
         const followingPeople = loggedinuser.followingPeople
         let allPostsMixed = []
+        let postObject = {}
 
         const followingPeoplePostsPromises = followingPeople.map(async(followingPerson) => {
 
@@ -33,6 +37,18 @@ export const POST = async(request) => {
         const followingPosts = await Promise.all(followingPeoplePostsPromises)
 
         allPostsMixed = [...loggedUserPosts, ...followingPosts.flat()]
+
+        // console.log(savedPosts.postIds)
+
+        allPostsMixed = allPostsMixed.map((post) => {
+
+            const isSaved = savedPosts.postIds.includes(post._id)
+            postObject = post.toObject()
+            postObject.isSaved = isSaved
+
+            return postObject
+
+        })
 
         // new post first
         allPostsMixed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
