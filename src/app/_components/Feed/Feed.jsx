@@ -15,7 +15,7 @@ const Feed = ({ feedType, userId }) => {
     const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost, attachFeedPosts } = useFeedContext()
     const [ waitingSeconds, setWaitingSeconds ] = useState(3)
     const [ loadData, setLoadData ] = useState(false)
-    const [ buttonLoading, setButtonLoading ] = useState(false)
+    const [ buttonLoading, setButtonLoading ] = useState(true)
     const [ renderLoadDataButton, setRenderLoadDataButton ] = useState(true)
 
     const [pagination, setPagination] = useState({
@@ -57,14 +57,14 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.SavedPostsFeed:
                     
-                        feedData = await GetSavedPostsFeed(userId)
+                        feedData = await GetSavedPostsFeed(userId, pagination, setPagination, setRenderLoadDataButton)
 
                     break;
                 
                     default:
                         break;
 
-                } 
+                }
 
                 if(pagination.page === 1) {
 
@@ -81,11 +81,12 @@ const Feed = ({ feedType, userId }) => {
                 handleFetchError(true)
             } finally {
                 setLoading(false)
-                setButtonLoading(val => !val)
+                setButtonLoading(false)
 
                 if (pagination.page === pagination.totalPages) {
                     setRenderLoadDataButton(false)
-                }
+                } 
+
             }
 
         }

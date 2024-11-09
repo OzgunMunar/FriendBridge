@@ -6,8 +6,6 @@ export const GetMainFeed = async(userId, paginationInfo, setPagination) => {
         
         // Fetches user's posts as well as user's he follows, mix and sort them by createdAt field
         const allPostsMixed = await axios.post(`/api/post/mainfeedposts`, { userId, paginationInfo })
-        
-        // console.log(allPostsMixed.data.pagination)
 
         setPagination({
             page: allPostsMixed.data.pagination.page,
