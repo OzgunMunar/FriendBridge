@@ -84,11 +84,8 @@ const Feed = ({ feedType, userId }) => {
                 setButtonLoading(val => !val)
 
                 if (pagination.page === pagination.totalPages) {
-
                     setRenderLoadDataButton(false)
-        
                 }
-
             }
 
         }
