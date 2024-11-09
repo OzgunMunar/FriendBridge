@@ -37,7 +37,7 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
 
             {
 
-                relationType === "Followed" ? (
+                relationType === "Following" ? (
 
                     <div className="profile_top_profilebutton_container bg-red-300 hover:bg-red-400 border-red-400" 
 
@@ -48,10 +48,10 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
     
                     }}>
     
-                    <button className="profile_top_button"> 
-                        <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply"/>
-                        Unfollow
-                    </button>
+                        <button className="profile_top_button"> 
+                            <img width="25" height="25" src="https://img.icons8.com/ios/50/multiply.png" alt="multiply" />
+                            Unfollow
+                        </button>
     
                     </div>
 
@@ -62,6 +62,7 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
         </div>) : null
 
     )
+    
 }
 
 export default UserRelation

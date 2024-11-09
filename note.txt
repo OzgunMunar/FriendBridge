@@ -14,9 +14,8 @@ react-spinners
 
 Things to do:
 
-1- Make the page of 
+1- Make the page of Groups: 
        
-        - Groups: 
         creator
         GroupName
         GroupType // Public, Privated, Authored
@@ -122,7 +121,7 @@ Gender: Female
 Digsop#UX2023
 
 
-7. Susan Froide (2)
+7. Susan Froide 
 Job: Content Writer at Storytelling Hub
 Turkish Phone Number: +90 532 321 4567
 Address: 321 Content Crescent, Gaziantep, Turkey
@@ -133,7 +132,7 @@ Gender: Female
 11Froide$Content!
 
 
-8. Mark Gubrell (3) 
+8. Mark Gubrell 
 Job: Sales Manager at Global Sales Corp
 Turkish Phone Number: +90 532 654 3210
 Address: 654 Sales Boulevard, Trabzon, Turkey
