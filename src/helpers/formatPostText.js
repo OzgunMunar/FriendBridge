@@ -4,7 +4,7 @@ export const formatPostText = (postBody) => {
 
         <div key={index}>
             {/* {index !== 0 ? <br />:""} {line} */}
-            {index !== 0 ? <div style={{ marginBottom: "15x" }}></div>:""} {line}
+            {index !== 0 ? <div style={{ marginBottom: "15px" }}></div>:""} {line}
         </div>
 
     ));
