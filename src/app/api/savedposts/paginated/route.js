@@ -8,7 +8,12 @@ export const POST = async(request) => {
         
         await ConnectToDB()
 
-        const { userId } = await request.json()
+        const { userId, paginationInfo } = await request.json()
+
+        let page = parseInt(paginationInfo.page, 10)
+        let limit = parseInt(paginationInfo.limit, 10)
+        let totalPosts = parseInt(paginationInfo.totalPosts, 10)
+        let totalPages = parseInt(paginationInfo.totalPages, 10)
 
         let savedPosts = await SavedPosts.findOne({ userId })
                                        .populate({
@@ -30,7 +35,20 @@ export const POST = async(request) => {
             savedPosts.postIds.reverse()
         }
 
-        return NextResponse.json({ savedPosts }, { status: 200 })
+        totalPosts = savedPosts.postIds.length
+        totalPages = Math.ceil(totalPosts / 10)
+
+        savedPosts.postIds = savedPosts.postIds.slice((page - 1) * limit, page * limit)
+
+        return NextResponse.json({ 
+            savedPosts ,
+            pagination: {
+                page: page,
+                limit: limit,
+                totalPosts: totalPosts,
+                totalPages: totalPages
+            }
+        }, { status: 200 })
 
     } catch (error) {
         console.log("api/savedposts error: ", error.message)

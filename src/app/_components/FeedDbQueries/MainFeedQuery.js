@@ -1,6 +1,6 @@
 import axios from "axios"
 
-export const GetMainFeed = async(userId, paginationInfo, setPagination) => {
+export const GetMainFeed = async(userId, paginationInfo, setPagination, setRenderLoadDataButton) => {
 
     try {
         
@@ -13,6 +13,10 @@ export const GetMainFeed = async(userId, paginationInfo, setPagination) => {
             totalPosts: allPostsMixed.data.pagination.totalPosts,
             totalPages: allPostsMixed.data.pagination.totalPages,
         })
+
+        if (allPostsMixed.data.pagination.page === allPostsMixed.data.pagination.totalPages) {
+            setRenderLoadDataButton(false)
+        } 
 
         return allPostsMixed.data.data
 

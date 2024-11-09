@@ -2,24 +2,46 @@ import { ConnectToDB } from "@/dbConfig/dbConfig";
 import { NextResponse } from "next/server";
 import Posts from "@/models/postModel";
 
-export const GET = async(req) => {
+export const POST = async(request) => {
 
     try {
         
         await ConnectToDB()
 
-        const { searchParams } = new URL(req.url)
-        const userId = searchParams.get('userId')
+        // const { searchParams } = new URL(req.url)
+        // const userId = searchParams.get('userId')
 
-        const posts = await Posts.find({ isActive: true, creator: userId })
+        const { userId, paginationInfo } = await request.json()
+
+        let page = parseInt(paginationInfo.page, 10)
+        let limit = parseInt(paginationInfo.limit, 10)
+        let totalPosts = parseInt(paginationInfo.totalPosts, 10)
+        let totalPages = parseInt(paginationInfo.totalPages, 10)
+
+        let posts = await Posts.find({ isActive: true, creator: userId })
                                     .sort({"createdAt": -1})
                                     .populate("creator")
                                     .populate({
                                         path: "comments.creator",
                                         select: "username userImageLink"
                                     })
+        
+        totalPosts = posts.length
+        totalPages = Math.ceil(totalPosts / 10)
 
-        return NextResponse.json({ posts })
+        posts = posts.slice((page - 1) * limit, page * limit)
+
+        return NextResponse.json({
+
+            posts,
+            pagination: {
+                page: page,
+                limit: limit,
+                totalPosts: totalPosts,
+                totalPages: totalPages
+            }
+            
+        }, { status: 200 })
 
     } catch (error) {
 

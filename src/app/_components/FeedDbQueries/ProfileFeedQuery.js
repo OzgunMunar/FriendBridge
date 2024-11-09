@@ -1,18 +1,18 @@
 import axios from "axios"
 
-export const GetProfileFeed = async(userId) => {
+export const GetProfileFeed = async(userId, paginationInfo, setPagination, setRenderLoadDataButton) => {
 
     try {
         
-        const resultPostRequest = await axios.get(`/api/post?userId=${userId}`)
+        const resultPostRequest = await axios.post('/api/post', { userId, paginationInfo })
         const postDatas = resultPostRequest.data.posts
 
         const resultSavedPostRequest = await axios.post('/api/savedposts', { userId })
         let postDatasWithSavedPosts = []
-        let savedPostDatas 
+        let savedPostDatas
         let isSavedByUser
 
-        if(resultSavedPostRequest?.data?.savedPosts.postIds.length > 0) {
+        if (resultSavedPostRequest?.data?.savedPosts.postIds.length > 0) {
 
             savedPostDatas = resultSavedPostRequest.data.savedPosts.postIds
 
@@ -39,6 +39,18 @@ export const GetProfileFeed = async(userId) => {
             })
         
         }
+
+        setPagination({
+            page: resultPostRequest.data.pagination.page,
+            limit: resultPostRequest.data.pagination.limit,
+            totalPosts: resultPostRequest.data.pagination.totalPosts,
+            totalPages: resultPostRequest.data.pagination.totalPages,
+        })
+
+        
+        if (resultPostRequest.data.pagination.page === resultPostRequest.data.pagination.totalPages) {
+            setRenderLoadDataButton(false)
+        } 
 
         return postDatasWithSavedPosts
 

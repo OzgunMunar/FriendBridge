@@ -45,13 +45,13 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.ProfileFeed:
 
-                        feedData = await GetProfileFeed(userId)
+                        feedData = await GetProfileFeed(userId, pagination, setPagination, setRenderLoadDataButton)
 
                     break;
 
                     case feedTypes.MainFeed:
 
-                        feedData = await GetMainFeed(userId, pagination, setPagination)
+                        feedData = await GetMainFeed(userId, pagination, setPagination, setRenderLoadDataButton)
                         
                     break;
 
@@ -80,8 +80,14 @@ const Feed = ({ feedType, userId }) => {
             } catch (error) {
                 handleFetchError(true)
             } finally {
+                
                 setLoading(false)
                 setButtonLoading(false)
+
+                console.log(pagination.page)
+                console.log(pagination.totalPages)
+
+                console.log(renderLoadDataButton)
 
                 if (pagination.page === pagination.totalPages) {
                     setRenderLoadDataButton(false)

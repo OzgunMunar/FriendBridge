@@ -4,10 +4,7 @@ export const GetSavedPostsFeed = async(userId, paginationInfo, setPagination, se
 
     try {
         
-        const savedPostsByUser = await axios.post('/api/savedposts', { userId, paginationInfo })
-
-        let pageNumber = 0
-        let totalPageNumber = 0
+        const savedPostsByUser = await axios.post('/api/savedposts/paginated', { userId, paginationInfo })
         
         const savedPosts = savedPostsByUser?.data?.savedPosts?.postIds?.map((post) => {
             return ({
@@ -23,12 +20,9 @@ export const GetSavedPostsFeed = async(userId, paginationInfo, setPagination, se
             totalPages: savedPostsByUser.data.pagination.totalPages,
         })
 
-        pageNumber = savedPostsByUser.data.pagination.page
-        totalPageNumber = savedPostsByUser.data.pagination.totalPages
-
-        if(pageNumber === totalPageNumber) {
+        if (savedPostsByUser.data.pagination.page === savedPostsByUser.data.pagination.totalPages) {
             setRenderLoadDataButton(false)
-        }
+        } 
 
         return savedPosts
 
