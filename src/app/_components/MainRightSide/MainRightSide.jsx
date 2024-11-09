@@ -11,7 +11,7 @@ const MainRightSide = () => {
         <div className="main_right_side_suggestion_container">
 
             <p className="main_right_side_title">
-                Suggestions For You(Dummy Info)
+                Suggestions For You
             </p>
 
             <div className="main_right_side_suggested_people_container">
@@ -98,7 +98,7 @@ const MainRightSide = () => {
         <div className="main_right_side_activities_container">
 
             <p className="main_right_side_title">
-                Latest Activities(Dummy Info)
+                Latest Activities
             </p>
 
             <div className="main_right_side_latest_activities_container">

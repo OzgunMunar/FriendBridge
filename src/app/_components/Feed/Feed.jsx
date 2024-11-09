@@ -12,9 +12,12 @@ import "@/app/_styles/feedcontainer.css"
 
 const Feed = ({ feedType, userId }) => {
 
-    const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost } = useFeedContext()
+    const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost, attachFeedPosts } = useFeedContext()
     const [ waitingSeconds, setWaitingSeconds ] = useState(3)
     const [ loadData, setLoadData ] = useState(false)
+    const [ buttonLoading, setButtonLoading ] = useState(false)
+    const [ renderLoadDataButton, setRenderLoadDataButton ] = useState(true)
+
     const [pagination, setPagination] = useState({
 
         page: 1,
@@ -63,12 +66,29 @@ const Feed = ({ feedType, userId }) => {
 
                 } 
 
-                getFeedPosts(feedData)
+                if(pagination.page === 1) {
+
+                    getFeedPosts(feedData)
+
+                } else {
+
+                    attachFeedPosts(feedData)
+
+                }
+                
 
             } catch (error) {
                 handleFetchError(true)
             } finally {
                 setLoading(false)
+                setButtonLoading(val => !val)
+
+                if (pagination.page === pagination.totalPages) {
+
+                    setRenderLoadDataButton(false)
+        
+                }
+
             }
 
         }
@@ -145,13 +165,14 @@ const Feed = ({ feedType, userId }) => {
 
     const LoadMore = () => {
 
+        setButtonLoading(val => !val)
+
         setPagination((prev) => ({
             ...prev,
             page: prev.page + 1
         }))
         
         setLoadData(val => !val)
-        
     }
 
     return (
@@ -191,7 +212,7 @@ const Feed = ({ feedType, userId }) => {
                                         }
                                         {
 
-                                            pagination.page !== pagination.totalPages ? (
+                                            renderLoadDataButton ? (
 
                                                 <div className="loadmore_button_container">
 
@@ -200,7 +221,7 @@ const Feed = ({ feedType, userId }) => {
     
                                                         LoadMore()
     
-                                                    }}>Load More</button>
+                                                    }}>{buttonLoading ? "Loading..." : "Load More"}</button>
     
                                                 </div>
 

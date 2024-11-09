@@ -51,8 +51,17 @@ export const FeedProvider = ({ children }) => {
 
     const handleFetchError = useCallback((error) => {
         setFetchError(true)
-        console.log(error.message)
     }, [])
+
+    const attachFeedPosts = useCallback((newFeedPosts) => {
+        
+        setPosts((oldFeedData) => [
+            ...oldFeedData,
+            ...newFeedPosts
+        ])
+
+    }, [])
+    
 
     return (
         <FeedContext.Provider value={{ 
@@ -65,7 +74,8 @@ export const FeedProvider = ({ children }) => {
             fetchError, 
             setLoading, 
             handleFetchError, 
-            lastAddedPost 
+            lastAddedPost,
+            attachFeedPosts
             }}>
 
             {children}
