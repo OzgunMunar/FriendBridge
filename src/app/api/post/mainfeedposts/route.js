@@ -10,7 +10,13 @@ export const POST = async(request) => {
         
         await ConnectToDB()
         
-        const { userId } = await request.json()
+        const { userId, paginationInfo } = await request.json()
+
+        let page = parseInt(paginationInfo.page, 10)
+        let limit = parseInt(paginationInfo.limit, 10)
+        let totalPosts = parseInt(paginationInfo.totalPosts, 10)
+        let totalPages = parseInt(paginationInfo.totalPages, 10)
+
         const loggedinuser = await Users.findById(userId)
                                         .populate('followingPeople')
 
@@ -38,8 +44,6 @@ export const POST = async(request) => {
 
         allPostsMixed = [...loggedUserPosts, ...followingPosts.flat()]
 
-        // console.log(savedPosts.postIds)
-
         allPostsMixed = allPostsMixed.map((post) => {
 
             const isSaved = savedPosts.postIds.includes(post._id)
@@ -53,7 +57,22 @@ export const POST = async(request) => {
         // new post first
         allPostsMixed.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-        return NextResponse.json({ data: allPostsMixed }, { status: 200 })
+        totalPosts = allPostsMixed.length
+        totalPages = Math.ceil(totalPosts / 10)
+
+        allPostsMixed = allPostsMixed.slice((page - 1) * limit, page * limit)
+
+        return NextResponse.json({ 
+
+            data: allPostsMixed, 
+            pagination: {
+                page: page,
+                limit: limit,
+                totalPosts: totalPosts,
+                totalPages: totalPages
+            }
+
+         }, { status: 200 })
 
     } catch (error) {
 

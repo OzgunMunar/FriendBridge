@@ -1,7 +1,6 @@
-import {useState, useEffect, useContext, useRef} from 'react'
+import {useState, useEffect} from 'react'
 import Post from '../Post/Post'
 
-import "@/app/_styles/feedcontainer.css"
 import PageLoader from '@/app/pageloader'
 import ComponentWaiter from '@/app/componentwaiter'
 import { GetProfileFeed } from '../FeedDbQueries/ProfileFeedQuery'
@@ -9,11 +8,20 @@ import { feedTypes } from '../FeedEnum/FeedEnum'
 import { GetSavedPostsFeed } from '../FeedDbQueries/SavedPostsFeedQuery'
 import { useFeedContext } from '../Contexts/FeedContext'
 import { GetMainFeed } from '../FeedDbQueries/MainFeedQuery'
+import "@/app/_styles/feedcontainer.css"
 
 const Feed = ({ feedType, userId }) => {
 
     const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost } = useFeedContext()
-    const [ waitingSeconds, setWaitingSeconds ] = useState(3);
+    const [ waitingSeconds, setWaitingSeconds ] = useState(3)
+    const [pagination, setPagination] = useState({
+
+        page: 1,
+        limit: 10,
+        totalPosts: 0,
+        totalPages: 0
+        
+    })
 
     useEffect(() => {
 
@@ -37,7 +45,7 @@ const Feed = ({ feedType, userId }) => {
 
                     case feedTypes.MainFeed:
 
-                        feedData = await GetMainFeed(userId)
+                        feedData = await GetMainFeed(userId, pagination, setPagination)
                         
                     break;
 
@@ -59,6 +67,7 @@ const Feed = ({ feedType, userId }) => {
             } finally {
                 setLoading(false)
             }
+
         }
  
         fetchData()
@@ -154,12 +163,26 @@ const Feed = ({ feedType, userId }) => {
                             posts ? (
 
                                 posts.length !== 0 ? (
+                                    
+                                    <div className="w-full">
+                                        
+                                        {
+                                        
+                                            posts?.map((post) => (
+                                                <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`}>
+                                                    <Post post={post} />
+                                                </div>
+                                            ))
 
-                                    posts?.map((post) => (
-                                        <div key={post._id} className={`${lastAddedPost === post._id ? 'blink':""}`} >
-                                            <Post post={post} />
+                                        }
+
+                                        <div className="loadmore_button_container">
+
+                                            <button className="loadmore_button">Load More</button>
+
                                         </div>
-                                    ))
+
+                                    </div>
 
                                 ) : (
                                     renderNoPostsMessage()
