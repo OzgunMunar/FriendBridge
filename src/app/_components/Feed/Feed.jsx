@@ -14,6 +14,7 @@ const Feed = ({ feedType, userId }) => {
 
     const { posts, getFeedPosts, loading, fetchError, setLoading, handleFetchError, lastAddedPost } = useFeedContext()
     const [ waitingSeconds, setWaitingSeconds ] = useState(3)
+    const [ loadData, setLoadData ] = useState(false)
     const [pagination, setPagination] = useState({
 
         page: 1,
@@ -25,7 +26,9 @@ const Feed = ({ feedType, userId }) => {
 
     useEffect(() => {
 
-        setLoading(true)
+        if(pagination.page === 1) {
+            setLoading(true)
+        }
 
         const fetchData = async () => {
 
@@ -72,7 +75,7 @@ const Feed = ({ feedType, userId }) => {
  
         fetchData()
 
-    }, [userId])
+    }, [userId, loadData])
     
     useEffect(() => {
 
@@ -140,6 +143,17 @@ const Feed = ({ feedType, userId }) => {
 
     }
 
+    const LoadMore = () => {
+
+        setPagination((prev) => ({
+            ...prev,
+            page: prev.page + 1
+        }))
+        
+        setLoadData(val => !val)
+        
+    }
+
     return (
 
         <div className="feed_container">
@@ -175,12 +189,24 @@ const Feed = ({ feedType, userId }) => {
                                             ))
 
                                         }
+                                        {
 
-                                        <div className="loadmore_button_container">
+                                            pagination.page !== pagination.totalPages ? (
 
-                                            <button className="loadmore_button">Load More</button>
+                                                <div className="loadmore_button_container">
 
-                                        </div>
+                                                <button className="loadmore_button" 
+                                                    onClick={() => {
+    
+                                                        LoadMore()
+    
+                                                    }}>Load More</button>
+    
+                                                </div>
+
+                                            ) : null
+
+                                        }
 
                                     </div>
 
