@@ -268,7 +268,7 @@ const Post = ({ post }) => {
                     .catch((error) => toast.error(unsuccessText, { theme: "dark" }))
 
     }
-    console.log(post)
+
     return (
         
         shouldRenderPost ? (
