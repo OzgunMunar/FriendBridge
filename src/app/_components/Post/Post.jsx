@@ -9,6 +9,7 @@ import { formatPostText } from "@/helpers/formatPostText"
 import { useFeedContext } from "../Contexts/FeedContext"
 import { useUserContext } from '../Contexts/UserContext';
 import "@/app/_styles/post.css"
+import Link from 'next/link';
 
 const Post = ({ post }) => {
 
@@ -267,7 +268,7 @@ const Post = ({ post }) => {
                     .catch((error) => toast.error(unsuccessText, { theme: "dark" }))
 
     }
-    
+    console.log(post)
     return (
         
         shouldRenderPost ? (
@@ -279,11 +280,17 @@ const Post = ({ post }) => {
                     <div className="post_header_left_section">
 
                         <div className="post_user_image">
-                            <img src={post.creator.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
+                            <Link href={`/profile/${post.creator.userCodeName}`}>
+                                <img src={post.creator.userImageLink} alt="Picture of the post owner" loading="lazy" className="post_photo" />
+                            </Link>
                         </div>
 
                         <div className="post_info">
-                            <p className="post_owners_name">{post.creator.username}</p>
+                            <p className="post_owners_name">
+                                <Link href={`/profile/${post.creator.userCodeName}`}>
+                                {post.creator.username}
+                                </Link>
+                            </p>
                             <p className="post_posted_date">{fullDateTextForPost}</p>
                             { post.location && <p className="post_top_extra_info_text">In {post.location}</p> }
                         </div>
