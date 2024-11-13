@@ -55,7 +55,7 @@ export const GetProfileFeed = async(userId, paginationInfo, setPagination, setRe
         return postDatasWithSavedPosts
 
     } catch (error) {
-        console.log("ProfileFeedQuery.js: ", error.message)
+        console.log(error.message)
     }
 
 }

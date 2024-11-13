@@ -10,8 +10,6 @@ const LeftSideBar = () => {
   const { user } = useUserContext()
   const pathname = usePathname()
 
-  console.log(pathname)
-
   return (
     
     <div className="left_side_bar leftSideBarOpen">

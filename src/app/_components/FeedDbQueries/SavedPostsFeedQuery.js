@@ -27,7 +27,7 @@ export const GetSavedPostsFeed = async(userId, paginationInfo, setPagination, se
         return savedPosts
 
     } catch (error) {
-        console.log("SavedPostsFeedQuery.js: ", error.message)
+        console.log(error.message)
     }
 
 }

@@ -20,7 +20,7 @@ const Profile = () => {
     const { setLoader } = useContext(PageLoaderContext)
 
     const pathName = usePathname()
-    const userCodeName = pathName?.split('/')[1]
+    const userCodeName = pathName?.split('/')[2]
 
     const [isModalShow, setModalShow] = useState(false)
     const [isPasswordMailSent, setIsPasswordMailSent] = useState(false)
