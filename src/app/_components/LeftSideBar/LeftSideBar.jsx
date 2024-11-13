@@ -10,14 +10,16 @@ const LeftSideBar = () => {
   const { user } = useUserContext()
   const pathname = usePathname()
 
+  console.log(pathname)
+
   return (
     
     <div className="left_side_bar leftSideBarOpen">
 
         <ul className='left_side_bar_items'>
 
-            <Link href={`/${user.userCodeName || ""}`} id="profile_leftside_button">
-              <li className={`${pathname === `/${user.userCodeName}` ? "activeli":""}`}>
+            <Link href={`/profile/${user.userCodeName || ""}`} id="profile_leftside_button">
+              <li className={`${pathname === `/profile/${user.userCodeName}` ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/fluency/48/user-location.png" alt="profile"/>
                 </div>

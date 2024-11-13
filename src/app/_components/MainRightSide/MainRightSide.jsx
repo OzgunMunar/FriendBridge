@@ -18,7 +18,7 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <Link href={`/dennisdilneoux`}>
+                    <Link href={`/profile/dennisdilneoux`}>
                         <div className="suggested_person_info">
                             <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                             <span>Dennis Dilneoux</span>
@@ -43,7 +43,7 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <Link href={`/illinoismarbel`}>
+                    <Link href={`/profile/illinoismarbel`}>
                         <div className="suggested_person_info">
                             <img width="50" height="50" src="https://images.pexels.com/photos/11410644/pexels-photo-11410644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                             <span>Illinois Marbel</span>
@@ -68,7 +68,7 @@ const MainRightSide = () => {
 
                 <div className="suggested_person_container">
 
-                    <Link href={`/susanscrumg`}>
+                    <Link href={`/profile/susanscrumg`}>
                         <div className="suggested_person_info">
                             <img width="50" height="50" src="https://images.pexels.com/photos/11844361/pexels-photo-11844361.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                             <span>Susan Scrumg</span>
@@ -107,7 +107,7 @@ const MainRightSide = () => {
 
                     <div className="latest_activity_info">
 
-                        <Link href={`/dennisdilneoux`}>
+                        <Link href={`/profile/dennisdilneoux`}>
                             <img width="50" height="50" src="https://images.pexels.com/photos/11718221/pexels-photo-11718221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         </Link>
                         <span className="w-full"><Link href={`/dennisdilneoux`}>Dennis Dilneoux</Link> <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></span>
@@ -120,10 +120,10 @@ const MainRightSide = () => {
 
                     <div className="latest_activity_info">
 
-                        <Link href={`/apriloneille`}>
+                        <Link href={`/profile/apriloneille`}>
                             <img width="50" height="50" src="https://images.pexels.com/photos/14686837/pexels-photo-14686837.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         </Link>
-                        <span className="w-full"><Link href={`/apriloneille`}>April ONeille</Link> <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></span>
+                        <span className="w-full"><Link href={`/profile/apriloneille`}>April ONeille</Link> <span className='text-gray-500'>liked a post, <span className='time-indicator'>1 min ago</span>.</span></span>
 
                     </div>
                     
@@ -132,10 +132,10 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <Link href={`/sarahdigsop`}>
+                        <Link href={`/profile/sarahdigsop`}>
                             <img width="50" height="50" src="https://images.pexels.com/photos/7562139/pexels-photo-7562139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         </Link>
-                        <span className="w-full"><Link href={`/sarahdigsop`}>Sarah Digsop</Link> <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></span>
+                        <span className="w-full"><Link href={`/profile/sarahdigsop`}>Sarah Digsop</Link> <span className='text-gray-500'>poked you, <span className='time-indicator'>3 min ago</span>.</span></span>
                     </div>
                     
                 </div>
@@ -143,10 +143,10 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <Link href={`/susanfroide`}>
+                        <Link href={`/profile/susanfroide`}>
                             <img width="50" height="50" src="https://images.pexels.com/photos/14587417/pexels-photo-14587417.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         </Link>
-                        <span className="w-full"><Link href={`/susanfroide`}>Susan Froide</Link> <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></span>
+                        <span className="w-full"><Link href={`/profile/susanfroide`}>Susan Froide</Link> <span className='text-gray-500'>liked a comment, <span className='time-indicator'>4 min ago</span>.</span></span>
                     </div>
                     
                 </div>
@@ -154,10 +154,10 @@ const MainRightSide = () => {
                 <div className="latest_activity_container">
 
                     <div className="latest_activity_info">
-                        <Link href={`/markgubrell`}>
+                        <Link href={`/profile/markgubrell`}>
                             <img width="50" height="50" src="https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
                         </Link>
-                        <span className="w-full"><Link href={`/markgubrell`}>Mark Gubrell</Link> <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></span>
+                        <span className="w-full"><Link href={`/profile/markgubrell`}>Mark Gubrell</Link> <span className='text-gray-500'>changed his profile picture, <span className='time-indicator'>10 min ago</span>.</span></span>
                     </div>
                     
                 </div>

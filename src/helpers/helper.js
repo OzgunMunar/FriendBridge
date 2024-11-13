@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 export const getDataFromToken = (request) => {
 
@@ -22,7 +23,6 @@ export const getDataFromToken = (request) => {
             throw new Error("JWT token has expired. Please log in again.")
         }
 
-        throw new Error(error.message || "Token verification failed")
     }
 
 }

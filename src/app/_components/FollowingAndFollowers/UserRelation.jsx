@@ -24,12 +24,12 @@ const UserRelation = ({ unfollowUser, user, relationType }) => {
             <div className="followingandfollowers_userinfo_leftside">
 
                 <div className="followingandfollowers_userinfo_leftside_img_container">
-                    <Link href={`/${user.userCodeName}`}><img width={75} height={75} src={user.userImageLink} /></Link>
+                    <Link href={`/profile/${user.userCodeName}`}><img width={75} height={75} src={user.userImageLink} /></Link>
                 </div>
 
                 <div className="followingandfollowers_userinfo_leftside_text">
-                    <span><Link href={`/${user.userCodeName}`}>{user.username}</Link></span>
-                    <span><Link href={`/${user.userCodeName}`}>{`@`+user.userCodeName}</Link></span>
+                    <span><Link href={`/profile/${user.userCodeName}`}>{user.username}</Link></span>
+                    <span><Link href={`/profile/${user.userCodeName}`}>{`@`+user.userCodeName}</Link></span>
                     <span>{user.profession}</span>
                 </div>
 
