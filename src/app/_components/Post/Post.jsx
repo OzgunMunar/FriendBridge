@@ -53,12 +53,6 @@ const Post = ({ post }) => {
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
 
-    const isVideo = (url) => {
-        const videoExtensions = ['mp4', 'webm', 'ogg']
-        const fileExtension = url.split('.').pop().toLowerCase()
-        return videoExtensions.includes(fileExtension)
-    }
-
     const openModal = () => {
         setIsEditModalOpen(true)
     }
@@ -268,6 +262,11 @@ const Post = ({ post }) => {
                     .catch((error) => toast.error(unsuccessText, { theme: "dark" }))
 
     }
+    
+    const returnThisPost = () => {
+        
+        return <Post post={post} />
+    }
 
     return (
         
@@ -296,7 +295,7 @@ const Post = ({ post }) => {
                         </div>
 
                     </div>
-                    
+
                     <div className="right_section_container">
 
                         <div ref={EditOrDeleteRef} className="post_header_right_actions_section">

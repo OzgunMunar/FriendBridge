@@ -12,8 +12,8 @@
     @apply
     hidden
     
-    lg:block
-    lg:col-span-1
+    xl:block
+    xl:col-span-1
 }
 
 .posts_section {
@@ -30,8 +30,11 @@
     md:col-span-4
     md:ml-20
 
-    lg:col-span-3
-    lg:ml-0
+    lg:col-span-4
+    lg:ml-20
+
+    xl:col-span-3
+    xl:ml-0
 }
 
 .right_sidebar_emptiness {
