@@ -10,7 +10,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const LoggedInLayout = ( {children} ) => {
 
-    // const [userInfoRefreshSwitch, setUserInfoRefreshSwitch] = useState(false)
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
@@ -21,7 +20,6 @@ const LoggedInLayout = ( {children} ) => {
 
     return loader ? 
       <Fragment>
-        {/* setUserInfoRefreshSwitch */}
         <UserProvider>
           <Navbar/>
           <LeftSideBar />
@@ -42,7 +40,6 @@ const LoggedInLayout = ( {children} ) => {
       : 
       (
       <Fragment>
-        {/* setUserInfoRefreshSwitch */}
         <UserProvider> 
           <Navbar/>
           <LeftSideBar />

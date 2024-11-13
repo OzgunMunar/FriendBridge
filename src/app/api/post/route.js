@@ -8,9 +8,6 @@ export const POST = async(request) => {
         
         await ConnectToDB()
 
-        // const { searchParams } = new URL(req.url)
-        // const userId = searchParams.get('userId')
-
         const { userId, paginationInfo } = await request.json()
 
         let page = parseInt(paginationInfo.page, 10)

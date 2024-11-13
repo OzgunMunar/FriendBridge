@@ -1,0 +1,7 @@
+.singlepost_container {
+    @apply w-full h-full bg-blue-300 flex items-center justify-center
+}
+
+.singlepost_post {
+    @apply max-w-2xl h-full mt-[80px] border-t-2 border-orange-700
+}

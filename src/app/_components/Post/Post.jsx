@@ -11,7 +11,7 @@ import { useUserContext } from '../Contexts/UserContext';
 import "@/app/_styles/post.css"
 import Link from 'next/link';
 
-const Post = ({ post }) => {
+const Post = ({ post, isSinglePost = false }) => {
 
     const { updatePost, addComments } = useFeedContext()
     const { user, setUser } = useUserContext()
@@ -43,7 +43,7 @@ const Post = ({ post }) => {
     const [isDropdown, setIsDropdown] = useState(false)
     const [isEditModalOpen, setIsEditModalOpen] = useState(false)
     const [submitting, setSubmitting] = useState(false)
-    const [expand, setExpand] = useState(false)
+    const [expand, setExpand] = useState(isSinglePost)
     const [height, setHeight] = useState(0)
     const [isLiking, setIsLiking] = useState(false)
     const [isSaved, setIsSaved] = useState(post.isSaved)
@@ -262,11 +262,6 @@ const Post = ({ post }) => {
                     .catch((error) => toast.error(unsuccessText, { theme: "dark" }))
 
     }
-    
-    const returnThisPost = () => {
-        
-        return <Post post={post} />
-    }
 
     return (
         
@@ -379,7 +374,7 @@ const Post = ({ post }) => {
                 </div>
 
                 <div className="post_body">
-                    {post.post && <div>{formatPostText(post.post)}</div>}
+                    { post.post && <div>{ formatPostText(post.post) }</div> }
                 </div>
                 {
                     post.imageUrlLink && 
@@ -454,33 +449,42 @@ const Post = ({ post }) => {
                     </div>
                     
                     <div className="post_comment_below_section">
+
                         {
-                            
                             post.comments.length !== 0 && 
-                            <div>
+                                <>
 
-                                <div className="comment_horizontal_line"></div>
-                                <p className="mt-3">Comments</p>
+                                    <div className="comment_horizontal_line"></div>
+                                    <p className="mt-3">Comments</p>
+                                    { post.comments.length > 3 && <button className="bg-red-300"><Link href={`/post/${post._id}`}>click to go</Link></button> }
 
-                                { post.comments.map((comment) => {
-                                    
-                                    return (
-                                        <div key={comment._id}>
-                                            <div className="post_comment">
-                                                <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
-                                        
-                                                <div className="post_comment_body">
-                                                    <span className="font-bold">{comment.creator.username}</span>
-                                                    <p className="text-xs mb-4">{provideFullDateText(comment.date)}</p>
-                                                    <p>{comment.comment}</p>
+                                    { post.comments.map((comment) => {
+
+                                        return (
+
+                                            <div key={comment._id}>
+
+                                                <div className="post_comment">
+
+                                                    <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
+
+                                                    <div className="post_comment_body">
+
+                                                        <span className="font-bold">{comment.creator.username}</span>
+                                                        <p className="text-xs mb-4">{provideFullDateText(comment.date)}</p>
+                                                        <p>{comment.comment}</p>
+
+                                                    </div>
+
                                                 </div>
+
                                             </div>
-                                        </div>
-                                    )
+                                            
+                                        )
 
-                                })}
+                                    })}
 
-                            </div>
+                                </>
                         }
 
                     </div>
