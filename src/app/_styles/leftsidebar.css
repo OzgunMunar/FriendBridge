@@ -10,28 +10,19 @@
     left-0
     top-5
     z-10
-    lg:block
+    xl:block
+    xl:w-44
     border-t-2
     border-orange-700
 }
 
-.leftSideBarOpen {
-    @apply
-    lg:w-44
-}
-
 .left_side_bar span {
     white-space: nowrap;
-    transition: opacity 300ms ease;
     @apply
-    opacity-0
+    hidden
+    xl:block
 }
 
-.leftSideBarOpen span {
-    @apply 
-    lg:opacity-100
-    delay-200
-}
 
 .activeli > * {
     @apply

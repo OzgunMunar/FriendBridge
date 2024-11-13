@@ -2,12 +2,11 @@
     @apply
     relative w-full w-auto h-auto top-5 mt-[60px] gap-16 px-10 ml-6
 
-    lg:px-44
-
+    lg:pl-10
     xl:pr-5
     xl:pl-44
-    
     2xl:px-52
+
 }
 
 .profile_top_section {
@@ -71,15 +70,6 @@
     transition-all duration-200 ease-in
 }
 
-/* .profile_top_profilepages_button.mouseOver .profile_top_profilepages_number {
-    @apply text-slate-50 font-extrabold
-}
-
-.profile_top_profilepages_button.mouseOver::after {
-    content: "";
-    @apply block absolute w-full left-0 bottom-[-5px] h-[3px] bg-slate-50
-} */
-
 .profile_top_profilepages_title {
     @apply text-slate-500
 }
@@ -89,7 +79,7 @@
 }
 
 .profile_top_profilebutton_container {
-    @apply h-10 flex items-center justify-center transition duration-300 shadow-md border border-2
+    @apply h-10 flex items-center justify-center transition duration-300 shadow-md border border-2 mr-1
 }
 
 .profile_top_button {
@@ -99,8 +89,8 @@
 .profile_below_section {
     @apply flex items-start flex-col max-w-screen-xl w-full
     
-    xl:flex-row
-    xl:gap-3
+    md:flex-row
+    md:gap-3
 }
 
 .profile_personal_info {
@@ -108,7 +98,7 @@
 }
 
 .profile_personal_info_toprow {
-    @apply hidden flex items-center justify-center flex-row
+    @apply hidden flex items-center justify-center flex-row text-sm
     md:block font-bold mb-10
     xl:text-center
 }
@@ -118,7 +108,8 @@
 }
 
 .profile_personal_info_belowrow {
-    @apply flex flex-col justify-center items-start md:items-center gap-4
+    @apply flex flex-col justify-center items-start gap-4 text-sm
+    md:items-center 
 }
 
 .row {
@@ -140,13 +131,14 @@
 .profile_below_about_section {
     @apply
     xs:w-full
-    xl:w-1/3
+    md:w-1/3
     bg-white
 }
 
 .profile_below_tab_container {
-    @apply w-full mt-5 
-    xl:w-2/3
+    @apply w-full mt-5
+    md:mt-0 
+    md:w-2/3
     xl:max-w-screen-xl
     xl:mt-0
 }
