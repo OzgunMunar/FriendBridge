@@ -70,7 +70,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/" id="globalposts_leftside_button">
+            <Link href="/globalposts" id="globalposts_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>

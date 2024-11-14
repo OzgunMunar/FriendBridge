@@ -1,0 +1,3 @@
+.globalposts_container {
+    @apply w-full h-screen flex items-center justify-center bg-red-300
+}
