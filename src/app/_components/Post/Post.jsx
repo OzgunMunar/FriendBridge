@@ -50,6 +50,7 @@ const Post = ({ post, isSinglePost = false }) => {
     const [isLiked, setIsLiked] = useState(post.likedBy.includes(user._id) || false)
     const [fadeOut, setFadeOut] = useState(false)
     const [shouldRenderPost, setShouldRenderPost] = useState(true);
+    const [commentsToRender, setCommentsToRender] = useState([])
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
 
@@ -104,10 +105,19 @@ const Post = ({ post, isSinglePost = false }) => {
 
     useEffect(() => {
 
+        if(post.comments.length > 3 & !isSinglePost) {
+            setCommentsToRender(post.comments.slice(-3))
+        } else if(post.comments.length <= 3 & !isSinglePost) {
+            setCommentsToRender(post.comments)
+        }
+
         if(expand === true) {
+
             commentTextAreaRef.current.value = ""
             commentTextAreaRef.current.focus()
+            
             setHeight(commentRef.current.scrollHeight)
+
         } else {
             setHeight(0)
         }
@@ -282,7 +292,7 @@ const Post = ({ post, isSinglePost = false }) => {
                         <div className="post_info">
                             <p className="post_owners_name">
                                 <Link href={`/profile/${post.creator.userCodeName}`}>
-                                {post.creator.username}
+                                    {post.creator.username}
                                 </Link>
                             </p>
                             <p className="post_posted_date">{fullDateTextForPost}</p>
@@ -452,13 +462,19 @@ const Post = ({ post, isSinglePost = false }) => {
 
                         {
                             post.comments.length !== 0 && 
+
                                 <>
 
                                     <div className="comment_horizontal_line"></div>
-                                    <p className="mt-3">Comments</p>
-                                    { post.comments.length > 3 && <button className="bg-red-300"><Link href={`/post/${post._id}`}>click to go</Link></button> }
+                                    
+                                    <div className="post_comment_header_section">
+                                        <p className="display-6">
+                                            { post.comments.length > 3 & !isSinglePost ? "Last 3 Comments":"All Comments" }
+                                        </p>
+                                        { post.comments.length > 3 & !isSinglePost ? <Link href={`/post/${post._id}`} className="gotocomments_button">{`Go to all comments...(${post.comments.length})`}</Link>:null }
+                                    </div>
 
-                                    { post.comments.map((comment) => {
+                                    { commentsToRender.map((comment) => {
 
                                         return (
 
@@ -485,6 +501,7 @@ const Post = ({ post, isSinglePost = false }) => {
                                     })}
 
                                 </>
+
                         }
 
                     </div>

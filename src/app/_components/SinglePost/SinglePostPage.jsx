@@ -17,6 +17,15 @@ const SinglePostPage = () => {
 
     useEffect(() => {
 
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+          });
+
+    }, [render])
+
+    useEffect(() => {
+
         const fetchData = async() => {
          
             if(!postId)

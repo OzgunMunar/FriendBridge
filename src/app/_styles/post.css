@@ -262,6 +262,10 @@
     mb-4
 }
 
+.post_comment_header_section {
+    @apply flex items-center justify-between gap-2 py-3
+}
+
 .post_comment {
     @apply
     mt-3
@@ -290,4 +294,11 @@
     border
     border-dashed
     border-gray-300
+}
+
+.gotocomments_button {
+    @apply 
+    text-blue-500 hover:text-blue-700 
+    transition-all duration-200 ease-in
+    underline
 }

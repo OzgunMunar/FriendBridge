@@ -57,6 +57,8 @@ export async function GET(req, { params }) {
 
         const { id } = params
         const seekingPost = await Posts.findById(id)
+                                        .populate("creator")
+                                        .populate("comments.creator")
 
         if(!seekingPost)
             return            
