@@ -8,8 +8,8 @@ import { usePathname } from "next/navigation"
 import { formatPostText } from "@/helpers/formatPostText"
 import { useFeedContext } from "../Contexts/FeedContext"
 import { useUserContext } from '../Contexts/UserContext';
-import "@/app/_styles/post.css"
 import Link from 'next/link';
+import "@/app/_styles/post.css"
 
 const Post = ({ post, isSinglePost = false }) => {
 
