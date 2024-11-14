@@ -11,8 +11,8 @@ export async function PATCH(req) {
         
         const { postId, comment } = await req.json()
         const post = await Posts.findById(postId)
-                                .populate('creator', 'username userImageLink')
-                                .populate('comments.creator', 'username userImageLink')
+                                .populate("creator", "username userImageLink userCodeName")
+                                .populate("comments.creator", "username userImageLink userCodeName")
 
         if (!post) {
             return NextResponse.json({ message: "Post not found." }, { status: 404 });

@@ -20,7 +20,7 @@ export const POST = async(request) => {
                                     .populate("creator")
                                     .populate({
                                         path: "comments.creator",
-                                        select: "username userImageLink"
+                                        select: "username userImageLink userCodeName"
                                     })
         
         totalPosts = posts.length

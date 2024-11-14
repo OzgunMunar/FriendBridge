@@ -51,7 +51,7 @@ export const POST = async(request) => {
         }, { status: 200 })
 
     } catch (error) {
-        console.log("api/savedposts error: ", error.message)
+        console.log(error.message)
         return NextResponse.json({ message: error.message, status: 500 })
     }
 

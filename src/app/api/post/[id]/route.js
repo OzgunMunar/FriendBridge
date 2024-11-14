@@ -57,8 +57,14 @@ export async function GET(req, { params }) {
 
         const { id } = params
         const seekingPost = await Posts.findById(id)
-                                        .populate("creator")
-                                        .populate("comments.creator")
+                                        .populate({ 
+                                            path: "creator",
+                                            select: "username userImageLink userCodeName"
+                                        })
+                                        .populate({
+                                            path: "comments.creator",
+                                            select: "username userImageLink userCodeName"
+                                        })
 
         if(!seekingPost)
             return            

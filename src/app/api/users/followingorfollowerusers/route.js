@@ -2,7 +2,6 @@ import { ConnectToDB } from "@/dbConfig/dbConfig"
 import Users from "@/models/userModel"
 import { NextResponse } from "next/server"
 
-
 export const POST = async(request) => {
 
     try {
@@ -10,19 +9,20 @@ export const POST = async(request) => {
         await ConnectToDB()
 
         const { userId, relationType } = await request.json()
-        
         let user, usersArray
 
         if(relationType === "Following") {
 
             user = await Users.findOne({ _id: userId })
                                 .populate("followingPeople") 
+
             usersArray = user.followingPeople
 
         } else if(relationType === "Follower") {
 
             user = await Users.findOne({ _id: userId })
                                 .populate("followedBy") 
+
             usersArray = user.followedBy
 
         } else {
@@ -37,6 +37,5 @@ export const POST = async(request) => {
         console.log(error.message)
         return NextResponse.json("There's been a problem in fetching following users", { status: 500 })
     }
-
 
 }
