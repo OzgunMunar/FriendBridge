@@ -50,7 +50,7 @@ const Post = ({ post, isSinglePost = false }) => {
     const [isLiked, setIsLiked] = useState(post.likedBy.includes(user._id) || false)
     const [fadeOut, setFadeOut] = useState(false)
     const [shouldRenderPost, setShouldRenderPost] = useState(true);
-    const [commentsToRender, setCommentsToRender] = useState([])
+    const [commentsToRender, setCommentsToRender] = useState(post.comments)
 
     const fullDateTextForPost = provideFullDateText(post.createdAt)
 
@@ -107,8 +107,6 @@ const Post = ({ post, isSinglePost = false }) => {
 
         if(post.comments.length > 3 & !isSinglePost) {
             setCommentsToRender(post.comments.slice(-3))
-        } else if(post.comments.length <= 3 & !isSinglePost) {
-            setCommentsToRender(post.comments)
         }
 
         if(expand === true) {
