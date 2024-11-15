@@ -70,17 +70,51 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/globalposts" id="globalposts_leftside_button">
-              <li>
+            <Link href="/search" id="search_leftside_button">
+              <li className={`${pathname === "/search" ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img width="30" height="30" src="https://img.icons8.com/color/48/earth-planet--v2.png" alt="earth-planet--v2"/>
+                  <img width="25" height="25" src="https://img.icons8.com/office/40/search--v1.png" alt="search--v1"/>
                 </div>
-                <span>Global Posts</span>
+                <span>Search</span>
               </li>
             </Link>
             <Tooltip 
-                    anchorSelect='#globalposts_leftside_button' 
-                    content='Global Posts' 
+                    anchorSelect='#search_leftside_button' 
+                    content='Search' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
+
+            <Link href="/messages" id="messages_leftside_button">
+              <li className={`${pathname === "/messages" ? "activeli":""}`}>
+                <div className='iconContainer'>
+                  <img width="25" height="25" src="https://img.icons8.com/color/48/paper-plane.png" alt="messages"/>
+                </div>
+                <span>Messages</span>
+              </li>
+            </Link>
+            <Tooltip 
+                    anchorSelect='#messages_leftside_button' 
+                    content='Messages' 
+                    place='right'
+                    className='lg:hidden'
+                    offset={10}
+                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
+                    />
+            
+            <Link href="/notifications" id="notifications_leftside_button">
+              <li className={`${pathname === "/notifications" ? "activeli":""}`}>
+                <div className='iconContainer'>
+                  <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications"/>
+                </div>
+                <span>Notifications</span>
+              </li>
+            </Link>
+            <Tooltip 
+                    anchorSelect='#notifications_leftside_button' 
+                    content='Notifications' 
                     place='right'
                     className='lg:hidden'
                     offset={10}

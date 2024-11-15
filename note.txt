@@ -32,14 +32,6 @@ Things to do:
         eventDate
 
 
-git add .
-git commit -m ""
-git push
-
-
-
-
-
 dennisdilneoux
 dennisdilneoux0
 dennisdilneoux1 (Edit for photo and info)

@@ -2,7 +2,6 @@
     transition: all 500ms ease;
     @apply
 
-    w-[50px]
     mt-[60px]
     bg-white
     shadow-md
@@ -11,7 +10,7 @@
     top-5
     z-10
     xl:block
-    xl:w-44
+    xl:w-48
     border-t-2
     border-orange-700
 }
@@ -70,7 +69,7 @@
 }
 
 .left_side_bar_items a {
-    @apply mb-1 
+    @apply mb-1
 }
 
 .left_side_bar_items a li {
@@ -83,13 +82,15 @@
     items-center
     gap-4
 
-    transition 
+    transition-all
     ease-in 
-    duration-150
+    duration-200
 
     hover:bg-gray-200
     hover:w-[105%]
     hover:shadow-md
+    hover:ml-3
+    
 }
 
 .left_side_bar_items a:hover li::before {
