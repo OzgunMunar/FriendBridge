@@ -1,10 +1,5 @@
 Things to do:
 
-* create comment part is problematic
-
-* added "use client" in post component check it out
-* single post screen, after make a comment don't let comment section to shrink never again. it looks dumb.
-
 1- Make the page of Groups: 
        
         creator
@@ -35,8 +30,10 @@ markgubrell
 sakirhumbleson
 
 
-
-
+Dennis Dilneoux
+Illinois Marbel
+April ONeille
+Sarah Digsop
 
 
 1. Dennis Dilneoux

@@ -10,11 +10,14 @@ import { useFeedContext } from "../Contexts/FeedContext"
 import { useUserContext } from '../Contexts/UserContext';
 import Link from 'next/link';
 import "@/app/_styles/post.css"
+import { useRouter } from 'next/navigation';
 
 const Post = ({ post, isSinglePost = false }) => {
 
     const { updatePost, addComments } = useFeedContext()
     const { user, setUser } = useUserContext()
+
+    const router = useRouter()
 
     const textAreaRef = useRef()
     const EditOrDeleteRef = useRef(null)
@@ -153,11 +156,29 @@ const Post = ({ post, isSinglePost = false }) => {
                 toast.success("Post deleted", { theme: "light" })
                 
                 makePostDisappear()
-                
+
                 setUser((prevUser) => ({
                     ...prevUser,
                     postNumber: prevUser.postNumber - 1
                   }))
+                
+                if(isSinglePost) {
+                    
+                    setTimeout(() => {
+                        
+                        if (document.referrer === '') {
+
+                            router.push('/')
+    
+                          } else {
+    
+                            router.back()
+    
+                          }
+
+                    }, 1500);
+
+                }
 
             })
             .catch((error) => toast.error("An error occured during deleting post.", { theme: "dark"} ))
@@ -197,7 +218,11 @@ const Post = ({ post, isSinglePost = false }) => {
     }
 
     const HandleExpand = () => {
-        setExpand(val => !val)
+        if(isSinglePost === false) {
+
+            setExpand(val => !val)
+
+        }
     }
 
     const HandleCommentShare = async() => {

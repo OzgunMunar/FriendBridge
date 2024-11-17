@@ -3,5 +3,5 @@
 }
 
 .singlepost_post {
-    @apply max-w-4xl h-full mt-[80px] border-t-2 border-orange-700
+    @apply max-w-4xl h-full mt-[80px] border-t-2 border-orange-700 w-9/12
 }

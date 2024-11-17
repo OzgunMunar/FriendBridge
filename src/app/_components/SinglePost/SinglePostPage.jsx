@@ -4,8 +4,8 @@ import axios from "axios"
 import { toast } from "react-toastify"
 import Post from "../Post/Post"
 import { FeedProvider } from "../Contexts/FeedContext"
-import '@/app/_styles/singlepost.css'
 import PageLoader from "@/app/pageloader"
+import '@/app/_styles/singlepost.css'
 
 const SinglePostPage = () => {
 
