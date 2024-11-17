@@ -77,6 +77,14 @@
     bg-stone-800
 }
 
+.notification_icon_container {
+    @apply relative inline-block pt-1
+}
+
+.notification_badge {
+    @apply absolute top-[-7.5px] right-[-7.5px] bg-red-400 text-white rounded-full w-5 h-5 flex items-center justify-center text-center  text-xs
+}
+
 .icon {
     transition: transform 0.5s ease;
 }

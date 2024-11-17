@@ -13,8 +13,13 @@ export const UserProvider = ({ children }) => {
 
             try {
 
-                const loggedinuser = await axios.get('/api/users/loggedinuser')
-                setUser(loggedinuser.data.data)
+                await axios.get('/api/users/loggedinuser')
+                            .then((response) => {
+                                setUser(response.data.data)
+                            })
+                            .catch((error) => {
+                                console.error(error.message)
+                            })
 
             } catch (error) {
                 console.log(error.message)

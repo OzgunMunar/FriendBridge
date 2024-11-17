@@ -12,7 +12,7 @@ const LeftSideBar = () => {
 
   return (
     
-    <div className="left_side_bar leftSideBarOpen">
+    <div className="left_side_bar">
 
         <ul className='left_side_bar_items'>
 
@@ -107,9 +107,23 @@ const LeftSideBar = () => {
             <Link href="/" id="notifications_leftside_button">
               <li className={`${pathname === "/notifications" ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications"/>
+                  <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications" className={`${user.unreadNotificationNumber > 0 && "xl:ml-3"}`}/>
                 </div>
-                <span>Notifications</span>
+                
+                {user.unreadNotificationNumber > 0 ? ( 
+
+                  <div className="unread_notifications_container">
+                    <div>Notifications</div>
+                    <div className={`unread_notifications_number ${user.unreadNotificationNumber > 10 ? "w-7 h-7":"w-5 h-5"}`}> {
+
+                      user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber
+                    
+                    } 
+                    </div>
+                  </div> 
+
+                ):(<span>Notifications</span>)}
+                
               </li>
             </Link>
             <Tooltip 

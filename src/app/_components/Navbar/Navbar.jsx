@@ -52,31 +52,37 @@ const Navbar = () => {
 
     }
 
+    // userObject.unreadNotificationNumber = unreadNotificationNumber.length
+    // userObject.userNotificationDocument = userNotificationDocument
+
     return (
 
       <div className="navbar">
 
-            <Link href="/">
+            <Link href="/" tabIndex={-1}>
                 <span id="logo">
                     Friend Bridge
                 </span> 
             </Link>
 
             <div className="tabs">
-                
-                <Link href="/" className="headerTab" id='navbar_feed_tab'>
-                    <img width="23" height="23" src="https://img.icons8.com/color/48/rss.png" alt="rss"/>
-                </Link>
-                <Tooltip 
-                    anchorSelect='#navbar_feed_tab' 
-                    content='Feed' 
-                    place='bottom' 
-                    offset={0}
-                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
-                    />
 
-                <Link href="/" className="headerTab" id='navbar_notification_tab'>
-                    <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
+                <Link href="/notifications" className="headerTab" id='navbar_notification_tab'>
+                    
+                    <div className="notification_icon_container">
+                        
+                        <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
+                        
+                        {user.unreadNotificationNumber > 0 && (
+                            <span className="notification_badge">{
+                                
+                                user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber
+                              
+                            }</span>
+                        )}
+
+                    </div>
+
                 </Link>
                 <Tooltip 
                     anchorSelect='#navbar_notification_tab' 

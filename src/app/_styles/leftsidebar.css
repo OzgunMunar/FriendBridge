@@ -14,7 +14,7 @@
     border-t-2
     border-orange-700
 }
-
+/* askjfhkas */
 .left_side_bar span {
     white-space: nowrap;
     @apply
@@ -22,6 +22,18 @@
     xl:block
 }
 
+.left_side_bar .unread_notifications_container,
+.left_side_bar .unread_notifications_number{
+    @apply hidden xl:flex
+}
+
+.unread_notifications_container {
+    @apply w-full flex items-center justify-between flex-row ml-1.5 relative inline-block
+}
+
+.unread_notifications_number{
+    @apply text-right mr-2 text-white bg-red-300 flex items-center justify-center rounded-md text-sm
+}
 
 .activeli > * {
     @apply
@@ -80,7 +92,6 @@
     pt-1
     flex
     items-center
-    gap-4
 
     transition-all
     ease-in 
