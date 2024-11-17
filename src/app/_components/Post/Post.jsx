@@ -1,4 +1,5 @@
-import { useContext, useRef, useState, useEffect } from 'react'
+"use client"
+import { useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
 import PostForm from "./PostForm"
@@ -249,6 +250,7 @@ const Post = ({ post, isSinglePost = false }) => {
 
     const SavePost = async(postId) => {
 
+        const postCreatorId = post.creator._id
         let successText, unsuccessText
 
         if(isSaved) {
@@ -259,7 +261,7 @@ const Post = ({ post, isSinglePost = false }) => {
             unsuccessText = "An error occured during saving the post."
         }
 
-        await axios.post('/api/savedposts/new/', { postId })
+        await axios.post('/api/savedposts/new/', { postId, postCreatorId })
                     .then(() => { 
 
                         toast.success(successText, { theme: "light" })

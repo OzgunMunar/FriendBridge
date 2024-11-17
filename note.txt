@@ -14,6 +14,9 @@ react-spinners
 
 Things to do:
 
+* added "use client" in post component check it out
+* single post screen, after make a comment don't let comment section to shrink never again. it looks dumb.
+
 1- Make the page of Groups: 
        
         creator

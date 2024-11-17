@@ -6,6 +6,8 @@ export const NotificationMaker = async(actorUserId, agentUserId, notificationAct
         // actorUserId is liker and commentor.
         // agentUserId is receiver.
 
+        // fix the issue that repeatedly sending notification everytime actor saves & unsaves repeatedly.
+
         let notificationRecordForTheUser = await Notifications.findOne({ agentUserId })
         let notificationObject = {
             actorUserId: actorUserId,
@@ -18,10 +20,8 @@ export const NotificationMaker = async(actorUserId, agentUserId, notificationAct
         if(!notificationRecordForTheUser) {
 
             notificationRecordForTheUser = new Notifications({
-
                 agentUserId: agentUserId,
                 notifications: [notificationObject]
-    
             })
 
         } else {
@@ -38,10 +38,3 @@ export const NotificationMaker = async(actorUserId, agentUserId, notificationAct
     }
 
 }
-
-
-// console.log("actorUserId: ", actorUserId)
-// console.log("agentUserId: ", agentUserId)
-// console.log("notificationActionMessage: ", notificationActionMessage)
-// console.log("notificationActionType: ", notificationActionType)
-// console.log("actionRelatedId: ", actionRelatedId)

@@ -1,7 +1,10 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig";
+import { getDataFromToken } from "@/helpers/helper";
+import { NotificationAction } from "@/helpers/notificationActions";
+import { NotificationActionTypes } from "@/helpers/notificationActionTypes";
+import { NotificationMaker } from "@/helpers/notificationMaker";
 import Posts from "@/models/postModel";
 import { NextResponse } from "next/server";
-
 
 export async function PATCH(req) {
 
@@ -10,6 +13,8 @@ export async function PATCH(req) {
     try {
         
         const { postId, comment } = await req.json()
+        const userId = await getDataFromToken(req)
+
         const post = await Posts.findById(postId)
                                 .populate("creator", "username userImageLink userCodeName")
                                 .populate("comments.creator", "username userImageLink userCodeName")
@@ -20,6 +25,8 @@ export async function PATCH(req) {
 
         post.comments.push(comment)
         await post.save()
+
+        NotificationMaker(userId, post.creator._id.toString(), NotificationAction.PostCommented, NotificationActionTypes.PostRelated, postId)
         
         return new NextResponse(JSON.stringify(post), {status: 200})
 
