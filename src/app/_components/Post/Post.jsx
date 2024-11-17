@@ -1,4 +1,3 @@
-"use client"
 import { useRef, useState, useEffect } from 'react'
 import axios from "axios"
 import EditDeleteModal from "../Modals/EditDeleteModal"
@@ -121,7 +120,7 @@ const Post = ({ post, isSinglePost = false }) => {
             setHeight(0)
         }
 
-    }, [expand])
+    }, [expand, post.comments])
     
     const EditPost = async() => {
 
@@ -215,11 +214,11 @@ const Post = ({ post, isSinglePost = false }) => {
             creator : {
                 _id: user._id,
                 username: user.username,
-                imageUrlLink: user.imageUrlLink
+                userImageLink: user.userImageLink
             }
         }))
 
-        const relatedPost = await axios.patch(`/api/post/comment`, { postId, comment })
+        await axios.patch(`/api/post/comment`, { postId, comment })
                                     .then((response) => {
 
                                         toast.success("Comment added", { theme: "light" })
@@ -238,6 +237,7 @@ const Post = ({ post, isSinglePost = false }) => {
                                         })
 
                                         addComments(response.data)
+                                        setCommentsToRender(response.data.comments)
                                         setExpand(val => !val)
 
                                     })
@@ -250,7 +250,6 @@ const Post = ({ post, isSinglePost = false }) => {
 
     const SavePost = async(postId) => {
 
-        const postCreatorId = post.creator._id
         let successText, unsuccessText
 
         if(isSaved) {
@@ -261,7 +260,7 @@ const Post = ({ post, isSinglePost = false }) => {
             unsuccessText = "An error occured during saving the post."
         }
 
-        await axios.post('/api/savedposts/new/', { postId, postCreatorId })
+        await axios.post('/api/savedposts/new/', { postId })
                     .then(() => { 
 
                         toast.success(successText, { theme: "light" })

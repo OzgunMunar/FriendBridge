@@ -1,18 +1,6 @@
-npm packages list
-
-axios 
-bcryptjs 
-jsonwebtoken 
-nodemailer 
-react-toastify 
-mongoose
-react-spinners
-
-
-
-
-
 Things to do:
+
+* create comment part is problematic
 
 * added "use client" in post component check it out
 * single post screen, after make a comment don't let comment section to shrink never again. it looks dumb.

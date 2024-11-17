@@ -14,7 +14,7 @@ export const FeedProvider = ({ children }) => {
     }, [])
 
     const addPost = useCallback((newPost) => {
-        setPosts((prevPosts) => [newPost, ...prevPosts]); 
+        setPosts((prevPosts) => [newPost, ...prevPosts])
         setLastAddedPost(newPost._id)
     }, [])
 
@@ -40,9 +40,7 @@ export const FeedProvider = ({ children }) => {
     const addComments = useCallback((relatedPost) => {
 
         const updatedPosts = posts.map((post) => 
-
             post._id === relatedPost._id ? relatedPost : post
-
         )
 
         setPosts(updatedPosts)
@@ -64,6 +62,7 @@ export const FeedProvider = ({ children }) => {
     
 
     return (
+
         <FeedContext.Provider value={{ 
             posts, 
             addComments, 
@@ -74,13 +73,14 @@ export const FeedProvider = ({ children }) => {
             fetchError, 
             setLoading, 
             handleFetchError, 
-            lastAddedPost,
-            attachFeedPosts
+            lastAddedPost, 
+            attachFeedPosts 
             }}>
 
-            {children}
+            { children }
 
         </FeedContext.Provider>
+
     )
 
 }
