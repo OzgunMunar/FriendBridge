@@ -157,3 +157,36 @@ Portfolio Website: www.shakirhumbleson.com
 Birthday: September 10, 1992
 Gender: Male
 ONeille*Digital21
+
+
+
+
+
+
+
+
+const notifications = await Notification.find({ actorUserId: userId })
+  .populate('actorUserId')  // Populate the user who triggered the notification
+  .then((notifications) => {
+    // Dynamically populate 'actionRelatedId' based on actionType
+    return Promise.all(
+      notifications.map(notification => {
+        if (notification.actionType === 'post') {
+          // Populate the related Post document for 'post' notifications
+          return notification.populate({
+            path: 'actionRelatedId',
+            model: 'Post',  // The 'Post' model is where you store posts
+          }).execPopulate();
+        } else if (notification.actionType === 'user-follow') {
+          // Populate the related User document for 'user-follow' notifications
+          return notification.populate({
+            path: 'actionRelatedId',
+            model: 'User',  // The 'User' model is where you store user info
+          }).execPopulate();
+        }
+        return notification;
+      })
+    );
+  });
+
+console.log(notifications);

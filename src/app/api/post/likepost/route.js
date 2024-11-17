@@ -1,5 +1,8 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
 import { getDataFromToken } from "@/helpers/helper"
+import { NotificationAction } from "@/helpers/notificationActions"
+import { NotificationActionTypes } from "@/helpers/notificationActionTypes"
+import { NotificationMaker } from "@/helpers/notificationMaker"
 import LikedPosts from "@/models/likedPostsModel"
 import Posts from "@/models/postModel"
 import { NextResponse } from "next/server"
@@ -10,9 +13,10 @@ export async function POST(req) {
 
         await ConnectToDB()
         
-        const { postId } = await req.json();
-        const Post = await Posts.findById(postId);
-        const userId = await getDataFromToken(req);
+        const { postId } = await req.json()
+        const Post = await Posts.findById(postId)
+                                .populate("creator")
+        const userId = await getDataFromToken(req)
         let LikedPostDocument = await LikedPosts.findOne({ userId: userId })
 
         if (!Post) 
@@ -21,6 +25,7 @@ export async function POST(req) {
         if (!Post.likedBy.includes(userId)) { 
             
             Post.likedBy.push(userId)
+            NotificationMaker(userId, Post.creator._id.toString(), NotificationAction.PostLiked, NotificationActionTypes.PostRelated, Post._id)
 
             if (LikedPostDocument) {
                 
