@@ -70,7 +70,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/" id="search_leftside_button">
+            <Link href="/search" id="search_leftside_button">
               <li className={`${pathname === "/search" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="25" height="25" src="https://img.icons8.com/office/40/search--v1.png" alt="search--v1"/>
@@ -104,7 +104,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/" id="notifications_leftside_button">
+            <Link href="/notifications" id="notifications_leftside_button">
               <li className={`${pathname === "/notifications" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications" className={`${user.unreadNotificationNumber > 0 && "xl:ml-3"}`}/>
