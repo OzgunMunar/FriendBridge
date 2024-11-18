@@ -100,8 +100,12 @@
     hover:bg-gray-200
     hover:w-[105%]
     hover:shadow-md
-    hover:ml-1
     
+}
+
+.left_side_bar_items a:hover li div,
+.left_side_bar_items a:hover li span {
+    @apply xl:ml-1.5 transition-all duration-200 ease-in
 }
 
 .left_side_bar_items a:hover li::before {

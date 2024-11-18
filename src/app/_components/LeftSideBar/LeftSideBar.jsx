@@ -29,7 +29,7 @@ const LeftSideBar = () => {
                     anchorSelect='#profile_leftside_button' 
                     content='Profile' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     effect='solid'
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
@@ -48,7 +48,7 @@ const LeftSideBar = () => {
                     anchorSelect='#feed_leftside_button' 
                     content='Feed' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -65,7 +65,7 @@ const LeftSideBar = () => {
                     anchorSelect='#savedposts_leftside_button' 
                     content='Saved Posts' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -82,7 +82,7 @@ const LeftSideBar = () => {
                     anchorSelect='#search_leftside_button' 
                     content='Search' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -99,7 +99,7 @@ const LeftSideBar = () => {
                     anchorSelect='#messages_leftside_button' 
                     content='Messages' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -125,7 +125,7 @@ const LeftSideBar = () => {
                     anchorSelect='#notifications_leftside_button' 
                     content='Notifications' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -142,7 +142,7 @@ const LeftSideBar = () => {
                     anchorSelect='#findgroup_leftside_button' 
                     content='Find Group' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -159,7 +159,7 @@ const LeftSideBar = () => {
                     anchorSelect='#events_leftside_button' 
                     content='Events' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -176,7 +176,7 @@ const LeftSideBar = () => {
                     anchorSelect='#admanager_leftside_button' 
                     content='Ad Manager' 
                     place='right' 
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -193,7 +193,7 @@ const LeftSideBar = () => {
                     anchorSelect='#playgames_leftside_button' 
                     content='Play Games' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
@@ -210,7 +210,7 @@ const LeftSideBar = () => {
                     anchorSelect='#readnews_leftside_button' 
                     content='Read News' 
                     place='right'
-                    className='lg:hidden'
+                    className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
