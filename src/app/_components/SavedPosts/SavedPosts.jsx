@@ -27,7 +27,7 @@ const SavedPosts = () => {
 
             </div>
 
-            <div className='.right_sidebar_emptiness'/>
+            <div className='right_sidebar_emptiness'/>
 
         </div>
 
