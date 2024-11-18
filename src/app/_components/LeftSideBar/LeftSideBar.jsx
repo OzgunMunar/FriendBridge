@@ -114,12 +114,7 @@ const LeftSideBar = () => {
 
                   <div className="unread_notifications_container">
                     <div>Notifications</div>
-                    <div className={`unread_notifications_number ${user.unreadNotificationNumber > 10 ? "w-7 h-7":"w-5 h-5"}`}> {
-
-                      user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber
-                    
-                    } 
-                    </div>
+                    <div className={`unread_notifications_number ${user.unreadNotificationNumber > 10 ? "w-7 h-7":"w-5 h-5"}`}> { user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber } </div>
                   </div> 
 
                 ):(<span>Notifications</span>)}

@@ -14,7 +14,7 @@
     border-t-2
     border-orange-700
 }
-/* askjfhkas */
+
 .left_side_bar span {
     white-space: nowrap;
     @apply
@@ -100,7 +100,7 @@
     hover:bg-gray-200
     hover:w-[105%]
     hover:shadow-md
-    hover:ml-3
+    hover:ml-1
     
 }
 
