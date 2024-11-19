@@ -51,6 +51,7 @@ const ChangePassword = () => {
 
             await axios.post("/api/users/changepassword", newUserInfo)
             await axios.get('/api/users/logout')
+            localStorage.removeItem("userData")
             
             toast.success('Password change successful', { theme: "light" })
             router.push('/login')

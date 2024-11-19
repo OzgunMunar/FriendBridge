@@ -207,7 +207,7 @@ const Feed = ({ feedType, userId }) => {
                                                     <Post post={post} />
                                                 </div>
                                             ))
-
+                                        
                                         }
                                         {
 

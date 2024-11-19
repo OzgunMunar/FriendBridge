@@ -22,6 +22,7 @@ const Main = () => {
         try {
 
             await axios.get('/api/users/logout')
+            localStorage.removeItem("userData")
             toast.success('Logout successful.', { theme: "light" })
             router.push('/login')
 

@@ -18,6 +18,12 @@ Things to do:
         eventDate
 
 
+bug list:
+
+- if usercodename is wrong, page throws an error in there is no followedby people
+- if singlepost has 7 comments, it comes with shrunk version fix the problem by using h-auto
+- profile handle submit localStorage.setItem("userData", updatedUserInfo) so when I update, change it in localStorage as well. Or in the UserContext
+
 dennisdilneoux
 dennisdilneoux0
 dennisdilneoux1 (Edit for photo and info)
@@ -137,7 +143,7 @@ Gender: Male
 D3nn1s@Future!
 
 
-10. Shakir Humbleson (2)
+10. Sakir Humbleson (2)
 Job: Digital Marketing Coordinator at Online Presence
 Turkish Phone Number: +90 532 246 8130
 Address: 258 Digital St, Mersin, Turkey
@@ -147,35 +153,3 @@ Birthday: September 10, 1992
 Gender: Male
 ONeille*Digital21
 
-
-
-
-
-
-
-
-const notifications = await Notification.find({ actorUserId: userId })
-  .populate('actorUserId')  // Populate the user who triggered the notification
-  .then((notifications) => {
-    // Dynamically populate 'actionRelatedId' based on actionType
-    return Promise.all(
-      notifications.map(notification => {
-        if (notification.actionType === 'post') {
-          // Populate the related Post document for 'post' notifications
-          return notification.populate({
-            path: 'actionRelatedId',
-            model: 'Post',  // The 'Post' model is where you store posts
-          }).execPopulate();
-        } else if (notification.actionType === 'user-follow') {
-          // Populate the related User document for 'user-follow' notifications
-          return notification.populate({
-            path: 'actionRelatedId',
-            model: 'User',  // The 'User' model is where you store user info
-          }).execPopulate();
-        }
-        return notification;
-      })
-    );
-  });
-
-console.log(notifications);

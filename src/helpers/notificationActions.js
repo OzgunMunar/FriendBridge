@@ -4,6 +4,6 @@ export const NotificationAction = Object.freeze({
     PostSaved: " saved your post.", 
     PostLiked: " liked your post.", 
     PostCommented: " commented your post.", 
-    UserRelation: " changed follow/unfollow relation with you.", 
+    UserRelation: " started to be following you.", 
     UserUpdateInfo: " updated user details.", 
 })

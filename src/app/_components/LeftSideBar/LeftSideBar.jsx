@@ -1,14 +1,21 @@
-import "@/app/_styles/leftsidebar.css"
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from "next/link";
 import { Tooltip } from "react-tooltip";
 import { usePathname } from "next/navigation";
 import { useUserContext } from "../Contexts/UserContext";
+import "@/app/_styles/leftsidebar.css"
 
 const LeftSideBar = () => {
 
-  const { user } = useUserContext()
+  const { user, unreadNotificationCountRef } = useUserContext()
+  const [notificationNumber, setNotificationNumber] = useState(0)
   const pathname = usePathname()
+
+  useEffect(() => {
+
+    setNotificationNumber(unreadNotificationCountRef.current)
+
+  }, [unreadNotificationCountRef.current])
 
   return (
     
@@ -107,14 +114,14 @@ const LeftSideBar = () => {
             <Link href="/notifications" id="notifications_leftside_button">
               <li className={`${pathname === "/notifications" ? "activeli":""}`}>
                 <div className='iconContainer'>
-                  <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications" className={`${user.unreadNotificationNumber > 0 && "xl:ml-3"}`}/>
+                  <img width="25" height="25" src="https://img.icons8.com/color/48/alarm.png" alt="notifications" className={`${notificationNumber > 0 && "xl:ml-3"}`}/>
                 </div>
                 
-                {user.unreadNotificationNumber > 0 ? ( 
+                {notificationNumber > 0 ? ( 
 
                   <div className="unread_notifications_container">
                     <div>Notifications</div>
-                    <div className={`unread_notifications_number ${user.unreadNotificationNumber > 10 ? "w-7 h-7":"w-5 h-5"}`}> { user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber } </div>
+                    <div className={`unread_notifications_number ${notificationNumber > 10 ? "w-7 h-7":"w-5 h-5"}`}> { notificationNumber > 10 ? "10+" : notificationNumber } </div>
                   </div> 
 
                 ):(<span>Notifications</span>)}

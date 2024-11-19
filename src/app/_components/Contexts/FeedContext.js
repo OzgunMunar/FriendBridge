@@ -59,7 +59,6 @@ export const FeedProvider = ({ children }) => {
         ])
 
     }, [])
-    
 
     return (
 

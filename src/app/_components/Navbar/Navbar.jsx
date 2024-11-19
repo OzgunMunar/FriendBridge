@@ -14,8 +14,9 @@ const Navbar = () => {
 
     const router = useRouter()
     const [isDropdown, setIsDropdown] = useState(false)
+    const [notificationNumber, setNotificationNumber] = useState(0)
     const dropdownRef = useRef(null)
-    const { user } = useUserContext()
+    const { user, unreadNotificationCountRef } = useUserContext()
 
     function headerMainDropdown() {
         setIsDropdown(status=> !status)
@@ -39,11 +40,19 @@ const Navbar = () => {
 
     }, [])
 
+    useEffect(() => {
+
+        setNotificationNumber(unreadNotificationCountRef.current)
+
+    }, [unreadNotificationCountRef.current])
+
     const LogOut = async() => {
 
         try {
             
             await axios.get('/api/users/logout')
+            localStorage.removeItem("userData")
+            
             router.push('/login')
 
         } catch (error) {
@@ -51,9 +60,6 @@ const Navbar = () => {
         }
 
     }
-
-    // userObject.unreadNotificationNumber = unreadNotificationNumber.length
-    // userObject.userNotificationDocument = userNotificationDocument
 
     return (
 
@@ -73,10 +79,10 @@ const Navbar = () => {
                         
                         <img width="23" height="23" src="https://img.icons8.com/color/48/alarm.png" alt="alarm"/>
                         
-                        {user.unreadNotificationNumber > 0 && (
+                            {notificationNumber > 0 && (
                             <span className="notification_badge">{
                                 
-                                user.unreadNotificationNumber > 10 ? "10+" : user.unreadNotificationNumber
+                                notificationNumber > 10 ? "10+" : notificationNumber
                               
                             }</span>
                         )}

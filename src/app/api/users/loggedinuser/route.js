@@ -19,15 +19,14 @@ export async function GET(request) {
 
         const userposts = await Posts.find({ creator: userId, postType: 'FeedPost' })
         const userlikes = await LikedPosts.findOne({ userId: userId })
-        const userNotificationDocument = await Notifications.findOne({ agentUserId: userId })
+        const userNotificationDocument = await Notifications.findOne({ agentUserId: userId})
 
-        const unreadNotificationNumber = userNotificationDocument.notifications.filter((notification) => notification.isRead === false)
+        const unreadNotificationNumber = userNotificationDocument?.notifications?.filter((notification) => notification.isRead === false)
 
         const userObject = user.toObject()
-        userObject.postNumber = userposts.length
+        userObject.postNumber = userposts?.length
         userObject.userlikeNumber = userlikes?.LikedPosts?.length || 0
-        userObject.unreadNotificationNumber = unreadNotificationNumber.length
-        userObject.userNotificationDocument = userNotificationDocument
+        userObject.unreadNotificationNumber = unreadNotificationNumber?.length || 0
         
         return NextResponse.json({
             message: 'User found',
