@@ -1,28 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
-import { Tooltip } from 'react-tooltip'
 import { useUserContext } from '../Contexts/UserContext'
 
 const Notification = ({ notification }) => {
 
     const { markAsRead } = useUserContext()
+    const [markingProcess, setMarkingProcess] = useState(false)
 
     const MarkAsReadNotification = () => {
 
         const notificationId = notification._id
+        setMarkingProcess(true)
+
         const markNotificationSeen = async() => {
 
             await axios.patch("/api/notifications/readnotification", { notificationId })
             markAsRead(notification)
+            setMarkingProcess(false)
 
         }
+
         markNotificationSeen()
+        
     }
 
     return (
 
-        <div onMouseEnter={() => { !notification.isRead && MarkAsReadNotification()}} className={`notification_container ${notification.isRead ? "bg-neutral-50 hover:bg-neutral-100":"bg-yellow-100 hover:bg-yellow-200 text-yellow-700"}`}>
+        <div onMouseOver={() => { !markingProcess & !notification.isRead && MarkAsReadNotification()}} className={`notification_container ${notification.isRead ? "bg-neutral-50 hover:bg-neutral-100":"bg-yellow-100 hover:bg-yellow-200 text-yellow-700"}`}>
 
             <div className='notification_left_info'>
 

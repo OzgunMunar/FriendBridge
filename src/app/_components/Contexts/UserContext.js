@@ -53,7 +53,10 @@ export const UserProvider = ({ children }) => {
     }, [])
 
     const updateUser = useCallback((newUserInfo) => {
+
+        localStorage.setItem("userData", JSON.stringify(newUserInfo))
         setUser(newUserInfo)
+
     }, [])
 
     const updateUsersFollowingStatus = useCallback((loggedinuser) => {
