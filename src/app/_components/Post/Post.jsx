@@ -123,6 +123,11 @@ const Post = ({ post, isSinglePost = false }) => {
             setHeight(0)
         }
 
+        commentRef.current.scrollTo({
+            top: 0,
+            behaviour: "smooth"
+        })
+
     }, [expand, post.comments])
     
     const EditPost = async() => {
@@ -460,10 +465,10 @@ const Post = ({ post, isSinglePost = false }) => {
 
                 </div>
                 
-                <div className={`${expand ? 'expanded':""} post_comment_section_container`}
+                <div className={`${expand ? "expanded":""} post_comment_section_container`}
                     ref={commentRef}
-                    style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflow: 'hidden' }}>
-                        
+                    style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflowY: `${isSinglePost ? 'scroll':'hidden'}` }}>
+
                     <div className="post_horizontal_line"></div>
 
                     <div className="post_comment_top_section">

@@ -21,7 +21,6 @@ Things to do:
 bug list:
 
 - if usercodename is wrong, page throws an error in there is no followedby people
-- if singlepost has 7 comments, it comes with shrunk version fix the problem by using h-auto
 - profile handle submit localStorage.setItem("userData", updatedUserInfo) so when I update, change it in localStorage as well. Or in the UserContext
 
 dennisdilneoux

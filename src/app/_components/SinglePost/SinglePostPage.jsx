@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from "react"
+import { React, useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import axios from "axios"
 import { toast } from "react-toastify"
@@ -20,7 +20,7 @@ const SinglePostPage = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth',
-          });
+        })
 
     }, [render])
 
@@ -34,19 +34,19 @@ const SinglePostPage = () => {
             try {
             
                 await axios.get(`/api/post/${postId}`)
-                                                .then((response) => {
+                            .then((response) => {
 
-                                                    const relatedPost = response.data.data
-                                                    setPost(relatedPost)
-                                                    setRender(true)
+                                const relatedPost = response.data.data
+                                setPost(relatedPost)
+                                setRender(true)
 
-                                                })
-                                                .catch((error) => {
-                                                    
-                                                    console.log(error.message)
-                                                    toast.error("There has been an error while fetching post data.", { theme: "dark" })
+                            })
+                            .catch((error) => {
+                                
+                                console.log(error.message)
+                                toast.error("There has been an error while fetching post data.", { theme: "dark" })
 
-                                                })
+                            })
                                                 
             } catch (error) {
                 console.log(error.message)
