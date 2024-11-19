@@ -15,10 +15,10 @@ export async function GET(request, { params }) {
         const user = await User.findOne({userCodeName: userCodeName})
         .select('-password')
 
-        if(!user) {
-            return NextResponse.json("not found")
+        if (!user) {
+            return NextResponse.json({ error: "User not found." }, { status: 404 })
         }
-
+        
         const userposts = await Posts.find({ creator: user._id, postType: 'FeedPost' })
         const userlikes = await LikedPosts.findOne({ userId: user._id })
 

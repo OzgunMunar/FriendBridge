@@ -5,7 +5,7 @@ import Feed from '../Feed/Feed'
 import ModalEditProfile from '../Modals/ModalEditProfile'
 import { toast } from "react-toastify";
 import CreatePost from '../Post/CreatePost'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { feedTypes } from '../FeedEnum/FeedEnum'
 import { FeedProvider } from '../Contexts/FeedContext'
 import { useUserContext } from '../Contexts/UserContext'
@@ -19,6 +19,7 @@ const Profile = () => {
     const { user, updateUser, updateUsersFollowingStatus } = useUserContext()
     const { setLoader } = useContext(PageLoaderContext)
 
+    const router = useRouter()
     const pathName = usePathname()
     const userCodeName = pathName?.split('/')[2]
 
@@ -63,37 +64,50 @@ const Profile = () => {
         })
 
         const fetchData = async() => {
-            
-            if(user.userCodeName) {
+
+            try {
+             
+                if(user.userCodeName) {
                 
-                if(userCodeName === user.userCodeName) {
-                    
-                    setViewUser(user)
-                    setIsLoggedInProfile(true)
-                    setShouldRenderButton(true)
+                    if(userCodeName === user.userCodeName) {
+                        
+                        setViewUser(user)
+                        setIsLoggedInProfile(true)
+                        setShouldRenderButton(true)
+    
+                    } else {
+                        
+                        const userData = await axios.get(`/api/users/${userCodeName}`)
 
-                } else {
-                    
-                    const userData = await axios.get(`/api/users/${userCodeName}`)
-
-                    if(userData.data.data.followedBy.includes(user._id)) {
-
-                        setIsFollowing(true)
-
+                        if(userData.data.data.followedBy.includes(user._id)) {
+    
+                            setIsFollowing(true)
+    
+                        }
+    
+                        setViewUser(userData.data.data)
+                        setIsLoggedInProfile(false)
+                        setShouldRenderButton(true)
+    
                     }
-
-                    setViewUser(userData.data.data)
-                    setIsLoggedInProfile(false)
-                    setShouldRenderButton(true)
-
+    
                 }
+                
+            } catch (error) {
 
+                let errorText = error.response.data.error + " You will be redirected in 3 seconds."
+                toast.error(errorText, { theme: "dark" })
+                setTimeout(() => {
+                    router.push("/")
+                }, 3000)
+
+            } finally {
+                setLoader(false)
             }
 
         }
 
         fetchData()
-        setLoader(false)
 
     }, [user])
 

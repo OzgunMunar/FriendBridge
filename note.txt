@@ -8,7 +8,7 @@ Things to do:
         GroupPosts[{}]   // Fetch 10 by 10
         GroupMembers[{}]
 
-2- Make  the page of Events: 
+2- Make the page of Events: 
         
         creator
         eventName
