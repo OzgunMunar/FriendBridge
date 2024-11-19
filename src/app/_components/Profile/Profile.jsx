@@ -95,7 +95,7 @@ const Profile = () => {
                 
             } catch (error) {
 
-                let errorText = error.response.data.error + " You will be redirected in 3 seconds."
+                let errorText = error.response.data.error + " You will be redirected to home page."
                 toast.error(errorText, { theme: "dark" })
                 setTimeout(() => {
                     router.push("/")
