@@ -94,7 +94,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="messages_leftside_button">
+            <Link href="/messages" id="messages_leftside_button">
               <li className={`${pathname === "/messages" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="25" height="25" src="https://img.icons8.com/color/48/paper-plane.png" alt="messages"/>
@@ -137,7 +137,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="findgroup_leftside_button">
+            <Link href="/findgroups" id="findgroup_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
@@ -154,7 +154,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="events_leftside_button">
+            <Link href="/events" id="events_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
@@ -171,7 +171,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/" id="admanager_leftside_button">
+            <Link href="/admanager" id="admanager_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
@@ -188,7 +188,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
             
-            <Link href="/" id="playgames_leftside_button">
+            <Link href="/playgames" id="playgames_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
@@ -205,7 +205,7 @@ const LeftSideBar = () => {
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
                     />
 
-            <Link href="/" id="readnews_leftside_button">
+            <Link href="/readnews" id="readnews_leftside_button">
               <li>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
