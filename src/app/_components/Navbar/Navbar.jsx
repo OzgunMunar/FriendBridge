@@ -130,7 +130,7 @@ const Navbar = () => {
 
                 <div className="dropdown-content" id="mainDropdown">
                     
-                    <Link href="/profile">
+                    <Link href={`/profile/${user.userCodeName}`}>
                         
                         <div className="grid-container-dropdown">
 

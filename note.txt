@@ -20,9 +20,6 @@ Things to do:
 
 bug list:
 
-- if usercodename is wrong, page throws an error in there is no followedby people
-- profile handle submit localStorage.setItem("userData", updatedUserInfo) so when I update, change it in localStorage as well. Or in the UserContext
-
 dennisdilneoux
 dennisdilneoux0
 dennisdilneoux1 (Edit for photo and info)
