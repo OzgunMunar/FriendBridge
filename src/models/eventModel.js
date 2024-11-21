@@ -6,10 +6,16 @@ const eventsSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'Users'
     },
+    eventDescription: {
+        type: String
+    },
     eventTitle: {
         type: String
     },
     eventLocation: {
+        type: String
+    },
+    eventImageLink: {
         type: String
     },
     eventPrice: {
@@ -29,7 +35,39 @@ const eventsSchema = new mongoose.Schema({
     },
     eventDate: {
         type: Date
-    }
+    },
+    eventTime: {
+        type: String
+    },
+    eventWeather: {
+        type: String
+    },
+    eventParticipants: [{
+        type: Schema.Types.ObjectId,
+        ref: "Users"
+    }],
+    eventMaybeParticipants: [{
+        type: Schema.Types.ObjectId,
+        ref: "Users"
+    }],
+    eventLikedBy: [{
+        type: Schema.Types.ObjectId,
+        ref: "Users"
+    }],
+    eventComments: [
+        { 
+            creator: {
+                type: Schema.Types.ObjectId,
+                ref: 'Users'
+            },
+            comment: String,
+            date: Date, 
+            likedBy: [{
+                type: Schema.Types.ObjectId,
+                ref: 'Users'
+            }]
+        }
+    ]
 
 }, { timestamps: true })
 

@@ -82,11 +82,11 @@ const Post = ({ post, isSinglePost = false }) => {
 
         const handleOutsideClick = (event) => {
   
-          if (EditOrDeleteRef.current && !EditOrDeleteRef.current.contains(event.target)) {
-            setIsDropdown(false);
-          }
+            if (EditOrDeleteRef.current && !EditOrDeleteRef.current.contains(event.target)) {
+              setIsDropdown(false);
+            }
   
-        };
+        }
 
         setPostToEdit({
             ...postToEdit,
@@ -102,7 +102,7 @@ const Post = ({ post, isSinglePost = false }) => {
 
         return () => {
           document.removeEventListener('click', handleOutsideClick);
-        };
+        }
         
     }, [])
 

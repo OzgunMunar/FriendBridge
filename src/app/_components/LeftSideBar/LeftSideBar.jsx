@@ -138,7 +138,7 @@ const LeftSideBar = () => {
                     />
 
             <Link href="/findgroups" id="findgroup_leftside_button">
-              <li>
+              <li className={`${pathname === "/findgroups" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/conference-call--v1.png" alt="conference-call--v1"/>
                 </div>
@@ -155,7 +155,7 @@ const LeftSideBar = () => {
                     />
 
             <Link href="/events" id="events_leftside_button">
-              <li>
+              <li className={`${pathname === "/events" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/calendar--v1.png" alt="calendar--v1"/>
                 </div>
@@ -166,23 +166,6 @@ const LeftSideBar = () => {
                     anchorSelect='#events_leftside_button' 
                     content='Events' 
                     place='right'
-                    className='xl:hidden'
-                    offset={10}
-                    style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}
-                    />
-            
-            <Link href="/admanager" id="admanager_leftside_button">
-              <li>
-                <div className='iconContainer'>
-                  <img width="30" height="30" src="https://img.icons8.com/color/48/speaker_1.png" alt="speaker_1"/>
-                </div>
-                <span>Ad Manager</span>
-              </li>
-            </Link>
-            <Tooltip 
-                    anchorSelect='#admanager_leftside_button' 
-                    content='Ad Manager' 
-                    place='right' 
                     className='xl:hidden'
                     offset={10}
                     style={{backgroundColor: "rgb(59, 130, 246)", color: "#FFF"}}

@@ -20,6 +20,8 @@ Things to do:
 
 bug list:
 
+- notifications page is streched more than full width
+
 dennisdilneoux
 dennisdilneoux0
 dennisdilneoux1 (Edit for photo and info)

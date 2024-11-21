@@ -9,7 +9,6 @@
 }
 
 .post_container {
-
     @apply
 
     transition-all duration-200 ease-in
@@ -22,7 +21,6 @@
     break-normal
     hyphens-auto
     shadow-md
-
 }
 
 .post_container.removePost {

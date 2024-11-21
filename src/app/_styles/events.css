@@ -1,0 +1,215 @@
+.event_container {
+    @apply bg-neutral-50 w-full h-auto shadow-md mb-40 relative
+}
+
+.event_header {
+    @apply flex justify-between items-center px-6 pt-3
+}
+
+.event_event_type {
+    @apply w-full absolute flex items-center justify-start top-2 left-2
+}
+
+.event_event_type span {
+    @apply bg-yellow-300 px-10 py-1 text-sm text-orange-600 shadow-md font-bold rounded-md
+}
+
+.event_header_title,
+.event_header_ticket_price_container {
+    @apply text-sm sm:text-base lg:text-lg
+}
+
+.event_header_rightside {
+    @apply flex items-center justify-center gap-5
+}
+
+.event_header_right_actions_section {
+    border-radius: 50%;
+    transition: all 500ms ease;
+    @apply
+    flex
+    items-center
+    justify-center
+    w-12
+    h-12
+    text-3xl
+    text-black
+    hover:bg-sky-100
+    focus:bg-sky-300
+}
+
+.event_actions_button {
+    @apply
+    h-12
+    w-12
+    text-black
+}
+
+.event_actions_button span {
+    @apply
+    relative
+    bottom-2
+}
+
+.event_description {
+    @apply py-3 px-6
+}
+
+.event_description_title {
+    @apply mb-2 text-sm
+}
+
+.event_description_text {
+    @apply text-xs text-gray-500
+}
+
+.event_upper_body {
+    @apply w-full mt-3 relative
+}
+
+.event_image_container {
+    @apply w-full h-2/5 bg-blue-300 relative
+}
+
+.event_image_container img {
+    @apply w-full h-full object-contain
+}
+
+.event_upper_body_buttons {
+    @apply absolute px-5 py-3 flex justify-end items-center gap-3 w-full bottom-0
+}
+
+.event_upper_body_button_join_event {
+    @apply px-6 py-2 
+    shadow-md
+    rounded-sm
+    transition-all duration-200 ease-in
+    border border-orange-500 hover:border-orange-600
+    bg-orange-500 hover:bg-orange-600
+    text-white hover:text-yellow-100
+}
+
+.event_upper_body_button_maybe,
+.event_upper_body_button_cant_go {
+    @apply px-6 py-2
+    border border-2 border-white
+    transition-all duration-200 ease-in
+    rounded-sm
+    text-gray-500
+    bg-transparent
+    shadow-md
+    hover:bg-gray-50
+}
+
+.event_mid_body {
+    @apply 
+    grid grid-cols-2
+    lg:flex 
+    lg:items-center 
+    lg:justify-between
+}
+
+.event_mid_body,
+.event_lower_body {
+    @apply py-5 px-6 
+}
+
+.event_mid_icon {
+    @apply pt-0.5
+}
+
+.event_mid_icon img {
+    @apply h-[20] w-[20] object-contain
+}
+
+.event_mid_body_city,
+.event_mid_body_date,
+.event_mid_body_time,
+.event_mid_body_weather,
+.event_lower_body_going,
+.event_lower_body_maybe {
+    @apply 
+    flex items-start justify-start flex-row gap-1 w-fit
+}
+
+.event_mid_city_text,
+.event_mid_date_text,
+.event_mid_time_text,
+.event_mid_time_text,
+.event_lower_going_text,
+.event_lower_maybe_text {
+    @apply flex items-start justify-start flex-col
+}
+
+.event_mid_body_city span:nth-child(2),
+.event_mid_body_date span:nth-child(2),
+.event_mid_body_time span:nth-child(2),
+.event_mid_body_weather span:nth-child(2),
+.event_lower_going_text span:nth-child(2),
+.event_lower_maybe_text span:nth-child(2) {
+    @apply text-xs text-gray-500 font-bold
+}
+
+.event_horizontal_line {
+    @apply w-full border border-gray-300
+}
+
+.event_lower_body {
+    @apply flex items-center justify-around
+}
+
+.event_lower_going_text span:nth-child(2),
+.event_lower_maybe_text span:nth-child(2) {
+    @apply bg-violet-300 px-5 py-1 rounded-md text-yellow-50 text-base
+}
+
+.event_footer {
+    @apply w-full flex items-center justify-start py-3 px-6 text-xs
+}
+
+.event_like_comment_share {
+    @apply flex items-center justify-center gap-3
+}
+
+.event_action_button {
+    @apply flex items-center justify-center gap-1 cursor-pointer transition-all duration-200 ease-in hover:text-gray-600
+}
+
+.event_dropdown_content {
+    animation-name: visibilityChange;
+    animation-duration: 750ms;
+    animation-timing-function: ease;
+
+    @apply
+    absolute
+    bg-white
+    right-0
+    top-10
+    flex
+    items-center
+    justify-center
+    flex-col
+    z-10
+    border
+    h-auto
+    w-[200px]
+}
+
+.cancel_content,
+.report_content {
+    @apply
+    transition-all
+    duration-200
+    ease-in
+    flex
+    items-center
+    justify-start
+    gap-2
+    px-6
+    py-2
+    w-full
+    cursor-pointer
+    hover:bg-slate-200
+    gap-3
+    text-xs
+}

@@ -18,7 +18,8 @@
 
 .posts_section,
 .savedposts_section,
-.notifications_section {
+.notifications_section,
+.events_section {
     @apply
     mt-20
     ml-10
