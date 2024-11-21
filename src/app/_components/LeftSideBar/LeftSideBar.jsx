@@ -172,7 +172,7 @@ const LeftSideBar = () => {
                     />
             
             <Link href="/playgames" id="playgames_leftside_button">
-              <li>
+              <li className={`${pathname === "/playgames" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/controller.png" alt="controller"/>
                 </div>
@@ -189,7 +189,7 @@ const LeftSideBar = () => {
                     />
 
             <Link href="/readnews" id="readnews_leftside_button">
-              <li>
+              <li className={`${pathname === "/readnews" ? "activeli":""}`}>
                 <div className='iconContainer'>
                   <img width="30" height="30" src="https://img.icons8.com/color/48/newspaper-.png" alt="newspaper-"/>
                 </div>
