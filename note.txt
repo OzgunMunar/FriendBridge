@@ -1,4 +1,6 @@
-Things to do:
+Pages to do:
+
+Search, Messages, Find Groups, Play Games, Read News
 
 1- Make the page of Groups: 
        

@@ -7,13 +7,37 @@ const Event = ({ event }) => {
     const [isLiking, setIsLiking] = useState(false)
     const [isLiked, setIsLiked] = useState(false)
     const [isDropdown, setIsDropdown] = useState(false)
-    const CancelOrDeleteRef = useRef(null)
+    const [expand, setExpand] = useState(false)
+    const [height, setHeight] = useState(0)
+
+    const cancelOrDeleteRef = useRef(null)
+    const commentRef = useRef(null)
+
+    useEffect(() => {
+
+        if(expand === true) {
+
+            commentTextAreaRef.current.value = ""
+            commentTextAreaRef.current.focus()
+            
+            setHeight(commentRef.current.scrollHeight)
+
+        } else {
+            setHeight(0)
+        }
+
+        commentRef.current.scrollTo({
+            top: 0,
+            behaviour: "smooth"
+        })
+
+    }, [expand])
   
     useEffect(() => {
 
         const handleOutsideClick = (event) => {
   
-            if (CancelOrDeleteRef.current && !CancelOrDeleteRef.current.contains(event.target)) {
+            if (cancelOrDeleteRef.current && !cancelOrDeleteRef.current.contains(event.target)) {
               setIsDropdown(false);
             }
   
@@ -56,6 +80,12 @@ const Event = ({ event }) => {
         console.log("HandleExpand")
 
     }
+
+    const HandleCommentShare = () => {
+
+        console.log("HandleCommentShare")
+
+    }
   
     return (
 
@@ -73,7 +103,7 @@ const Event = ({ event }) => {
                         <span>Ticket Price: <span className="text-orange-600">$0</span></span>
                     </div>
 
-                    <div className="event_header_right_actions_section" ref={CancelOrDeleteRef}>
+                    <div className="event_header_right_actions_section" ref={cancelOrDeleteRef}>
 
                         <button className="event_actions_button"  onClick={() => OpenCloseDropDown()}>
                             <span>...</span>
@@ -256,6 +286,78 @@ const Event = ({ event }) => {
                 </div>
 
             </div>
+
+            {/* <div className={`${expand ? "expanded":""} post_comment_section_container`}
+                    ref={commentRef}
+                    style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflowY: "hidden" }}>
+
+                    <div className="post_horizontal_line"></div>
+
+                    <div className="post_comment_top_section">
+                        <p className="display-6">New Comment</p>
+                        <button type="button" className="post_comment_top_section_share_button" onClick={() => HandleCommentShare()}>Share</button>
+                    </div>
+
+                    <div className="post_comment_middle_section">
+                        
+                        <textarea 
+                            rows={4} 
+                            placeholder={`${user.username ? `What do you think, ${user.username}?`:""}`}
+                            className="post_comment_textarea overflow-hidden"
+                            ref={commentTextAreaRef}
+                            ></textarea>
+
+                    </div>
+                    
+                    <div className="post_comment_below_section">
+
+                        {
+                            post.comments.length !== 0 && 
+
+                                <>
+
+                                    <div className="comment_horizontal_line"></div>
+                                    
+                                    <div className="post_comment_header_section">
+                                        <p className="display-6">
+                                            { post.comments.length > 3 & !isSinglePost ? "Last 3 Comments":"All Comments" }
+                                        </p>
+                                        { post.comments.length > 3 & !isSinglePost ? <Link href={`/post/${post._id}`} className="gotocomments_button">{`Go to all comments...(${post.comments.length})`}</Link>:null }
+                                    </div>
+
+                                    { commentsToRender.map((comment) => {
+
+                                        return (
+
+                                            <div key={comment._id}>
+
+                                                <div className="post_comment">
+
+                                                    <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
+
+                                                    <div className="post_comment_body">
+
+                                                        <span className="font-bold">{comment.creator.username}</span>
+                                                        <p className="text-xs mb-4">{provideFullDateText(comment.date)}</p>
+                                                        <p>{comment.comment}</p>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                            
+                                        )
+
+                                    })}
+
+                                </>
+
+                        }
+
+                    </div>
+                    
+            </div> */}
 
         </div>
 
