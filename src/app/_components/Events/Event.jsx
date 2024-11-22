@@ -70,7 +70,7 @@ const Event = ({ event }) => {
                 <div className="event_header_rightside">
 
                     <div className="event_header_ticket_price_container">
-                        <span>Ticket Price: $0</span>
+                        <span>Ticket Price: <span className="text-orange-600">$0</span></span>
                     </div>
 
                     <div className="event_header_right_actions_section" ref={CancelOrDeleteRef}>

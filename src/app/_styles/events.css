@@ -3,7 +3,7 @@
 }
 
 .event_header {
-    @apply flex justify-between items-center px-6 pt-3
+    @apply flex justify-between items-center px-6 py-1
 }
 
 .event_event_type {
@@ -16,11 +16,11 @@
 
 .event_header_title,
 .event_header_ticket_price_container {
-    @apply text-sm sm:text-base lg:text-lg
+    @apply text-sm sm:text-base lg:text-lg font-bold text-gray-700
 }
 
 .event_header_rightside {
-    @apply flex items-center justify-center gap-5
+    @apply flex items-center justify-center gap-3
 }
 
 .event_header_right_actions_section {
@@ -30,8 +30,8 @@
     flex
     items-center
     justify-center
-    w-12
-    h-12
+    w-9
+    h-9
     text-3xl
     text-black
     hover:bg-sky-100
@@ -40,8 +40,8 @@
 
 .event_actions_button {
     @apply
-    h-12
-    w-12
+    h-9
+    w-9
     text-black
 }
 
@@ -49,6 +49,7 @@
     @apply
     relative
     bottom-2
+    hover:text-gray-500
 }
 
 .event_description {
@@ -64,7 +65,7 @@
 }
 
 .event_upper_body {
-    @apply w-full mt-3 relative
+    @apply w-full relative
 }
 
 .event_image_container {
