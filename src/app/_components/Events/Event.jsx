@@ -117,7 +117,7 @@ const Event = ({ event }) => {
                     </div>
 
                     <div className="event_description_text">
-                        <p>💍✨ A Lifetime of Love Begins! ✨💍 </p> <p> Today marks the start of a beautiful journey as [Husban and Wife] said &quot;I do!&quot; 💖 </p> <p> From the first date to forever, we are beyond thrilled to witness their love story unfold. May your days be filled with laughter, your hearts with endless love, and your lives with unforgettable memories. Here is to love, joy, and a happily ever after! 🥂👰🤵</p>
+                        <p>💍✨ A Lifetime of Love Begins! ✨💍 </p> <p> Today marks the start of a beautiful journey as [Husban and Wife] said I do!; 💖 </p> <p> From the first date to forever, we are beyond thrilled to witness their love story unfold. May your days be filled with laughter, your hearts with endless love, and your lives with unforgettable memories. Here is to love, joy, and a happily ever after! 🥂👰🤵</p>
                     </div>
 
                 </div>
