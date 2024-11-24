@@ -21,26 +21,21 @@ Search, Messages, Find Groups, Play Games, Read News
 
 
 bug list:
-
-- notifications page is streched more than full width
 - decrease font size for the whole website maybe?
-InterestHive
-dennisdilneoux
-dennisdilneoux0
-dennisdilneoux1 (Edit for photo and info)
-illinoismarbel
-susanscrumg
-apriloneille
-sarahdigsop
-susanfroide
-markgubrell
-sakirhumbleson
 
+Apply Events within posts practice ideas:
 
-Dennis Dilneoux
-Illinois Marbel
-April ONeille
-Sarah Digsop
+- I want to show events within post component so I need to make some changes in order to do that.
+
+(+)1/ In postModel, it's a good idea to insert EventPost in the enum postType and make a new field named eventId(populate this id with eventdocument).
+(-)2/ Everytime I fetch feedPosts, I also need to fetch EventPosts and I need to seperate posts by using postType names.
+(-)3/ In the Events page, I will add a create post component with the required post. User will have expandable form to create event. 
+(-)4/ Everytime a person creates an event, it will send notification to the users who follow the event creator user.
+(-)5/ When I am rendering a post, I will check if it's an eventpost. if it is, I will render that part of the post.
+(-)6/ There is 4 sides of the event. Active event, Canceled event, Event is over and Deleted Event.
+(-)7/ In the events page, I need to be able to see the events that loggedin user created so far.
+(-)8/ LoggedInUser need to have notification when a user that loggedin user follows goes to an event.
+
 
 http://localhost:3001/profile/apriloneille
 

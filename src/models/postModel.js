@@ -12,7 +12,7 @@ const PostSchema = new Schema({
     },
     postType: {
         type: String,
-        enum: ['FeedPost', 'GroupPost', 'GlobalPost'],
+        enum: ['FeedPost', 'GroupPost', 'GlobalPost', 'EventPost'],
         required: true
     },
     isActive: {
@@ -54,6 +54,10 @@ const PostSchema = new Schema({
     groupId: {
         type: Schema.Types.ObjectId,
         ref: 'Groups'
+    },
+    eventId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Events'
     }
 
 }, { timestamps: true })

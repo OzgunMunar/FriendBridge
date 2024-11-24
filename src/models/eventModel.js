@@ -50,25 +50,7 @@ const eventsSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "Users"
     }],
-    eventLikedBy: [{
-        type: Schema.Types.ObjectId,
-        ref: "Users"
-    }],
-    eventComments: [
-        { 
-            creator: {
-                type: Schema.Types.ObjectId,
-                ref: 'Users'
-            },
-            comment: String,
-            date: Date, 
-            likedBy: [{
-                type: Schema.Types.ObjectId,
-                ref: 'Users'
-            }]
-        }
-    ],
-    isActive: {
+    eventStatus: {   //active, canceled, deleted etc.
         type: Boolean
     }
 
