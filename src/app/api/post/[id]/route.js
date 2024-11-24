@@ -61,6 +61,8 @@ export async function GET(req, { params }) {
                                             path: "creator",
                                             select: "username userImageLink userCodeName"
                                         })
+                                        .populate("relatedEvent")
+                                        .populate("relatedGroup")
                                         .populate({
                                             path: "comments.creator",
                                             select: "username userImageLink userCodeName"

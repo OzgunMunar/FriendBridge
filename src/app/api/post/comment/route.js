@@ -16,6 +16,8 @@ export async function PATCH(req) {
         const userId = await getDataFromToken(req)
 
         const post = await Posts.findById(postId)
+                                .populate("relatedGroup")
+                                .populate("relatedEvent")
                                 .populate("creator", "username userImageLink userCodeName")
                                 .populate("comments.creator", "username userImageLink userCodeName")
 

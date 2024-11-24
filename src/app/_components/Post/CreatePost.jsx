@@ -29,7 +29,9 @@ const CreatePost = ({ postType }) => {
     location: "",
     likedBy:[{}],
     dislikedBy:[{}],
-    comments: [{}]
+    comments: [{}],
+    groupId: "", // groupId
+    eventId: "" // eventId
     
   })
 
@@ -76,7 +78,9 @@ const CreatePost = ({ postType }) => {
         likedBy: [{}],
         dislikedBy: [{}],
         comments: [{}],
-        
+        groupId: "", // groupId
+        eventId: "" // eventId
+
       })
 
     } catch (error) {

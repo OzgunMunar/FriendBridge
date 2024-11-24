@@ -17,6 +17,8 @@ export const POST = async(request) => {
 
         let posts = await Posts.find({ isActive: true, creator: userId })
                                     .sort({"createdAt": -1})
+                                    .populate("relatedGroup")
+                                    .populate("relatedEvent")
                                     .populate("creator")
                                     .populate({
                                         path: "comments.creator",

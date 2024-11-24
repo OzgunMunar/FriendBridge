@@ -25,7 +25,10 @@ export async function POST(req) {
                                 .populate("followedBy")
 
         // Fetch posts User created
-        const userPosts = await Posts.find({ creator: userId, postType: 'FeedPost' })
+        const userposts = await Posts.find({ 
+            creator: user._id, 
+            postType: { $in: ['FeedPost', 'EventPost'] } 
+        })
 
         // Fetch User Likes User created for the likesposts number.
         const userLikes = await LikedPosts.findOne({ userId: userId })

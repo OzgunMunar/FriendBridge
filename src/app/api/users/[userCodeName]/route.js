@@ -19,7 +19,11 @@ export async function GET(request, { params }) {
             return NextResponse.json({ error: "User not found." }, { status: 404 })
         }
         
-        const userposts = await Posts.find({ creator: user._id, postType: 'FeedPost' })
+        // const userposts = await Posts.find({ creator: user._id, postType: 'FeedPost' })
+        const userposts = await Posts.find({ 
+            creator: user._id, 
+            postType: { $in: ['FeedPost', 'EventPost'] } 
+          })
         const userlikes = await LikedPosts.findOne({ userId: user._id })
 
         const userObject = user.toObject()

@@ -21,6 +21,8 @@ export const POST = async(request) => {
                                         .populate('followingPeople')
 
         const loggedUserPosts = await Posts.find({ creator: userId })
+                                            .populate("relatedGroup")
+                                            .populate("relatedEvent")
                                             .populate("creator", "username userImageLink userCodeName")
                                             .populate("comments.creator", "username userImageLink userCodeName")
 
@@ -33,6 +35,8 @@ export const POST = async(request) => {
         const followingPeoplePostsPromises = followingPeople.map(async(followingPerson) => {
 
             const followingPersonPosts = await Posts.find({ creator: followingPerson._id })
+                                                    .populate("relatedGroup")
+                                                    .populate("relatedEvent")
                                                     .populate("creator", "username userImageLink userCodeName")
                                                     .populate("comments.creator", "username userImageLink userCodeName")
 

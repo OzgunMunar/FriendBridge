@@ -17,7 +17,10 @@ export async function GET(request) {
         const user = await User.findById(userId)
         .select('-password')
 
-        const userposts = await Posts.find({ creator: userId, postType: 'FeedPost' })
+        const userposts = await Posts.find({ 
+            creator: user._id, 
+            postType: { $in: ['FeedPost', 'EventPost'] } 
+        })
         const userlikes = await LikedPosts.findOne({ userId: userId })
         const userNotificationDocument = await Notifications.findOne({ agentUserId: userId})
 
