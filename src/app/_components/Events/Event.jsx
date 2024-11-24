@@ -4,34 +4,10 @@ import { useState, useEffect, useRef } from "react";
 const Event = ({ event }) => {
 
     const [userCity, setUserCity] = useState("")
-    const [isLiking, setIsLiking] = useState(false)
-    const [isLiked, setIsLiked] = useState(false)
     const [isDropdown, setIsDropdown] = useState(false)
-    const [expand, setExpand] = useState(false)
-    const [height, setHeight] = useState(0)
 
     const cancelOrDeleteRef = useRef(null)
     const commentRef = useRef(null)
-
-    useEffect(() => {
-
-        if(expand === true) {
-
-            commentTextAreaRef.current.value = ""
-            commentTextAreaRef.current.focus()
-            
-            setHeight(commentRef.current.scrollHeight)
-
-        } else {
-            setHeight(0)
-        }
-
-        commentRef.current.scrollTo({
-            top: 0,
-            behaviour: "smooth"
-        })
-
-    }, [expand])
   
     useEffect(() => {
 
@@ -105,7 +81,7 @@ const Event = ({ event }) => {
 
                     <div className="event_header_right_actions_section" ref={cancelOrDeleteRef}>
 
-                        <button className="event_actions_button"  onClick={() => OpenCloseDropDown()}>
+                        <button className="event_actions_button"  onClick={() => OpenCloseDropDown()} aria-label="asdsa">
                             <span>...</span>
                         </button>
 
@@ -258,106 +234,6 @@ const Event = ({ event }) => {
             </div>
 
             <div className="event_horizontal_line"></div>
-
-            <div className="event_footer">
-
-                <div className="event_like_comment_share">
-
-                    <div className="event_action_button" onClick={() => LikeEvent("eventId")} aria-disabled={isLiking}>
-                        {
-                            isLiked ?
-                            <img width="20" height="20" src="https://img.icons8.com/office/30/hearts.png" alt="hearts"/>
-                            :
-                            <img width="20" height="20" src="https://img.icons8.com/ios/50/like--v1.png" alt="like--v1"/>
-                        }    
-                        <p>{0} Likes</p>
-                    </div>
-
-                    <div className="event_action_button" onClick={() => HandleExpand()}>
-                        <img width="20" height="20" src="https://img.icons8.com/ios/50/chat-message--v1.png" alt="chat-message--v1"/>
-                        <p>{0} Comments</p>
-                    </div>
-
-                    <div className="event_action_button">
-                        <img width="20" height="20" src="https://img.icons8.com/material-rounded/24/share.png" alt="share"/>
-                        <p>Share</p>
-                    </div>
-
-                </div>
-
-            </div>
-
-            {/* <div className={`${expand ? "expanded":""} post_comment_section_container`}
-                    ref={commentRef}
-                    style={{ maxHeight: `${expand ? `${height + 16}px`:`${height}px`}`, overflowY: "hidden" }}>
-
-                    <div className="post_horizontal_line"></div>
-
-                    <div className="post_comment_top_section">
-                        <p className="display-6">New Comment</p>
-                        <button type="button" className="post_comment_top_section_share_button" onClick={() => HandleCommentShare()}>Share</button>
-                    </div>
-
-                    <div className="post_comment_middle_section">
-                        
-                        <textarea 
-                            rows={4} 
-                            placeholder={`${user.username ? `What do you think, ${user.username}?`:""}`}
-                            className="post_comment_textarea overflow-hidden"
-                            ref={commentTextAreaRef}
-                            ></textarea>
-
-                    </div>
-                    
-                    <div className="post_comment_below_section">
-
-                        {
-                            post.comments.length !== 0 && 
-
-                                <>
-
-                                    <div className="comment_horizontal_line"></div>
-                                    
-                                    <div className="post_comment_header_section">
-                                        <p className="display-6">
-                                            { post.comments.length > 3 & !isSinglePost ? "Last 3 Comments":"All Comments" }
-                                        </p>
-                                        { post.comments.length > 3 & !isSinglePost ? <Link href={`/post/${post._id}`} className="gotocomments_button">{`Go to all comments...(${post.comments.length})`}</Link>:null }
-                                    </div>
-
-                                    { commentsToRender.map((comment) => {
-
-                                        return (
-
-                                            <div key={comment._id}>
-
-                                                <div className="post_comment">
-
-                                                    <img className="post_photo" src={comment.creator.userImageLink} alt="commentator photo" />
-
-                                                    <div className="post_comment_body">
-
-                                                        <span className="font-bold">{comment.creator.username}</span>
-                                                        <p className="text-xs mb-4">{provideFullDateText(comment.date)}</p>
-                                                        <p>{comment.comment}</p>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                            
-                                        )
-
-                                    })}
-
-                                </>
-
-                        }
-
-                    </div>
-                    
-            </div> */}
 
         </div>
 
