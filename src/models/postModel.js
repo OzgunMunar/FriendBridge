@@ -51,11 +51,11 @@ const PostSchema = new Schema({
     friend: {
         type: String
     },
-    groupId: {
+    relatedGroup: {
         type: Schema.Types.ObjectId,
         ref: 'Groups'
     },
-    eventId: {
+    relatedEvent: {
         type: Schema.Types.ObjectId,
         ref: 'Events'
     }

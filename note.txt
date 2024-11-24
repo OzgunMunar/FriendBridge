@@ -37,6 +37,7 @@ Apply Events within posts practice ideas:
 (-)8/ LoggedInUser need to have notification when a user that loggedin user follows goes to an event.
 
 
+
 http://localhost:3001/profile/apriloneille
 
 1. Dennis Dilneoux
