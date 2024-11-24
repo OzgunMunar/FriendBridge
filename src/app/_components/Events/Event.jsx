@@ -7,12 +7,7 @@ const Event = ({ event }) => {
     const [isDropdown, setIsDropdown] = useState(false)
 
     const cancelOrDeleteRef = useRef(null)
-<<<<<<< HEAD
-    
-=======
-    const commentRef = useRef(null)
-  
->>>>>>> 41b686a4355f9cee1adbd08c172db541b733d8a9
+
     useEffect(() => {
 
         const handleOutsideClick = (event) => {
