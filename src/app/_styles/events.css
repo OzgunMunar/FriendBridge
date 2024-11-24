@@ -77,7 +77,7 @@
 }
 
 .event_upper_body_buttons {
-    @apply absolute px-5 py-3 flex justify-end items-center gap-3 w-full bottom-0
+    @apply absolute px-1 py-1 flex justify-end items-center gap-3 w-full bottom-0
 }
 
 .event_upper_body_button_join_event {
@@ -112,7 +112,7 @@
 
 .event_mid_body,
 .event_lower_body {
-    @apply py-5 px-6 
+    @apply py-2 px-6 
 }
 
 .event_mid_icon {

@@ -20,7 +20,6 @@ export async function POST(request) {
         const notificationDocument = await Notifications.findOne({ agentUserId: userId })
                                                  .populate("notifications.actorUserId")
 
-
         totalNotifications = notificationDocument.notifications.length
         totalPages = Math.ceil(totalNotifications / 10)
 

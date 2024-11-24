@@ -67,7 +67,10 @@ const eventsSchema = new mongoose.Schema({
                 ref: 'Users'
             }]
         }
-    ]
+    ],
+    isActive: {
+        type: Boolean
+    }
 
 }, { timestamps: true })
 

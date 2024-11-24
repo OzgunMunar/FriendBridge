@@ -113,7 +113,7 @@ const PostForm = ({ type, post, setPost, submitting, handleSubmit, textAreaRef, 
 
             <button type="submit" className="post_submit_button" disabled={submitting}  onClick={ActionHandle}>
               <span className='form_submit_button_text'>
-                {submitting ? `${buttonTextOnSubmitting}` : "Post"}
+                {submitting ? `${buttonTextOnSubmitting}` : "Share"}
               </span>
             </button>
 
