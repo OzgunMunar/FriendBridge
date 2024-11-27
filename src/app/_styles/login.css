@@ -101,7 +101,7 @@
 
 .login_header_app_explanation {
   
-    font-family: 'Roboto Condensed', cursive;
+    font-family: 'Roboto Condensed';
     @apply 
     hidden
 
