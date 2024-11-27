@@ -110,7 +110,7 @@ export default function LoginPage({changePage}) {
 
             </div>
 
-            <button type="button" className="form_create_account_button mt-4" onClick={() => changePage(val => !val)}>Create an account</button>
+            <button type="button" className="form_create_account_button" onClick={() => changePage(val => !val)}>Create an account</button>
             
             <ToastContainer
                 position="bottom-right"
