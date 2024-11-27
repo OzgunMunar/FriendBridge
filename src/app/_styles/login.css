@@ -19,6 +19,7 @@
     justify-center
     min-h-screen
     gap-20
+    bg-transparent
     lg:flex-row
 }
 
@@ -42,6 +43,7 @@
   items-center
   justify-center
   bg-white
+  rounded-b-md
   py-6
   w-3/4
   shadow-md
