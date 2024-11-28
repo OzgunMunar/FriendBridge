@@ -32,7 +32,7 @@ export const UserProvider = ({ children }) => {
                                     const fetchedUserData = response.data.data
                                     localStorage.setItem("userData", JSON.stringify(fetchedUserData))
                                     setUser(fetchedUserData)
-                                    console.log(fetchedUserData.unreadNotificationNumber)
+                                    
                                     unreadNotificationCountRef.current = fetchedUserData.unreadNotificationNumber
 
                                 })

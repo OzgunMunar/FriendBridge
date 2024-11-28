@@ -2,6 +2,9 @@ import { ConnectToDB } from "@/dbConfig/dbConfig"
 import Posts from "@/models/postModel"
 import SavedPosts from "@/models/savedPostsModel"
 import Users from "@/models/userModel"
+import "@/models/groupsModel"
+import "@/models/eventModel"
+
 import { NextResponse } from "next/server"
 
 export const POST = async(request) => {

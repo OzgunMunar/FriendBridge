@@ -5,6 +5,8 @@ import { NotificationActionTypes } from "@/helpers/notificationActionTypes";
 import { NotificationMaker } from "@/helpers/notificationMaker";
 import Posts from "@/models/postModel";
 import { NextResponse } from "next/server";
+import "@/models/groupsModel"
+import "@/models/eventModel"
 
 export async function PATCH(req) {
 

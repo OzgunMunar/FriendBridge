@@ -1,6 +1,6 @@
-import mongoose, { Schema } from "mongoose"
+import { Schema, model, models } from "mongoose";
 
-const groupsSchema = new mongoose.Schema({
+const GroupsSchema = new Schema({
     
     creator: {
         type: Schema.Types.ObjectId,
@@ -24,6 +24,6 @@ const groupsSchema = new mongoose.Schema({
     
 }, { timestamps: true })
 
-const Groups = mongoose.models.Groups || mongoose.model("Groups", groupsSchema)
+const Groups = models.Groups || model('Groups', GroupsSchema);
 
-export default Groups
+export default Groups;

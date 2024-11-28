@@ -53,11 +53,15 @@ const PostSchema = new Schema({
     },
     relatedGroup: {
         type: Schema.Types.ObjectId,
-        ref: 'Groups'
+        ref: 'Groups',
+        required: false,
+        default: null
     },
     relatedEvent: {
         type: Schema.Types.ObjectId,
-        ref: 'Events'
+        ref: 'Events',
+        required: false,
+        default: null
     }
 
 }, { timestamps: true })

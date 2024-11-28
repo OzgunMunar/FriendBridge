@@ -1,6 +1,8 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig";
 import { NextResponse } from "next/server";
 import Posts from "@/models/postModel";
+import "@/models/groupsModel"
+import "@/models/eventModel"
 
 export const POST = async(request) => {
 
@@ -24,6 +26,8 @@ export const POST = async(request) => {
                                         path: "comments.creator",
                                         select: "username userImageLink userCodeName"
                                     })
+
+        console.log(posts)
         
         totalPosts = posts.length
         totalPages = Math.ceil(totalPosts / 10)

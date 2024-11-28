@@ -1,7 +1,8 @@
 import { ConnectToDB } from "@/dbConfig/dbConfig"
 import Posts from "@/models/postModel"
 import { NextResponse } from "next/server"
-
+import "@/models/groupsModel"
+import "@/models/eventModel"
 
 export const DELETE = async(req, {params}) => {
 

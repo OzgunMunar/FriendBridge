@@ -13,7 +13,7 @@ export default function Login() {
         
         <div className="login_container">
 
-            <img src={imagepa.src} alt="flower_image" className="absolute left-0 bottom-0 opacity-10"/>
+            <img src={imagepa.src} alt="flower_image" className="absolute left-0 bottom-0 opacity-10 h-screen w-screen max-w-5xl"/>
 
             <section className='login_text'>
 

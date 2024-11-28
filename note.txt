@@ -22,6 +22,7 @@ Search, Messages, Find Groups, Play Games, Read News
 
 bug list:
 - decrease font size for the whole website maybe?
+- when user likes or comments his/her own post, there won't be notification
 
 Apply Events within posts practice ideas:
 

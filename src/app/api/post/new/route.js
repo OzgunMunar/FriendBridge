@@ -20,13 +20,13 @@ export const POST = async(req) => {
             isActive: true, 
             comments: [], 
             likedBy: [], 
-            dislikedBy:[],
+            dislikedBy:[], 
             imageUrlLink: imageUrlLink, 
             location: location, 
             friend: friend, 
             postedDate: Date.now(), 
-            relatedGroup: groupId ? groupId : null,
-            relatedEvent: eventId ? eventId : null
+            relatedGroup: groupId, 
+            relatedEvent: eventId
         })
 
         await newPost.save()
