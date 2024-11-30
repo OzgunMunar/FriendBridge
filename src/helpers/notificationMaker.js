@@ -8,6 +8,9 @@ export const NotificationMaker = async(actorUserId, agentUserId, notificationAct
 
         // fix the issue that repeatedly sending notification everytime actor saves & unsaves repeatedly.
 
+        if(actorUserId === agentUserId)
+            return
+
         let notificationRecordForTheUser = await Notifications.findOne({ agentUserId })
         let notificationObject = {
             actorUserId: actorUserId,
