@@ -26,8 +26,6 @@ export const POST = async(request) => {
                                         path: "comments.creator",
                                         select: "username userImageLink userCodeName"
                                     })
-
-        console.log(posts)
         
         totalPosts = posts.length
         totalPages = Math.ceil(totalPosts / 10)
