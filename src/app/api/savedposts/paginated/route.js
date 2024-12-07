@@ -16,18 +16,30 @@ export const POST = async(request) => {
         let totalPages = parseInt(paginationInfo.totalPages, 10)
 
         let savedPosts = await SavedPosts.findOne({ userId })
-                                       .populate({
-                                           path: "postIds",
-                                           populate: {
-                                               path: "creator"
-                                           }
-                                       })
-                                       .populate({
-                                           path: "postIds",
-                                           populate: {
-                                               path: "comments.creator"
-                                           }
-                                       })
+                                        .populate({
+                                            path: "postIds",
+                                            populate: {
+                                                path: "creator"
+                                            }
+                                        })
+                                        .populate({
+                                            path: "postIds",
+                                            populate: {
+                                                path: "comments.creator"
+                                            }
+                                        })
+                                        .populate({
+                                            path: "postIds",
+                                            populate: {
+                                                path: "relatedEvent"
+                                            }
+                                        })
+                                        .populate({
+                                            path: "postIds",
+                                            populate: {
+                                                path: "relatedGroup"
+                                            }
+                                        })
         
         if(!savedPosts) {
             savedPosts = { userId: userId, postIds: [] }
