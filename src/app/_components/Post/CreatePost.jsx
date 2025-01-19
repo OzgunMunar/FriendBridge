@@ -30,8 +30,8 @@ const CreatePost = ({ postType }) => {
     likedBy:[{}],
     dislikedBy:[{}],
     comments: [{}],
-    groupId: "", // groupId
-    eventId: "" // eventId
+    groupId: null, // groupId
+    eventId: null // eventId
     
   })
 
@@ -47,6 +47,7 @@ const CreatePost = ({ postType }) => {
         return;
         
       }
+
       let newPost = await axios.post("/api/post/new", post)
       toast.success("Post created.", { theme: "light" })
 
@@ -78,8 +79,8 @@ const CreatePost = ({ postType }) => {
         likedBy: [{}],
         dislikedBy: [{}],
         comments: [{}],
-        groupId: "", // groupId
-        eventId: "" // eventId
+        groupId: null, // groupId
+        eventId: null // eventId
 
       })
 

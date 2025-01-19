@@ -9,7 +9,7 @@ export const POST = async(req) => {
     const { postText, imageUrlLink, friend, location, likedBy, dislikedBy,comments, postType, groupId, eventId } = reqBody
 
     try {
-        
+
         await ConnectToDB()
 
         const userId = await getDataFromToken(req)
@@ -28,6 +28,8 @@ export const POST = async(req) => {
             relatedGroup: groupId, 
             relatedEvent: eventId
         })
+
+        // console.log(newPost)
 
         await newPost.save()
         return new NextResponse(JSON.stringify(newPost), {status: 200})
