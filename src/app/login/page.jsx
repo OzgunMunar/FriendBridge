@@ -3,7 +3,6 @@
 import SignupPage from "@/app/_components/Authentication/SignUp";
 import LoginPage from "../_components/Authentication/Login";
 import React from 'react'
-import imagepa from '@/app/_images/rustic_flower.png';
 
 export default function Login() {
     
